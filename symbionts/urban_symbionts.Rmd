@@ -115,7 +115,7 @@ Urban<-Urban.Out$result
   SampleName<-SampleName[, -(10:34)]
   
 # Get the sample metadata (treatments, data points, etc)
-  Metadata<-read.csv("Metadata/Fragment_Replicate.csv")
+  Metadata<-read.csv("metadata.csv")
 
   #Sample.duplicates <-SampleName[duplicated(SampleName$Sample.Plate),] 
   
@@ -133,7 +133,7 @@ rownames(SampleName) <- SampleName$Sample.Plate
     Urban$Sample.ID<-SampleName[as.character(Urban$Sample.Plate), "Sample.ID"]
     
 # Get treatment information
-  Urban<-left_join(Urban, Metadata, by="Fragment")
+  Urban<-left_join(Urban, Metadata, by="Sample.Plate")
 
 # Creates a unique ID for a core-sampling time 
   Urban$Sample<-paste(Urban$Fragment, Urban$TP, sep='_') 
@@ -148,28 +148,25 @@ rownames(SampleName) <- SampleName$Sample.Plate
     #Urban <- droplevels(Urban[!rownames(Urban) %in% rownames(NegControl), ])
 
 # 6.If coral detected in one technical replicate, remove the sample
-    ReRun.Coral <- Urban[which(Urban$Urban.reps==1), ]
-    Urban <- droplevels(Urban[!rownames(Urban) %in% rownames(ReRun.Coral), ])
+    ReRun.Coral <- Urban[which(Urban$A.reps==1 | Urban$B.reps==1 | Urban$C.reps==1 | Urban$D.reps==1), ]
+    # Urban <- droplevels(Urban[!rownames(Urban) %in% rownames(ReRun.Coral), ])
     
     NoHSratio <- Urban[which(Urban$TotalSH==0), ]
-    Urban <- droplevels(Urban[!rownames(Urban) %in% rownames(NoHSratio), ])
+    # Urban <- droplevels(Urban[!rownames(Urban) %in% rownames(NoHSratio), ])
     
 # 7. High ST    
-    StDe1.5 <- Urban[which((Urban$Urban.CT.sd>1.5)|(Urban$D.CT.sd>1.5)), ]
-    Urban <- droplevels(Urban[!rownames(Urban) %in% rownames(StDe1.5), ])
+    StDe1.5 <- Urban[which((Urban$A.CT.sd>1.5) | (Urban$B.CT.sd>1.5) | (Urban$C.CT.sd>1.5) | (Urban$D.CT.sd>1.5)), ]
+    # Urban <- droplevels(Urban[!rownames(Urban) %in% rownames(StDe1.5), ])
   
 # 8.Suspiciously late coral amplification
     # Histo_Urban_CT<-qplot(Urban.CT.mean, data=Urban, binwidth=0.15)
     # Histo_Urban_CT 
   
-  LateCoral<-Urban[which(Urban$Urban.CT.mean>22), ]
-  Urban <- droplevels(Urban[!rownames(Urban) %in% rownames(LateCoral), ])
+  # LateCoral<-Urban[which(Urban$Urban.CT.mean>22), ]
+  # Urban <- droplevels(Urban[!rownames(Urban) %in% rownames(LateCoral), ])
     
   # Samples to Re-run    
-  ToRe_Run1<-rbind(ReRun.Coral, NoHSratio)
-  ToRe_Run1<-rbind(ToRe_Run1, ReRun.Coral)   
-  ToRe_Run1<-rbind(ToRe_Run1, StDe1.5)
-  ToRe_Run1<-rbind(ToRe_Run1, LateCoral)
+  ToRe_Run1<-rbind(NoHSratio, StDe1.5)
   ToRe_Run1<-ToRe_Run1 %>% distinct()
 
 ```
