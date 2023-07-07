@@ -24,16 +24,15 @@ knitr::opts_chunk$set(echo = TRUE, warning = FALSE, message = FALSE)
 
 ```{r libraries}
   library(tidyverse) # install.packages('tidyverse')
-  #library(devtools)  # install.packages("devtools")
-  #devtools::install_github("jrcunning/steponeR")
-  #install.packages("rlang")
+  # library(devtools)  # install.packages("devtools")
+  # devtools::install_github("jrcunning/steponeR")
+  # install.packages("rlang")         NOT NEEDED
   library(steponeR)
-  library(plyr)
+  # library(plyr)                     NOT NEEDED
   library(reshape2)
-  library(ggplot2)
+  # library(ggplot2)
 
 ```
-
 
 #2. Calculate qPCR RATIOS fo all the samples  
 
@@ -41,133 +40,195 @@ knitr::opts_chunk$set(echo = TRUE, warning = FALSE, message = FALSE)
 
 # Get the list of files with qPCR data
 Plates <- list.files(path="data", pattern=".csv", full.names=T)
-Plates
+Plates # Plates 1-8 and 11-16 have Sample 12/NTC split across plates, so results .csv's were modified manually
 
 # Run the steponeR program to get the S/H cell ratios
   # This needs to follow your plate target labels, otherwise it will not work
 
-Urban.Out <- steponeR(files=Plates, target.ratios=c("A.D", "B.D", "C.D"), 
+Urban_Out <- steponeR(files=Plates, target.ratios=c("B.A", "C.A", "D.A", "A.B", "C.B", "D.B", "A.C", "B.C", "D.C", "A.D", "B.D", "C.D"), 
                      fluor.norm=list(A=0, B=0, C=0, D=0),
                      copy.number=list(A=1, B=1, C=1, D=1), # look up copy numbers
                      ploidy=list(A=1, B=1, C=1, D=1),
                      extract=list(A=0.813, B=0.813, C= 0.813, D=0.813))
 
 # Target ratio results
-Urban<-Urban.Out$result
+Urban<-Urban_Out$result
 ```
 
 # 3. Data CLEANING A
 
 ```{r DataCleaning}
-  # 1. Check and remove NTC wells
-    ntc <- Urban[which(Urban$Sample.Name=="NTC"), ]
-    Urban <- droplevels(Urban[!rownames(Urban) %in% rownames(ntc), ])
+  # 1. Check and remove NTC wells                                   NOT NEEDED
+    # ntc <- Urban[which(Urban$Sample.Name=="NTC"), ]
+    # Urban <- droplevels(Urban[!rownames(Urban) %in% rownames(ntc), ])
     
-  # 2. Check and remove + Control wells
-    Positive <- Urban[which(Urban$Sample.Name=="+"), ]
-    Urban <- droplevels(Urban[!rownames(Urban) %in% rownames(Positive), ])
+  # 2. Check and remove + Control wells                             NOT NEEDED
+    # Positive <- Urban[which(Urban$Sample.Name=="+"), ]
+    # Urban <- droplevels(Urban[!rownames(Urban) %in% rownames(Positive), ])
 
   # 3.If Clade only detected in one technical replicate, set its ratio to NA and make them =0
-    One.A<- Urban[which(Urban$A.reps==1),]
-    Urban$A.D[which(Urban$A.reps==1)] <- NA
+    One_A<- Urban[which(Urban$A.reps==1),]
+    # Urban$A.D[which(Urban$A.reps==1)] <- NA
     
-    One.B<- Urban[which(Urban$B.reps==1),]
-    Urban$B.D[which(Urban$B.reps==1)] <- NA
+    One_B<- Urban[which(Urban$B.reps==1),]
+    # Urban$B.D[which(Urban$B.reps==1)] <- NA
     
-    One.C<- Urban[which(Urban$C.reps==1),]
-    Urban$C.D[which(Urban$C.reps==1)] <- NA
+    One_C<- Urban[which(Urban$C.reps==1),]
+    # Urban$C.D[which(Urban$C.reps==1)] <- NA
     
-    One.D<- Urban[which(Urban$D.reps==1),]
-    Urban$A.D[which(Urban$D.reps==1)] <- NA
-    Urban$B.D[which(Urban$D.reps==1)] <- NA
-    Urban$C.D[which(Urban$D.reps==1)] <- NA
+    One_D<- Urban[which(Urban$D.reps==1),]
+    # Urban$A.D[which(Urban$D.reps==1)] <- NA
+    # Urban$B.D[which(Urban$D.reps==1)] <- NA
+    # Urban$C.D[which(Urban$D.reps==1)] <- NA
    
-    Urban$A.D[is.na(Urban$A.D)] <- 0
-    Urban$B.D[is.na(Urban$B.D)] <- 0
-    Urban$C.D[is.na(Urban$C.D)] <- 0
+    # Urban$A.D[is.na(Urban$A.D)] <- 0
+    # Urban$B.D[is.na(Urban$B.D)] <- 0
+    # Urban$C.D[is.na(Urban$C.D)] <- 0
     
 ```
+
+# 4. Import the sample metadata
+
+```{r Samples}
+# 1. Get the sample information for your qPCR plates (if you use a template)        NOT NEEDED
+  # SampleName<-read.csv("Metadata/Sample_Plates.csv") 
+  # SampleName <- SampleName[!(is.na(SampleName$Sample.ID)), ]
+  # SampleName<-SampleName[, -(10:34)]
+  
+# 2. Get the sample metadata
+  Metadata<-read.csv("metadata.csv")
+  Metadata$Species <- as.factor(Metadata$Species)
+  Metadata$Region <- as.factor(Metadata$Region)
+  Metadata$Site <- as.factor(Metadata$Site)
+  Metadata$CollectionDate <- as.factor(Metadata$CollectionDate)
+  Metadata$Season <- as.factor(Metadata$Season)
+  Metadata$Rain <- as.factor(Metadata$Rain)
+
+  #Sample.duplicates <-SampleName[duplicated(SampleName$Sample.Plate),]             NOT NEEDED
+  
+# 3. Create unique sample ID+FileName to relabel samples  
+  Urban$Sample.Plate<-paste(Urban$Sample.Name, Urban$File.Name, sep = "_" )
+  # head(SampleName)
+  # head(Urban)
+   
+# Replace Sample.Names in qPCR data - Different for each project                    NOT NEEDED
+# rownames(SampleName) <- SampleName$Sample.Plate
+#     Urban$TP<-SampleName[as.character(Urban$Sample.Plate), "TP"]
+#     Urban$Date<-SampleName[as.character(Urban$Sample.Plate), "Date"]
+#     Urban$Date<-as.Date(Urban$Date, format="%m-%d-%y")
+#     Urban$Fragment<-SampleName[as.character(Urban$Sample.Plate), "Fragment"]
+#     Urban$Sample.ID<-SampleName[as.character(Urban$Sample.Plate), "Sample.ID"]
+    
+# Joining metadata with qPCR data
+  Urban<-left_join(Urban, Metadata, by="Sample.Plate")
+
+# Creates a unique ID for a core-sampling time                                      NOT NEEDED
+  # Urban$Sample<-paste(Urban$Fragment, Urban$TP, sep='_') 
+```
+
+# 5. Dominant symbiont types and species/site filtering
+
+```{r Species/Site means}
+# Filtering by species, then determining Ct means for each symbiont by site
+  Urban %>%
+    filter(Species == "Mcav") -> Mcav
+
+  Urban %>%
+      filter(Species == "Ofav") -> Ofav
+  
+  Urban %>%
+      filter(Species == "Cnat") -> Cnat
+
+# The lowest mean Ct per site indicates the dominant symbiont genus
+  Urban %>%
+  filter(Species == "Mcav") %>%
+  group_by(Site) %>%
+  summarize(across(A.CT.mean:D.CT.mean, mean, na.rm=TRUE)) -> Mcav_dom
+
+  Urban %>%
+    filter(Species == "Ofav") %>%
+    group_by(Site) %>%
+    summarize(across(A.CT.mean:D.CT.mean, mean, na.rm=TRUE)) -> Ofav_dom
+  
+  Urban %>%
+    filter(Species == "Cnat") %>%
+    group_by(Site) %>%
+    summarize(across(A.CT.mean:D.CT.mean, mean, na.rm=TRUE)) -> Cnat_dom
+  
+# Further filtering species by site based on dominant symbionts
+  Mcav %>%
+    filter(Region == "Miami offshore") -> Mcav_offshore
+  Mcav %>%
+      filter(Region == "Miami urban") -> Mcav_urban
+  
+  Ofav %>%
+    filter(Region == "Miami offshore") -> Ofav_offshore
+  Ofav %>%
+      filter(Region == "Miami urban") -> Ofav_urban
+  
+  # Cnat %>% # Not needed since Cnat is dominated by D across all sites
+  #   filter(Region == "Miami offshore") -> Cnat_offshore
+  # Cnat %>%
+  #     filter(Region == "Miami urban") -> Cnat_urban
+```
+
 
 #4. Get the total S/H cell ratios and log 10 transformations
 
 ```{r}
-    # Total SH
-    Urban$TotalSH<-(Urban$A.D + Urban$B.D+ Urban$C.D)
-    
-    # Log 10
-        Urban$logA.SH <- log10(Urban$A.D)
-        Urban$logB.SH <- log10(Urban$B.D)
-        Urban$logC.SH <- log10(Urban$C.D)
-        Urban$logSH<-log10(Urban$TotalSH)
-        
-        Urban$logA.SH[which(Urban$A.D==0)] <- NA
-        Urban$logB.SH[which(Urban$B.D==0)] <- NA
-        Urban$logC.SH[which(Urban$C.D==0)] <- NA
+    # # Total SH                                                  NOT NEEDED
+    # Urban$TotalSH<-(Urban$A.D + Urban$B.D+ Urban$C.D)
+    # 
+    # # Log 10
+    #     Urban$logA.SH <- log10(Urban$A.D)
+    #     Urban$logB.SH <- log10(Urban$B.D)
+    #     Urban$logC.SH <- log10(Urban$C.D)
+    #     Urban$logSH<-log10(Urban$TotalSH)
+    #     
+    #     Urban$logA.SH[which(Urban$A.D==0)] <- NA
+    #     Urban$logB.SH[which(Urban$B.D==0)] <- NA
+    #     Urban$logC.SH[which(Urban$C.D==0)] <- NA
   
 ```    
 
-## 4. Import the sample information
-
-```{r Samples}
-# Get the sample information for your qPCR plates (if you use a template)
-  SampleName<-read.csv("Metadata/Sample_Plates.csv") # Plate, Sample_Plate (including .csv), and corresponding sample name (from qPCR plate template)
-  SampleName <- SampleName[!(is.na(SampleName$Sample.ID)), ]
-  SampleName<-SampleName[, -(10:34)]
-  
-# Get the sample metadata (treatments, data points, etc)
-  Metadata<-read.csv("metadata.csv")
-
-  #Sample.duplicates <-SampleName[duplicated(SampleName$Sample.Plate),] 
-  
-# 3. Create unique sample ID+FileName to relabel samples  
-  Urban$Sample.Plate<-paste(Urban$Sample.Name, Urban$File.Name, sep = "_" )
-  head(SampleName)
-  head(Urban)
-   
-# Replace Sample.Names in qPCR data - Different for each project
-rownames(SampleName) <- SampleName$Sample.Plate
-    Urban$TP<-SampleName[as.character(Urban$Sample.Plate), "TP"]
-    Urban$Date<-SampleName[as.character(Urban$Sample.Plate), "Date"]
-    Urban$Date<-as.Date(Urban$Date, format="%m-%d-%y")
-    Urban$Fragment<-SampleName[as.character(Urban$Sample.Plate), "Fragment"]
-    Urban$Sample.ID<-SampleName[as.character(Urban$Sample.Plate), "Sample.ID"]
-    
-# Get treatment information
-  Urban<-left_join(Urban, Metadata, by="Sample.Plate")
-
-# Creates a unique ID for a core-sampling time 
-  Urban$Sample<-paste(Urban$Fragment, Urban$TP, sep='_') 
-```
 
 ## 5. Data CLEANING B
 
 ```{r DataCleaningB}
 
-# 5. Remove (-) control
+# 5. Remove (-) control                                                   NOT NEEDED
     #NegControl <- Urban[which(Urban$Sample=="NA_NA"), ]
     #Urban <- droplevels(Urban[!rownames(Urban) %in% rownames(NegControl), ])
 
 # 6.If coral detected in one technical replicate, remove the sample
-    ReRun.Coral <- Urban[which(Urban$A.reps==1 | Urban$B.reps==1 | Urban$C.reps==1 | Urban$D.reps==1), ]
+    ReRun_Cnat <- Cnat[which(Cnat$D.reps==1), ] # no samples violate
+    ReRun_Ofav_urban <- Ofav_urban[which(Ofav_urban$D.reps==1), ] # no samples violate
+    ReRun_Ofav_offshore <- Ofav_offshore[which(Ofav_offshore$A.reps==1 | Ofav_offshore$B.reps==1), ] # 10 samples violate, but not all necessary to rerun
+    ReRun_Mcav_offshore <- Mcav_offshore[which(Mcav_offshore$C.reps==1), ] # no samples violate
+    ReRun_Mcav_urban <- Mcav_urban[which(Mcav_urban$D.reps==1 | Mcav_urban$A.reps==1), ] # 2 samples violate, but not necessary to rerun
     # Urban <- droplevels(Urban[!rownames(Urban) %in% rownames(ReRun.Coral), ])
     
-    NoHSratio <- Urban[which(Urban$TotalSH==0), ]
+    # NoHSratio <- Urban[which(Urban$TotalSH==0), ]                       NOT NEEDED
     # Urban <- droplevels(Urban[!rownames(Urban) %in% rownames(NoHSratio), ])
     
 # 7. High ST    
-    StDe1.5 <- Urban[which((Urban$A.CT.sd>1.5) | (Urban$B.CT.sd>1.5) | (Urban$C.CT.sd>1.5) | (Urban$D.CT.sd>1.5)), ]
+    StDe1.5_Cnat <- Cnat[which(Cnat$D.CT.sd>1.5), ] # no samples violate
+    StDe1.5_Ofav_urban <- Ofav_urban[which(Ofav_urban$D.CT.sd>1.5), ] # no samples violate
+    StDe1.5_Ofav_offshore <- Ofav_offshore[which(Ofav_offshore$A.CT.sd>1.5 | Ofav_offshore$B.CT.sd>1.5), ] # 13 samples violate, but not all necessary to rerun
+    StDe1.5_Mcav_offshore <- Mcav_offshore[which(Mcav_offshore$C.CT.sd>1.5), ] # no samples violate
+    StDe1.5_Mcav_urban <- Mcav_urban[which(Mcav_urban$D.CT.sd>1.5 | Mcav_urban$A.CT.sd>1.5), ] # 13 samples violate, but not all necessary to rerun
     # Urban <- droplevels(Urban[!rownames(Urban) %in% rownames(StDe1.5), ])
   
-# 8.Suspiciously late coral amplification
+# 8.Suspiciously late coral amplification                                 NOT NEEDED
     # Histo_Urban_CT<-qplot(Urban.CT.mean, data=Urban, binwidth=0.15)
     # Histo_Urban_CT 
   
-  # LateCoral<-Urban[which(Urban$Urban.CT.mean>22), ]
+  # LateCoral<-Urban[which(Urban$Urban.CT.mean>22), ]                     NOT NEEDED
   # Urban <- droplevels(Urban[!rownames(Urban) %in% rownames(LateCoral), ])
     
   # Samples to Re-run    
-  ToRe_Run1<-rbind(NoHSratio, StDe1.5)
-  ToRe_Run1<-ToRe_Run1 %>% distinct()
+  # ToReRun_Cnat<-rbind(ReRun_Cnat, StDe1.5_Cnat)
+  # ToReRun_Cnat<-ToReRun_Cnat %>% distinct()
 
 ```
   
