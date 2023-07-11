@@ -120,7 +120,7 @@ Urban<-Urban_Out$result
 #     Urban$Sample.ID<-SampleName[as.character(Urban$Sample.Plate), "Sample.ID"]
     
 # Joining metadata with qPCR data
-  Urban<-left_join(Urban, Metadata, by="Sample.Plate")
+  Urban_Join<-left_join(Urban, Metadata, by="Sample.Plate")
 
 # Creates a unique ID for a core-sampling time                                      NOT NEEDED
   # Urban$Sample<-paste(Urban$Fragment, Urban$TP, sep='_') 
@@ -130,30 +130,38 @@ Urban<-Urban_Out$result
 
 ```{r Species/Site means}
 # Filtering by species, then determining Ct means for each symbiont by site
-  Urban %>%
+  Urban_Join %>%
     filter(Species == "Mcav") -> Mcav
 
-  Urban %>%
+  Urban_Join %>%
       filter(Species == "Ofav") -> Ofav
   
-  Urban %>%
+  Urban_Join %>%
       filter(Species == "Cnat") -> Cnat
+  
+  Urban_Join %>%
+      filter(Species == "Pseu") -> Pseu
 
 # The lowest mean Ct per site indicates the dominant symbiont genus
-  Urban %>%
+  Urban_Join %>%
   filter(Species == "Mcav") %>%
   group_by(Site) %>%
   summarize(across(A.CT.mean:D.CT.mean, mean, na.rm=TRUE)) -> Mcav_dom
 
-  Urban %>%
+  Urban_Join %>%
     filter(Species == "Ofav") %>%
     group_by(Site) %>%
     summarize(across(A.CT.mean:D.CT.mean, mean, na.rm=TRUE)) -> Ofav_dom
   
-  Urban %>%
+  Urban_Join %>%
     filter(Species == "Cnat") %>%
     group_by(Site) %>%
     summarize(across(A.CT.mean:D.CT.mean, mean, na.rm=TRUE)) -> Cnat_dom
+  
+  Urban_Join %>%
+    filter(Species == "Pseu") %>%
+    group_by(Site) %>%
+    summarize(across(A.CT.mean:D.CT.mean, mean, na.rm=TRUE)) -> Pseu_dom
   
 # Further filtering species by site based on dominant symbionts
   Mcav %>%
@@ -170,6 +178,11 @@ Urban<-Urban_Out$result
   #   filter(Region == "Miami offshore") -> Cnat_offshore
   # Cnat %>%
   #     filter(Region == "Miami urban") -> Cnat_urban
+  
+  Pseu %>%
+    filter(Region == "Miami offshore") -> Pseu_offshore
+  Pseu %>%
+      filter(Region == "Miami urban") -> Pseu_urban
 ```
 
 
@@ -201,11 +214,16 @@ Urban<-Urban_Out$result
     #Urban <- droplevels(Urban[!rownames(Urban) %in% rownames(NegControl), ])
 
 # 6.If coral detected in one technical replicate, remove the sample
-    ReRun_Cnat <- Cnat[which(Cnat$D.reps==1), ] # no samples violate
+    ReRun_Cnat <- Cnat[which(Cnat$D.reps==1), ] # 1 sample violates, but not necessary to rerun
+
     ReRun_Ofav_urban <- Ofav_urban[which(Ofav_urban$D.reps==1), ] # no samples violate
     ReRun_Ofav_offshore <- Ofav_offshore[which(Ofav_offshore$A.reps==1 | Ofav_offshore$B.reps==1), ] # 10 samples violate, but not all necessary to rerun
+    
     ReRun_Mcav_offshore <- Mcav_offshore[which(Mcav_offshore$C.reps==1), ] # no samples violate
     ReRun_Mcav_urban <- Mcav_urban[which(Mcav_urban$D.reps==1 | Mcav_urban$A.reps==1), ] # 2 samples violate, but not necessary to rerun
+    
+    ReRun_Pseu_offshore <- Pseu_offshore[which(Pseu_offshore$B.reps==1), ] # rerun Plate 20 Sample 10
+    ReRun_Pseu_urban <- Pseu_urban[which(Pseu_urban$D.reps==1), ] # 2 samples violate, but not necessary to rerun
     # Urban <- droplevels(Urban[!rownames(Urban) %in% rownames(ReRun.Coral), ])
     
     # NoHSratio <- Urban[which(Urban$TotalSH==0), ]                       NOT NEEDED
@@ -213,10 +231,15 @@ Urban<-Urban_Out$result
     
 # 7. High ST    
     StDe1.5_Cnat <- Cnat[which(Cnat$D.CT.sd>1.5), ] # no samples violate
+    
     StDe1.5_Ofav_urban <- Ofav_urban[which(Ofav_urban$D.CT.sd>1.5), ] # no samples violate
     StDe1.5_Ofav_offshore <- Ofav_offshore[which(Ofav_offshore$A.CT.sd>1.5 | Ofav_offshore$B.CT.sd>1.5), ] # 13 samples violate, but not all necessary to rerun
+    
     StDe1.5_Mcav_offshore <- Mcav_offshore[which(Mcav_offshore$C.CT.sd>1.5), ] # no samples violate
     StDe1.5_Mcav_urban <- Mcav_urban[which(Mcav_urban$D.CT.sd>1.5 | Mcav_urban$A.CT.sd>1.5), ] # 13 samples violate, but not all necessary to rerun
+    
+    StDe1.5_Pseu_offshore <- Pseu_offshore[which(Pseu_offshore$B.CT.sd>1.5), ] # no samples violate
+    StDe1.5_Pseu_urban <- Pseu_urban[which(Pseu_urban$D.CT.sd>1.5), ] # no samples violate
     # Urban <- droplevels(Urban[!rownames(Urban) %in% rownames(StDe1.5), ])
   
 # 8.Suspiciously late coral amplification                                 NOT NEEDED
@@ -236,36 +259,36 @@ Urban<-Urban_Out$result
 
 ```{r remove duplicates}
 
- ReRunA <- Urban[duplicated(Urban$Sample),] 
-  n_RunA <- data.frame(table(Urban$Sample))
-  colnames(n_RunA)<-c("Sample","RanA")
-  Urban<-join(Urban, n_RunA, type = "left")
+ # ReRunA <- Urban[duplicated(Urban$Sample),] 
+  # n_RunA <- data.frame(table(Urban$Sample))
+  # colnames(n_RunA)<-c("Sample","RanA")
+  # Urban<-join(Urban, n_RunA, type = "left")
 # 
-  DuplicatesA <- Urban[(Urban$RanA>1),]
+  # DuplicatesA <- Urban[(Urban$RanA>1),]
   # write.csv(DuplicatesA, "DuplicatesA.csv")
 
-Duplicates<-ggplot(DuplicatesA, aes(Date, logSH, colour=factor(File.Name))) +
- stat_summary(fun=mean, geom="line") +   theme_gdocs() +
-  geom_point() 
-Duplicates
+# Duplicates<-ggplot(DuplicatesA, aes(Date, logSH, colour=factor(File.Name))) +
+#  stat_summary(fun=mean, geom="line") +   theme_gdocs() +
+#   geom_point() 
+# Duplicates
 ```
 
 #### 8. Remove duplicates
 
 ```{r remove duplicates2}
-    ToRem1<-read.csv("ToRemove.csv")
+    # ToRem1<-read.csv("ToRemove.csv")
 #     # 10/24/2018
-   Urban<-Urban[!(Urban$Sample.Plate %in% ToRem1$Sample.Plate),]
+   # Urban<-Urban[!(Urban$Sample.Plate %in% ToRem1$Sample.Plate),]
 # 
 # # Check for replicates again--should have none
 # 
-  n_RunB <- data.frame(table(Urban$Sample))
-  colnames(n_RunB)<-c("Sample","RanB")
-  Urban<-join(Urban, n_RunB, type = "left")
+  # n_RunB <- data.frame(table(Urban$Sample))
+  # colnames(n_RunB)<-c("Sample","RanB")
+  # Urban<-join(Urban, n_RunB, type = "left")
 
 # 
 # # List of dupplicated samples, should have 0 rows now -->
-   DuplicatesB <- Urban[(Urban$RanB>1),]
+   # DuplicatesB <- Urban[(Urban$RanB>1),]
 # # write.csv(DuplicatesB, file = 'DuplicatesB.csv')
 ```
 
@@ -274,13 +297,13 @@ Duplicates
 
 # Clade Proportion
   # D Proportion
-  Urban$D.Prp<-(Urban$D.Urban/Urban$TotalSH)
+  # Urban$D.Prp<-(Urban$D.Urban/Urban$TotalSH)
   # C Proportion
   #Urban$C.Prp<-(Urban$C.SH/Urban$tot.SH)
   
-  hist(Urban$D.Prp)
-  Dproportion<-Urban[(Urban$D.Prp<1 & Urban$D.Prp>0.01),]
-  hist(Dproportion$D.Prp)
+  # hist(Urban$D.Prp)
+  # Dproportion<-Urban[(Urban$D.Prp<1 & Urban$D.Prp>0.01),]
+  # hist(Dproportion$D.Prp)
 
 ```
   
@@ -289,60 +312,60 @@ Duplicates
 ```{r Proportions_dOMINANCE}
 
 # A, B, VS D Community
-  Urban$Community<-NULL
-  Urban$Community[which(Urban$D.Prp<=0.5)] <- "AB"
-  Urban$Community[which(Urban$D.Prp>0.5)] <- "D" 
+  # Urban$Community<-NULL
+  # Urban$Community[which(Urban$D.Prp<=0.5)] <- "AB"
+  # Urban$Community[which(Urban$D.Prp>0.5)] <- "D" 
   
-  Dprop_Hist <- ggplot(Urban, aes (D.Prp, fill=as.factor(Temp))) +
+  # Dprop_Hist <- ggplot(Urban, aes (D.Prp, fill=as.factor(Temp))) +
  
-      geom_histogram(binwidth = 0.01) + facet_wrap(~Nutrients) + 
-      scale_x_continuous(name= expression(Proportion~of~italic(Symbiodinium)~D1),
-                         breaks=c(0.98, 0.99, 1)) +
-      scale_y_continuous(name= expression(Number~of~italic(O.faveolata)~fragments),
-                         breaks=c(0, 10, 20, 30)) +
-      theme(plot.background=element_blank(),
-                         panel.grid.major.y = element_blank(),
-                         panel.grid.major.x = element_blank(),
-            legend.position=c(0.85,0.2),
-                            legend.box.background = element_rect(), 
-            panel.background =element_rect(fill = NA, color = "black")) +
-  scale_fill_manual(values=c("blue", "red"),
-                        name = "Temperature"# , 
-                        #labels=c("C dominated", "D dominated")
-                        )
-  Dprop_Hist 
+      # geom_histogram(binwidth = 0.01) + facet_wrap(~Nutrients) + 
+  #     scale_x_continuous(name= expression(Proportion~of~italic(Symbiodinium)~D1),
+  #                        breaks=c(0.98, 0.99, 1)) +
+  #     scale_y_continuous(name= expression(Number~of~italic(O.faveolata)~fragments),
+  #                        breaks=c(0, 10, 20, 30)) +
+  #     theme(plot.background=element_blank(),
+  #                        panel.grid.major.y = element_blank(),
+  #                        panel.grid.major.x = element_blank(),
+  #           legend.position=c(0.85,0.2),
+  #                           legend.box.background = element_rect(), 
+  #           panel.background =element_rect(fill = NA, color = "black")) +
+  # scale_fill_manual(values=c("blue", "red"),
+  #                       name = "Temperature"# , 
+  #                       #labels=c("C dominated", "D dominated")
+  #                       )
+  # Dprop_Hist 
   
 ``` 
 
 ```{r}
 # A, B, VS D Community
   
-  SH_ratio <- ggplot(Urban, aes (as.factor(Temp), logSH, colour=(D.Prp))) +
-      geom_point()+
-      facet_wrap(Nutrients~Genotype)
-  SH_ratio
+  # SH_ratio <- ggplot(Urban, aes (as.factor(Temp), logSH, colour=(D.Prp))) +
+  #     geom_point()+
+  #     facet_wrap(Nutrients~Genotype)
+  # SH_ratio
   
-  SH_ratio <- ggplot(Urban, aes (as.factor(Temp), logSH, colour=(Genotype))) +
-      geom_point()+
-      facet_wrap(~Nutrients)
-  SH_ratio 
+  # SH_ratio <- ggplot(Urban, aes (as.factor(Temp), logSH, colour=(Genotype))) +
+  #     geom_point()+
+  #     facet_wrap(~Nutrients)
+  # SH_ratio 
   
-  D_proportion <- ggplot(Urban, aes (as.factor(Temp), D.Prp, colour=(Genotype))) +
-      geom_point()+
-      facet_wrap(~Nutrients)
-  D_proportion 
+  # D_proportion <- ggplot(Urban, aes (as.factor(Temp), D.Prp, colour=(Genotype))) +
+  #     geom_point()+
+  #     facet_wrap(~Nutrients)
+  # D_proportion 
   
 ```
 
 ```{r}
  # Urban$Community<-factor(as.character(Urban$Community), levels=c("C","CD", "DC", "D"))
-  Urban$Community<-factor(as.character(Urban$Community), levels=c("AB", "D"))
-  summary(Urban$Community)
+  # Urban$Community<-factor(as.character(Urban$Community), levels=c("AB", "D"))
+  # summary(Urban$Community)
   
   
-  Urban.data<-Urban[,c("Genotype","Nutrients", "Temp", "Disease", "Treatment",
-                     "A.D", "B.D", "D.Urban", "TotalSH", "logSH", "D.Prp", "Community",
-                     "Sample", "Sample.ID", "TP", "Tank", "Date")]
+  # Urban.data<-Urban[,c("Genotype","Nutrients", "Temp", "Disease", "Treatment",
+  #                    "A.D", "B.D", "D.Urban", "TotalSH", "logSH", "D.Prp", "Community",
+  #                    "Sample", "Sample.ID", "TP", "Tank", "Date")]
  
   # Export data if want local backup
   # write.csv(Urban.data, file = 'Urban.csv')
