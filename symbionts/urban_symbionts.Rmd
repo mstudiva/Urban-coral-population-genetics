@@ -246,12 +246,32 @@ Urban<-Urban_Out$result
     # Histo_Urban_CT<-qplot(Urban.CT.mean, data=Urban, binwidth=0.15)
     # Histo_Urban_CT 
   
-  # LateCoral<-Urban[which(Urban$Urban.CT.mean>22), ]                     NOT NEEDED
+  Late_Cnat<-Cnat[which(Cnat$D.CT.mean>25), ] # 3 samples violate, no need to rerun
+  
+  Late_Ofav_urban<-Ofav_urban[which(Ofav_urban$D.CT.mean>25), ] # 1 sample violates, no need to rerun
+  Late_Ofav_offshore<-Ofav_offshore[which(Ofav_offshore$A.CT.mean>25 & Ofav_offshore$B.CT.mean>25), ] # 4 samples violate, no need to rerun
+  
+  Late_Mcav_urban<-Mcav_urban[which(Mcav_urban$D.CT.mean>25 & Mcav_urban$A.CT.mean>25), ] # 1 sample violates, no need to rerun
+  Late_Mcav_offshore<-Mcav_offshore[which(Mcav_offshore$C.CT.mean>25), ] # 0 samples violate
+  
+  Late_Pseu_urban<-Pseu_urban[which(Pseu_urban$D.CT.mean>25), ] # 7 sample violates, no need to rerun
+  Late_Pseu_offshore<-Pseu_offshore[which(Pseu_offshore$B.CT.mean>25), ] # 13 samples violate, no need to rerun
+  
   # Urban <- droplevels(Urban[!rownames(Urban) %in% rownames(LateCoral), ])
     
   # Samples to Re-run    
-  # ToReRun_Cnat<-rbind(ReRun_Cnat, StDe1.5_Cnat)
-  # ToReRun_Cnat<-ToReRun_Cnat %>% distinct()
+  ToReRun_Cnat<-rbind(ReRun_Cnat, StDe1.5_Cnat, Late_Cnat)
+  ToReRun_Cnat<-ToReRun_Cnat %>% distinct()
+  
+  ToReRun_Ofav<-rbind(ReRun_Ofav_urban, ReRun_Ofav_offshore, StDe1.5_Ofav_urban, StDe1.5_Ofav_offshore, Late_Ofav_urban, Late_Ofav_offshore)
+  ToReRun_Ofav<-ToReRun_Ofav %>% distinct()
+  
+  ToReRun_Mcav<-rbind(ReRun_Mcav_urban, ReRun_Mcav_offshore, StDe1.5_Mcav_urban, StDe1.5_Mcav_offshore, Late_Mcav_urban, Late_Mcav_offshore)
+  ToReRun_Mcav<-ToReRun_Mcav %>% distinct()
+
+  ToReRun_Pseu<-rbind(ReRun_Pseu_urban, ReRun_Pseu_offshore, StDe1.5_Pseu_urban, StDe1.5_Pseu_offshore, Late_Pseu_urban, Late_Pseu_offshore)
+  ToReRun_Pseu<-ToReRun_Pseu %>% distinct()
+
 
 ```
   
