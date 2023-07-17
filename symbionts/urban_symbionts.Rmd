@@ -142,6 +142,9 @@ Urban<-Urban_Out$result
   
   Urban_Join %>%
       filter(Species == "Pseu") -> Pseu
+  
+  Urban_Join %>%
+      filter(Species == "Dlab") -> Dlab
 
 # The lowest mean Ct per site indicates the dominant symbiont genus
   Urban_Join %>%
@@ -163,6 +166,11 @@ Urban<-Urban_Out$result
     filter(Species == "Pseu") %>%
     group_by(Site) %>%
     summarize(across(A.CT.mean:D.CT.mean, mean, na.rm=TRUE)) -> Pseu_dom
+  
+  Urban_Join %>%
+    filter(Species == "Dlab") %>%
+    group_by(Site) %>%
+    summarize(across(A.CT.mean:D.CT.mean, mean, na.rm=TRUE)) -> Dlab_dom
   
 # Further filtering species by site based on dominant symbionts
   Mcav %>%
@@ -225,6 +233,8 @@ Urban<-Urban_Out$result
     
     ReRun_Pseu_offshore <- Pseu_offshore[which(Pseu_offshore$B.reps==1), ] # rerun Plate 20 Sample 10
     ReRun_Pseu_urban <- Pseu_urban[which(Pseu_urban$D.reps==1), ] # 2 samples violate, but not necessary to rerun
+    
+    ReRun_Dlab <- Dlab[which(Dlab$A.reps==1 | Dlab$C.reps==1 |Dlab$D.reps==1), ] # 1 sample violates, but not necessary to rerun
     # Urban <- droplevels(Urban[!rownames(Urban) %in% rownames(ReRun.Coral), ])
     
     # NoHSratio <- Urban[which(Urban$TotalSH==0), ]                       NOT NEEDED
@@ -241,6 +251,8 @@ Urban<-Urban_Out$result
     
     StDe1.5_Pseu_offshore <- Pseu_offshore[which(Pseu_offshore$B.CT.sd>1.5), ] # no samples violate
     StDe1.5_Pseu_urban <- Pseu_urban[which(Pseu_urban$D.CT.sd>1.5), ] # no samples violate
+    
+    StDe1.5_Dlab <- Dlab[which(Dlab$D.CT.sd>1.5 | Dlab$A.CT.sd>1.5 | Dlab$C.CT.sd>1.5), ] # no samples violate
     # Urban <- droplevels(Urban[!rownames(Urban) %in% rownames(StDe1.5), ])
   
 # 8.Suspiciously late coral amplification                                 NOT NEEDED
@@ -258,6 +270,8 @@ Urban<-Urban_Out$result
   Late_Pseu_urban<-Pseu_urban[which(Pseu_urban$D.CT.mean>25), ] # 7 sample violates, no need to rerun
   Late_Pseu_offshore<-Pseu_offshore[which(Pseu_offshore$B.CT.mean>25), ] # 13 samples violate, no need to rerun
   
+  Late_Dlab<-Dlab[which(Dlab$D.CT.mean>25 & Dlab$A.CT.mean>25 & Dlab$C.CT.mean>25), ]
+  
   # Urban <- droplevels(Urban[!rownames(Urban) %in% rownames(LateCoral), ])
     
   # Samples to Re-run    
@@ -273,7 +287,8 @@ Urban<-Urban_Out$result
   ToReRun_Pseu<-rbind(ReRun_Pseu_urban, ReRun_Pseu_offshore, StDe1.5_Pseu_urban, StDe1.5_Pseu_offshore, Late_Pseu_urban, Late_Pseu_offshore)
   ToReRun_Pseu<-ToReRun_Pseu %>% distinct()
 
-
+  ToReRun_Dlab<-rbind(ReRun_Dlab, StDe1.5_Dlab, Late_Dlab)
+  ToReRun_Dlab<-ToReRun_Dlab %>% distinct()
 ```
   
 #### 7. Chose bw samples ran more than once

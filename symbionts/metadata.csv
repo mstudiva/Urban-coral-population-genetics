@@ -356,3 +356,15 @@ nmfs_001 cc5,Sample 9_UrbanPopgen_Plate32_7-13-23_data.csv,Ofav,Miami offshore,R
 nmfs_002,Sample 10_UrbanPopgen_Plate32_7-13-23_data.csv,Ofav,Miami offshore,Rainbow Reef,21-Jan,Winter,Dry
 nmfs_003,Sample 11_UrbanPopgen_Plate32_7-13-23_data.csv,Ofav,Miami offshore,Rainbow Reef,21-Jan,Winter,Dry
 nmfs_004,Sample 12_UrbanPopgen_Plate32_7-13-23_data.csv,Ofav,Miami offshore,Rainbow Reef,21-Jan,Winter,Dry
+OS3 rex2,Sample 1_UrbanPopgen_Plate33_7-17-23_data.csv,Dlab,Miami offshore,Emerald Reef,Jun-22,Summer,Wet
+OS4 rex2,Sample 2_UrbanPopgen_Plate33_7-17-23_data.csv,Dlab,Miami offshore,Emerald Reef,Jun-22,Summer,Wet
+urban_326,Sample 3_UrbanPopgen_Plate33_7-17-23_data.csv,Dlab,Miami offshore,Emerald Reef,Jun-23,Summer,Wet
+urban_307,Sample 4_UrbanPopgen_Plate33_7-17-23_data.csv,Dlab,Miami offshore,Rainbow Reef,Jun-23,Summer,Wet
+urban_308,Sample 5_UrbanPopgen_Plate33_7-17-23_data.csv,Dlab,Miami offshore,Rainbow Reef,Jun-23,Summer,Wet
+urban_309,Sample 6_UrbanPopgen_Plate33_7-17-23_data.csv,Dlab,Miami offshore,Rainbow Reef,Jun-23,Summer,Wet
+urban_310,Sample 7_UrbanPopgen_Plate33_7-17-23_data.csv,Dlab,Miami offshore,Rainbow Reef,Jun-23,Summer,Wet
+urban_318,Sample 8_UrbanPopgen_Plate33_7-17-23_data.csv,Dlab,Miami offshore,Rainbow Reef,Jun-23,Summer,Wet
+urban_320,Sample 9_UrbanPopgen_Plate33_7-17-23_data.csv,Dlab,Miami offshore,Rainbow Reef,Jun-23,Summer,Wet
+urban_213,Sample 10_UrbanPopgen_Plate33_7-17-23_data.csv,Dlab,Miami urban,Belle Isle,Apr-23,Spring,Dry
+urban_214,Sample 11_UrbanPopgen_Plate33_7-17-23_data.csv,Dlab,Miami urban,Belle Isle,Apr-23,Spring,Dry
+urban_222,Sample 12_UrbanPopgen_Plate33_7-17-23_data.csv,Dlab,Miami urban,Belle Isle,Apr-23,Spring,Dry
