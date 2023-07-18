@@ -243,11 +243,25 @@ Urban_DeDup$DomSym <- max.col(-replace(Urban_DeDup[3:6], is.na(Urban_DeDup[3:6])
 Urban_DeDup %>%
   mutate(DomSymType = recode(DomSym, '1' = 'A', '2' = 'B', '3' = 'C', '4' = 'D')) -> Urban_DeDup
 
+# Creating filtered dataframes of each dominant symbiont type (includes all species/sites)
+Urban_DeDup %>%
+  filter(DomSymType == "A") -> DomSymA
+Urban_DeDup %>%
+  filter(DomSymType == "B") -> DomSymB
+Urban_DeDup %>%
+  filter(DomSymType == "C") -> DomSymC
+Urban_DeDup %>%
+  filter(DomSymType == "D") -> DomSymD
+
+# Now generating symbiont to dominant symbiont ratios, and dominant symbiont proportions, for each subset dataframe
+DomSymA$TotalNoDom <- (DomSymA$B.A + DomSymA$C.A+ DomSymA$D.A)
+DomSymA$TotalDom <- (1-DomSymA$TotalNoDom)
 
 
-Urban_DeDup$DomSym <- max.col(is.na(-Urban_DeDup[3:6]))
+DomSymA$APrp <- (DomSymA$TotalDom/DomSymA$TotalNoDom)
 
-Urban_DeDup$TotalnoD <- (Urban_DeDup$A.D + Urban_DeDup$B.D+ Urban_DeDup$C.D)
+
+
 Urban_DeDup$TotalD <- (1-Urban_DeDup$TotalnoD)
 
 # Log 10
