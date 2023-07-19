@@ -6,6 +6,8 @@ library(tidyverse) # install.packages('tidyverse')
 library(steponeR)
 library(reshape2)
 library(ggplot2)
+library(RColorBrewer)
+library(gridExtra) # install.packages("gridExtra")
 
 
 #### DATA IMPORT 1 ####
@@ -234,7 +236,7 @@ Pseu_DeDup %>%
 #   filter(Region == "Miami urban") -> Dlab_DeDup_urban
 
 
-#### SYMBIONT AbundanceS ####
+#### SYMBIONT ABUNDANCE ####
 
 # Determines the column with the lowest Ct value (most abundant symbiont) per sample
 # the 'replace' string replaces NAs with Inf for the sake of the ranking, but does not change the raw data
@@ -288,7 +290,7 @@ Urban_DeDup$TotalD <- (1-Urban_DeDup$TotalnoD)
 
 #### STATISTICS ####
 
-# Importing the symbiont Abundances data
+# Importing the symbiont abundance data
 Urban_Prop <- read.csv("symProps.csv", head=T)
 Urban_Prop$Species <- as.factor(Urban_Prop$Species)
 Urban_Prop$Region <- as.factor(Urban_Prop$Region)
@@ -296,6 +298,15 @@ Urban_Prop$Site <- as.factor(Urban_Prop$Site)
 Urban_Prop$CollectionDate <- as.factor(Urban_Prop$CollectionDate)
 Urban_Prop$Season <- as.factor(Urban_Prop$Season)
 Urban_Prop$Rain <- as.factor(Urban_Prop$Rain)
+
+# Finds and removes the first instance of duplicated sample IDs (samples that were rerun)
+Urban_Prop %>%
+  group_by(ID) %>%
+  filter(duplicated(ID)|n()==1) -> Urban_Prop
+
+# Ungroups ID since you don't need it as a grouping variable
+Urban_Prop %>%
+  ungroup() -> Urban_Prop
 
 # Filtering out any samples that did not amplify
 Urban_Prop %>%
@@ -322,11 +333,11 @@ values = colorRampPalette(brewer.pal(6, "Accent"))(6)
 
 # M. cavernosa
 # transposing and reformatting dataframes to make abundance a single column
-Mcav_Perc <- dplyr::select(Mcav_Prop, 5, 9:12)
+Mcav_Perc <- dplyr::select(Mcav_Prop, 5, 10:13)
 Mcav_Perc <- melt(Mcav_Perc, id = "Site")
 Mcav_Perc$Site=factor(Mcav_Perc$Site, levels=c("Emerald Reef","Rainbow Reef","Star Island","Belle Isle", "MacArthur North")) 
-Mcav_Perc <- cast(Mcav_Perc, Site~variable, mean)
-Mcav_Perc <- melt(Mcav_Perc, id = Site)
+Mcav_Perc <- dcast(Mcav_Perc, Site~variable, mean)
+Mcav_Perc <- melt(Mcav_Perc, id = "Site")
 Mcav_Perc <- dplyr::rename(Mcav_Perc, symtype = variable, abundance = value)
 
 # percent stacked barplot
@@ -370,11 +381,11 @@ ggsave("Miami Mcav symbionts.pdf", plot= Mcav_Plot, width=6, height=4, units="in
 
 # O. faveolata
 # transposing and reformatting dataframes to make abundance a single column
-Ofav_Perc <- dplyr::select(Ofav_Prop, 5, 9:12)
+Ofav_Perc <- dplyr::select(Ofav_Prop, 5, 10:13)
 Ofav_Perc <- melt(Ofav_Perc, id = "Site")
 Ofav_Perc$Site=factor(Ofav_Perc$Site, levels=c("Emerald Reef","Rainbow Reef","Star Island","Belle Isle", "MacArthur North")) 
-Ofav_Perc <- cast(Ofav_Perc, Site~variable, mean)
-Ofav_Perc <- melt(Ofav_Perc, id = Site)
+Ofav_Perc <- dcast(Ofav_Perc, Site~variable, mean)
+Ofav_Perc <- melt(Ofav_Perc, id = "Site")
 Ofav_Perc <- dplyr::rename(Ofav_Perc, symtype = variable, abundance = value)
 
 # percent stacked barplot
@@ -395,11 +406,11 @@ ggsave("Miami Ofav symbionts.pdf", plot= Ofav_Plot, width=6, height=4, units="in
 
 # C. natans
 # transposing and reformatting dataframes to make abundance a single column
-Cnat_Perc <- dplyr::select(Cnat_Prop, 5, 9:12)
+Cnat_Perc <- dplyr::select(Cnat_Prop, 5, 10:13)
 Cnat_Perc <- melt(Cnat_Perc, id = "Site")
 Cnat_Perc$Site=factor(Cnat_Perc$Site, levels=c("Emerald Reef","Rainbow Reef","Star Island","Belle Isle", "MacArthur North")) 
-Cnat_Perc <- cast(Cnat_Perc, Site~variable, mean)
-Cnat_Perc <- melt(Cnat_Perc, id = Site)
+Cnat_Perc <- dcast(Cnat_Perc, Site~variable, mean)
+Cnat_Perc <- melt(Cnat_Perc, id = "Site")
 Cnat_Perc <- dplyr::rename(Cnat_Perc, symtype = variable, abundance = value)
 
 # percent stacked barplot
@@ -420,11 +431,11 @@ ggsave("Miami Cnat symbionts.pdf", plot= Cnat_Plot, width=6, height=4, units="in
 
 # Pseuddiploria spp.
 # transposing and reformatting dataframes to make abundance a single column
-Pseu_Perc <- dplyr::select(Pseu_Prop, 5, 9:12)
+Pseu_Perc <- dplyr::select(Pseu_Prop, 5, 10:13)
 Pseu_Perc <- melt(Pseu_Perc, id = "Site")
 Pseu_Perc$Site=factor(Pseu_Perc$Site, levels=c("Emerald Reef","Rainbow Reef","Star Island","Belle Isle", "MacArthur North")) 
-Pseu_Perc <- cast(Pseu_Perc, Site~variable, mean)
-Pseu_Perc <- melt(Pseu_Perc, id = Site)
+Pseu_Perc <- dcast(Pseu_Perc, Site~variable, mean)
+Pseu_Perc <- melt(Pseu_Perc, id = "Site")
 Pseu_Perc <- dplyr::rename(Pseu_Perc, symtype = variable, abundance = value)
 
 # percent stacked barplot
@@ -445,11 +456,11 @@ ggsave("Miami Pseu symbionts.pdf", plot= Pseu_Plot, width=6, height=4, units="in
 
 # D. labyrinthiformis
 # transposing and reformatting dataframes to make abundance a single column
-Dlab_Perc <- dplyr::select(Dlab_Prop, 5, 9:12)
+Dlab_Perc <- dplyr::select(Dlab_Prop, 5, 10:13)
 Dlab_Perc <- melt(Dlab_Perc, id = "Site")
 Dlab_Perc$Site=factor(Dlab_Perc$Site, levels=c("Emerald Reef","Rainbow Reef","Star Island","Belle Isle", "MacArthur North")) 
-Dlab_Perc <- cast(Dlab_Perc, Site~variable, mean)
-Dlab_Perc <- melt(Dlab_Perc, id = Site)
+Dlab_Perc <- dcast(Dlab_Perc, Site~variable, mean)
+Dlab_Perc <- melt(Dlab_Perc, id = "Site")
 Dlab_Perc <- dplyr::rename(Dlab_Perc, symtype = variable, abundance = value)
 
 # percent stacked barplot
