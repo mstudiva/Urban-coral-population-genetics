@@ -234,7 +234,7 @@ Pseu_DeDup %>%
 #   filter(Region == "Miami urban") -> Dlab_DeDup_urban
 
 
-#### SYMBIONT PROPORTIONS ####
+#### SYMBIONT AbundanceS ####
 
 # Determines the column with the lowest Ct value (most abundant symbiont) per sample
 # the 'replace' string replaces NAs with Inf for the sake of the ranking, but does not change the raw data
@@ -253,7 +253,7 @@ Urban_DeDup %>%
 Urban_DeDup %>%
   filter(DomSymType == "D") -> DomSymD
 
-# Now generating symbiont to dominant symbiont ratios, and dominant symbiont proportions, for each subset dataframe
+# Now generating symbiont to dominant symbiont ratios, and dominant symbiont Abundances, for each subset dataframe
 DomSymA$TotalNoDom <- (DomSymA$B.A + DomSymA$C.A+ DomSymA$D.A)
 DomSymA$TotalDom <- (1-DomSymA$TotalNoDom)
 
@@ -275,12 +275,203 @@ Urban_DeDup$TotalD <- (1-Urban_DeDup$TotalnoD)
     Urban$logC.SH[which(Urban$C.D==0)] <- NA
     
 
-    # Clade Proportion
-    # D Proportion
+    # Clade Abundance
+    # D Abundance
     Urban_DeDup$D.Prp <- (Urban_DeDup$TotalD/Urban_DeDup$TotalnoD)
-    # C Proportion
+    # C Abundance
     #Ofav$C.Prp<-(Ofav$C.SH/Ofav$tot.SH)
     
     hist(Urban_DeDup$D.Prp)
-    Dproportion<-Ofav[(Ofav$D.Prp<1 & Ofav$D.Prp>0.01),]
-    hist(Dproportion$D.Prp)
+    DAbundance<-Ofav[(Ofav$D.Prp<1 & Ofav$D.Prp>0.01),]
+    hist(DAbundance$D.Prp)
+    
+
+#### STATISTICS ####
+
+# Importing the symbiont Abundances data
+Urban_Prop <- read.csv("symProps.csv", head=T)
+Urban_Prop$Species <- as.factor(Urban_Prop$Species)
+Urban_Prop$Region <- as.factor(Urban_Prop$Region)
+Urban_Prop$Site <- as.factor(Urban_Prop$Site)
+Urban_Prop$CollectionDate <- as.factor(Urban_Prop$CollectionDate)
+Urban_Prop$Season <- as.factor(Urban_Prop$Season)
+Urban_Prop$Rain <- as.factor(Urban_Prop$Rain)
+
+# Filtering out any samples that did not amplify
+Urban_Prop %>%
+  filter(totalSym != 0) -> Urban_Prop
+
+# Filtering by species
+Urban_Prop %>%
+  filter(Species == "Mcav") -> Mcav_Prop
+Urban_Prop %>%
+  filter(Species == "Ofav") -> Ofav_Prop
+Urban_Prop %>%
+  filter(Species == "Cnat") -> Cnat_Prop
+Urban_Prop %>%
+  filter(Species == "Pseu") -> Pseu_Prop
+Urban_Prop %>%
+  filter(Species == "Dlab") -> Dlab_Prop
+
+
+#### RELATIVE ABUNDANCE PLOTS ####
+
+# creating a custom color palette
+getPalette = colorRampPalette(brewer.pal(6, "Accent"))
+values = colorRampPalette(brewer.pal(6, "Accent"))(6)
+
+# M. cavernosa
+# transposing and reformatting dataframes to make abundance a single column
+Mcav_Perc <- dplyr::select(Mcav_Prop, 5, 9:12)
+Mcav_Perc <- melt(Mcav_Perc, id = "Site")
+Mcav_Perc$Site=factor(Mcav_Perc$Site, levels=c("Emerald Reef","Rainbow Reef","Star Island","Belle Isle", "MacArthur North")) 
+Mcav_Perc <- cast(Mcav_Perc, Site~variable, mean)
+Mcav_Perc <- melt(Mcav_Perc, id = Site)
+Mcav_Perc <- dplyr::rename(Mcav_Perc, symtype = variable, abundance = value)
+
+# percent stacked barplot
+Mcav_Plot <- ggplot(Mcav_Perc, aes(fill=symtype, y=abundance, x=Site)) + 
+  geom_bar(position="fill", stat="identity") +
+  labs(x = "Site",
+       y = "Relative Abundance",
+       fill = 'Symbiodiniaceae Genus',
+       title = "Montastraea cavernosa") + 
+  scale_fill_manual(values = colorRampPalette(brewer.pal(8, "Accent"))(6)) +
+  theme_classic() +
+  # geom_text(data = percentCld, aes(y=-0.05, label=Letter)) +
+  # geom_text(x = 1.8, y=1.035, label = "site: F3,391 = 28.9, R2 = 0.183 p < 0.001") +
+  theme(plot.title = element_text(hjust=0.5))
+Mcav_Plot 
+
+# takes the legend and saves it as a separate object (grob)
+get_legend <-function(Mcav_Plot){
+  tmp <- ggplot_gtable(ggplot_build(Mcav_Plot))
+  leg <- which(sapply(tmp$grobs, function(x) x$name) == "guide-box")
+  legend <- tmp$grobs[[leg]]
+  return(legend)
+}
+legend=get_legend(Mcav_Plot)
+
+# replotting without legend and x axis label
+Mcav_Plot <- ggplot(Mcav_Perc, aes(fill=symtype, y=abundance, x=Site)) + 
+  geom_bar(position="fill", stat="identity") +
+  labs(x = "Site",
+       y = "Relative Abundance",
+       fill = 'Symbiodiniaceae Genus',
+       title = "Montastraea cavernosa") + 
+  scale_fill_manual(values = colorRampPalette(brewer.pal(8, "Accent"))(6)) +
+  theme_classic() +
+  # geom_text(data = percentCld, aes(y=-0.05, label=Letter)) +
+  # geom_text(x = 1.8, y=1.035, label = "site: F3,391 = 28.9, R2 = 0.183 p < 0.001") +
+  theme(plot.title = element_text(hjust=0.5), legend.position = "none")
+Mcav_Plot 
+
+ggsave("Miami Mcav symbionts.pdf", plot= Mcav_Plot, width=6, height=4, units="in", dpi=300)
+
+# O. faveolata
+# transposing and reformatting dataframes to make abundance a single column
+Ofav_Perc <- dplyr::select(Ofav_Prop, 5, 9:12)
+Ofav_Perc <- melt(Ofav_Perc, id = "Site")
+Ofav_Perc$Site=factor(Ofav_Perc$Site, levels=c("Emerald Reef","Rainbow Reef","Star Island","Belle Isle", "MacArthur North")) 
+Ofav_Perc <- cast(Ofav_Perc, Site~variable, mean)
+Ofav_Perc <- melt(Ofav_Perc, id = Site)
+Ofav_Perc <- dplyr::rename(Ofav_Perc, symtype = variable, abundance = value)
+
+# percent stacked barplot
+Ofav_Plot <- ggplot(Ofav_Perc, aes(fill=symtype, y=abundance, x=Site)) + 
+  geom_bar(position="fill", stat="identity") +
+  labs(x = "Site",
+       y = "Relative Abundance",
+       fill = 'Symbiodiniaceae Genus',
+       title = "Orbicella faveolata") + 
+  scale_fill_manual(values = colorRampPalette(brewer.pal(8, "Accent"))(6)) +
+  theme_classic() +
+  # geom_text(data = percentCld, aes(y=-0.05, label=Letter)) +
+  # geom_text(x = 1.8, y=1.035, label = "site: F3,391 = 28.9, R2 = 0.183 p < 0.001") +
+  theme(plot.title = element_text(hjust=0.5), legend.position = "none", axis.title.y = element_blank(), axis.text.y = element_blank())
+Ofav_Plot 
+
+ggsave("Miami Ofav symbionts.pdf", plot= Ofav_Plot, width=6, height=4, units="in", dpi=300)
+
+# C. natans
+# transposing and reformatting dataframes to make abundance a single column
+Cnat_Perc <- dplyr::select(Cnat_Prop, 5, 9:12)
+Cnat_Perc <- melt(Cnat_Perc, id = "Site")
+Cnat_Perc$Site=factor(Cnat_Perc$Site, levels=c("Emerald Reef","Rainbow Reef","Star Island","Belle Isle", "MacArthur North")) 
+Cnat_Perc <- cast(Cnat_Perc, Site~variable, mean)
+Cnat_Perc <- melt(Cnat_Perc, id = Site)
+Cnat_Perc <- dplyr::rename(Cnat_Perc, symtype = variable, abundance = value)
+
+# percent stacked barplot
+Cnat_Plot <- ggplot(Cnat_Perc, aes(fill=symtype, y=abundance, x=Site)) + 
+  geom_bar(position="fill", stat="identity") +
+  labs(x = "Site",
+       y = "Relative Abundance",
+       fill = 'Symbiodiniaceae Genus',
+       title = "Colpophyllia natans") + 
+  scale_fill_manual(values = colorRampPalette(brewer.pal(8, "Accent"))(6)) +
+  theme_classic() +
+  # geom_text(data = percentCld, aes(y=-0.05, label=Letter)) +
+  # geom_text(x = 1.8, y=1.035, label = "site: F3,391 = 28.9, R2 = 0.183 p < 0.001") +
+  theme(plot.title = element_text(hjust=0.5), legend.position = "none", axis.title.x = element_blank())
+Cnat_Plot 
+
+ggsave("Miami Cnat symbionts.pdf", plot= Cnat_Plot, width=6, height=4, units="in", dpi=300)
+
+# Pseuddiploria spp.
+# transposing and reformatting dataframes to make abundance a single column
+Pseu_Perc <- dplyr::select(Pseu_Prop, 5, 9:12)
+Pseu_Perc <- melt(Pseu_Perc, id = "Site")
+Pseu_Perc$Site=factor(Pseu_Perc$Site, levels=c("Emerald Reef","Rainbow Reef","Star Island","Belle Isle", "MacArthur North")) 
+Pseu_Perc <- cast(Pseu_Perc, Site~variable, mean)
+Pseu_Perc <- melt(Pseu_Perc, id = Site)
+Pseu_Perc <- dplyr::rename(Pseu_Perc, symtype = variable, abundance = value)
+
+# percent stacked barplot
+Pseu_Plot <- ggplot(Pseu_Perc, aes(fill=symtype, y=abundance, x=Site)) + 
+  geom_bar(position="fill", stat="identity") +
+  labs(x = "Site",
+       y = "Relative Abundance",
+       fill = 'Symbiodiniaceae Genus',
+       title = "Pseudodiploria spp.") + 
+  scale_fill_manual(values = colorRampPalette(brewer.pal(8, "Accent"))(6)) +
+  theme_classic() +
+  # geom_text(data = percentCld, aes(y=-0.05, label=Letter)) +
+  # geom_text(x = 1.8, y=1.035, label = "site: F3,391 = 28.9, R2 = 0.183 p < 0.001") +
+  theme(plot.title = element_text(hjust=0.5), legend.position = "none", axis.title.y = element_blank(), axis.text.y = element_blank(), axis.title.x = element_blank())
+Pseu_Plot 
+
+ggsave("Miami Pseu symbionts.pdf", plot= Pseu_Plot, width=6, height=4, units="in", dpi=300)
+
+# D. labyrinthiformis
+# transposing and reformatting dataframes to make abundance a single column
+Dlab_Perc <- dplyr::select(Dlab_Prop, 5, 9:12)
+Dlab_Perc <- melt(Dlab_Perc, id = "Site")
+Dlab_Perc$Site=factor(Dlab_Perc$Site, levels=c("Emerald Reef","Rainbow Reef","Star Island","Belle Isle", "MacArthur North")) 
+Dlab_Perc <- cast(Dlab_Perc, Site~variable, mean)
+Dlab_Perc <- melt(Dlab_Perc, id = Site)
+Dlab_Perc <- dplyr::rename(Dlab_Perc, symtype = variable, abundance = value)
+
+# percent stacked barplot
+Dlab_Plot <- ggplot(Dlab_Perc, aes(fill=symtype, y=abundance, x=Site)) + 
+  geom_bar(position="fill", stat="identity") +
+  labs(x = "Site",
+       y = "Relative Abundance",
+       fill = 'Symbiodiniaceae Genus',
+       title = "Diploria labyrinthiformis") + 
+  scale_fill_manual(values = colorRampPalette(brewer.pal(8, "Accent"))(6)) +
+  theme_classic() +
+  # geom_text(data = percentCld, aes(y=-0.05, label=Letter)) +
+  # geom_text(x = 1.8, y=1.035, label = "site: F3,391 = 28.9, R2 = 0.183 p < 0.001") +
+  theme(plot.title = element_text(hjust=0.5), legend.position = "none", axis.title.y = element_blank(), axis.text.y = element_blank(), axis.title.x = element_blank())
+Dlab_Plot 
+
+ggsave("Miami Dlab symbionts.pdf", plot= Dlab_Plot, width=6, height=4, units="in", dpi=300)
+
+#### Abundance MULTIPLOT ####
+
+Perc_Multiplot <- grid.arrange(Cnat_Plot, Pseu_Plot, Dlab_Plot, Mcav_Plot, Ofav_Plot, legend, ncol=3, nrow=2, widths=c(6,6,3.5), heights=c(3.75,4))
+
+ggsave("Miami multiplot symbionts.pdf", plot= Perc_Multiplot, width=14, height=8, units="in", dpi=300)
+
+
