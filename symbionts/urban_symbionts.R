@@ -97,12 +97,12 @@ Urban_Join %>%
 Urban_Join %>%
   filter(Species == "Dlab") -> Dlab
 
-# The highest symbiont ratios per site estimate the dominant symbiont genus
+# The highest symbiont ratios per region estimate the dominant symbiont genus for downstream QAQC
 Urban_Join %>%
   filter(Species == "Mcav") %>%
   group_by(Region) %>%
   summarize(across(A.B:D.C, mean, na.rm=TRUE)) -> Mcav_dom
-Mcav_dom # reef: AC, urban: ABD
+Mcav_dom # reef: AC, urban: AD
 Urban_Join %>%
   filter(Species == "Ofav") %>%
   group_by(Region) %>%
@@ -112,7 +112,7 @@ Urban_Join %>%
   filter(Species == "Cnat") %>%
   group_by(Region) %>%
   summarize(across(A.B:D.C, mean, na.rm=TRUE)) -> Cnat_dom
-Cnat_dom # reef: ABD, urban: D
+Cnat_dom # reef: ABD, urban: BD
 Urban_Join %>%
   filter(Species == "Pseu") %>%
   group_by(Region) %>%
@@ -126,66 +126,67 @@ Dlab_dom # reef: D, urban: D
 
 # Further filtering species by site based on dominant symbionts
 Mcav %>%
-  filter(Region == "Miami reef") -> Mcav_reef
+  filter(grepl('reef', Region)) -> Mcav_reef
 Mcav %>%
-  filter(Region == "Miami urban") -> Mcav_urban
+  filter(grepl('urban', Region)) -> Mcav_urban
 Ofav %>%
-  filter(Region == "Miami reef") -> Ofav_reef
+  filter(grepl('reef', Region)) -> Ofav_reef
 Ofav %>%
-  filter(Region == "Miami urban") -> Ofav_urban
+  filter(grepl('urban', Region)) -> Ofav_urban
 Cnat %>%
-  filter(Region == "Miami reef") -> Cnat_reef
+  filter(grepl('reef', Region)) -> Cnat_reef
 Cnat %>%
-    filter(Region == "Miami urban") -> Cnat_urban
-Pseu %>%
-  filter(Region == "Miami reef") -> Pseu_reef
-Pseu %>%
-  filter(Region == "Miami urban") -> Pseu_urban
-Dlab %>%
-  filter(Region == "Miami reef") -> Dlab_reef
-Dlab %>%
-  filter(Region == "Miami urban") -> Dlab_urban
+    filter(grepl('urban', Region)) -> Cnat_urban
+# Not needed since dominant symbionts are the same between regions
+# Pseu %>% 
+#   filter(grepl('reef', Region)) -> Pseu_reef
+# Pseu %>%
+#   filter(grepl('urban', Region)) -> Pseu_urban
+# Dlab %>%
+#   filter(grepl('reef', Region)) -> Dlab_reef
+# Dlab %>%
+#   filter(grepl('urban', Region)) -> Dlab_urban
 
 
 # DATA CLEANING 2 
 # Makes a list of samples with only one technical replicate of the dominant symbiont type
-ReRun_Cnat_reef <- Cnat[which(Cnat$D.reps==1), ] # 1 sample violates, but not necessary to rerun
-ReRun_Ofav_urban <- Ofav_urban[which(Ofav_urban$D.reps==1), ] # no samples violate
+ReRun_Mcav_reef <- Mcav_reef[which(Mcav_reef$A.reps==1 | Mcav_reef$C.reps==1), ] # no samples violate
+ReRun_Mcav_urban <- Mcav_urban[which(Mcav_urban$A.reps==1 | Mcav_urban$D.reps==1), ] # 2 samples violate, but not necessary to rerun
 ReRun_Ofav_reef <- Ofav_reef[which(Ofav_reef$A.reps==1 | Ofav_reef$B.reps==1 | Ofav_reef$D.reps==1), ] # 10 samples violate, but not all necessary to rerun
-ReRun_Mcav_reef <- Mcav_reef[which(Mcav_reef$C.reps==1), ] # no samples violate
-ReRun_Mcav_urban <- Mcav_urban[which(Mcav_urban$D.reps==1 | Mcav_urban$A.reps==1), ] # 2 samples violate, but not necessary to rerun
-ReRun_Pseu_reef <- Pseu_reef[which(Pseu_reef$B.reps==1), ] # rerun Plate 20 Sample 10
-ReRun_Pseu_urban <- Pseu_urban[which(Pseu_urban$D.reps==1), ] # 2 samples violate, but not necessary to rerun
-ReRun_Dlab <- Dlab[which(Dlab$A.reps==1 | Dlab$C.reps==1 |Dlab$D.reps==1), ] # 7 sample violates, only 1 necessary to rerun
+ReRun_Ofav_urban <- Ofav_urban[which(Ofav_urban$D.reps==1), ] # no samples violate
+ReRun_Cnat_reef <- Cnat_reef[which(Cnat_reef$A.reps==1 | Cnat_reef$B.reps==1 | Cnat_reef$D.reps==1), ] # 1 sample violates, but not necessary to rerun
+ReRun_Cnat_urban <- Cnat_urban[which(Cnat_urban$B.reps==1 | Cnat_urban$D.reps==1), ] # 1 sample violates, but not necessary to rerun
+ReRun_Pseu <- Pseu[which(Pseu$B.reps==1 | Pseu$D.reps==1), ] # rerun Plate 20 Sample 10
+ReRun_Dlab <- Dlab[which(Dlab$D.reps==1), ] # 7 sample violates, only 1 necessary to rerun
 
 # Makes a list of samples where technical replicates of dominant symbiont types had standard deviation >1.5
-StDe1.5_Cnat <- Cnat[which(Cnat$D.CT.sd>1.5), ] # no samples violate
+StDe1.5_Mcav_reef <- Mcav_reef[which(Mcav_reef$A.CT.sd>1.5 | Mcav_reef$C.CT.sd>1.5), ] # no samples violate
+StDe1.5_Mcav_urban <- Mcav_urban[which(Mcav_urban$A.CT.sd>1.5 | Mcav_urban$D.CT.sd>1.5), ] # 13 samples violate, but not all necessary to rerun
+StDe1.5_Ofav_reef <- Ofav_reef[which(Ofav_reef$A.CT.sd>1.5 | Ofav_reef$B.CT.sd>1.5 | Ofav_reef$D.CT.sd>1.5), ] # 13 samples violate, but not all necessary to rerun
 StDe1.5_Ofav_urban <- Ofav_urban[which(Ofav_urban$D.CT.sd>1.5), ] # no samples violate
-StDe1.5_Ofav_reef <- Ofav_reef[which(Ofav_reef$A.CT.sd>1.5 | Ofav_reef$B.CT.sd>1.5 | Ofav_reef$B.CT.sd>1.5), ] # 13 samples violate, but not all necessary to rerun
-StDe1.5_Mcav_reef <- Mcav_reef[which(Mcav_reef$C.CT.sd>1.5), ] # no samples violate
-StDe1.5_Mcav_urban <- Mcav_urban[which(Mcav_urban$D.CT.sd>1.5 | Mcav_urban$A.CT.sd>1.5), ] # 13 samples violate, but not all necessary to rerun
-StDe1.5_Pseu_reef <- Pseu_reef[which(Pseu_reef$B.CT.sd>1.5), ] # no samples violate
-StDe1.5_Pseu_urban <- Pseu_urban[which(Pseu_urban$D.CT.sd>1.5), ] # no samples violate
-StDe1.5_Dlab <- Dlab[which(Dlab$D.CT.sd>1.5 | Dlab$A.CT.sd>1.5 | Dlab$C.CT.sd>1.5), ] # 5 samples violate, not necessary to rerun
+StDe1.5_Cnat_reef <- Cnat_reef[which(Cnat_reef$A.CT.sd>1.5 | Cnat_reef$B.CT.sd>1.5 | Cnat_reef$D.CT.sd>1.5), ] # no samples violate
+StDe1.5_Cnat_urban <- Cnat_urban[which(Cnat_urban$B.CT.sd>1.5 | Cnat_urban$D.CT.sd>1.5), ] # no samples violate
+StDe1.5_Pseu <- Pseu[which(Pseu$B.CT.sd>1.5 | Pseu$D.CT.sd>1.5), ] # no samples violate
+StDe1.5_Dlab <- Dlab[which(Dlab$D.CT.sd>1.5), ] # 5 samples violate, not necessary to rerun
 
 # Makes a list of samples where the Ct mean of dominant symbiont types was >25 (late amplification)
-Late_Cnat<-Cnat[which(Cnat$D.CT.mean>25), ] # 3 samples violate, no need to rerun
-Late_Ofav_urban<-Ofav_urban[which(Ofav_urban$D.CT.mean>25), ] # 1 sample violates, no need to rerun
+Late_Mcav_reef<-Mcav_reef[which(Mcav_reef$A.CT.mean>25 & Mcav_reef$C.CT.mean>25), ] # 0 samples violate
+Late_Mcav_urban<-Mcav_urban[which(Mcav_urban$A.CT.mean>25 & Mcav_urban$D.CT.mean>25), ] # 1 sample violates, no need to rerun
 Late_Ofav_reef<-Ofav_reef[which(Ofav_reef$A.CT.mean>25 & Ofav_reef$B.CT.mean>25 & Ofav_reef$D.CT.mean>25), ] # 4 samples violate, no need to rerun
-Late_Mcav_urban<-Mcav_urban[which(Mcav_urban$D.CT.mean>25 & Mcav_urban$A.CT.mean>25), ] # 1 sample violates, no need to rerun
-Late_Mcav_reef<-Mcav_reef[which(Mcav_reef$C.CT.mean>25), ] # 0 samples violate
-Late_Pseu_urban<-Pseu_urban[which(Pseu_urban$D.CT.mean>25), ] # 7 sample violates, no need to rerun
-Late_Pseu_reef<-Pseu_reef[which(Pseu_reef$B.CT.mean>25), ] # 13 samples violate, no need to rerun
-Late_Dlab<-Dlab[which(Dlab$D.CT.mean>25 & Dlab$A.CT.mean>25 & Dlab$C.CT.mean>25), ] # 2 samples violate, not necessary to rerun
+Late_Ofav_urban<-Ofav_urban[which(Ofav_urban$D.CT.mean>25), ] # 1 sample violates, no need to rerun
+Late_Cnat_reef<-Cnat_reef[which(Cnat_reef$A.CT.mean>25 & Cnat_reef$B.CT.mean>25 & Cnat_reef$D.CT.mean>25), ] # 3 samples violate, no need to rerun
+Late_Cnat_urban<-Cnat_urban[which(Cnat_urban$B.CT.mean>25 & Cnat_urban$D.CT.mean>25), ] # 7 sample violates, no need to rerun
+Late_Pseu<-Pseu[which(Pseu$B.CT.mean>25 & Pseu$D.CT.mean>25), ] # 13 samples violate, no need to rerun
+Late_Dlab<-Dlab[which(Dlab$D.CT.mean>25), ] # 2 samples violate, not necessary to rerun
 
 # Combines all lists above by species and finds distinct samples
-ToReRun_Cnat<-rbind(ReRun_Cnat, StDe1.5_Cnat, Late_Cnat)
-ToReRun_Cnat<-ToReRun_Cnat %>% distinct()
-ToReRun_Ofav<-rbind(ReRun_Ofav_urban, ReRun_Ofav_reef, StDe1.5_Ofav_urban, StDe1.5_Ofav_reef, Late_Ofav_urban, Late_Ofav_reef)
-ToReRun_Ofav<-ToReRun_Ofav %>% distinct()
-ToReRun_Mcav<-rbind(ReRun_Mcav_urban, ReRun_Mcav_reef, StDe1.5_Mcav_urban, StDe1.5_Mcav_reef, Late_Mcav_urban, Late_Mcav_reef)
+ToReRun_Mcav<-rbind(ReRun_Mcav_reef, ReRun_Mcav_urban, StDe1.5_Mcav_reef, StDe1.5_Mcav_urban, Late_Mcav_reef, Late_Mcav_urban)
 ToReRun_Mcav<-ToReRun_Mcav %>% distinct()
-ToReRun_Pseu<-rbind(ReRun_Pseu_urban, ReRun_Pseu_reef, StDe1.5_Pseu_urban, StDe1.5_Pseu_reef, Late_Pseu_urban, Late_Pseu_reef)
+ToReRun_Ofav<-rbind(ReRun_Ofav_reef, ReRun_Ofav_urban, StDe1.5_Ofav_reef, StDe1.5_Ofav_urban, Late_Ofav_reef, Late_Ofav_urban)
+ToReRun_Ofav<-ToReRun_Ofav %>% distinct()
+ToReRun_Cnat<-rbind(ReRun_Cnat_reef, ReRun_Cnat_urban, StDe1.5_Cnat_reef, StDe1.5_Cnat_urban, Late_Cnat_reef, Late_Cnat_urban)
+ToReRun_Cnat<-ToReRun_Cnat %>% distinct()
+ToReRun_Pseu<-rbind(ReRun_Pseu, StDe1.5_Pseu, Late_Pseu)
 ToReRun_Pseu<-ToReRun_Pseu %>% distinct()
 ToReRun_Dlab<-rbind(ReRun_Dlab, StDe1.5_Dlab, Late_Dlab)
 ToReRun_Dlab<-ToReRun_Dlab %>% distinct()
