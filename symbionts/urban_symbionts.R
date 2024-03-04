@@ -23,7 +23,7 @@ Plates # Plates 1-8 and 11-16 have Sample 12/NTC split across plates, so results
 # Plate 7 was rerun entirely, so the corresponding csv has been removed and the metadata csv was modified accordingly
 
 # Run the steponeR program following your plate target labels
-Urban_Out <- steponeR(files=Plates, target.ratios=c("B.A", "C.A", "D.A", "A.B", "C.B", "D.B", "A.C", "B.C", "D.C", "A.D", "B.D", "C.D"), 
+Urban_Out <- steponeR(files=Plates, target.ratios=c("A.B","A.C","A.D","B.A","B.C","B.D","C.A","C.B","C.D","D.A","D.B","D.C"), 
                       fluor.norm=list(A=0, B=0, C=0, D=0),
                       copy.number=list(A=9, B=1, C=23, D=3), 
                       ploidy=list(A=1, B=1, C=1, D=1),
@@ -31,41 +31,6 @@ Urban_Out <- steponeR(files=Plates, target.ratios=c("B.A", "C.A", "D.A", "A.B", 
 
 # Target ratio results
 Urban<-Urban_Out$result
-
-# DATA CLEANING 1 
-# Identifies all samples where only one symbiont technical replicate amplifies
-One_A<- Urban[which(Urban$A.reps==1),]
-One_B<- Urban[which(Urban$B.reps==1),]
-One_C<- Urban[which(Urban$C.reps==1),]
-One_D<- Urban[which(Urban$D.reps==1),]
-
-# If only one technical replicate amplifies, set all corresponding symbiont ratios to NA
-Urban$B.A[which(Urban$A.reps==1 | Urban$B.reps==1)] <- NA
-Urban$C.A[which(Urban$A.reps==1 | Urban$C.reps==1)] <- NA
-Urban$D.A[which(Urban$A.reps==1 | Urban$D.reps==1)] <- NA
-Urban$A.B[which(Urban$B.reps==1 | Urban$A.reps==1)] <- NA
-Urban$C.B[which(Urban$B.reps==1 | Urban$C.reps==1)] <- NA
-Urban$D.B[which(Urban$B.reps==1 | Urban$D.reps==1)] <- NA
-Urban$A.C[which(Urban$C.reps==1 | Urban$A.reps==1)] <- NA
-Urban$B.C[which(Urban$C.reps==1 | Urban$B.reps==1)] <- NA
-Urban$D.C[which(Urban$C.reps==1 | Urban$D.reps==1)] <- NA
-Urban$A.D[which(Urban$D.reps==1 | Urban$A.reps==1)] <- NA
-Urban$B.D[which(Urban$D.reps==1 | Urban$B.reps==1)] <- NA
-Urban$C.D[which(Urban$D.reps==1 | Urban$C.reps==1)] <- NA
-
-# Now set all NAs to 0
-Urban$B.A[is.na(Urban$B.A)] <- 0
-Urban$C.A[is.na(Urban$C.A)] <- 0
-Urban$D.A[is.na(Urban$D.A)] <- 0
-Urban$A.B[is.na(Urban$A.B)] <- 0
-Urban$C.B[is.na(Urban$C.B)] <- 0
-Urban$D.B[is.na(Urban$D.B)] <- 0
-Urban$A.C[is.na(Urban$A.C)] <- 0
-Urban$B.C[is.na(Urban$B.C)] <- 0
-Urban$D.C[is.na(Urban$D.C)] <- 0
-Urban$A.D[is.na(Urban$A.D)] <- 0
-Urban$B.D[is.na(Urban$B.D)] <- 0
-Urban$C.D[is.na(Urban$C.D)] <- 0
 
 
 # METADATA 
@@ -84,6 +49,42 @@ Urban$Sample.Plate<-paste(Urban$Sample.Name, Urban$File.Name, sep = "_" )
 Urban_Join<-left_join(Urban, Metadata, by="Sample.Plate")
 
 
+# DATA CLEANING 1 
+# Identifies all samples where only one symbiont technical replicate amplifies
+One_A<- Urban_Join[which(Urban_Join$A.reps==1),]
+One_B<- Urban_Join[which(Urban_Join$B.reps==1),]
+One_C<- Urban_Join[which(Urban_Join$C.reps==1),]
+One_D<- Urban_Join[which(Urban_Join$D.reps==1),]
+
+# If only one technical replicate amplifies, set all corresponding symbiont ratios to NA
+Urban_Join$B.A[which(Urban_Join$A.reps==1 | Urban_Join$B.reps==1)] <- NA
+Urban_Join$C.A[which(Urban_Join$A.reps==1 | Urban_Join$C.reps==1)] <- NA
+Urban_Join$D.A[which(Urban_Join$A.reps==1 | Urban_Join$D.reps==1)] <- NA
+Urban_Join$A.B[which(Urban_Join$B.reps==1 | Urban_Join$A.reps==1)] <- NA
+Urban_Join$C.B[which(Urban_Join$B.reps==1 | Urban_Join$C.reps==1)] <- NA
+Urban_Join$D.B[which(Urban_Join$B.reps==1 | Urban_Join$D.reps==1)] <- NA
+Urban_Join$A.C[which(Urban_Join$C.reps==1 | Urban_Join$A.reps==1)] <- NA
+Urban_Join$B.C[which(Urban_Join$C.reps==1 | Urban_Join$B.reps==1)] <- NA
+Urban_Join$D.C[which(Urban_Join$C.reps==1 | Urban_Join$D.reps==1)] <- NA
+Urban_Join$A.D[which(Urban_Join$D.reps==1 | Urban_Join$A.reps==1)] <- NA
+Urban_Join$B.D[which(Urban_Join$D.reps==1 | Urban_Join$B.reps==1)] <- NA
+Urban_Join$C.D[which(Urban_Join$D.reps==1 | Urban_Join$C.reps==1)] <- NA
+
+# Now set all NAs to 0
+Urban_Join$B.A[is.na(Urban_Join$B.A)] <- 0
+Urban_Join$C.A[is.na(Urban_Join$C.A)] <- 0
+Urban_Join$D.A[is.na(Urban_Join$D.A)] <- 0
+Urban_Join$A.B[is.na(Urban_Join$A.B)] <- 0
+Urban_Join$C.B[is.na(Urban_Join$C.B)] <- 0
+Urban_Join$D.B[is.na(Urban_Join$D.B)] <- 0
+Urban_Join$A.C[is.na(Urban_Join$A.C)] <- 0
+Urban_Join$B.C[is.na(Urban_Join$B.C)] <- 0
+Urban_Join$D.C[is.na(Urban_Join$D.C)] <- 0
+Urban_Join$A.D[is.na(Urban_Join$A.D)] <- 0
+Urban_Join$B.D[is.na(Urban_Join$B.D)] <- 0
+Urban_Join$C.D[is.na(Urban_Join$C.D)] <- 0
+
+
 # FILTERING BY SPECIES 
 Urban_Join %>%
   filter(Species == "Mcav") -> Mcav
@@ -96,95 +97,95 @@ Urban_Join %>%
 Urban_Join %>%
   filter(Species == "Dlab") -> Dlab
 
-# The lowest mean Ct per site estimates the dominant symbiont genus
+# The highest symbiont ratios per site estimate the dominant symbiont genus
 Urban_Join %>%
   filter(Species == "Mcav") %>%
-  group_by(Site) %>%
-  summarize(across(A.CT.mean:D.CT.mean, mean, na.rm=TRUE)) -> Mcav_dom
+  group_by(Region) %>%
+  summarize(across(A.B:D.C, mean, na.rm=TRUE)) -> Mcav_dom
 Mcav_dom # reef: AC, urban: ABD
 Urban_Join %>%
   filter(Species == "Ofav") %>%
-  group_by(Site) %>%
-  summarize(across(A.CT.mean:D.CT.mean, mean, na.rm=TRUE)) -> Ofav_dom
+  group_by(Region) %>%
+  summarize(across(A.B:D.C, mean, na.rm=TRUE)) -> Ofav_dom
 Ofav_dom # reef: ABD, urban: D
 Urban_Join %>%
   filter(Species == "Cnat") %>%
-  group_by(Site) %>%
-  summarize(across(A.CT.mean:D.CT.mean, mean, na.rm=TRUE)) -> Cnat_dom
-Cnat_dom # reef: ABD, urban: BD
+  group_by(Region) %>%
+  summarize(across(A.B:D.C, mean, na.rm=TRUE)) -> Cnat_dom
+Cnat_dom # reef: ABD, urban: D
 Urban_Join %>%
   filter(Species == "Pseu") %>%
-  group_by(Site) %>%
-  summarize(across(A.CT.mean:D.CT.mean, mean, na.rm=TRUE)) -> Pseu_dom
-Pseu_dom # reef: ABD, urban: BD
+  group_by(Region) %>%
+  summarize(across(A.B:D.C, mean, na.rm=TRUE)) -> Pseu_dom
+Pseu_dom # reef: BD, urban: BD
 Urban_Join %>%
   filter(Species == "Dlab") %>%
-  group_by(Site) %>%
-  summarize(across(A.CT.mean:D.CT.mean, mean, na.rm=TRUE)) -> Dlab_dom
-Dlab_dom # reef: ACD, urban: D
+  group_by(Region) %>%
+  summarize(across(A.B:D.C, mean, na.rm=TRUE)) -> Dlab_dom
+Dlab_dom # reef: D, urban: D
 
 # Further filtering species by site based on dominant symbionts
 Mcav %>%
-  filter(Region == "Miami offshore") -> Mcav_offshore
+  filter(Region == "Miami reef") -> Mcav_reef
 Mcav %>%
   filter(Region == "Miami urban") -> Mcav_urban
 Ofav %>%
-  filter(Region == "Miami offshore") -> Ofav_offshore
+  filter(Region == "Miami reef") -> Ofav_reef
 Ofav %>%
   filter(Region == "Miami urban") -> Ofav_urban
 Cnat %>%
-  filter(Region == "Miami offshore") -> Cnat_offshore
+  filter(Region == "Miami reef") -> Cnat_reef
 Cnat %>%
     filter(Region == "Miami urban") -> Cnat_urban
 Pseu %>%
-  filter(Region == "Miami offshore") -> Pseu_offshore
+  filter(Region == "Miami reef") -> Pseu_reef
 Pseu %>%
   filter(Region == "Miami urban") -> Pseu_urban
 Dlab %>%
-  filter(Region == "Miami offshore") -> Dlab_offshore
+  filter(Region == "Miami reef") -> Dlab_reef
 Dlab %>%
   filter(Region == "Miami urban") -> Dlab_urban
 
 
 # DATA CLEANING 2 
 # Makes a list of samples with only one technical replicate of the dominant symbiont type
-ReRun_Cnat_offshore <- Cnat[which(Cnat$D.reps==1), ] # 1 sample violates, but not necessary to rerun
+ReRun_Cnat_reef <- Cnat[which(Cnat$D.reps==1), ] # 1 sample violates, but not necessary to rerun
 ReRun_Ofav_urban <- Ofav_urban[which(Ofav_urban$D.reps==1), ] # no samples violate
-ReRun_Ofav_offshore <- Ofav_offshore[which(Ofav_offshore$A.reps==1 | Ofav_offshore$B.reps==1 | Ofav_offshore$D.reps==1), ] # 10 samples violate, but not all necessary to rerun
-ReRun_Mcav_offshore <- Mcav_offshore[which(Mcav_offshore$C.reps==1), ] # no samples violate
+ReRun_Ofav_reef <- Ofav_reef[which(Ofav_reef$A.reps==1 | Ofav_reef$B.reps==1 | Ofav_reef$D.reps==1), ] # 10 samples violate, but not all necessary to rerun
+ReRun_Mcav_reef <- Mcav_reef[which(Mcav_reef$C.reps==1), ] # no samples violate
 ReRun_Mcav_urban <- Mcav_urban[which(Mcav_urban$D.reps==1 | Mcav_urban$A.reps==1), ] # 2 samples violate, but not necessary to rerun
-ReRun_Pseu_offshore <- Pseu_offshore[which(Pseu_offshore$B.reps==1), ] # rerun Plate 20 Sample 10
+ReRun_Pseu_reef <- Pseu_reef[which(Pseu_reef$B.reps==1), ] # rerun Plate 20 Sample 10
 ReRun_Pseu_urban <- Pseu_urban[which(Pseu_urban$D.reps==1), ] # 2 samples violate, but not necessary to rerun
 ReRun_Dlab <- Dlab[which(Dlab$A.reps==1 | Dlab$C.reps==1 |Dlab$D.reps==1), ] # 7 sample violates, only 1 necessary to rerun
 
 # Makes a list of samples where technical replicates of dominant symbiont types had standard deviation >1.5
 StDe1.5_Cnat <- Cnat[which(Cnat$D.CT.sd>1.5), ] # no samples violate
 StDe1.5_Ofav_urban <- Ofav_urban[which(Ofav_urban$D.CT.sd>1.5), ] # no samples violate
-StDe1.5_Ofav_offshore <- Ofav_offshore[which(Ofav_offshore$A.CT.sd>1.5 | Ofav_offshore$B.CT.sd>1.5 | Ofav_offshore$B.CT.sd>1.5), ] # 13 samples violate, but not all necessary to rerun
-StDe1.5_Mcav_offshore <- Mcav_offshore[which(Mcav_offshore$C.CT.sd>1.5), ] # no samples violate
+StDe1.5_Ofav_reef <- Ofav_reef[which(Ofav_reef$A.CT.sd>1.5 | Ofav_reef$B.CT.sd>1.5 | Ofav_reef$B.CT.sd>1.5), ] # 13 samples violate, but not all necessary to rerun
+StDe1.5_Mcav_reef <- Mcav_reef[which(Mcav_reef$C.CT.sd>1.5), ] # no samples violate
 StDe1.5_Mcav_urban <- Mcav_urban[which(Mcav_urban$D.CT.sd>1.5 | Mcav_urban$A.CT.sd>1.5), ] # 13 samples violate, but not all necessary to rerun
-StDe1.5_Pseu_offshore <- Pseu_offshore[which(Pseu_offshore$B.CT.sd>1.5), ] # no samples violate
+StDe1.5_Pseu_reef <- Pseu_reef[which(Pseu_reef$B.CT.sd>1.5), ] # no samples violate
 StDe1.5_Pseu_urban <- Pseu_urban[which(Pseu_urban$D.CT.sd>1.5), ] # no samples violate
 StDe1.5_Dlab <- Dlab[which(Dlab$D.CT.sd>1.5 | Dlab$A.CT.sd>1.5 | Dlab$C.CT.sd>1.5), ] # 5 samples violate, not necessary to rerun
 
 # Makes a list of samples where the Ct mean of dominant symbiont types was >25 (late amplification)
 Late_Cnat<-Cnat[which(Cnat$D.CT.mean>25), ] # 3 samples violate, no need to rerun
 Late_Ofav_urban<-Ofav_urban[which(Ofav_urban$D.CT.mean>25), ] # 1 sample violates, no need to rerun
-Late_Ofav_offshore<-Ofav_offshore[which(Ofav_offshore$A.CT.mean>25 & Ofav_offshore$B.CT.mean>25 & Ofav_offshore$D.CT.mean>25), ] # 4 samples violate, no need to rerun
+Late_Ofav_reef<-Ofav_reef[which(Ofav_reef$A.CT.mean>25 & Ofav_reef$B.CT.mean>25 & Ofav_reef$D.CT.mean>25), ] # 4 samples violate, no need to rerun
 Late_Mcav_urban<-Mcav_urban[which(Mcav_urban$D.CT.mean>25 & Mcav_urban$A.CT.mean>25), ] # 1 sample violates, no need to rerun
-Late_Mcav_offshore<-Mcav_offshore[which(Mcav_offshore$C.CT.mean>25), ] # 0 samples violate
+Late_Mcav_reef<-Mcav_reef[which(Mcav_reef$C.CT.mean>25), ] # 0 samples violate
 Late_Pseu_urban<-Pseu_urban[which(Pseu_urban$D.CT.mean>25), ] # 7 sample violates, no need to rerun
-Late_Pseu_offshore<-Pseu_offshore[which(Pseu_offshore$B.CT.mean>25), ] # 13 samples violate, no need to rerun
+Late_Pseu_reef<-Pseu_reef[which(Pseu_reef$B.CT.mean>25), ] # 13 samples violate, no need to rerun
 Late_Dlab<-Dlab[which(Dlab$D.CT.mean>25 & Dlab$A.CT.mean>25 & Dlab$C.CT.mean>25), ] # 2 samples violate, not necessary to rerun
 
 # Combines all lists above by species and finds distinct samples
 ToReRun_Cnat<-rbind(ReRun_Cnat, StDe1.5_Cnat, Late_Cnat)
 ToReRun_Cnat<-ToReRun_Cnat %>% distinct()
-ToReRun_Ofav<-rbind(ReRun_Ofav_urban, ReRun_Ofav_offshore, StDe1.5_Ofav_urban, StDe1.5_Ofav_offshore, Late_Ofav_urban, Late_Ofav_offshore)
+ToReRun_Ofav<-rbind(ReRun_Ofav_urban, ReRun_Ofav_reef, StDe1.5_Ofav_urban, StDe1.5_Ofav_reef, Late_Ofav_urban, Late_Ofav_reef)
 ToReRun_Ofav<-ToReRun_Ofav %>% distinct()
-ToReRun_Mcav<-rbind(ReRun_Mcav_urban, ReRun_Mcav_offshore, StDe1.5_Mcav_urban, StDe1.5_Mcav_offshore, Late_Mcav_urban, Late_Mcav_offshore)
+ToReRun_Mcav<-rbind(ReRun_Mcav_urban, ReRun_Mcav_reef, StDe1.5_Mcav_urban, StDe1.5_Mcav_reef, Late_Mcav_urban, Late_Mcav_reef)
 ToReRun_Mcav<-ToReRun_Mcav %>% distinct()
-ToReRun_Pseu<-rbind(ReRun_Pseu_urban, ReRun_Pseu_offshore, StDe1.5_Pseu_urban, StDe1.5_Pseu_offshore, Late_Pseu_urban, Late_Pseu_offshore)
+ToReRun_Pseu<-rbind(ReRun_Pseu_urban, ReRun_Pseu_reef, StDe1.5_Pseu_urban, StDe1.5_Pseu_reef, Late_Pseu_urban, Late_Pseu_reef)
 ToReRun_Pseu<-ToReRun_Pseu %>% distinct()
 ToReRun_Dlab<-rbind(ReRun_Dlab, StDe1.5_Dlab, Late_Dlab)
 ToReRun_Dlab<-ToReRun_Dlab %>% distinct()
@@ -396,9 +397,9 @@ Ofav_Pair_Out
 
 #### CNAT PERMANOVA/PCoA ####
 
-# Need to first combine Emerald and Rainbow as Offshore since sample size is low
+# Need to first combine Emerald and Rainbow as reef since sample size is low
 Cnat_Prop %>% 
-  mutate(across('Site', str_replace, 'Emerald Reef|Rainbow Reef', 'Offshore')) -> Cnat_Prop
+  mutate(across('Site', str_replace, 'Emerald Reef|Rainbow Reef', 'reef')) -> Cnat_Prop
 
 # making a matrix of just symbiont proportion data for each species
 Cnat_Matrix <- Cnat_Prop[c(10:13)]
@@ -412,13 +413,13 @@ Cnat_Pcoa <- pcoa(Cnat_Diss) # running the PCoA
 Cnat_Vectors <- Cnat_Pcoa$vectors # vectors of datapoints for plot
 
 # setting site as a factor for signficance testing
-Cnat_Prop$Site <- factor(Cnat_Prop$Site, levels=c("Offshore","Star Island","Belle Isle", "MacArthur North"))
+Cnat_Prop$Site <- factor(Cnat_Prop$Site, levels=c("reef","Star Island","Belle Isle", "MacArthur North"))
 fill.color3<-c("#003c30","#f6e8c3","#d8b365","#8c510a") # custom color palette
 
 # PCoA plot
 pdf(file="Miami Cnat PCoA.pdf", width=8, height=6)
 plot(Cnat_Vectors[,1], Cnat_Vectors[,2],col=fill.color3[as.numeric(as.factor(Cnat_Prop$Site))], pch=16, xlab=(paste("Coordinate 1 (", round((Cnat_Pcoa$values$Relative_eig[[1]] * 100), 2), "%)", sep = "")), ylab=(paste("Coordinate 2 (", round((Cnat_Pcoa$values$Relative_eig[[2]] * 100), 2), "%)", sep = "")), main="Colpophyllia natans")
-legend("bottomleft", legend=c("Offshore","Star Island","Belle Isle", "MacArthur North"), fill = fill.color3, bty="n")
+legend("bottomleft", legend=c("reef","Star Island","Belle Isle", "MacArthur North"), fill = fill.color3, bty="n")
 dev.off()
 
 # testing for homogeneity of variance among species
@@ -467,7 +468,7 @@ Cnat_Pair <- pairwise.adonis2(Cnat_Diss ~ Site, data = Cnat_Prop)
 Cnat_Pair 
 
 # creating dataframe of pairwise results for plotting below
-Cnat_Pair_Out <- bind_rows(Cnat_Pair$`Offshore_vs_Belle Isle`, Cnat_Pair$`Offshore_vs_MacArthur North`, Cnat_Pair$`Offshore_vs_Star Island`, Cnat_Pair$`Belle Isle_vs_MacArthur North`, Cnat_Pair$`Belle Isle_vs_Star Island`, Cnat_Pair$`MacArthur North_vs_Star Island`, .id = "Comparison")
+Cnat_Pair_Out <- bind_rows(Cnat_Pair$`reef_vs_Belle Isle`, Cnat_Pair$`reef_vs_MacArthur North`, Cnat_Pair$`reef_vs_Star Island`, Cnat_Pair$`Belle Isle_vs_MacArthur North`, Cnat_Pair$`Belle Isle_vs_Star Island`, Cnat_Pair$`MacArthur North_vs_Star Island`, .id = "Comparison")
 Cnat_Pair_Out
 
 
@@ -717,7 +718,7 @@ ggsave("Miami Ofav symbionts.pdf", plot= Ofav_Plot, width=6, height=4, units="in
 # transposing and reformatting dataframes to make abundance a single column
 Cnat_Perc <- dplyr::select(Cnat_Prop, 5, 10:13)
 Cnat_Perc <- reshape2::melt(Cnat_Perc, id = "Site")
-Cnat_Perc$Site=factor(Cnat_Perc$Site, levels=c("Offshore","Star Island","Belle Isle", "MacArthur North")) 
+Cnat_Perc$Site=factor(Cnat_Perc$Site, levels=c("reef","Star Island","Belle Isle", "MacArthur North")) 
 Cnat_Perc <- dcast(Cnat_Perc, Site~variable, mean)
 Cnat_Perc <- melt(Cnat_Perc, id = "Site")
 Cnat_Perc <- dplyr::rename(Cnat_Perc, symtype = variable, abundance = value)
@@ -726,7 +727,7 @@ Cnat_Perc <- dplyr::rename(Cnat_Perc, symtype = variable, abundance = value)
 Cnat_Letters <- data.frame(cbind(Cnat_Pair_Out$Comparison,Cnat_Pair_Out$'Pr(>F)'))
 Cnat_Letters <- na.omit(Cnat_Letters)
 Cnat_Letters <- dplyr::rename(Cnat_Letters, comparison = X1, p.adj = X2)
-Cnat_Letters$comparison = c("Offshore-Belle Isle", "Offshore-MacArthur North", "Offshore-Star Island", "Belle Isle-MacArthur North", "Belle Isle-Star Island", "MacArthur North-Star Island")
+Cnat_Letters$comparison = c("reef-Belle Isle", "reef-MacArthur North", "reef-Star Island", "Belle Isle-MacArthur North", "Belle Isle-Star Island", "MacArthur North-Star Island")
 Cnat_Letters$p.adj <- as.numeric(paste(Cnat_Letters$p.adj))
 Cnat_Letters
 
