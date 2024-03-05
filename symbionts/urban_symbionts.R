@@ -32,22 +32,28 @@ Urban_Out <- steponeR(files=Plates, target.ratios=c("A.B","A.C","A.D","B.A","B.C
 # Target ratio results
 Urban<-Urban_Out$result
 
+# METADATA (not needed here since it's already included in the symbiont abundance data)
+# Metadata<-read.csv("metadata.csv")
+# Metadata$Species <- as.factor(Metadata$Species)
+# Metadata$Region <- as.factor(Metadata$Region)
+# Metadata$Site <- as.factor(Metadata$Site)
+# Metadata$CollectionDate <- as.factor(Metadata$CollectionDate)
+# Metadata$Season <- as.factor(Metadata$Season)
+# Metadata$Rain <- as.factor(Metadata$Rain)
 
-# METADATA 
-Metadata<-read.csv("metadata.csv")
-Metadata$Species <- as.factor(Metadata$Species)
-Metadata$Region <- as.factor(Metadata$Region)
-Metadata$Site <- as.factor(Metadata$Site)
-Metadata$CollectionDate <- as.factor(Metadata$CollectionDate)
-Metadata$Season <- as.factor(Metadata$Season)
-Metadata$Rain <- as.factor(Metadata$Rain)
-
-# Create unique sample ID+FileName to merge with metadata  
+# Create unique sample ID+FileName to merge with symbiont abundance data  
 Urban$Sample.Plate<-paste(Urban$Sample.Name, Urban$File.Name, sep = "_" )
 
-# Joining metadata with qPCR data
-Urban_Join<-left_join(Urban, Metadata, by="Sample.Plate")
+# Importing the symbiont abundance data from Rich
+Urban_Prop <- read.csv("symProps_4Mar2024.csv", head=T)
+Urban_Prop$Species <- as.factor(Urban_Prop$Species)
+Urban_Prop$Region <- as.factor(Urban_Prop$Region)
+Urban_Prop$CollectionDate <- as.factor(Urban_Prop$CollectionDate)
+Urban_Prop$Season <- as.factor(Urban_Prop$Season)
+Urban_Prop$Rain <- as.factor(Urban_Prop$Rain)
 
+# Joining metadata with qPCR data
+Urban_Join<-left_join(Urban, Urban_Prop, by="Sample.Plate")
 
 # DATA CLEANING 1 
 # Identifies all samples where only one symbiont technical replicate amplifies
@@ -98,31 +104,58 @@ Urban_Join %>%
   filter(Species == "Dlab") -> Dlab
 
 # The highest symbiont ratios per region estimate the dominant symbiont genus for downstream QAQC
+# Urban_Join %>%
+#   filter(Species == "Mcav") %>%
+#   group_by(Region) %>%
+#   summarize(across(A.B:D.C, mean, na.rm=TRUE)) -> Mcav_dom
+# Mcav_dom # reef: AC, urban: AD
+# Urban_Join %>%
+#   filter(Species == "Ofav") %>%
+#   group_by(Region) %>%
+#   summarize(across(A.B:D.C, mean, na.rm=TRUE)) -> Ofav_dom
+# Ofav_dom # reef: ABD, urban: D
+# Urban_Join %>%
+#   filter(Species == "Cnat") %>%
+#   group_by(Region) %>%
+#   summarize(across(A.B:D.C, mean, na.rm=TRUE)) -> Cnat_dom
+# Cnat_dom # reef: ABD, urban: BD
+# Urban_Join %>%
+#   filter(Species == "Pseu") %>%
+#   group_by(Region) %>%
+#   summarize(across(A.B:D.C, mean, na.rm=TRUE)) -> Pseu_dom
+# Pseu_dom # reef: BD, urban: BD
+# Urban_Join %>%
+#   filter(Species == "Dlab") %>%
+#   group_by(Region) %>%
+#   summarize(across(A.B:D.C, mean, na.rm=TRUE)) -> Dlab_dom
+# Dlab_dom # reef: D, urban: D
+
+# Determining mean symbiont abundance by species and region for downstream QAQC
 Urban_Join %>%
   filter(Species == "Mcav") %>%
   group_by(Region) %>%
-  summarize(across(A.B:D.C, mean, na.rm=TRUE)) -> Mcav_dom
+  summarize(across(propA:propD, mean, na.rm=TRUE)) -> Mcav_dom
 Mcav_dom # reef: AC, urban: AD
 Urban_Join %>%
   filter(Species == "Ofav") %>%
   group_by(Region) %>%
-  summarize(across(A.B:D.C, mean, na.rm=TRUE)) -> Ofav_dom
+  summarize(across(propA:propD, mean, na.rm=TRUE)) -> Ofav_dom
 Ofav_dom # reef: ABD, urban: D
 Urban_Join %>%
   filter(Species == "Cnat") %>%
   group_by(Region) %>%
-  summarize(across(A.B:D.C, mean, na.rm=TRUE)) -> Cnat_dom
-Cnat_dom # reef: ABD, urban: BD
+  summarize(across(propA:propD, mean, na.rm=TRUE)) -> Cnat_dom
+Cnat_dom # reef: BD, urban: BD
 Urban_Join %>%
   filter(Species == "Pseu") %>%
   group_by(Region) %>%
-  summarize(across(A.B:D.C, mean, na.rm=TRUE)) -> Pseu_dom
+  summarize(across(propA:propD, mean, na.rm=TRUE)) -> Pseu_dom
 Pseu_dom # reef: BD, urban: BD
 Urban_Join %>%
   filter(Species == "Dlab") %>%
   group_by(Region) %>%
-  summarize(across(A.B:D.C, mean, na.rm=TRUE)) -> Dlab_dom
-Dlab_dom # reef: D, urban: D
+  summarize(across(propA:propD, mean, na.rm=TRUE)) -> Dlab_dom
+Dlab_dom # reef: ABD, urban: D
 
 # Further filtering species by site based on dominant symbionts
 Mcav %>%
@@ -133,74 +166,145 @@ Ofav %>%
   filter(grepl('reef', Region)) -> Ofav_reef
 Ofav %>%
   filter(grepl('urban', Region)) -> Ofav_urban
-Cnat %>%
-  filter(grepl('reef', Region)) -> Cnat_reef
-Cnat %>%
-    filter(grepl('urban', Region)) -> Cnat_urban
 # Not needed since dominant symbionts are the same between regions
+# Cnat %>%
+#   filter(grepl('reef', Region)) -> Cnat_reef
+# Cnat %>%
+#     filter(grepl('urban', Region)) -> Cnat_urban
 # Pseu %>% 
 #   filter(grepl('reef', Region)) -> Pseu_reef
 # Pseu %>%
 #   filter(grepl('urban', Region)) -> Pseu_urban
-# Dlab %>%
-#   filter(grepl('reef', Region)) -> Dlab_reef
-# Dlab %>%
-#   filter(grepl('urban', Region)) -> Dlab_urban
+Dlab %>%
+  filter(grepl('reef', Region)) -> Dlab_reef
+Dlab %>%
+  filter(grepl('urban', Region)) -> Dlab_urban
 
 
 # DATA CLEANING 2 
 # Makes a list of samples with only one technical replicate of the dominant symbiont type
-ReRun_Mcav_reef <- Mcav_reef[which(Mcav_reef$A.reps==1 | Mcav_reef$C.reps==1), ] # no samples violate
-ReRun_Mcav_urban <- Mcav_urban[which(Mcav_urban$A.reps==1 | Mcav_urban$D.reps==1), ] # 2 samples violate, but not necessary to rerun
-ReRun_Ofav_reef <- Ofav_reef[which(Ofav_reef$A.reps==1 | Ofav_reef$B.reps==1 | Ofav_reef$D.reps==1), ] # 10 samples violate, but not all necessary to rerun
-ReRun_Ofav_urban <- Ofav_urban[which(Ofav_urban$D.reps==1), ] # no samples violate
-ReRun_Cnat_reef <- Cnat_reef[which(Cnat_reef$A.reps==1 | Cnat_reef$B.reps==1 | Cnat_reef$D.reps==1), ] # 1 sample violates, but not necessary to rerun
-ReRun_Cnat_urban <- Cnat_urban[which(Cnat_urban$B.reps==1 | Cnat_urban$D.reps==1), ] # 1 sample violates, but not necessary to rerun
-ReRun_Pseu <- Pseu[which(Pseu$B.reps==1 | Pseu$D.reps==1), ] # rerun Plate 20 Sample 10
-ReRun_Dlab <- Dlab[which(Dlab$D.reps==1), ] # 7 sample violates, only 1 necessary to rerun
+ReRun_Mcav_reef <- Mcav_reef[which(Mcav_reef$A.reps==1 | Mcav_reef$C.reps==1), ] 
+ReRun_Mcav_reef %>%
+  mutate(violation = "reps", .before = Sample.Name) -> ReRun_Mcav_reef
+ReRun_Mcav_urban <- Mcav_urban[which(Mcav_urban$A.reps==1 | Mcav_urban$D.reps==1), ] 
+ReRun_Mcav_urban %>%
+  mutate(violation = "reps", .before = Sample.Name) -> ReRun_Mcav_urban
+
+ReRun_Ofav_reef <- Ofav_reef[which(Ofav_reef$A.reps==1 | Ofav_reef$B.reps==1 | Ofav_reef$D.reps==1), ] 
+ReRun_Ofav_reef %>%
+  mutate(violation = "reps", .before = Sample.Name) -> ReRun_Ofav_reef
+ReRun_Ofav_urban <- Ofav_urban[which(Ofav_urban$D.reps==1), ] 
+ReRun_Ofav_urban %>%
+  mutate(violation = "reps", .before = Sample.Name) -> ReRun_Ofav_urban
+
+ReRun_Cnat <- Cnat[which(Cnat$B.reps==1 | Cnat$D.reps==1), ] 
+ReRun_Cnat %>%
+  mutate(violation = "reps", .before = Sample.Name) -> ReRun_Cnat
+
+ReRun_Pseu <- Pseu[which(Pseu$B.reps==1 | Pseu$D.reps==1), ] 
+ReRun_Pseu %>%
+  mutate(violation = "reps", .before = Sample.Name) -> ReRun_Pseu
+
+ReRun_Dlab_reef <- Dlab_reef[which(Dlab_reef$A.reps==1 | Dlab_reef$B.reps==1 | Dlab_reef$D.reps==1), ] 
+ReRun_Dlab_reef %>%
+  mutate(violation = "reps", .before = Sample.Name) -> ReRun_Dlab_reef
+ReRun_Dlab_urban <- Dlab_urban[which(Dlab_urban$D.reps==1), ] 
+ReRun_Dlab_urban %>%
+  mutate(violation = "reps", .before = Sample.Name) -> ReRun_Dlab_urban
 
 # Makes a list of samples where technical replicates of dominant symbiont types had standard deviation >1.5
-StDe1.5_Mcav_reef <- Mcav_reef[which(Mcav_reef$A.CT.sd>1.5 | Mcav_reef$C.CT.sd>1.5), ] # no samples violate
-StDe1.5_Mcav_urban <- Mcav_urban[which(Mcav_urban$A.CT.sd>1.5 | Mcav_urban$D.CT.sd>1.5), ] # 13 samples violate, but not all necessary to rerun
-StDe1.5_Ofav_reef <- Ofav_reef[which(Ofav_reef$A.CT.sd>1.5 | Ofav_reef$B.CT.sd>1.5 | Ofav_reef$D.CT.sd>1.5), ] # 13 samples violate, but not all necessary to rerun
-StDe1.5_Ofav_urban <- Ofav_urban[which(Ofav_urban$D.CT.sd>1.5), ] # no samples violate
-StDe1.5_Cnat_reef <- Cnat_reef[which(Cnat_reef$A.CT.sd>1.5 | Cnat_reef$B.CT.sd>1.5 | Cnat_reef$D.CT.sd>1.5), ] # no samples violate
-StDe1.5_Cnat_urban <- Cnat_urban[which(Cnat_urban$B.CT.sd>1.5 | Cnat_urban$D.CT.sd>1.5), ] # no samples violate
-StDe1.5_Pseu <- Pseu[which(Pseu$B.CT.sd>1.5 | Pseu$D.CT.sd>1.5), ] # no samples violate
-StDe1.5_Dlab <- Dlab[which(Dlab$D.CT.sd>1.5), ] # 5 samples violate, not necessary to rerun
+StDe1.5_Mcav_reef <- Mcav_reef[which(Mcav_reef$A.CT.sd>1.5 | Mcav_reef$C.CT.sd>1.5), ] 
+StDe1.5_Mcav_reef %>%
+  mutate(violation = "stdv", .before = Sample.Name) -> StDe1.5_Mcav_reef
+StDe1.5_Mcav_urban <- Mcav_urban[which(Mcav_urban$A.CT.sd>1.5 | Mcav_urban$D.CT.sd>1.5), ] 
+StDe1.5_Mcav_urban %>%
+  mutate(violation = "stdv", .before = Sample.Name) -> StDe1.5_Mcav_urban
+
+StDe1.5_Ofav_reef <- Ofav_reef[which(Ofav_reef$A.CT.sd>1.5 | Ofav_reef$B.CT.sd>1.5 | Ofav_reef$D.CT.sd>1.5), ] 
+StDe1.5_Ofav_reef %>%
+  mutate(violation = "stdv", .before = Sample.Name) -> StDe1.5_Ofav_reef
+StDe1.5_Ofav_urban <- Ofav_urban[which(Ofav_urban$D.CT.sd>1.5), ] 
+StDe1.5_Ofav_urban %>%
+  mutate(violation = "stdv", .before = Sample.Name) -> StDe1.5_Ofav_urban
+
+StDe1.5_Cnat <- Cnat[which(Cnat$B.CT.sd>1.5 | Cnat$D.CT.sd>1.5), ] 
+StDe1.5_Cnat %>%
+  mutate(violation = "stdv", .before = Sample.Name) -> StDe1.5_Cnat
+
+StDe1.5_Pseu <- Pseu[which(Pseu$B.CT.sd>1.5 | Pseu$D.CT.sd>1.5), ] 
+StDe1.5_Pseu %>%
+  mutate(violation = "stdv", .before = Sample.Name) -> StDe1.5_Pseu
+
+StDe1.5_Dlab_reef <- Dlab_reef[which(Dlab_reef$A.CT.sd>1.5 | Dlab_reef$B.CT.sd>1.5 | Dlab_reef$D.CT.sd>1.5), ] 
+StDe1.5_Dlab_reef %>%
+  mutate(violation = "stdv", .before = Sample.Name) -> StDe1.5_Dlab_reef
+StDe1.5_Dlab_urban <- Dlab_urban[which(Dlab_urban$D.CT.sd>1.5), ] 
+StDe1.5_Dlab_urban %>%
+  mutate(violation = "stdv", .before = Sample.Name) -> StDe1.5_Dlab_urban
 
 # Makes a list of samples where the Ct mean of dominant symbiont types was >25 (late amplification)
-Late_Mcav_reef<-Mcav_reef[which(Mcav_reef$A.CT.mean>25 & Mcav_reef$C.CT.mean>25), ] # 0 samples violate
-Late_Mcav_urban<-Mcav_urban[which(Mcav_urban$A.CT.mean>25 & Mcav_urban$D.CT.mean>25), ] # 1 sample violates, no need to rerun
-Late_Ofav_reef<-Ofav_reef[which(Ofav_reef$A.CT.mean>25 & Ofav_reef$B.CT.mean>25 & Ofav_reef$D.CT.mean>25), ] # 4 samples violate, no need to rerun
-Late_Ofav_urban<-Ofav_urban[which(Ofav_urban$D.CT.mean>25), ] # 1 sample violates, no need to rerun
-Late_Cnat_reef<-Cnat_reef[which(Cnat_reef$A.CT.mean>25 & Cnat_reef$B.CT.mean>25 & Cnat_reef$D.CT.mean>25), ] # 3 samples violate, no need to rerun
-Late_Cnat_urban<-Cnat_urban[which(Cnat_urban$B.CT.mean>25 & Cnat_urban$D.CT.mean>25), ] # 7 sample violates, no need to rerun
-Late_Pseu<-Pseu[which(Pseu$B.CT.mean>25 & Pseu$D.CT.mean>25), ] # 13 samples violate, no need to rerun
-Late_Dlab<-Dlab[which(Dlab$D.CT.mean>25), ] # 2 samples violate, not necessary to rerun
+Late_Mcav_reef<-Mcav_reef[which(Mcav_reef$A.CT.mean>35 & Mcav_reef$C.CT.mean>35), ] 
+Late_Mcav_reef %>%
+  mutate(violation = "late", .before = Sample.Name) -> Late_Mcav_reef
+Late_Mcav_urban<-Mcav_urban[which(Mcav_urban$A.CT.mean>35 & Mcav_urban$D.CT.mean>35), ] 
+Late_Mcav_urban %>%
+  mutate(violation = "late", .before = Sample.Name) -> Late_Mcav_urban
+
+Late_Ofav_reef<-Ofav_reef[which(Ofav_reef$A.CT.mean>35 & Ofav_reef$B.CT.mean>35 & Ofav_reef$D.CT.mean>35), ] 
+Late_Ofav_reef %>%
+  mutate(violation = "late", .before = Sample.Name) -> Late_Ofav_reef
+Late_Ofav_urban<-Ofav_urban[which(Ofav_urban$D.CT.mean>35), ] 
+Late_Ofav_urban %>%
+  mutate(violation = "late", .before = Sample.Name) -> Late_Ofav_urban
+
+Late_Cnat<-Cnat[which(Cnat$B.CT.mean>35 & Cnat$D.CT.mean>35), ] 
+Late_Cnat %>%
+  mutate(violation = "late", .before = Sample.Name) -> Late_Cnat
+
+Late_Pseu<-Pseu[which(Pseu$B.CT.mean>35 & Pseu$D.CT.mean>35), ] 
+Late_Pseu %>%
+  mutate(violation = "late", .before = Sample.Name) -> Late_Pseu
+
+Late_Dlab_reef<-Dlab_reef[which(Dlab_reef$A.CT.mean>35 & Dlab_reef$B.CT.mean>35 & Dlab_reef$D.CT.mean>35), ] 
+Late_Dlab_reef %>%
+  mutate(violation = "late", .before = Sample.Name) -> Late_Dlab_reef
+Late_Dlab_urban<-Dlab_urban[which(Dlab_urban$D.CT.mean>35), ] 
+Late_Dlab_urban %>%
+  mutate(violation = "late", .before = Sample.Name) -> Late_Dlab_urban
 
 # Combines all lists above by species and finds distinct samples
 ToReRun_Mcav<-rbind(ReRun_Mcav_reef, ReRun_Mcav_urban, StDe1.5_Mcav_reef, StDe1.5_Mcav_urban, Late_Mcav_reef, Late_Mcav_urban)
 ToReRun_Mcav<-ToReRun_Mcav %>% distinct()
 ToReRun_Ofav<-rbind(ReRun_Ofav_reef, ReRun_Ofav_urban, StDe1.5_Ofav_reef, StDe1.5_Ofav_urban, Late_Ofav_reef, Late_Ofav_urban)
 ToReRun_Ofav<-ToReRun_Ofav %>% distinct()
-ToReRun_Cnat<-rbind(ReRun_Cnat_reef, ReRun_Cnat_urban, StDe1.5_Cnat_reef, StDe1.5_Cnat_urban, Late_Cnat_reef, Late_Cnat_urban)
+ToReRun_Cnat<-rbind(ReRun_Cnat, StDe1.5_Cnat, Late_Cnat)
 ToReRun_Cnat<-ToReRun_Cnat %>% distinct()
 ToReRun_Pseu<-rbind(ReRun_Pseu, StDe1.5_Pseu, Late_Pseu)
 ToReRun_Pseu<-ToReRun_Pseu %>% distinct()
-ToReRun_Dlab<-rbind(ReRun_Dlab, StDe1.5_Dlab, Late_Dlab)
+ToReRun_Dlab<-rbind(ReRun_Dlab_reef, ReRun_Dlab_urban, StDe1.5_Dlab_reef, StDe1.5_Dlab_urban, Late_Dlab_reef, Late_Dlab_urban)
 ToReRun_Dlab<-ToReRun_Dlab %>% distinct()
+
+# Write all files to csv, look at each sample that fails, and add a column called 'redo' with a 'y' or 'n' value for each sample
+write.csv(ToReRun_Mcav, file = "ToReRun_Mcav.csv")
+write.csv(ToReRun_Ofav, file = "ToReRun_Ofav.csv")
+write.csv(ToReRun_Cnat, file = "ToReRun_Cnat.csv")
+write.csv(ToReRun_Pseu, file = "ToReRun_Pseu.csv")
+write.csv(ToReRun_Dlab, file = "ToReRun_Dlab.csv")
+
+# Re-importing to make a master list of reruns
+ToReRun_Mcav <- read.csv(file = "ToReRun_Mcav.csv", head = T)
+ToReRun_Ofav <- read.csv(file = "ToReRun_Ofav.csv", head = T)
+ToReRun_Cnat <- read.csv(file = "ToReRun_Cnat.csv", head = T)
+ToReRun_Pseu <- read.csv(file = "ToReRun_Pseu.csv", head = T)
+ToReRun_Dlab <- read.csv(file = "ToReRun_Dlab.csv", head = T)
+
+# Combining only the samples with 'y' under redo
+ToReRun <- rbind(ToReRun_Mcav,ToReRun_Ofav,ToReRun_Cnat,ToReRun_Pseu,ToReRun_Dlab)
+ToReRun %>%
+  filter(redo == 'y') -> ToReRun
 
 
 #### STATISTICS ####
-
-# Importing the symbiont abundance data
-Urban_Prop <- read.csv("symProps_updated.csv", head=T)
-Urban_Prop$Species <- as.factor(Urban_Prop$Species)
-Urban_Prop$Region <- as.factor(Urban_Prop$Region)
-Urban_Prop$CollectionDate <- as.factor(Urban_Prop$CollectionDate)
-Urban_Prop$Season <- as.factor(Urban_Prop$Season)
-Urban_Prop$Rain <- as.factor(Urban_Prop$Rain)
 
 # Finds and removes the first instance of duplicated sample IDs (samples that were rerun)
 Urban_Prop %>%
