@@ -16,7 +16,7 @@ set.seed(666) # Setting seed allows randomized processes (PERMANOVA) to be repea
 
 #### QAQC ####
 
-# DATA IMPORT 1 
+# DATA IMPORT
 # Get the list of files with qPCR data in the directory 'data'
 Plates <- list.files(path="data", pattern=".csv", full.names=T)
 Plates # Plates 1-8 and 11-16 have Sample 12/NTC split across plates, so results .csv's were modified manually
@@ -54,6 +54,7 @@ Urban_Prop$Rain <- as.factor(Urban_Prop$Rain)
 
 # Joining metadata with qPCR data
 Urban_Join<-left_join(Urban, Urban_Prop, by="Sample.Plate")
+
 
 # DATA CLEANING 1 
 # Identifies all samples where only one symbiont technical replicate amplifies
@@ -102,33 +103,6 @@ Urban_Join %>%
   filter(Species == "Pseu") -> Pseu
 Urban_Join %>%
   filter(Species == "Dlab") -> Dlab
-
-# The highest symbiont ratios per region estimate the dominant symbiont genus for downstream QAQC
-# Urban_Join %>%
-#   filter(Species == "Mcav") %>%
-#   group_by(Region) %>%
-#   summarize(across(A.B:D.C, mean, na.rm=TRUE)) -> Mcav_dom
-# Mcav_dom # reef: AC, urban: AD
-# Urban_Join %>%
-#   filter(Species == "Ofav") %>%
-#   group_by(Region) %>%
-#   summarize(across(A.B:D.C, mean, na.rm=TRUE)) -> Ofav_dom
-# Ofav_dom # reef: ABD, urban: D
-# Urban_Join %>%
-#   filter(Species == "Cnat") %>%
-#   group_by(Region) %>%
-#   summarize(across(A.B:D.C, mean, na.rm=TRUE)) -> Cnat_dom
-# Cnat_dom # reef: ABD, urban: BD
-# Urban_Join %>%
-#   filter(Species == "Pseu") %>%
-#   group_by(Region) %>%
-#   summarize(across(A.B:D.C, mean, na.rm=TRUE)) -> Pseu_dom
-# Pseu_dom # reef: BD, urban: BD
-# Urban_Join %>%
-#   filter(Species == "Dlab") %>%
-#   group_by(Region) %>%
-#   summarize(across(A.B:D.C, mean, na.rm=TRUE)) -> Dlab_dom
-# Dlab_dom # reef: D, urban: D
 
 # Determining mean symbiont abundance by species and region for downstream QAQC
 Urban_Join %>%
@@ -272,24 +246,27 @@ Late_Dlab_urban<-Dlab_urban[which(Dlab_urban$D.CT.mean>35), ]
 Late_Dlab_urban %>%
   mutate(violation = "late", .before = Sample.Name) -> Late_Dlab_urban
 
+
+# RE-RUNS
 # Combines all lists above by species and finds distinct samples
 ToReRun_Mcav<-rbind(ReRun_Mcav_reef, ReRun_Mcav_urban, StDe1.5_Mcav_reef, StDe1.5_Mcav_urban, Late_Mcav_reef, Late_Mcav_urban)
-ToReRun_Mcav<-ToReRun_Mcav %>% distinct()
+ToReRun_Mcav<-ToReRun_Mcav %>% distinct_at(vars(-violation), .keep_all=T)
 ToReRun_Ofav<-rbind(ReRun_Ofav_reef, ReRun_Ofav_urban, StDe1.5_Ofav_reef, StDe1.5_Ofav_urban, Late_Ofav_reef, Late_Ofav_urban)
-ToReRun_Ofav<-ToReRun_Ofav %>% distinct()
+ToReRun_Ofav<-ToReRun_Ofav %>% distinct_at(vars(-violation), .keep_all=T)
 ToReRun_Cnat<-rbind(ReRun_Cnat, StDe1.5_Cnat, Late_Cnat)
-ToReRun_Cnat<-ToReRun_Cnat %>% distinct()
+ToReRun_Cnat<-ToReRun_Cnat %>% distinct_at(vars(-violation), .keep_all=T)
 ToReRun_Pseu<-rbind(ReRun_Pseu, StDe1.5_Pseu, Late_Pseu)
-ToReRun_Pseu<-ToReRun_Pseu %>% distinct()
+ToReRun_Pseu<-ToReRun_Pseu %>% distinct_at(vars(-violation), .keep_all=T)
 ToReRun_Dlab<-rbind(ReRun_Dlab_reef, ReRun_Dlab_urban, StDe1.5_Dlab_reef, StDe1.5_Dlab_urban, Late_Dlab_reef, Late_Dlab_urban)
-ToReRun_Dlab<-ToReRun_Dlab %>% distinct()
+ToReRun_Dlab<-ToReRun_Dlab %>% distinct_at(vars(-violation), .keep_all=T)
 
 # Write all files to csv, look at each sample that fails, and add a column called 'redo' with a 'y' or 'n' value for each sample
-write.csv(ToReRun_Mcav, file = "ToReRun_Mcav.csv")
-write.csv(ToReRun_Ofav, file = "ToReRun_Ofav.csv")
-write.csv(ToReRun_Cnat, file = "ToReRun_Cnat.csv")
-write.csv(ToReRun_Pseu, file = "ToReRun_Pseu.csv")
-write.csv(ToReRun_Dlab, file = "ToReRun_Dlab.csv")
+# Commented out so it's not accidentally overwritten
+# write.csv(ToReRun_Mcav, file = "ToReRun_Mcav.csv")
+# write.csv(ToReRun_Ofav, file = "ToReRun_Ofav.csv")
+# write.csv(ToReRun_Cnat, file = "ToReRun_Cnat.csv")
+# write.csv(ToReRun_Pseu, file = "ToReRun_Pseu.csv")
+# write.csv(ToReRun_Dlab, file = "ToReRun_Dlab.csv")
 
 # Re-importing to make a master list of reruns
 ToReRun_Mcav <- read.csv(file = "ToReRun_Mcav.csv", head = T)
@@ -302,6 +279,31 @@ ToReRun_Dlab <- read.csv(file = "ToReRun_Dlab.csv", head = T)
 ToReRun <- rbind(ToReRun_Mcav,ToReRun_Ofav,ToReRun_Cnat,ToReRun_Pseu,ToReRun_Dlab)
 ToReRun %>%
   filter(redo == 'y') -> ToReRun
+
+# Creating a list of samples that were already rerun
+Urban_Prop %>%
+  group_by(ID) %>%
+  filter(duplicated(ID)|n()==2) -> Urban_ReRuns
+
+# Creating a filtered list of remaining reruns
+ToReRun %>%
+  anti_join(Urban_ReRuns, by = "ID") -> ReRuns_Remain
+
+# Sanity check - what was already rerun?
+ToReRun %>%
+  inner_join(Urban_ReRuns, by = "ID") %>% 
+  group_by(ID) %>%
+  filter(duplicated(ID)|n()==1) -> ReRuns_Done
+write.csv(ReRuns_Done, file = "ReRuns_Done.csv")
+# So far, so good! Everything adds up
+
+# But what if we already plated some of these samples? Let's check
+AlreadyPlated <- read.csv("AlreadyPlated.csv", head = T)
+AlreadyPlated %>%
+  group_by(ID) -> AlreadyPlated
+ReRuns_Remain %>%
+  anti_join(AlreadyPlated, by = "ID") -> ReRuns_Remain_ForReal
+write.csv(ReRuns_Remain_ForReal, file = "ReRuns_Remain.csv")
 
 
 #### STATISTICS ####
