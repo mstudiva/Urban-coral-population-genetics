@@ -1,0 +1,104 @@
+Block Type,96well,,,,,,,,,,,,,,,,,,,,
+Chemistry,TAQMAN,,,,,,,,,,,,,,,,,,,,
+Experiment File Name,C:\Users\cmblab\Downloads\UrbanPopgen_Plate36_1-11-24.eds,,,,,,,,,,,,,,,,,,,,
+Experiment Run End Time,2024-01-11 17:08:01 PM EST,,,,,,,,,,,,,,,,,,,,
+Instrument Type,steponeplus,,,,,,,,,,,,,,,,,,,,
+Passive Reference,ROX,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,
+Well,Sample Name,Target Name,Task,Reporter,Quencher,C_,C_ Mean,C_ SD,Quantity,Quantity Mean,Quantity SD,Automatic Ct Threshold,Ct Threshold,Automatic Baseline,Baseline Start,Baseline End,Comments,AMPNC,HIGHSD,NOAMP,EXPFAIL
+A1,+++,A,NTC,FAM,NFQ-MGB,31.30498314,,,,,,FALSE,0.1,TRUE,3,27,,Y,N,N,N
+A2,Sample 4,A,UNKNOWN,FAM,NFQ-MGB,34.42668915,34.42668915,,,,,FALSE,0.1,TRUE,3,30,,N,N,N,N
+A3,Sample 8,A,UNKNOWN,FAM,NFQ-MGB,Undetermined,,,,,,FALSE,0.1,TRUE,3,39,,N,N,Y,Y
+A4,Sample 12,A,UNKNOWN,FAM,NFQ-MGB,Undetermined,,,,,,FALSE,0.1,TRUE,3,39,,N,N,N,Y
+A5,Sample 16,A,UNKNOWN,FAM,NFQ-MGB,Undetermined,,,,,,FALSE,0.1,TRUE,3,25,,N,N,N,N
+A6,Sample 20,A,UNKNOWN,FAM,NFQ-MGB,Undetermined,,,,,,FALSE,0.1,TRUE,3,39,,N,N,Y,Y
+A7,Sample 24,A,UNKNOWN,FAM,NFQ-MGB,Undetermined,,,,,,FALSE,0.1,TRUE,3,24,,N,N,N,N
+A8,Sample 28,A,UNKNOWN,FAM,NFQ-MGB,Undetermined,,,,,,FALSE,0.1,TRUE,3,8,,N,N,N,N
+A9,Sample 32,A,UNKNOWN,FAM,NFQ-MGB,Undetermined,,,,,,FALSE,0.1,TRUE,3,39,,N,N,Y,Y
+A10,Sample 36,A,UNKNOWN,FAM,NFQ-MGB,Undetermined,,,,,,FALSE,0.1,TRUE,3,39,,N,N,Y,Y
+A11,Sample 40,A,UNKNOWN,FAM,NFQ-MGB,Undetermined,,,,,,FALSE,0.1,TRUE,3,39,,N,N,Y,Y
+A12,,A,NTC,FAM,NFQ-MGB,Undetermined,,,,,,FALSE,0.1,TRUE,3,39,,N,N,N,N
+B1,Sample 1,A,UNKNOWN,FAM,NFQ-MGB,Undetermined,,,,,,FALSE,0.1,TRUE,3,39,,N,N,Y,Y
+B2,Sample 4,A,UNKNOWN,FAM,NFQ-MGB,Undetermined,34.42668915,,,,,FALSE,0.1,TRUE,3,39,,N,N,Y,Y
+B3,Sample 8,A,UNKNOWN,FAM,NFQ-MGB,Undetermined,,,,,,FALSE,0.1,TRUE,3,39,,N,N,Y,Y
+B4,Sample 12,A,UNKNOWN,FAM,NFQ-MGB,Undetermined,,,,,,FALSE,0.1,TRUE,3,39,,N,N,N,Y
+B5,Sample 16,A,UNKNOWN,FAM,NFQ-MGB,Undetermined,,,,,,FALSE,0.1,TRUE,3,26,,N,N,N,N
+B6,Sample 20,A,UNKNOWN,FAM,NFQ-MGB,Undetermined,,,,,,FALSE,0.1,TRUE,3,39,,N,N,Y,Y
+B7,Sample 24,A,UNKNOWN,FAM,NFQ-MGB,Undetermined,,,,,,FALSE,0.1,TRUE,3,24,,N,N,N,N
+B8,Sample 28,A,UNKNOWN,FAM,NFQ-MGB,Undetermined,,,,,,FALSE,0.1,TRUE,3,39,,N,N,Y,Y
+B9,Sample 32,A,UNKNOWN,FAM,NFQ-MGB,Undetermined,,,,,,FALSE,0.1,TRUE,3,39,,N,N,Y,Y
+B10,Sample 36,A,UNKNOWN,FAM,NFQ-MGB,Undetermined,,,,,,FALSE,0.1,TRUE,3,39,,N,N,Y,Y
+B11,Sample 40,A,UNKNOWN,FAM,NFQ-MGB,Undetermined,,,,,,FALSE,0.1,TRUE,3,39,,N,N,N,Y
+B12,Sample 44,A,UNKNOWN,FAM,NFQ-MGB,Undetermined,,,,,,FALSE,0.1,TRUE,3,11,,N,N,Y,N
+C1,Sample 1,A,UNKNOWN,FAM,NFQ-MGB,Undetermined,,,,,,FALSE,0.1,TRUE,3,5,,N,N,Y,N
+C2,Sample 5,A,UNKNOWN,FAM,NFQ-MGB,31.77039909,31.40742111,0.513327062,,,,FALSE,0.1,TRUE,3,27,,N,Y,N,N
+C3,Sample 9,A,UNKNOWN,FAM,NFQ-MGB,Undetermined,,,,,,FALSE,0.1,TRUE,3,25,,N,N,N,N
+C4,Sample 13,A,UNKNOWN,FAM,NFQ-MGB,Undetermined,,,,,,FALSE,0.1,TRUE,3,39,,N,N,Y,Y
+C5,Sample 17,A,UNKNOWN,FAM,NFQ-MGB,Undetermined,,,,,,FALSE,0.1,TRUE,3,39,,N,N,Y,Y
+C6,Sample 21,A,UNKNOWN,FAM,NFQ-MGB,Undetermined,,,,,,FALSE,0.1,TRUE,3,39,,N,N,Y,Y
+C7,Sample 25,A,UNKNOWN,FAM,NFQ-MGB,Undetermined,,,,,,FALSE,0.1,TRUE,3,39,,N,N,N,Y
+C8,Sample 29,A,UNKNOWN,FAM,NFQ-MGB,Undetermined,,,,,,FALSE,0.1,TRUE,3,39,,N,N,Y,Y
+C9,Sample 33,A,UNKNOWN,FAM,NFQ-MGB,Undetermined,,,,,,FALSE,0.1,TRUE,3,27,,N,N,N,N
+C10,Sample 37,A,UNKNOWN,FAM,NFQ-MGB,35.05003738,34.35393524,0.984437108,,,,FALSE,0.1,TRUE,3,30,,N,Y,N,N
+C11,Sample 41,A,UNKNOWN,FAM,NFQ-MGB,Undetermined,,,,,,FALSE,0.1,TRUE,3,34,,N,N,N,N
+C12,Sample 44,A,UNKNOWN,FAM,NFQ-MGB,Undetermined,,,,,,FALSE,0.1,TRUE,3,39,,N,N,Y,Y
+D1,Sample 2,A,UNKNOWN,FAM,NFQ-MGB,Undetermined,,,,,,FALSE,0.1,TRUE,3,39,,N,N,Y,Y
+D2,Sample 5,A,UNKNOWN,FAM,NFQ-MGB,31.04444504,31.40742111,0.513327062,,,,FALSE,0.1,TRUE,3,26,,N,Y,N,N
+D3,Sample 9,A,UNKNOWN,FAM,NFQ-MGB,Undetermined,,,,,,FALSE,0.1,TRUE,3,24,,N,N,N,N
+D4,Sample 13,A,UNKNOWN,FAM,NFQ-MGB,Undetermined,,,,,,FALSE,0.1,TRUE,3,39,,N,N,Y,Y
+D5,Sample 17,A,UNKNOWN,FAM,NFQ-MGB,Undetermined,,,,,,FALSE,0.1,TRUE,3,39,,N,N,Y,Y
+D6,Sample 21,A,UNKNOWN,FAM,NFQ-MGB,Undetermined,,,,,,FALSE,0.1,TRUE,3,39,,N,N,Y,Y
+D7,Sample 25,A,UNKNOWN,FAM,NFQ-MGB,Undetermined,,,,,,FALSE,0.1,TRUE,3,39,,N,N,Y,Y
+D8,Sample 29,A,UNKNOWN,FAM,NFQ-MGB,Undetermined,,,,,,FALSE,0.1,TRUE,3,39,,N,N,Y,Y
+D9,Sample 33,A,UNKNOWN,FAM,NFQ-MGB,Undetermined,,,,,,FALSE,0.1,TRUE,3,39,,N,N,Y,Y
+D10,Sample 37,A,UNKNOWN,FAM,NFQ-MGB,33.6578331,34.35393524,0.984437108,,,,FALSE,0.1,TRUE,3,29,,N,Y,N,N
+D11,Sample 41,A,UNKNOWN,FAM,NFQ-MGB,Undetermined,,,,,,FALSE,0.1,TRUE,3,39,,N,N,Y,Y
+D12,Sample 45,A,UNKNOWN,FAM,NFQ-MGB,Undetermined,,,,,,FALSE,0.1,TRUE,3,39,,N,N,Y,Y
+E1,Sample 2,A,UNKNOWN,FAM,NFQ-MGB,Undetermined,,,,,,FALSE,0.1,TRUE,3,39,,N,N,Y,Y
+E2,Sample 6,A,UNKNOWN,FAM,NFQ-MGB,Undetermined,,,,,,FALSE,0.1,TRUE,3,39,,N,N,Y,Y
+E3,Sample 10,A,UNKNOWN,FAM,NFQ-MGB,Undetermined,36.30196381,,,,,FALSE,0.1,TRUE,3,39,,N,N,N,Y
+E4,Sample 14,A,UNKNOWN,FAM,NFQ-MGB,26.81337547,26.81337547,,,,,FALSE,0.1,TRUE,3,22,,N,N,N,N
+E5,Sample 18,A,UNKNOWN,FAM,NFQ-MGB,Undetermined,,,,,,FALSE,0.1,TRUE,3,39,,N,N,Y,Y
+E6,Sample 22,A,UNKNOWN,FAM,NFQ-MGB,Undetermined,,,,,,FALSE,0.1,TRUE,3,39,,N,N,Y,Y
+E7,Sample 26,A,UNKNOWN,FAM,NFQ-MGB,Undetermined,,,,,,FALSE,0.1,TRUE,3,39,,N,N,Y,Y
+E8,Sample 30,A,UNKNOWN,FAM,NFQ-MGB,Undetermined,,,,,,FALSE,0.1,TRUE,3,39,,N,N,Y,Y
+E9,Sample 34,A,UNKNOWN,FAM,NFQ-MGB,Undetermined,,,,,,FALSE,0.1,TRUE,3,39,,N,N,Y,Y
+E10,Sample 38,A,UNKNOWN,FAM,NFQ-MGB,Undetermined,,,,,,FALSE,0.1,TRUE,3,39,,N,N,Y,Y
+E11,Sample 42,A,UNKNOWN,FAM,NFQ-MGB,36.35937881,36.35937881,,,,,FALSE,0.1,TRUE,3,32,,N,N,N,N
+E12,Sample 45,A,UNKNOWN,FAM,NFQ-MGB,Undetermined,,,,,,FALSE,0.1,TRUE,3,39,,N,N,Y,Y
+F1,Sample 3,A,UNKNOWN,FAM,NFQ-MGB,32.59333801,33.16048813,0.802071393,,,,FALSE,0.1,TRUE,3,28,,N,Y,N,N
+F2,Sample 6,A,UNKNOWN,FAM,NFQ-MGB,Undetermined,,,,,,FALSE,0.1,TRUE,3,39,,N,N,Y,Y
+F3,Sample 10,A,UNKNOWN,FAM,NFQ-MGB,36.30196381,36.30196381,,,,,FALSE,0.1,TRUE,3,30,,N,N,N,N
+F4,Sample 14,A,UNKNOWN,FAM,NFQ-MGB,Undetermined,26.81337547,,,,,FALSE,0.1,TRUE,3,39,,N,N,Y,Y
+F5,Sample 18,A,UNKNOWN,FAM,NFQ-MGB,Undetermined,,,,,,FALSE,0.1,TRUE,3,39,,N,N,Y,Y
+F6,Sample 22,A,UNKNOWN,FAM,NFQ-MGB,Undetermined,,,,,,FALSE,0.1,TRUE,3,39,,N,N,Y,Y
+F7,Sample 26,A,UNKNOWN,FAM,NFQ-MGB,Undetermined,,,,,,FALSE,0.1,TRUE,3,34,,N,N,N,N
+F8,Sample 30,A,UNKNOWN,FAM,NFQ-MGB,Undetermined,,,,,,FALSE,0.1,TRUE,3,25,,N,N,N,N
+F9,Sample 34,A,UNKNOWN,FAM,NFQ-MGB,Undetermined,,,,,,FALSE,0.1,TRUE,3,39,,N,N,N,Y
+F10,Sample 38,A,UNKNOWN,FAM,NFQ-MGB,Undetermined,,,,,,FALSE,0.1,TRUE,3,39,,N,N,Y,Y
+F11,Sample 42,A,UNKNOWN,FAM,NFQ-MGB,Undetermined,36.35937881,,,,,FALSE,0.1,TRUE,3,33,,N,N,N,N
+F12,Sample 46,A,UNKNOWN,FAM,NFQ-MGB,Undetermined,,,,,,FALSE,0.1,TRUE,3,39,,N,N,N,Y
+G1,Sample 3,A,UNKNOWN,FAM,NFQ-MGB,33.72763824,33.16048813,0.802071393,,,,FALSE,0.1,TRUE,3,29,,N,Y,N,N
+G2,Sample 7,A,UNKNOWN,FAM,NFQ-MGB,Undetermined,,,,,,FALSE,0.1,TRUE,3,39,,N,N,Y,Y
+G3,Sample 11,A,UNKNOWN,FAM,NFQ-MGB,Undetermined,,,,,,FALSE,0.1,TRUE,3,39,,N,N,N,Y
+G4,Sample 15,A,UNKNOWN,FAM,NFQ-MGB,Undetermined,,,,,,FALSE,0.1,TRUE,3,24,,N,N,N,N
+G5,Sample 19,A,UNKNOWN,FAM,NFQ-MGB,Undetermined,,,,,,FALSE,0.1,TRUE,3,39,,N,N,Y,Y
+G6,Sample 23,A,UNKNOWN,FAM,NFQ-MGB,Undetermined,,,,,,FALSE,0.1,TRUE,3,30,,N,N,N,N
+G7,Sample 27,A,UNKNOWN,FAM,NFQ-MGB,Undetermined,,,,,,FALSE,0.1,TRUE,3,39,,N,N,Y,Y
+G8,Sample 31,A,UNKNOWN,FAM,NFQ-MGB,Undetermined,,,,,,FALSE,0.1,TRUE,3,27,,N,N,N,N
+G9,Sample 35,A,UNKNOWN,FAM,NFQ-MGB,Undetermined,,,,,,FALSE,0.1,TRUE,3,39,,N,N,Y,Y
+G10,Sample 39,A,UNKNOWN,FAM,NFQ-MGB,Undetermined,,,,,,FALSE,0.1,TRUE,3,39,,N,N,Y,Y
+G11,Sample 43,A,UNKNOWN,FAM,NFQ-MGB,Undetermined,,,,,,FALSE,0.1,TRUE,3,39,,N,N,Y,Y
+G12,Sample 46,A,UNKNOWN,FAM,NFQ-MGB,Undetermined,,,,,,FALSE,0.1,TRUE,3,27,,N,N,N,N
+H1,,A,NTC,FAM,NFQ-MGB,Undetermined,,,,,,FALSE,0.1,TRUE,3,39,,N,N,N,N
+H2,Sample 7,A,UNKNOWN,FAM,NFQ-MGB,Undetermined,,,,,,FALSE,0.1,TRUE,3,39,,N,N,Y,Y
+H3,Sample 11,A,UNKNOWN,FAM,NFQ-MGB,Undetermined,,,,,,FALSE,0.1,TRUE,3,39,,N,N,N,Y
+H4,Sample 15,A,UNKNOWN,FAM,NFQ-MGB,Undetermined,,,,,,FALSE,0.1,TRUE,3,39,,N,N,N,Y
+H5,Sample 19,A,UNKNOWN,FAM,NFQ-MGB,Undetermined,,,,,,FALSE,0.1,TRUE,3,39,,N,N,N,Y
+H6,Sample 23,A,UNKNOWN,FAM,NFQ-MGB,Undetermined,,,,,,FALSE,0.1,TRUE,3,39,,N,N,N,Y
+H7,Sample 27,A,UNKNOWN,FAM,NFQ-MGB,Undetermined,,,,,,FALSE,0.1,TRUE,3,39,,N,N,N,Y
+H8,Sample 31,A,UNKNOWN,FAM,NFQ-MGB,Undetermined,,,,,,FALSE,0.1,TRUE,3,26,,N,N,N,N
+H9,Sample 35,A,UNKNOWN,FAM,NFQ-MGB,Undetermined,,,,,,FALSE,0.1,TRUE,3,39,,N,N,Y,Y
+H10,Sample 39,A,UNKNOWN,FAM,NFQ-MGB,Undetermined,,,,,,FALSE,0.1,TRUE,3,39,,N,N,Y,Y
+H11,Sample 43,A,UNKNOWN,FAM,NFQ-MGB,Undetermined,,,,,,FALSE,0.1,TRUE,3,6,,N,N,N,N
+H12,+++,A,NTC,FAM,NFQ-MGB,32.83593369,,,,,,FALSE,0.1,TRUE,3,28,,Y,N,N,N
