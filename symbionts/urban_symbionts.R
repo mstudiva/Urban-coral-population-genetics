@@ -157,32 +157,32 @@ Dlab %>%
 
 # DATA CLEANING 2 
 # Makes a list of samples with only one technical replicate of the dominant symbiont type
-ReRun_Mcav_reef <- Mcav_reef[which(Mcav_reef$A.reps==1 | Mcav_reef$C.reps==1), ] 
+ReRun_Mcav_reef <- Mcav_reef[which(Mcav_reef$A.reps<2 | Mcav_reef$C.reps<2), ] 
 ReRun_Mcav_reef %>%
   mutate(violation = "reps", .before = Sample.Name) -> ReRun_Mcav_reef
-ReRun_Mcav_urban <- Mcav_urban[which(Mcav_urban$A.reps==1 | Mcav_urban$D.reps==1), ] 
+ReRun_Mcav_urban <- Mcav_urban[which(Mcav_urban$A.reps<2 | Mcav_urban$D.reps<2), ] 
 ReRun_Mcav_urban %>%
   mutate(violation = "reps", .before = Sample.Name) -> ReRun_Mcav_urban
 
-ReRun_Ofav_reef <- Ofav_reef[which(Ofav_reef$A.reps==1 | Ofav_reef$B.reps==1 | Ofav_reef$D.reps==1), ] 
+ReRun_Ofav_reef <- Ofav_reef[which(Ofav_reef$A.reps<2 | Ofav_reef$B.reps<2 | Ofav_reef$D.reps<2), ] 
 ReRun_Ofav_reef %>%
   mutate(violation = "reps", .before = Sample.Name) -> ReRun_Ofav_reef
-ReRun_Ofav_urban <- Ofav_urban[which(Ofav_urban$D.reps==1), ] 
+ReRun_Ofav_urban <- Ofav_urban[which(Ofav_urban$D.reps<2), ] 
 ReRun_Ofav_urban %>%
   mutate(violation = "reps", .before = Sample.Name) -> ReRun_Ofav_urban
 
-ReRun_Cnat <- Cnat[which(Cnat$B.reps==1 | Cnat$D.reps==1), ] 
+ReRun_Cnat <- Cnat[which(Cnat$B.reps<2 | Cnat$D.reps<2), ] 
 ReRun_Cnat %>%
   mutate(violation = "reps", .before = Sample.Name) -> ReRun_Cnat
 
-ReRun_Pseu <- Pseu[which(Pseu$B.reps==1 | Pseu$D.reps==1), ] 
+ReRun_Pseu <- Pseu[which(Pseu$B.reps<2 | Pseu$D.reps<2), ] 
 ReRun_Pseu %>%
   mutate(violation = "reps", .before = Sample.Name) -> ReRun_Pseu
 
-ReRun_Dlab_reef <- Dlab_reef[which(Dlab_reef$A.reps==1 | Dlab_reef$B.reps==1 | Dlab_reef$D.reps==1), ] 
+ReRun_Dlab_reef <- Dlab_reef[which(Dlab_reef$A.reps<2 | Dlab_reef$B.reps<2 | Dlab_reef$D.reps<2), ] 
 ReRun_Dlab_reef %>%
   mutate(violation = "reps", .before = Sample.Name) -> ReRun_Dlab_reef
-ReRun_Dlab_urban <- Dlab_urban[which(Dlab_urban$D.reps==1), ] 
+ReRun_Dlab_urban <- Dlab_urban[which(Dlab_urban$D.reps<2), ] 
 ReRun_Dlab_urban %>%
   mutate(violation = "reps", .before = Sample.Name) -> ReRun_Dlab_urban
 
@@ -296,14 +296,17 @@ ToReRun %>%
   filter(duplicated(ID)|n()==1) -> ReRuns_Done
 write.csv(ReRuns_Done, file = "ReRuns_Done.csv")
 # So far, so good! Everything adds up
+# Technically, it's off by 2, but that's because one file had an incorrect qPCR threshold, and it resulted in 2 additional samples failing the QAQC thresholds
 
 # But what if we already plated some of these samples? Let's check
-AlreadyPlated <- read.csv("AlreadyPlated.csv", head = T)
-AlreadyPlated %>%
-  group_by(ID) -> AlreadyPlated
-ReRuns_Remain %>%
-  anti_join(AlreadyPlated, by = "ID") -> ReRuns_Remain_ForReal
-write.csv(ReRuns_Remain_ForReal, file = "ReRuns_Remain.csv")
+# AlreadyPlated <- read.csv("AlreadyPlated.csv", head = T)
+# AlreadyPlated %>%
+#   group_by(ID) -> AlreadyPlated
+# ReRuns_Remain %>%
+#   anti_join(AlreadyPlated, by = "ID") -> ReRuns_Remain_ForReal
+# write.csv(ReRuns_Remain_ForReal, file = "ReRuns_Remain.csv")
+
+write.csv(ReRuns_Remain, file = "ReRuns_Remain.csv")
 
 
 #### STATISTICS ####
