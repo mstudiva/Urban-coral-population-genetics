@@ -296,7 +296,6 @@ ToReRun %>%
   filter(duplicated(ID)|n()==1) -> ReRuns_Done
 write.csv(ReRuns_Done, file = "ReRuns_Done.csv")
 # So far, so good! Everything adds up
-# Technically, it's off by 2, but that's because one file had an incorrect qPCR threshold, and it resulted in 2 additional samples failing the QAQC thresholds
 
 # But what if we already plated some of these samples? Let's check
 # AlreadyPlated <- read.csv("AlreadyPlated.csv", head = T)
