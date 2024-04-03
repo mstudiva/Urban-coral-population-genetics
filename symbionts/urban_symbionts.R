@@ -295,7 +295,6 @@ ToReRun %>%
   group_by(ID) %>%
   filter(duplicated(ID)|n()==1) -> ReRuns_Done
 write.csv(ReRuns_Done, file = "ReRuns_Done.csv")
-# So far, so good! Everything adds up
 
 # But what if we already plated some of these samples? Let's check
 # AlreadyPlated <- read.csv("AlreadyPlated.csv", head = T)
