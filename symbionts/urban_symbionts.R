@@ -45,7 +45,7 @@ Urban<-Urban_Out$result
 Urban$Sample.Plate<-paste(Urban$Sample.Name, Urban$File.Name, sep = "_" )
 
 # Importing the symbiont abundance data from Rich
-Urban_Prop <- read.csv("symProps_4Mar2024.csv", head=T)
+Urban_Prop <- read.csv("symProps_3Apr2024.csv", head=T)
 Urban_Prop$Species <- as.factor(Urban_Prop$Species)
 Urban_Prop$Region <- as.factor(Urban_Prop$Region)
 Urban_Prop$CollectionDate <- as.factor(Urban_Prop$CollectionDate)
@@ -288,6 +288,10 @@ Urban_Prop %>%
 # Creating a filtered list of remaining reruns
 ToReRun %>%
   anti_join(Urban_ReRuns, by = "ID") -> ReRuns_Remain
+
+ToReRun %>%
+  anti_join(ReRuns_Remain, by = "ID") -> ReRuns_Check
+write.csv(ReRuns_Check, file = "ReRuns_Check.csv")
 
 # Sanity check - what was already rerun?
 ToReRun %>%
