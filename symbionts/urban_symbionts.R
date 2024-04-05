@@ -319,12 +319,12 @@ ReRuns_Failed %>%
 # Now read it back in, and modify it to look like the others below
 ReRuns_Check <- read.csv("ReRuns_Check.csv", head = T)
 ReRuns_Check %>%
-  select(ID, Sample.Plate, 32:44,use) %>%
+  select(ID, Sample.Plate, 32:44, use) %>%
   filter(use == "y") -> Urban_Prop_3Good
 
 # One-and-done samples, add a column called 'use' with all rows having 'y'
 Urban_Prop %>%
-  anti_join(ToReRun, by = "Sample.Plate") %>%
+  anti_join(ToReRun_Failed, by = "Sample.Plate") %>%
   mutate(use = "y") -> Urban_Prop_Good
 
 # Rerun samples that worked the 2nd time
@@ -347,14 +347,11 @@ Urban_Prop_Merged <- rbind(Urban_Prop_Good, Urban_Prop_2Good, Urban_Prop_3Good)
 #   anti_join(AlreadyPlated, by = "ID") -> ReRuns_Remain_ForReal
 # write.csv(ReRuns_Remain_ForReal, file = "ReRuns_Remain.csv")
 
-
-#### STATISTICS ####
-
 # Finds duplicated sample IDs with good data
 # Commented out so it's not accidentally overwritten
 # Urban_Prop_Merged %>%
-  # group_by(ID) %>%
-  # mutate(count = n()) %>%
+# group_by(ID) %>%
+# mutate(count = n()) %>%
 #   filter(count > 1) %>%
 #   distinct(Sample.Plate, .keep_all = T) %>%
 #   arrange(ID) -> Urban_Prop_Duplicates
@@ -375,13 +372,20 @@ Urban_Prop_Merged %>%
 Urban_Prop_Unique <- rbind(Urban_Prop_Use, Urban_Prop_Duplicates_Use)
 # Sanity check: do any samples drop when you filter by unique sample IDs?
 Urban_Prop_Unique %>%
-  distinct(ID, .keep_all = TRUE) -> Urban_Prop_Unique # 452 unique samples
+  distinct(ID, .keep_all = TRUE) -> Urban_Prop_Unique # 766 unique samples
 # 2nd Sanity check: How many unique samples should there be?
+Urban_Prop_Merged %>%
+  distinct(ID, .keep_all = TRUE) -> Urban_Prop_Merged_Count # 766 unique samples
+Urban_Prop_Merged_Count %>%
+  anti_join(Urban_Prop_Unique, by = "ID") -> Urban_Prop_Check # 0 samples
 Urban_Prop %>%
   distinct(ID, .keep_all = TRUE) -> Urban_Prop_Count # 835 unique samples
-ReRuns_Failed %>%
-  distinct(ID, .keep_all = TRUE) -> ReRuns_Failed_Count # 69 unique samples
-# Huh, so where are the ~300 missing samples?
+nrow(ReRuns_Failed) # 69 unique samples
+# 3rd sanity check: How many samples are in the original dataset, but not in the filtered dataset?
+Urban_Prop %>%
+  distinct(ID, .keep_all = TRUE) %>%
+  # filter(totalSym != 0) %>%
+  anti_join(Urban_Prop_Unique, by = "ID") -> Urban_Prop_Missing # 69 unique samples
 
 # Ungroups ID since you don't need it as a grouping variable
 Urban_Prop_Unique %>%
@@ -390,6 +394,9 @@ Urban_Prop_Unique %>%
 # Filtering out any samples that did not amplify
 Urban_Prop_Unique %>%
   filter(totalSym != 0) -> Urban_Prop_Final
+
+
+#### STATISTICS ####
 
 # Filtering by species
 Urban_Prop_Final %>%
