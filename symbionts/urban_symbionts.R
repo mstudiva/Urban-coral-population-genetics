@@ -54,7 +54,11 @@ Urban_Prop$Rain <- as.factor(Urban_Prop$Rain)
 
 # Joining metadata with qPCR data
 Urban_Join<-left_join(Urban, Urban_Prop, by="Sample.Plate")
-
+Urban_Join %>%
+  filter(!is.na(ID)) -> Urban_Join
+# Did we lose any samples due to metadata mismatch?
+Urban_Join %>%
+  filter(is.na(ID)) -> Urban_Join_Check # 0 samples
 
 # DATA CLEANING 1 
 # Identifies all samples where only one symbiont technical replicate amplifies
@@ -372,20 +376,20 @@ Urban_Prop_Merged %>%
 Urban_Prop_Unique <- rbind(Urban_Prop_Use, Urban_Prop_Duplicates_Use)
 # Sanity check: do any samples drop when you filter by unique sample IDs?
 Urban_Prop_Unique %>%
-  distinct(ID, .keep_all = TRUE) -> Urban_Prop_Unique # 766 unique samples
+  distinct(ID, .keep_all = TRUE) -> Urban_Prop_Unique # 802 unique samples
 # 2nd Sanity check: How many unique samples should there be?
 Urban_Prop_Merged %>%
-  distinct(ID, .keep_all = TRUE) -> Urban_Prop_Merged_Count # 766 unique samples
+  distinct(ID, .keep_all = TRUE) -> Urban_Prop_Merged_Count # 802 unique samples
 Urban_Prop_Merged_Count %>%
   anti_join(Urban_Prop_Unique, by = "ID") -> Urban_Prop_Check # 0 samples
 Urban_Prop %>%
-  distinct(ID, .keep_all = TRUE) -> Urban_Prop_Count # 835 unique samples
-nrow(ReRuns_Failed) # 69 unique samples
+  distinct(ID, .keep_all = TRUE) -> Urban_Prop_Count # 836 unique samples
+nrow(ReRuns_Failed) # 104 unique samples
 # 3rd sanity check: How many samples are in the original dataset, but not in the filtered dataset?
 Urban_Prop %>%
   distinct(ID, .keep_all = TRUE) %>%
   # filter(totalSym != 0) %>%
-  anti_join(Urban_Prop_Unique, by = "ID") -> Urban_Prop_Missing # 69 unique samples
+  anti_join(Urban_Prop_Unique, by = "ID") -> Urban_Prop_Missing # 34 unique samples
 
 # Ungroups ID since you don't need it as a grouping variable
 Urban_Prop_Unique %>%
