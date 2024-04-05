@@ -1,0 +1,31 @@
+"","ID","Sample.Plate","Species","Region","Site","CollectionDate","Season","Rain","propA","propB","propC","propD","dom","background","totalSym","sort","count","failed"
+"1","urban_222","Sample 11_UrbanPopgen_Plate34_7-17-23_data.csv","Dlab","Miami urban","Belle Isle","23-Apr","Spring","Dry",0.085174161,0,0,0.914825839,"D","A",1,380,2,NA
+"2","urban_417","Sample 2_UrbanPopgen_Plate57_1-24-24_data.csv","Pseu","North Miami reef","Pillars","24-Jan","Winter","Dry",0.000379,0.999613607,7.2e-06,0,"B","AC",1,591,2,NA
+"3","Baggs_085","Sample 2_UrbanPopgen_Plate60_3-24-24_data.csv","Cnat","Miami urban","Bill Baggs","21-Jun","Winter","Dry",0,0.98004749,0,0.01995251,"B","D",1,625,2,NA
+"4","urban_540","Sample 1_UrbanPopgen_Plate64_3-24-24_data.csv","Dlab","Miami urban","Coral City Camera","24-Jan",NA,NA,0.978801093,0,0,0.021198907,"A","D",1,670,2,NA
+"5","urban_548","Sample 2_UrbanPopgen_Plate64_3-24-24_data.csv","Dlab","Miami urban","Coral City Camera","24-Jan",NA,NA,0,0,0.575010189,0.424989811,"C","",1,671,2,NA
+"6","urban_401","Sample 5_UrbanPopgen_Plate64_3-24-24_data.csv","Pseu","Miami urban","Seaquarium","24-Jan",NA,NA,0.34160052,0,0,0.65839948,"D","",1,674,2,NA
+"7","urban_475","Sample 7_UrbanPopgen_Plate64_3-24-24_data.csv","Pseu","Miami urban","Coral City Camera","24-Jan",NA,NA,0.411621177,0.006282132,0.007398647,0.574698044,"D","BC",1,676,2,NA
+"8","urban_498","Sample 8_UrbanPopgen_Plate64_3-24-24_data.csv","Dlab","Miami urban","Coral City Camera","24-Jan",NA,NA,1,0,0,0,"A","",1,677,2,NA
+"9","urban_515","Sample 10_UrbanPopgen_Plate64_3-24-24_data.csv","Pseu","Miami urban","Coral City Camera","24-Jan",NA,NA,1,0,0,0,"A","",1,679,2,NA
+"10","urban_523","Sample 11_UrbanPopgen_Plate64_3-24-24_data.csv","Pseu","Miami urban","Coral City Camera","24-Jan",NA,NA,0.967576992,0,0,0.032423008,"A","D",1,680,2,NA
+"11","urban_533","Sample 12_UrbanPopgen_Plate64_3-24-24_data.csv","Dlab","Miami urban","Coral City Camera","24-Jan",NA,NA,0.971636348,0,0,0.028363652,"A","D",1,681,2,NA
+"12","Baggs_082","Sample 4_UrbanPopgen_Plate68_3-25-24_data.csv","Cnat","Miami urban","Bill Baggs","21-Jun",NA,NA,0,0.921537617,0,0.078462383,"B","D",1,720,2,NA
+"13","Peanut_046","Sample 1_UrbanPopgen_Plate82_3-31-24_data.csv","Pseu","Palm Beach urban","Peanut Island","23-Mar",NA,NA,0,0,0,1,"D","",1,878,2,NA
+"14","Peanut_060","Sample 4_UrbanPopgen_Plate82_3-31-24_data.csv","Dlab","Palm Beach urban","Peanut Island","23-Mar",NA,NA,0,0,0,1,"D","",1,881,2,NA
+"15","urban_044","Sample 10_UrbanPopgen_Plate82_3-31-24_data.csv","Mcav","Broward reef","FTL4","22-Aug",NA,NA,0.402660263,0,0.597339737,0,"C","",1,887,2,NA
+"16","urban_045","Sample 11_UrbanPopgen_Plate82_3-31-24_data.csv","Mcav","Broward reef","FTL4","22-Aug",NA,NA,0.342151549,0,0.657848451,0,"C","",1,888,2,NA
+"17","urban_046","Sample 1_UrbanPopgen_Plate83_3-31-24_data.csv","Mcav","Broward reef","FTL4","22-Aug",NA,NA,0.058920595,0,0.941079405,0,"C","A",1,889,2,NA
+"18","urban_050","Sample 2_UrbanPopgen_Plate83_3-31-24_data.csv","Mcav","Broward reef","FTL4","22-Aug",NA,NA,0.135259348,0,0.864740652,0,"C","",1,890,2,NA
+"19","urban_071","Sample 7_UrbanPopgen_Plate83_3-31-24_data.csv","Mcav","Broward reef","BC1","22-Aug",NA,NA,0.685927303,0,0.314072697,0,"A","",1,895,2,NA
+"20","urban_293","Sample 2_UrbanPopgen_Plate84_3-31-24_data.csv","Pseu","Broward reef","T328","23-May",NA,NA,0.082367429,0.916574894,0.001057678,0,"B","AC",1,902,2,NA
+"21","urban_296","Sample 3_UrbanPopgen_Plate84_3-31-24_data.csv","Pseu","Broward reef","T328","23-May",NA,NA,0.005442054,0.008777016,0.002920542,0.982860387,"D","ABC",1,903,2,NA
+"22","urban_347","Sample 4_UrbanPopgen_Plate84_3-31-24_data.csv","Dlab","Miami urban","MacArthur North","23-Aug",NA,NA,0,0,0,1,"D","",1,904,2,NA
+"23","urban_348","Sample 5_UrbanPopgen_Plate84_3-31-24_data.csv","Dlab","Miami urban","MacArthur North","23-Aug",NA,NA,0.510739826,0,0.327493764,0.16176641,"A","",1,905,2,NA
+"24","urban_396","Sample 8_UrbanPopgen_Plate84_3-31-24_data.csv","Mcav","North Miami reef","Graceland","24-Jan",NA,NA,0.458365284,0,0.540957782,0.000677,"C","D",1,908,2,NA
+"25","urban_397","Sample 9_UrbanPopgen_Plate84_3-31-24_data.csv","Mcav","North Miami reef","Graceland","24-Jan",NA,NA,0.709727223,0.000839,0.271908019,0.017525962,"A","BD",1,909,2,NA
+"26","urban_408","Sample 10_UrbanPopgen_Plate84_3-31-24_data.csv","Pseu","North Miami reef","South Canyon","24-Jan",NA,NA,0.035929903,0.963997626,7.25e-05,0,"B","AC",1,910,2,NA
+"27","urban_414","Sample 11_UrbanPopgen_Plate84_3-31-24_data.csv","Pseu","North Miami reef","South Canyon","24-Jan",NA,NA,0.027303576,0.023476287,0,0.949220137,"D","AB",1,911,2,NA
+"28","urban_451","Sample 3_UrbanPopgen_Plate85_3-31-24_data.csv","Mcav","North Miami reef","Graceland","24-Jan",NA,NA,0.229088715,0,0.258385561,0.512525724,"D","",1,914,2,NA
+"29","urban_456","Sample 5_UrbanPopgen_Plate85_3-31-24_data.csv","Pseu","Miami urban","Miami Beach Marina","24-Jan",NA,NA,0.05265548,0.94734452,0,0,"B","A",1,916,2,NA
+"30","urban_430","Sample 5_UrbanPopgen_Plate87_4-3-24_data.csv","Mcav","North Miami reef","Graceland","24-Jan",NA,NA,NA,NA,NA,NA,"","",NA,939,2,NA

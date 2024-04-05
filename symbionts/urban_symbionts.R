@@ -157,34 +157,34 @@ Dlab %>%
 
 # DATA CLEANING 2 
 # Makes a list of samples with only one technical replicate of the dominant symbiont type
-ReRun_Mcav_reef <- Mcav_reef[which(Mcav_reef$A.reps<2 | Mcav_reef$C.reps<2), ] 
-ReRun_Mcav_reef %>%
-  mutate(violation = "reps", .before = Sample.Name) -> ReRun_Mcav_reef
-ReRun_Mcav_urban <- Mcav_urban[which(Mcav_urban$A.reps<2 | Mcav_urban$D.reps<2), ] 
-ReRun_Mcav_urban %>%
-  mutate(violation = "reps", .before = Sample.Name) -> ReRun_Mcav_urban
+Reps_Mcav_reef <- Mcav_reef[which(Mcav_reef$A.reps<2 | Mcav_reef$C.reps<2), ] 
+Reps_Mcav_reef %>%
+  mutate(violation = "reps", .before = Sample.Name) -> Reps_Mcav_reef
+Reps_Mcav_urban <- Mcav_urban[which(Mcav_urban$A.reps<2 | Mcav_urban$D.reps<2), ] 
+Reps_Mcav_urban %>%
+  mutate(violation = "reps", .before = Sample.Name) -> Reps_Mcav_urban
 
-ReRun_Ofav_reef <- Ofav_reef[which(Ofav_reef$A.reps<2 | Ofav_reef$B.reps<2 | Ofav_reef$D.reps<2), ] 
-ReRun_Ofav_reef %>%
-  mutate(violation = "reps", .before = Sample.Name) -> ReRun_Ofav_reef
-ReRun_Ofav_urban <- Ofav_urban[which(Ofav_urban$D.reps<2), ] 
-ReRun_Ofav_urban %>%
-  mutate(violation = "reps", .before = Sample.Name) -> ReRun_Ofav_urban
+Reps_Ofav_reef <- Ofav_reef[which(Ofav_reef$A.reps<2 | Ofav_reef$B.reps<2 | Ofav_reef$D.reps<2), ] 
+Reps_Ofav_reef %>%
+  mutate(violation = "reps", .before = Sample.Name) -> Reps_Ofav_reef
+Reps_Ofav_urban <- Ofav_urban[which(Ofav_urban$D.reps<2), ] 
+Reps_Ofav_urban %>%
+  mutate(violation = "reps", .before = Sample.Name) -> Reps_Ofav_urban
 
-ReRun_Cnat <- Cnat[which(Cnat$B.reps<2 | Cnat$D.reps<2), ] 
-ReRun_Cnat %>%
-  mutate(violation = "reps", .before = Sample.Name) -> ReRun_Cnat
+Reps_Cnat <- Cnat[which(Cnat$B.reps<2 | Cnat$D.reps<2), ] 
+Reps_Cnat %>%
+  mutate(violation = "reps", .before = Sample.Name) -> Reps_Cnat
 
-ReRun_Pseu <- Pseu[which(Pseu$B.reps<2 | Pseu$D.reps<2), ] 
-ReRun_Pseu %>%
-  mutate(violation = "reps", .before = Sample.Name) -> ReRun_Pseu
+Reps_Pseu <- Pseu[which(Pseu$B.reps<2 | Pseu$D.reps<2), ] 
+Reps_Pseu %>%
+  mutate(violation = "reps", .before = Sample.Name) -> Reps_Pseu
 
-ReRun_Dlab_reef <- Dlab_reef[which(Dlab_reef$A.reps<2 | Dlab_reef$B.reps<2 | Dlab_reef$D.reps<2), ] 
-ReRun_Dlab_reef %>%
-  mutate(violation = "reps", .before = Sample.Name) -> ReRun_Dlab_reef
-ReRun_Dlab_urban <- Dlab_urban[which(Dlab_urban$D.reps<2), ] 
-ReRun_Dlab_urban %>%
-  mutate(violation = "reps", .before = Sample.Name) -> ReRun_Dlab_urban
+Reps_Dlab_reef <- Dlab_reef[which(Dlab_reef$A.reps<2 | Dlab_reef$B.reps<2 | Dlab_reef$D.reps<2), ] 
+Reps_Dlab_reef %>%
+  mutate(violation = "reps", .before = Sample.Name) -> Reps_Dlab_reef
+Reps_Dlab_urban <- Dlab_urban[which(Dlab_urban$D.reps<2), ] 
+Reps_Dlab_urban %>%
+  mutate(violation = "reps", .before = Sample.Name) -> Reps_Dlab_urban
 
 # Makes a list of samples where technical replicates of dominant symbiont types had standard deviation >1.5
 StDe1.5_Mcav_reef <- Mcav_reef[which(Mcav_reef$A.CT.sd>1.5 | Mcav_reef$C.CT.sd>1.5), ] 
@@ -249,15 +249,15 @@ Late_Dlab_urban %>%
 
 # RE-RUNS
 # Combines all lists above by species and finds distinct samples
-ToReRun_Mcav<-rbind(ReRun_Mcav_reef, ReRun_Mcav_urban, StDe1.5_Mcav_reef, StDe1.5_Mcav_urban, Late_Mcav_reef, Late_Mcav_urban)
+ToReRun_Mcav<-rbind(Reps_Mcav_reef, Reps_Mcav_urban, StDe1.5_Mcav_reef, StDe1.5_Mcav_urban, Late_Mcav_reef, Late_Mcav_urban)
 ToReRun_Mcav<-ToReRun_Mcav %>% distinct_at(vars(-violation), .keep_all=T)
-ToReRun_Ofav<-rbind(ReRun_Ofav_reef, ReRun_Ofav_urban, StDe1.5_Ofav_reef, StDe1.5_Ofav_urban, Late_Ofav_reef, Late_Ofav_urban)
+ToReRun_Ofav<-rbind(Reps_Ofav_reef, Reps_Ofav_urban, StDe1.5_Ofav_reef, StDe1.5_Ofav_urban, Late_Ofav_reef, Late_Ofav_urban)
 ToReRun_Ofav<-ToReRun_Ofav %>% distinct_at(vars(-violation), .keep_all=T)
-ToReRun_Cnat<-rbind(ReRun_Cnat, StDe1.5_Cnat, Late_Cnat)
+ToReRun_Cnat<-rbind(Reps_Cnat, StDe1.5_Cnat, Late_Cnat)
 ToReRun_Cnat<-ToReRun_Cnat %>% distinct_at(vars(-violation), .keep_all=T)
-ToReRun_Pseu<-rbind(ReRun_Pseu, StDe1.5_Pseu, Late_Pseu)
+ToReRun_Pseu<-rbind(Reps_Pseu, StDe1.5_Pseu, Late_Pseu)
 ToReRun_Pseu<-ToReRun_Pseu %>% distinct_at(vars(-violation), .keep_all=T)
-ToReRun_Dlab<-rbind(ReRun_Dlab_reef, ReRun_Dlab_urban, StDe1.5_Dlab_reef, StDe1.5_Dlab_urban, Late_Dlab_reef, Late_Dlab_urban)
+ToReRun_Dlab<-rbind(Reps_Dlab_reef, Reps_Dlab_urban, StDe1.5_Dlab_reef, StDe1.5_Dlab_urban, Late_Dlab_reef, Late_Dlab_urban)
 ToReRun_Dlab<-ToReRun_Dlab %>% distinct_at(vars(-violation), .keep_all=T)
 
 # Write all files to csv, look at each sample that fails, and add a column called 'redo' with a 'y' or 'n' value for each sample
@@ -275,30 +275,69 @@ ToReRun_Cnat <- read.csv(file = "ToReRun_Cnat.csv", head = T)
 ToReRun_Pseu <- read.csv(file = "ToReRun_Pseu.csv", head = T)
 ToReRun_Dlab <- read.csv(file = "ToReRun_Dlab.csv", head = T)
 
-# Combining only the samples with 'y' under redo
+# Combining only the samples with 'y' under the column 'failed'
 ToReRun <- rbind(ToReRun_Mcav,ToReRun_Ofav,ToReRun_Cnat,ToReRun_Pseu,ToReRun_Dlab)
 ToReRun %>%
-  filter(redo == 'y') -> ToReRun
+  filter(failed == 'y') -> ToReRun_Failed
 
-# Creating a list of samples that were already rerun
+# Adding a new column that counts row numbers, creating a list of samples that have multiple qPCR runs, counting how many times, then keeping only the last attempt
 Urban_Prop %>%
+  mutate(sort = 1:n()) %>%
   group_by(ID) %>%
-  filter(duplicated(ID)|n()==2) -> Urban_ReRuns
+  filter(duplicated(ID)|n()>1) %>%
+  mutate(count = n()) %>%
+  filter(sort == max(sort)) %>%
+  distinct(ID, .keep_all = TRUE) -> ReRuns_Done
+write.csv(ReRuns_Done, file = "ReRuns_Done.csv")
+
+# Now matching this with the list of failed samples to determine if the last attempt also failed
+ReRuns_Done %>%
+  inner_join(select(ToReRun_Failed, ID, failed), by = "ID") %>%
+  distinct(ID, .keep_all = TRUE) -> ReRuns_Failed
+write.csv(ReRuns_Failed, file = "ReRuns_Failed.csv")
+
+ReRuns_Done %>%
+  left_join(select(ToReRun_Failed, ID, failed), by = "ID") %>%
+  filter(is.na(failed)) -> ReRuns_Worked
+# Sanity check: The number of rows in ReRuns_Failed and ReRuns_Worked should sum to ReRuns_Done
+ReRuns_Worked %>%
+  filter(count==2) -> ReRuns_2Worked # now filtering out any samples run thrice
+write.csv(ReRuns_2Worked, file = "ReRuns_Worked.csv")
+
+# Did any samples that were run 3 times actually work the 2nd time?
+ReRuns_Failed %>%
+  filter(count==3) -> ReRuns_3Attempts
+
+# Now compare it to the other attempts
+# Commented out so it's not accidentally overwritten
+# ToReRun %>%
+#   inner_join(select(ReRuns_3Attempts, ID, sort), by = "ID") %>%
+#   arrange(ID) -> ReRuns_Check
+# write.csv(ReRuns_Check, file = "ReRuns_Check.csv")
+# Add a column 'use' and one run (if any) that worked per sample
+
+# Now read it back in, and modify it to look like the others below
+ReRuns_Check <- read.csv("ReRuns_Check.csv", head = T)
+ReRuns_Check %>%
+  select(ID, Sample.Plate, 32:44,use) %>%
+  filter(use == "y") -> Urban_Prop_3Good
+
+# One-and-done samples, add a column called 'use' with all rows having 'y'
+Urban_Prop %>%
+  anti_join(ToReRun, by = "Sample.Plate") %>%
+  mutate(use = "y") -> Urban_Prop_Good
+
+# Rerun samples that worked the 2nd time
+ReRuns_2Worked %>%
+  select(1:15) %>%
+  mutate(use = "y") -> Urban_Prop_2Good
+
+# Merge all the 'good' datasets
+Urban_Prop_Merged <- rbind(Urban_Prop_Good, Urban_Prop_2Good, Urban_Prop_3Good)
 
 # Creating a filtered list of remaining reruns
-ToReRun %>%
-  anti_join(Urban_ReRuns, by = "ID") -> ReRuns_Remain
-
-ToReRun %>%
-  anti_join(ReRuns_Remain, by = "ID") -> ReRuns_Check
-write.csv(ReRuns_Check, file = "ReRuns_Check.csv")
-
-# Sanity check - what was already rerun?
-ToReRun %>%
-  inner_join(Urban_ReRuns, by = "ID") %>% 
-  group_by(ID) %>%
-  filter(duplicated(ID)|n()==1) -> ReRuns_Done
-write.csv(ReRuns_Done, file = "ReRuns_Done.csv")
+# ToReRun %>%
+#   anti_join(Urban_ReRuns, by = "ID") -> ReRuns_Remain
 
 # But what if we already plated some of these samples? Let's check
 # AlreadyPlated <- read.csv("AlreadyPlated.csv", head = T)
@@ -308,41 +347,67 @@ write.csv(ReRuns_Done, file = "ReRuns_Done.csv")
 #   anti_join(AlreadyPlated, by = "ID") -> ReRuns_Remain_ForReal
 # write.csv(ReRuns_Remain_ForReal, file = "ReRuns_Remain.csv")
 
-write.csv(ReRuns_Remain, file = "ReRuns_Remain.csv")
-
 
 #### STATISTICS ####
 
-# Finds and removes the first instance of duplicated sample IDs (samples that were rerun)
-Urban_Prop %>%
+# Finds duplicated sample IDs with good data
+# Commented out so it's not accidentally overwritten
+# Urban_Prop_Merged %>%
+  # group_by(ID) %>%
+  # mutate(count = n()) %>%
+#   filter(count > 1) %>%
+#   distinct(Sample.Plate, .keep_all = T) %>%
+#   arrange(ID) -> Urban_Prop_Duplicates
+# write.csv(Urban_Prop_Duplicates, file = "Duplicates_Worked.csv")
+
+# Read back in and filter out any runs that you modified to 'use' = 'n'
+Urban_Prop_Duplicates <- read.csv("Duplicates_Worked.csv", head = T)
+Urban_Prop_Duplicates %>%
+  filter(use == "y") -> Urban_Prop_Duplicates_Use
+
+# Filter out the rest of the data to only include samples with one run
+Urban_Prop_Merged %>%
   group_by(ID) %>%
-  filter(duplicated(ID)|n()==1) -> Urban_Prop
+  mutate(count = n()) %>%
+  filter(count == 1) -> Urban_Prop_Use
+
+# Now combine the two for a set of unique sample rows
+Urban_Prop_Unique <- rbind(Urban_Prop_Use, Urban_Prop_Duplicates_Use)
+# Sanity check: do any samples drop when you filter by unique sample IDs?
+Urban_Prop_Unique %>%
+  distinct(ID, .keep_all = TRUE) -> Urban_Prop_Unique # 452 unique samples
+# 2nd Sanity check: How many unique samples should there be?
+Urban_Prop %>%
+  distinct(ID, .keep_all = TRUE) -> Urban_Prop_Count # 835 unique samples
+ReRuns_Failed %>%
+  distinct(ID, .keep_all = TRUE) -> ReRuns_Failed_Count # 69 unique samples
+# Huh, so where are the ~300 missing samples?
 
 # Ungroups ID since you don't need it as a grouping variable
-Urban_Prop %>%
-  ungroup() -> Urban_Prop
+Urban_Prop_Unique %>%
+  ungroup() -> Urban_Prop_Unique
 
 # Filtering out any samples that did not amplify
-Urban_Prop %>%
-  filter(totalSym != 0) -> Urban_Prop
+Urban_Prop_Unique %>%
+  filter(totalSym != 0) -> Urban_Prop_Final
 
 # Filtering by species
-Urban_Prop %>%
+Urban_Prop_Final %>%
   filter(Species == "Mcav") -> Mcav_Prop
-Urban_Prop %>%
+Urban_Prop_Final %>%
   filter(Species == "Ofav") -> Ofav_Prop
-Urban_Prop %>%
+Urban_Prop_Final %>%
   filter(Species == "Cnat") -> Cnat_Prop
-Urban_Prop %>%
+Urban_Prop_Final %>%
   filter(Species == "Pseu") -> Pseu_Prop
-Urban_Prop %>%
+Urban_Prop_Final %>%
   filter(Species == "Dlab") -> Dlab_Prop
 
 # Identifying A-dominated samples for QAQC with TaqMan
-Urban_Prop %>% 
+Urban_Prop_Final %>% 
   filter(dom == "A" | grepl('A', coDom)) -> domA
 
-Urban_Prop %>% 
+Urban_Prop_Final %>% 
   filter(grepl('A', background)) %>%
   group_by(Species) %>%
   sample_n(1) %>%
@@ -355,7 +420,7 @@ testA %>%
 write.csv(testA, file = "qaqcA.csv")
 
 # Randomly selecting samples by sites for QAQC with TaqMan
-Urban_Prop %>% 
+Urban_Prop_Final %>% 
   filter(dom != "A" | grepl('A', coDom))
   group_by(Species, Region) %>%
   sample_n(3) %>%
