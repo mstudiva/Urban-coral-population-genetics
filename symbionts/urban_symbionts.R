@@ -313,10 +313,10 @@ ReRuns_Failed %>%
   filter(count==3) -> ReRuns_3Attempts
 
 # Now compare it to the other attempts
+ToReRun %>%
+  inner_join(select(ReRuns_3Attempts, ID, sort), by = "ID") %>%
+  arrange(ID) -> ReRuns_Check
 # Commented out so it's not accidentally overwritten
-# ToReRun %>%
-#   inner_join(select(ReRuns_3Attempts, ID, sort), by = "ID") %>%
-#   arrange(ID) -> ReRuns_Check
 # write.csv(ReRuns_Check, file = "ReRuns_Check.csv")
 # Add a column 'use' and one run (if any) that worked per sample
 
@@ -339,6 +339,7 @@ ReRuns_2Worked %>%
 # Merge all the 'good' datasets
 Urban_Prop_Merged <- rbind(Urban_Prop_Good, Urban_Prop_2Good, Urban_Prop_3Good)
 
+# Old code from the samples shipped to Lorelei
 # Creating a filtered list of remaining reruns
 # ToReRun %>%
 #   anti_join(Urban_ReRuns, by = "ID") -> ReRuns_Remain
@@ -352,14 +353,15 @@ Urban_Prop_Merged <- rbind(Urban_Prop_Good, Urban_Prop_2Good, Urban_Prop_3Good)
 # write.csv(ReRuns_Remain_ForReal, file = "ReRuns_Remain.csv")
 
 # Finds duplicated sample IDs with good data
+Urban_Prop_Merged %>%
+group_by(ID) %>%
+mutate(count = n()) %>%
+  filter(count > 1) %>%
+  distinct(Sample.Plate, .keep_all = T) %>%
+  arrange(ID) -> Urban_Prop_Duplicates
 # Commented out so it's not accidentally overwritten
-# Urban_Prop_Merged %>%
-# group_by(ID) %>%
-# mutate(count = n()) %>%
-#   filter(count > 1) %>%
-#   distinct(Sample.Plate, .keep_all = T) %>%
-#   arrange(ID) -> Urban_Prop_Duplicates
 # write.csv(Urban_Prop_Duplicates, file = "Duplicates_Worked.csv")
+# Modify column 'use' to select samples to drop
 
 # Read back in and filter out any runs that you modified to 'use' = 'n'
 Urban_Prop_Duplicates <- read.csv("Duplicates_Worked.csv", head = T)
