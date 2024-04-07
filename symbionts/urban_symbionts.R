@@ -45,7 +45,7 @@ Urban<-Urban_Out$result
 Urban$Sample.Plate<-paste(Urban$Sample.Name, Urban$File.Name, sep = "_" )
 
 # Importing the symbiont abundance data from Rich
-Urban_Prop <- read.csv("symProps_3Apr2024.csv", head=T)
+Urban_Prop <- read.csv("symProps_6Apr2024.csv", head=T)
 Urban_Prop$Species <- as.factor(Urban_Prop$Species)
 Urban_Prop$Region <- as.factor(Urban_Prop$Region)
 Urban_Prop$CollectionDate <- as.factor(Urban_Prop$CollectionDate)
@@ -323,7 +323,7 @@ ToReRun %>%
 # Now read it back in, and modify it to look like the others below
 ReRuns_Check <- read.csv("ReRuns_Check.csv", head = T)
 ReRuns_Check %>%
-  select(ID, Sample.Plate, 32:44, use) %>%
+  select(ID, Sample.Plate, 32:45, use) %>%
   filter(use == "y") -> Urban_Prop_3Good
 
 # One-and-done samples, add a column called 'use' with all rows having 'y'
@@ -333,7 +333,7 @@ Urban_Prop %>%
 
 # Rerun samples that worked the 2nd time
 ReRuns_2Worked %>%
-  select(1:15) %>%
+  select(1:16) %>%
   mutate(use = "y") -> Urban_Prop_2Good
 
 # Merge all the 'good' datasets
@@ -377,6 +377,9 @@ Urban_Prop_Merged %>%
 # Now combine the two for a set of unique sample rows
 Urban_Prop_Unique <- rbind(Urban_Prop_Use, Urban_Prop_Duplicates_Use)
 # Sanity check: do any samples drop when you filter by unique sample IDs?
+Urban_Prop_Unique %>% 
+  group_by(ID) %>% 
+  filter(n()>1) # 0 samples
 Urban_Prop_Unique %>%
   distinct(ID, .keep_all = TRUE) -> Urban_Prop_Unique # 802 unique samples
 # 2nd Sanity check: How many unique samples should there be?
@@ -400,6 +403,7 @@ Urban_Prop_Unique %>%
 # Filtering out any samples that did not amplify
 Urban_Prop_Unique %>%
   filter(totalSym != 0) -> Urban_Prop_Final
+write.csv(Urban_Prop_Final, file = "symProps_final.csv")
 
 
 #### STATISTICS ####
