@@ -1384,8 +1384,159 @@ Dlab_Plot_Site
 ggsave("Dlab symbionts by site.pdf", plot= Dlab_Plot_Site, width=16, height=4, units="in", dpi=300)
 
 
-#### ABUNDANCE MULTIPLOTS ####
+#### ABUNDANCE MULTIPLOT ####
 
 Perc_Multiplot <- grid.arrange(Pseu_Plot, Cnat_Plot, Dlab_Plot, Mcav_Plot, Ofav_Plot, legend, ncol=3, nrow=2, widths=c(6,3,3), heights=c(3.75,4))
 
 ggsave("Multiplot symbionts.pdf", plot= Perc_Multiplot, width=16, height=8, units="in", dpi=300)
+
+
+#### RAIN SEASON MULTIPLOT ####
+
+# MCAV
+# transposing and reformatting dataframes to make abundance a single column
+Mcav_Perc_Rain <- dplyr::select(Mcav_Prop, 9, 11:14)
+Mcav_Perc_Rain <- reshape2::melt(Mcav_Perc_Rain, id = "Rain")
+Mcav_Perc_Rain$Rain=factor(Mcav_Perc_Rain$Rain, levels=c("Dry","Wet")) 
+Mcav_Perc_Rain <- dcast(Mcav_Perc_Rain, Rain~variable, mean)
+Mcav_Perc_Rain <- melt(Mcav_Perc_Rain, id = "Rain")
+Mcav_Perc_Rain <- dplyr::rename(Mcav_Perc_Rain, symtype = variable, abundance = value)
+
+# percent stacked barplot
+Mcav_Plot_Rain <- ggplot(Mcav_Perc_Rain, aes(fill=symtype, y=abundance, x=Rain)) + 
+  geom_bar(position="fill", stat="identity") +
+  labs(x = "Season",
+       y = "Relative Abundance",
+       fill = 'Symbiodiniaceae Genus',
+       title = "Montastraea cavernosa") + 
+  scale_fill_manual(values = colorRampPalette(brewer.pal(8, "Accent"))(6)) +
+  theme_classic() +
+  geom_text(x = 1.56, y=1.035, label = "Season: F1,130 = 4.7, R2 = 0.011, p = 0.028*") +
+  theme(plot.title = element_text(hjust=0.5))
+Mcav_Plot_Rain 
+
+# takes the legend and saves it as a separate object (grob)
+get_legend <-function(Mcav_Plot_Rain){
+  tmp <- ggplot_gtable(ggplot_build(Mcav_Plot_Rain))
+  leg <- which(sapply(tmp$grobs, function(x) x$name) == "guide-box")
+  legend <- tmp$grobs[[leg]]
+  return(legend)
+}
+legend=get_legend(Mcav_Plot_Rain)
+
+# replotting without legend
+Mcav_Plot_Rain <- ggplot(Mcav_Perc_Rain, aes(fill=symtype, y=abundance, x=Rain)) + 
+  geom_bar(position="fill", stat="identity") +
+  labs(x = "Season",
+       y = "Relative Abundance",
+       fill = 'Symbiodiniaceae Genus',
+       title = "Montastraea cavernosa") + 
+  scale_fill_manual(values = colorRampPalette(brewer.pal(8, "Accent"))(6)) +
+  theme_classic() +
+  geom_text(x = 1.56, y=1.035, label = "Season: F1,130 = 4.7, R2 = 0.011, p = 0.028*") +
+  theme(plot.title = element_text(hjust=0.5), legend.position = "none")
+Mcav_Plot_Rain 
+
+ggsave("Mcav symbionts rain.pdf", plot= Mcav_Plot_Rain, width=4, height=4, units="in", dpi=300)
+
+# OFAV
+# transposing and reformatting dataframes to make abundance a single column
+Ofav_Perc_Rain <- dplyr::select(Ofav_Prop, 9, 11:14)
+Ofav_Perc_Rain <- reshape2::melt(Ofav_Perc_Rain, id = "Rain")
+Ofav_Perc_Rain$Rain=factor(Ofav_Perc_Rain$Rain, levels=c("Dry","Wet")) 
+Ofav_Perc_Rain <- dcast(Ofav_Perc_Rain, Rain~variable, mean)
+Ofav_Perc_Rain <- melt(Ofav_Perc_Rain, id = "Rain")
+Ofav_Perc_Rain <- dplyr::rename(Ofav_Perc_Rain, symtype = variable, abundance = value)
+
+# percent stacked barplot
+Ofav_Plot_Rain <- ggplot(Ofav_Perc_Rain, aes(fill=symtype, y=abundance, x=Rain)) + 
+  geom_bar(position="fill", stat="identity") +
+  labs(x = "Season",
+       y = "Relative Abundance",
+       fill = 'Symbiodiniaceae Genus',
+       title = "Orbicella faveolata") + 
+  scale_fill_manual(values = colorRampPalette(brewer.pal(8, "Accent"))(6)) +
+  theme_classic() +
+  geom_text(x = 1.42, y=1.035, label = "Season: F1,122 = 0.2, R2 = 0.001, p = 0.694") +
+  theme(plot.title = element_text(hjust=0.5), legend.position = "none", axis.title.y = element_blank(), axis.text.y = element_blank())
+Ofav_Plot_Rain 
+
+ggsave("Ofav symbionts rain.pdf", plot= Ofav_Plot_Rain, width=4, height=4, units="in", dpi=300)
+
+# CNAT
+# transposing and reformatting dataframes to make abundance a single column
+Cnat_Perc_Rain <- dplyr::select(Cnat_Prop, 9, 11:14)
+Cnat_Perc_Rain <- reshape2::melt(Cnat_Perc_Rain, id = "Rain")
+Cnat_Perc_Rain$Rain=factor(Cnat_Perc_Rain$Rain, levels=c("Dry","Wet")) 
+Cnat_Perc_Rain <- dcast(Cnat_Perc_Rain, Rain~variable, mean)
+Cnat_Perc_Rain <- melt(Cnat_Perc_Rain, id = "Rain")
+Cnat_Perc_Rain <- dplyr::rename(Cnat_Perc_Rain, symtype = variable, abundance = value)
+
+# percent stacked barplot
+Cnat_Plot_Rain <- ggplot(Cnat_Perc_Rain, aes(fill=symtype, y=abundance, x=Rain)) + 
+  geom_bar(position="fill", stat="identity") +
+  labs(x = "Season",
+       y = "Relative Abundance",
+       fill = 'Symbiodiniaceae Genus',
+       title = "Colpophyllia natans") + 
+  scale_fill_manual(values = colorRampPalette(brewer.pal(8, "Accent"))(6)) +
+  theme_classic() +
+  geom_text(x = 1.46, y=1.035, label = "Season: F1,137 = 36.0, R2 = 0.156, p < 0.001*") +
+  theme(plot.title = element_text(hjust=0.5), legend.position = "none", axis.title.x = element_blank(), axis.title.y = element_blank(), axis.text.y = element_blank())
+Cnat_Plot_Rain 
+
+ggsave("Cnat symbionts rain.pdf", plot= Cnat_Plot_Rain, width=4, height=4, units="in", dpi=300)
+
+# PSEU
+# transposing and reformatting dataframes to make abundance a single column
+Pseu_Perc_Rain <- dplyr::select(Pseu_Prop, 9, 11:14)
+Pseu_Perc_Rain <- reshape2::melt(Pseu_Perc_Rain, id = "Rain")
+Pseu_Perc_Rain$Rain=factor(Pseu_Perc_Rain$Rain, levels=c("Dry","Wet")) 
+Pseu_Perc_Rain <- dcast(Pseu_Perc_Rain, Rain~variable, mean)
+Pseu_Perc_Rain <- melt(Pseu_Perc_Rain, id = "Rain")
+Pseu_Perc_Rain <- dplyr::rename(Pseu_Perc_Rain, symtype = variable, abundance = value)
+
+# percent stacked barplot
+Pseu_Plot_Rain <- ggplot(Pseu_Perc_Rain, aes(fill=symtype, y=abundance, x=Rain)) + 
+  geom_bar(position="fill", stat="identity") +
+  labs(x = "Season",
+       y = "Relative Abundance",
+       fill = 'Symbiodiniaceae Genus',
+       title = "Pseudodiploria spp.") + 
+  scale_fill_manual(values = colorRampPalette(brewer.pal(8, "Accent"))(6)) +
+  theme_classic() +
+  geom_text(x = 1.55, y=1.035, label = "Season: F1,322 = 0.6, R2 = 0.002, p = 0.463") +
+  theme(plot.title = element_text(hjust=0.5), legend.position = "none", axis.title.x = element_blank())
+Pseu_Plot_Rain 
+
+ggsave("Pseu symbionts rain.pdf", plot= Pseu_Plot_Rain, width=4, height=4, units="in", dpi=300)
+
+# DLAB
+# transposing and reformatting dataframes to make abundance a single column
+Dlab_Perc_Rain <- dplyr::select(Dlab_Prop, 9, 11:14)
+Dlab_Perc_Rain <- reshape2::melt(Dlab_Perc_Rain, id = "Rain")
+Dlab_Perc_Rain$Rain=factor(Dlab_Perc_Rain$Rain, levels=c("Dry","Wet")) 
+Dlab_Perc_Rain <- dcast(Dlab_Perc_Rain, Rain~variable, mean)
+Dlab_Perc_Rain <- melt(Dlab_Perc_Rain, id = "Rain")
+Dlab_Perc_Rain <- dplyr::rename(Dlab_Perc_Rain, symtype = variable, abundance = value)
+
+# percent stacked barplot
+Dlab_Plot_Rain <- ggplot(Dlab_Perc_Rain, aes(fill=symtype, y=abundance, x=Rain)) + 
+  geom_bar(position="fill", stat="identity") +
+  labs(x = "Season",
+       y = "Relative Abundance",
+       fill = 'Symbiodiniaceae Genus',
+       title = "Diploria labyrinthiformis") + 
+  scale_fill_manual(values = colorRampPalette(brewer.pal(8, "Accent"))(6)) +
+  theme_classic() +
+  geom_text(x = 1.4, y=1.035, label = "Season: F1,82 = 3.0, R2 = 0.029, p = 0.067") +
+  theme(plot.title = element_text(hjust=0.5), legend.position = "none", axis.title.y = element_blank(), axis.text.y = element_blank(), axis.title.x = element_blank()) 
+Dlab_Plot_Rain 
+
+ggsave("Dlab symbionts rain.pdf", plot= Dlab_Plot_Rain, width=4, height=4, units="in", dpi=300)
+
+#### RAIN SEASON MULTIPLOT ####
+
+Perc_Multiplot_Rain <- grid.arrange(Pseu_Plot_Rain, Cnat_Plot_Rain, Dlab_Plot_Rain, Mcav_Plot_Rain, Ofav_Plot_Rain, legend, ncol=3, nrow=2, widths=c(3.5,3,3), heights=c(3.75,4))
+
+ggsave("Multiplot symbionts rain.pdf", plot= Perc_Multiplot_Rain, width=11, height=8, units="in", dpi=300)
