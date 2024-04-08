@@ -1,0 +1,983 @@
+ID,Sample.Plate,Species,Region,Site,CollectionDate,Season,Rain,Depth,Symbiodinium,Breviolum,Cladocopium,Durusdinium,dom,background,totalSym
+urban_083,Sample 1_UrbanPopgen_Plate01_6-29-23_data.csv,Mcav,Miami reef,Emerald Reef,22-Oct,Fall,Wet,8.2,0,0,1,0,C,,1
+urban_157b rex,Sample 2_UrbanPopgen_Plate01_6-29-23_data.csv,Mcav,Miami reef,Emerald Reef,23-Jan,Winter,Dry,6.6,0,0.004854813,0.183975269,0.811169918,D,B,1
+urban_160b,Sample 3_UrbanPopgen_Plate01_6-29-23_data.csv,Mcav,Miami reef,Emerald Reef,23-Jan,Winter,Dry,7.3,0,0.005460694,0.993774272,0.000765034,C,BD,1
+urban_162b,Sample 4_UrbanPopgen_Plate01_6-29-23_data.csv,Mcav,Miami reef,Emerald Reef,23-Jan,Winter,Dry,7.3,0,0,0.999441425,0.000558575,C,D,1
+urban_164,Sample 5_UrbanPopgen_Plate01_6-29-23_data.csv,Mcav,Miami reef,Emerald Reef,23-Jan,Winter,Dry,7.5,0,0.002651363,0.995721556,0.001627082,C,BD,1
+urban_165,Sample 6_UrbanPopgen_Plate01_6-29-23_data.csv,Mcav,Miami reef,Emerald Reef,23-Jan,Winter,Dry,7.5,0,0.000526834,0.099424641,0.900048525,D,BC,1
+urban_167,Sample 7_UrbanPopgen_Plate01_6-29-23_data.csv,Mcav,Miami reef,Emerald Reef,23-Jan,Winter,Dry,7.5,0,0.007524857,0.770803906,0.221671237,C,B,1
+urban_168,Sample 8_UrbanPopgen_Plate01_6-29-23_data.csv,Mcav,Miami reef,Emerald Reef,23-Jan,Winter,Dry,7.5,0,0,0.998146476,0.001853524,C,D,1
+urban_169,Sample 9_UrbanPopgen_Plate01_6-29-23_data.csv,Mcav,Miami reef,Emerald Reef,23-Jan,Winter,Dry,7.5,0,0.000744195,0.997652101,0.001603704,C,BD,1
+urban_170,Sample 10_UrbanPopgen_Plate01_6-29-23_data.csv,Mcav,Miami reef,Emerald Reef,23-Jan,Winter,Dry,7.5,0,0.003380729,0.996619271,0,C,B,1
+urban_172,Sample 11_UrbanPopgen_Plate01_6-29-23_data.csv,Mcav,Miami reef,Emerald Reef,23-Jan,Winter,Dry,7.5,0,0.001080793,0.987130698,0.011788509,C,BD,1
+urban_104,Sample 12_UrbanPopgen_Plate01_6-29-23_data.csv,Mcav,Miami reef,Rainbow Reef,22-Oct,Fall,Wet,8.5,0,0.003673154,0.364029048,0.632297798,D,B,1
+urban_313,Sample 1_UrbanPopgen_Plate02_6-29-23_data.csv,Mcav,Miami reef,Rainbow Reef,23-Jun,Summer,Wet,4.6,0,0.001006706,0.99175729,0.007236004,C,BD,1
+urban_316,Sample 2_UrbanPopgen_Plate02_6-29-23_data.csv,Mcav,Miami reef,Rainbow Reef,23-Jun,Summer,Wet,5.2,0,0,0.998466362,0.001533638,C,D,1
+urban_255,Sample 3_UrbanPopgen_Plate02_6-29-23_data.csv,Mcav,Miami urban,Belle Isle,23-Apr,Spring,Dry,0.6,0,0,0,1,D,,1
+urban_269,Sample 4_UrbanPopgen_Plate02_6-29-23_data.csv,Mcav,Miami urban,Belle Isle,23-Apr,Spring,Dry,0.5,0,0,0,1,D,,1
+urban_270,Sample 5_UrbanPopgen_Plate02_6-29-23_data.csv,Mcav,Miami urban,Belle Isle,23-Apr,Spring,Dry,0.3,0,0,0,1,D,,1
+urban_112,Sample 6_UrbanPopgen_Plate02_6-29-23_data.csv,Mcav,Miami urban,MacArthur North,22-Oct,Fall,Wet,0.9,0,0,0,1,D,,1
+urban_115,Sample 7_UrbanPopgen_Plate02_6-29-23_data.csv,Mcav,Miami urban,MacArthur North,22-Oct,Fall,Wet,0.9,0,0,0,1,D,,1
+M1,Sample 8_UrbanPopgen_Plate02_6-29-23_data.csv,Mcav,Miami urban,MacArthur North,22-Oct,Fall,Wet,0.9,0,0,0,1,D,,1
+urban_177,Sample 9_UrbanPopgen_Plate02_6-29-23_data.csv,Mcav,Miami urban,MacArthur North,23-Jan,Winter,Dry,1.3,0,0,0,1,D,,1
+urban_178,Sample 10_UrbanPopgen_Plate02_6-29-23_data.csv,Mcav,Miami urban,MacArthur North,23-Jan,Winter,Dry,1.5,0,0,0.00668643,0.99331357,D,C,1
+urban_179,Sample 11_UrbanPopgen_Plate02_6-29-23_data.csv,Mcav,Miami urban,MacArthur North,23-Jan,Winter,Dry,1.5,0,0.00141971,0,0.99858029,D,B,1
+urban_189,Sample 1_UrbanPopgen_Plate03_6-30-23_data.csv,Mcav,Miami urban,MacArthur North,23-Jan,Winter,Dry,1.1,0,0.012106527,0,0.987893473,D,B,1
+urban_191,Sample 2_UrbanPopgen_Plate03_6-30-23_data.csv,Mcav,Miami urban,MacArthur North,23-Jan,Winter,Dry,1.1,0,0.000523549,0,0.999476451,D,B,1
+urban_193,Sample 3_UrbanPopgen_Plate03_6-30-23_data.csv,Mcav,Miami urban,MacArthur North,23-Jan,Winter,Dry,1.1,0,0,0,1,D,,1
+urban_199,Sample 4_UrbanPopgen_Plate03_6-30-23_data.csv,Mcav,Miami urban,MacArthur North,23-Jan,Winter,Dry,1.1,0,0,0,1,D,,1
+urban_201,Sample 5_UrbanPopgen_Plate03_6-30-23_data.csv,Mcav,Miami urban,MacArthur North,23-Jan,Winter,Dry,1.1,0,0,0,1,D,,1
+urban_205,Sample 6_UrbanPopgen_Plate03_6-30-23_data.csv,Mcav,Miami urban,MacArthur North,23-Jan,Winter,Dry,1.1,0,0,0,1,D,,1
+urban_209,Sample 7_UrbanPopgen_Plate03_6-30-23_data.csv,Mcav,Miami urban,MacArthur North,23-Jan,Winter,Dry,1.1,0,0,0,1,D,,1
+urban_210,Sample 8_UrbanPopgen_Plate03_6-30-23_data.csv,Mcav,Miami urban,MacArthur North,23-Jan,Winter,Dry,1.1,0,0,0,1,D,,1
+urban_002,Sample 9_UrbanPopgen_Plate03_6-30-23_data.csv,Mcav,Miami urban,Star Island,22-Jul,Summer,Wet,2.4,0,0.000879341,0.566066195,0.433054464,C,B,1
+urban_005,Sample 10_UrbanPopgen_Plate03_6-30-23_data.csv,Mcav,Miami urban,Star Island,22-Jul,Summer,Wet,2.4,0,0.010740188,0.000107178,0.989152634,D,BC,1
+urban_006,Sample 11_UrbanPopgen_Plate03_6-30-23_data.csv,Mcav,Miami urban,Star Island,22-Jul,Summer,Wet,2.4,0,0.001069318,5.41297E-05,0.998876553,D,BC,1
+urban_009,Sample 12_UrbanPopgen_Plate03_6-30-23_data.csv,Mcav,Miami urban,Star Island,22-Jul,Summer,Wet,2.4,0,0,0,1,D,,1
+urban_010,Sample 1_UrbanPopgen_Plate04_6-30-23_data.csv,Mcav,Miami urban,Star Island,22-Jul,Summer,Wet,2.4,0,0.001447756,0,0.998552244,D,B,1
+urban_012,Sample 2_UrbanPopgen_Plate04_6-30-23_data.csv,Mcav,Miami urban,Star Island,22-Jul,Summer,Wet,2.4,0,0,0,1,D,,1
+urban_015,Sample 3_UrbanPopgen_Plate04_6-30-23_data.csv,Mcav,Miami urban,Star Island,22-Jul,Summer,Wet,2.4,0,0.002704137,4.27502E-05,0.997253113,D,BC,1
+urban_031,Sample 4_UrbanPopgen_Plate04_6-30-23_data.csv,Mcav,Miami urban,Star Island,22-Jul,Summer,Wet,2.4,0,0,0.726244994,0.273755006,C,,1
+urban_072,Sample 5_UrbanPopgen_Plate04_6-30-23_data.csv,Mcav,Miami urban,Star Island,22-Sep,Fall,Wet,5,0,0,0.001101506,0.998898494,D,C,1
+urban_073,Sample 6_UrbanPopgen_Plate04_6-30-23_data.csv,Mcav,Miami urban,Star Island,22-Sep,Fall,Wet,5,0,0,0.001351511,0.998648489,D,C,1
+urban_074,Sample 7_UrbanPopgen_Plate04_6-30-23_data.csv,Mcav,Miami urban,Star Island,22-Sep,Fall,Wet,5,0,0,1,0,C,,1
+urban_075,Sample 8_UrbanPopgen_Plate04_6-30-23_data.csv,Mcav,Miami urban,Star Island,22-Sep,Fall,Wet,5,0,0,0.002608324,0.997391676,D,C,1
+urban_131,Sample 9_UrbanPopgen_Plate04_6-30-23_data.csv,Mcav,Miami urban,Star Island,22-Oct,Fall,Wet,2.4,0,0.035917235,0,0.964082765,D,B,1
+M2,Sample 10_UrbanPopgen_Plate04_6-30-23_data.csv,Mcav,Miami urban,Star Island,22-Oct,Fall,Wet,2.4,0,0.000940705,0,0.999059295,D,B,1
+urban_134,Sample 11_UrbanPopgen_Plate04_6-30-23_data.csv,Mcav,Miami urban,Star Island,22-Oct,Fall,Wet,2.4,0,0.000587909,0,0.999412091,D,B,1
+urban_135,Sample 1_UrbanPopgen_Plate05_6-30-23_data.csv,Mcav,Miami urban,Star Island,22-Oct,Fall,Wet,2.4,0,0,0,1,D,,1
+urban_147 rex,Sample 2_UrbanPopgen_Plate05_6-30-23_data.csv,Mcav,Miami urban,Star Island,22-Oct,Fall,Wet,2.4,0,0,8.62542E-05,0.999913746,D,C,1
+urban_154,Sample 3_UrbanPopgen_Plate05_6-30-23_data.csv,Mcav,Miami urban,Star Island,22-Oct,Fall,Wet,2.4,0,0,0,1,D,,1
+urban_157 rex,Sample 4_UrbanPopgen_Plate05_6-30-23_data.csv,Mcav,Miami urban,Star Island,22-Oct,Fall,Wet,2.4,0,0,0,1,D,,1
+urban_158 rex,Sample 5_UrbanPopgen_Plate05_6-30-23_data.csv,Mcav,Miami urban,Star Island,22-Oct,Fall,Wet,2.4,0,0,0.000111548,0.999888452,D,C,1
+urban_162 rex,Sample 6_UrbanPopgen_Plate05_6-30-23_data.csv,Mcav,Miami urban,Star Island,22-Oct,Fall,Wet,2.4,0,0,0,1,D,,1
+urban_163 rex,Sample 7_UrbanPopgen_Plate05_6-30-23_data.csv,Mcav,Miami urban,Star Island,22-Oct,Fall,Wet,2.4,0,0,5.11589E-05,0.999948841,D,C,1
+nmfs_011,Sample 8_UrbanPopgen_Plate05_6-30-23_data.csv,Ofav,Miami reef,Emerald Reef,21-Jan,Winter,Dry,6.1,0,0.904879727,0.060758503,0.03436177,B,CD,1
+nmfs_012,Sample 9_UrbanPopgen_Plate05_6-30-23_data.csv,Ofav,Miami reef,Emerald Reef,21-Jan,Winter,Dry,6.7,0,0.982581479,9.77497E-06,0.017408746,B,CD,1
+nmfs_014,Sample 10_UrbanPopgen_Plate05_6-30-23_data.csv,Ofav,Miami reef,Emerald Reef,21-Jan,Winter,Dry,6.7,0,0.524210135,0,0.475789865,B,,1
+nmfs_015,Sample 11_UrbanPopgen_Plate05_6-30-23_data.csv,Ofav,Miami reef,Emerald Reef,21-Jan,Winter,Dry,6.4,0,1,0,0,B,,1
+nmfs_017,Sample 12_UrbanPopgen_Plate05_6-30-23_data.csv,Ofav,Miami reef,Emerald Reef,21-Jan,Winter,Dry,6.4,0,0.709063462,0,0.290936538,B,,1
+nmfs_036,Sample 1_UrbanPopgen_Plate06_6-30-23_data.csv,Ofav,Miami reef,Emerald Reef,21-Feb,Winter,Dry,6.4,0,1,0,0,B,,1
+nmfs_037,Sample 2_UrbanPopgen_Plate06_6-30-23_data.csv,Ofav,Miami reef,Emerald Reef,21-Feb,Winter,Dry,6.1,0,0.8770116,0,0.1229884,B,,1
+nmfs_038,Sample 3_UrbanPopgen_Plate06_6-30-23_data.csv,Ofav,Miami reef,Emerald Reef,21-Feb,Winter,Dry,6.4,0,0.808910077,0,0.191089923,B,,1
+nmfs_041,Sample 4_UrbanPopgen_Plate06_6-30-23_data.csv,Ofav,Miami reef,Emerald Reef,21-Feb,Winter,Dry,6.4,0,0.999740564,6.98554E-05,0.000189581,B,CD,1
+nmfs_043,Sample 5_UrbanPopgen_Plate06_6-30-23_data.csv,Ofav,Miami reef,Emerald Reef,21-Feb,Winter,Dry,6.4,0,1,0,0,B,,1
+urban_076,Sample 6_UrbanPopgen_Plate06_6-30-23_data.csv,Ofav,Miami reef,Emerald Reef,22-Oct,Fall,Wet,7.3,0,0.006841608,0,0.993158392,D,B,1
+urban_077,Sample 7_UrbanPopgen_Plate06_6-30-23_data.csv,Ofav,Miami reef,Emerald Reef,22-Oct,Fall,Wet,7.6,0,0.373409767,0,0.626590233,D,,1
+urban_080,Sample 8_UrbanPopgen_Plate06_6-30-23_data.csv,Ofav,Miami reef,Emerald Reef,22-Oct,Fall,Wet,7.3,0,0.996266994,0,0.003733006,B,D,1
+urban_081,Sample 9_UrbanPopgen_Plate06_6-30-23_data.csv,Ofav,Miami reef,Emerald Reef,22-Oct,Fall,Wet,7.6,0,0,6.29789E-05,0.999937021,D,C,1
+urban_082,Sample 10_UrbanPopgen_Plate06_6-30-23_data.csv,Ofav,Miami reef,Emerald Reef,22-Oct,Fall,Wet,7.6,0,0,0.000179172,0.999820828,D,C,1
+urban_084,Sample 11_UrbanPopgen_Plate06_6-30-23_data.csv,Ofav,Miami reef,Emerald Reef,22-Oct,Fall,Wet,7.9,0,0,1.79123E-05,0.999982088,D,C,1
+nmfs_005,Sample 1_UrbanPopgen_Plate08_7-3-23_data.csv,Ofav,Miami reef,Rainbow Reef,21-Jan,Winter,Dry,6.7,0,0.970304826,0,0.029695174,B,D,1
+nmfs_046,Sample 2_UrbanPopgen_Plate08_7-3-23_data.csv,Ofav,Miami reef,Rainbow Reef,21-Feb,Winter,Dry,5.2,0,0.999274056,4.71666E-05,0.000678777,B,CD,1
+nmfs_048,Sample 3_UrbanPopgen_Plate08_7-3-23_data.csv,Ofav,Miami reef,Rainbow Reef,21-Feb,Winter,Dry,5.5,0,0.001696953,0,0.998303047,D,B,1
+nmfs_051,Sample 4_UrbanPopgen_Plate08_7-3-23_data.csv,Ofav,Miami reef,Rainbow Reef,21-Feb,Winter,Dry,5.2,0,1,0,0,B,,1
+nmfs_052,Sample 5_UrbanPopgen_Plate08_7-3-23_data.csv,Ofav,Miami reef,Rainbow Reef,21-Feb,Winter,Dry,5.2,0,0.567462757,2.91644E-05,0.432508078,B,C,1
+nmfs_053,Sample 6_UrbanPopgen_Plate08_7-3-23_data.csv,Ofav,Miami reef,Rainbow Reef,21-Feb,Winter,Dry,6.1,0,0.00563731,1.79977E-05,0.994344692,D,BC,1
+urban_091,Sample 7_UrbanPopgen_Plate08_7-3-23_data.csv,Ofav,Miami reef,Rainbow Reef,22-Oct,Fall,Wet,7.6,0,0.994739559,9.81816E-05,0.005162259,B,CD,1
+urban_093,Sample 8_UrbanPopgen_Plate08_7-3-23_data.csv,Ofav,Miami reef,Rainbow Reef,22-Oct,Fall,Wet,8.5,0,0,0,1,D,,1
+urban_094,Sample 9_UrbanPopgen_Plate08_7-3-23_data.csv,Ofav,Miami reef,Rainbow Reef,22-Oct,Fall,Wet,7.9,0,0.837888831,0.025784004,0.136327164,B,C,1
+urban_095,Sample 10_UrbanPopgen_Plate08_7-3-23_data.csv,Ofav,Miami reef,Rainbow Reef,22-Oct,Fall,Wet,7.9,0,0.389320778,0,0.610679222,D,,1
+urban_096,Sample 11_UrbanPopgen_Plate08_7-3-23_data.csv,Ofav,Miami reef,Rainbow Reef,22-Oct,Fall,Wet,7.9,0,0.976735008,0.023264992,0,B,C,1
+urban_097,Sample 1_UrbanPopgen_Plate09_7-5-23_data.csv,Ofav,Miami reef,Rainbow Reef,22-Oct,Fall,Wet,7.6,0,0.945855067,0.054144933,0,B,C,1
+urban_099,Sample 2_UrbanPopgen_Plate09_7-5-23_data.csv,Ofav,Miami reef,Rainbow Reef,22-Oct,Fall,Wet,7.3,0,0,0,1,D,,1
+urban_100,Sample 3_UrbanPopgen_Plate09_7-5-23_data.csv,Ofav,Miami reef,Rainbow Reef,22-Oct,Fall,Wet,8.5,0,1,0,0,B,,1
+urban_101,Sample 4_UrbanPopgen_Plate09_7-5-23_data.csv,Ofav,Miami reef,Rainbow Reef,22-Oct,Fall,Wet,8.5,0,0.624641299,0,0.375358701,B,,1
+urban_102,Sample 5_UrbanPopgen_Plate09_7-5-23_data.csv,Ofav,Miami reef,Rainbow Reef,22-Oct,Fall,Wet,8.5,0,0.999471046,0,0.000528954,B,D,1
+urban_105,Sample 6_UrbanPopgen_Plate09_7-5-23_data.csv,Ofav,Miami reef,Rainbow Reef,22-Oct,Fall,Wet,8.2,0,0,0.016346225,0.983653775,D,C,1
+urban_106,Sample 7_UrbanPopgen_Plate09_7-5-23_data.csv,Ofav,Miami reef,Rainbow Reef,22-Oct,Fall,Wet,8.5,0,0.930902136,1.49827E-05,0.069082882,B,CD,1
+nmfs_031,Sample 8_UrbanPopgen_Plate09_7-5-23_data.csv,Ofav,Miami urban,MacArthur North,21-Jan,Winter,Dry,0.9,0,0,0,1,D,,1
+nmfs_032,Sample 9_UrbanPopgen_Plate09_7-5-23_data.csv,Ofav,Miami urban,MacArthur North,21-Jan,Winter,Dry,1.5,0,0,0,1,D,,1
+nmfs_033,Sample 10_UrbanPopgen_Plate09_7-5-23_data.csv,Ofav,Miami urban,MacArthur North,21-Jan,Winter,Dry,0.9,0,0.000229449,0,0.999770551,D,B,1
+nmfs_034,Sample 11_UrbanPopgen_Plate09_7-5-23_data.csv,Ofav,Miami urban,MacArthur North,21-Jan,Winter,Dry,1.2,0,0.001076605,0,0.998923395,D,B,1
+nmfs_035,Sample 12_UrbanPopgen_Plate09_7-5-23_data.csv,Ofav,Miami urban,MacArthur North,21-Jan,Winter,Dry,0.9,0,0.00065865,0,0.99934135,D,B,1
+nmfs_066,Sample 1_UrbanPopgen_Plate10_7-5-23_data.csv,Ofav,Miami urban,MacArthur North,21-Feb,Winter,Dry,1.2,0,0,0,1,D,,1
+nmfs_067,Sample 2_UrbanPopgen_Plate10_7-5-23_data.csv,Ofav,Miami urban,MacArthur North,21-Feb,Winter,Dry,1.2,0,0,0,1,D,,1
+nmfs_068,Sample 3_UrbanPopgen_Plate10_7-5-23_data.csv,Ofav,Miami urban,MacArthur North,21-Feb,Winter,Dry,0.9,0,0,0,1,D,,1
+nmfs_069,Sample 4_UrbanPopgen_Plate10_7-5-23_data.csv,Ofav,Miami urban,MacArthur North,21-Feb,Winter,Dry,1.2,0,0,0,1,D,,1
+nmfs_070,Sample 5_UrbanPopgen_Plate10_7-5-23_data.csv,Ofav,Miami urban,MacArthur North,21-Feb,Winter,Dry,1.2,0,0,0,1,D,,1
+nmfs_075,Sample 6_UrbanPopgen_Plate10_7-5-23_data.csv,Ofav,Miami urban,MacArthur North,21-Feb,Winter,Dry,0.9,0,0,0,1,D,,1
+nmfs_056,Sample 7_UrbanPopgen_Plate10_7-5-23_data.csv,Ofav,Miami urban,Star Island,21-Feb,Winter,Dry,1.5,0,0,0,1,D,,1
+nmfs_058,Sample 8_UrbanPopgen_Plate10_7-5-23_data.csv,Ofav,Miami urban,Star Island,21-Feb,Winter,Dry,1.2,0,0.002352818,0,0.997647182,D,B,1
+nmfs_063,Sample 9_UrbanPopgen_Plate10_7-5-23_data.csv,Ofav,Miami urban,Star Island,21-Feb,Winter,Dry,1.5,0,0.001556744,0,0.998443256,D,B,1
+nmfs_064,Sample 10_UrbanPopgen_Plate10_7-5-23_data.csv,Ofav,Miami urban,Star Island,21-Feb,Winter,Dry,0.6,0,0,2.42586E-05,0.999975741,D,C,1
+nmfs_065,Sample 11_UrbanPopgen_Plate10_7-5-23_data.csv,Ofav,Miami urban,Star Island,21-Feb,Winter,Dry,1.2,0,0,0,1,D,,1
+urban_019,Sample 1_UrbanPopgen_Plate11_7-6-23_data.csv,Ofav,Miami urban,Star Island,22-Jul,Summer,Wet,2.4,0,0,0,1,D,,1
+urban_021,Sample 2_UrbanPopgen_Plate11_7-6-23_data.csv,Ofav,Miami urban,Star Island,22-Jul,Summer,Wet,2.4,0,0,0,1,D,,1
+urban_144,Sample 3_UrbanPopgen_Plate11_7-6-23_data.csv,Ofav,Miami urban,Star Island,22-Oct,Fall,Wet,2.4,0,0.999196049,0.000428485,0.000375465,B,CD,1
+urban_145 rex,Sample 4_UrbanPopgen_Plate11_7-6-23_data.csv,Ofav,Miami urban,Star Island,22-Oct,Fall,Wet,2.4,0,0,0,1,D,,1
+urban_153,Sample 5_UrbanPopgen_Plate11_7-6-23_data.csv,Ofav,Miami urban,Star Island,22-Oct,Fall,Wet,2.4,0,0,0,1,D,,1
+urban_159 rex,Sample 6_UrbanPopgen_Plate11_7-6-23_data.csv,Ofav,Miami urban,Star Island,22-Oct,Fall,Wet,2.4,0,0,0,1,D,,1
+urban_160 rex,Sample 7_UrbanPopgen_Plate11_7-6-23_data.csv,Ofav,Miami urban,Star Island,22-Oct,Fall,Wet,2.4,0,0,0,1,D,,1
+urban_085,Sample 8_UrbanPopgen_Plate11_7-6-23_data.csv,Cnat,Miami reef,Emerald Reef,22-Oct,Fall,Wet,8.2,0,0,0,1,D,,1
+urban_098,Sample 9_UrbanPopgen_Plate11_7-6-23_data.csv,Cnat,Miami reef,Rainbow Reef,22-Oct,Fall,Wet,7.6,0,1,0,0,B,,1
+urban_314,Sample 10_UrbanPopgen_Plate11_7-6-23_data.csv,Cnat,Miami reef,Rainbow Reef,23-Jun,Summer,Wet,4.9,0,0.003257436,0.000190028,0.996552536,D,BC,1
+urban_251,Sample 11_UrbanPopgen_Plate11_7-6-23_data.csv,Cnat,Miami urban,Belle Isle,23-Apr,Spring,Dry,1.5,0,0,0,1,D,,1
+urban_252,Sample 12_UrbanPopgen_Plate11_7-6-23_data.csv,Cnat,Miami urban,Belle Isle,23-Apr,Spring,Dry,1.4,0,0,0,1,D,,1
+urban_253,Sample 1_UrbanPopgen_Plate12_7-6-23_data.csv,Cnat,Miami urban,Belle Isle,23-Apr,Spring,Dry,0.5,0,0,0,1,D,,1
+urban_254,Sample 2_UrbanPopgen_Plate12_7-6-23_data.csv,Cnat,Miami urban,Belle Isle,23-Apr,Spring,Dry,0.5,0,0,0,1,D,,1
+urban_256,Sample 3_UrbanPopgen_Plate12_7-6-23_data.csv,Cnat,Miami urban,Belle Isle,23-Apr,Spring,Dry,1.1,0,0.002580332,0,0.997419668,D,B,1
+urban_257,Sample 4_UrbanPopgen_Plate12_7-6-23_data.csv,Cnat,Miami urban,Belle Isle,23-Apr,Spring,Dry,1.1,0,0,0,1,D,,1
+urban_258,Sample 5_UrbanPopgen_Plate12_7-6-23_data.csv,Cnat,Miami urban,Belle Isle,23-Apr,Spring,Dry,0.8,0,0,0,1,D,,1
+urban_259,Sample 6_UrbanPopgen_Plate12_7-6-23_data.csv,Cnat,Miami urban,Belle Isle,23-Apr,Spring,Dry,1,0,0.000117601,0,0.999882399,D,B,1
+urban_261,Sample 7_UrbanPopgen_Plate12_7-6-23_data.csv,Cnat,Miami urban,Belle Isle,23-Apr,Spring,Dry,1.1,0,0,0,1,D,,1
+urban_262,Sample 8_UrbanPopgen_Plate12_7-6-23_data.csv,Cnat,Miami urban,Belle Isle,23-Apr,Spring,Dry,1.2,0,0,0.000818205,0.999181795,D,C,1
+urban_263,Sample 9_UrbanPopgen_Plate12_7-6-23_data.csv,Cnat,Miami urban,Belle Isle,23-Apr,Spring,Dry,1.5,0,0,0,1,D,,1
+urban_264,Sample 10_UrbanPopgen_Plate12_7-6-23_data.csv,Cnat,Miami urban,Belle Isle,23-Apr,Spring,Dry,1,0,0,0,1,D,,1
+urban_265,Sample 11_UrbanPopgen_Plate12_7-6-23_data.csv,Cnat,Miami urban,Belle Isle,23-Apr,Spring,Dry,0.6,0,0,0,1,D,,1
+urban_266,Sample 1_UrbanPopgen_Plate13_7-6-23_data.csv,Cnat,Miami urban,Belle Isle,23-Apr,Spring,Dry,0.7,0,0,0.000496495,0.999503505,D,C,1
+urban_267,Sample 2_UrbanPopgen_Plate13_7-6-23_data.csv,Cnat,Miami urban,Belle Isle,23-Apr,Spring,Dry,0.6,0,0,0,1,D,,1
+urban_268,Sample 3_UrbanPopgen_Plate13_7-6-23_data.csv,Cnat,Miami urban,Belle Isle,23-Apr,Spring,Dry,0.6,0,0,0,1,D,,1
+urban_113,Sample 4_UrbanPopgen_Plate13_7-6-23_data.csv,Cnat,Miami urban,MacArthur North,22-Oct,Fall,Wet,0.9,0,0,0,1,D,,1
+urban_114,Sample 5_UrbanPopgen_Plate13_7-6-23_data.csv,Cnat,Miami urban,MacArthur North,22-Oct,Fall,Wet,0.9,0,0,0,1,D,,1
+urban_117,Sample 6_UrbanPopgen_Plate13_7-6-23_data.csv,Cnat,Miami urban,MacArthur North,22-Oct,Fall,Wet,0.9,0,0,2.0459E-05,0.999979541,D,C,1
+urban_118,Sample 7_UrbanPopgen_Plate13_7-6-23_data.csv,Cnat,Miami urban,MacArthur North,22-Oct,Fall,Wet,0.9,0,0.016839745,0,0.983160255,D,B,1
+urban_119,Sample 8_UrbanPopgen_Plate13_7-6-23_data.csv,Cnat,Miami urban,MacArthur North,22-Oct,Fall,Wet,0.9,0,0,0.001424217,0.998575783,D,C,1
+urban_121,Sample 9_UrbanPopgen_Plate13_7-6-23_data.csv,Cnat,Miami urban,MacArthur North,22-Oct,Fall,Wet,0.9,0,0,0,1,D,,1
+urban_122,Sample 10_UrbanPopgen_Plate13_7-6-23_data.csv,Cnat,Miami urban,MacArthur North,22-Oct,Fall,Wet,0.9,0,0,0.000366957,0.999633043,D,C,1
+urban_174,Sample 11_UrbanPopgen_Plate13_7-6-23_data.csv,Cnat,Miami urban,MacArthur North,23-Jan,Winter,Dry,1.1,0,0,0.00031416,0.99968584,D,C,1
+urban_175,Sample 12_UrbanPopgen_Plate13_7-6-23_data.csv,Cnat,Miami urban,MacArthur North,23-Jan,Winter,Dry,1.3,0,0.034812605,0,0.965187395,D,B,1
+urban_176,Sample 1_UrbanPopgen_Plate14_7-6-23_data.csv,Cnat,Miami urban,MacArthur North,23-Jan,Winter,Dry,1.3,0,0,0,1,D,,1
+urban_180,Sample 2_UrbanPopgen_Plate14_7-6-23_data.csv,Cnat,Miami urban,MacArthur North,23-Jan,Winter,Dry,1.2,0,0,9.39793E-05,0.999906021,D,C,1
+urban_182,Sample 3_UrbanPopgen_Plate14_7-6-23_data.csv,Cnat,Miami urban,MacArthur North,23-Jan,Winter,Dry,1.2,0,0.011373106,0,0.988626894,D,B,1
+urban_184,Sample 4_UrbanPopgen_Plate14_7-6-23_data.csv,Cnat,Miami urban,MacArthur North,23-Jan,Winter,Dry,1.2,0,0,0,1,D,,1
+urban_190 rex,Sample 5_UrbanPopgen_Plate14_7-6-23_data.csv,Cnat,Miami urban,MacArthur North,23-Jan,Winter,Dry,1.1,0,0.393203301,0,0.606796699,D,,1
+urban_192,Sample 6_UrbanPopgen_Plate14_7-6-23_data.csv,Cnat,Miami urban,MacArthur North,23-Jan,Winter,Dry,1.1,0,0.000515295,0.000135283,0.999349422,D,BC,1
+urban_194,Sample 7_UrbanPopgen_Plate14_7-6-23_data.csv,Cnat,Miami urban,MacArthur North,23-Jan,Winter,Dry,1.1,0,0.013669384,0,0.986330616,D,B,1
+urban_195,Sample 8_UrbanPopgen_Plate14_7-6-23_data.csv,Cnat,Miami urban,MacArthur North,23-Jan,Winter,Dry,1.1,0,0.000936165,8.40346E-05,0.998979801,D,BC,1
+urban_196,Sample 9_UrbanPopgen_Plate14_7-6-23_data.csv,Cnat,Miami urban,MacArthur North,23-Jan,Winter,Dry,1.1,0,0.00995963,0,0.99004037,D,B,1
+urban_197,Sample 10_UrbanPopgen_Plate14_7-6-23_data.csv,Cnat,Miami urban,MacArthur North,23-Jan,Winter,Dry,1.2,0,0,0,1,D,,1
+urban_198,Sample 11_UrbanPopgen_Plate14_7-6-23_data.csv,Cnat,Miami urban,MacArthur North,23-Jan,Winter,Dry,1.1,0,0,0,1,D,,1
+urban_200,Sample 1_UrbanPopgen_Plate15_7-7-23_data.csv,Cnat,Miami urban,MacArthur North,23-Jan,Winter,Dry,1.1,0,0.004638444,0,0.995361556,D,B,1
+urban_202,Sample 2_UrbanPopgen_Plate15_7-7-23_data.csv,Cnat,Miami urban,MacArthur North,23-Jan,Winter,Dry,1.1,0,0,0.000297191,0.999702809,D,C,1
+urban_203,Sample 3_UrbanPopgen_Plate15_7-7-23_data.csv,Cnat,Miami urban,MacArthur North,23-Jan,Winter,Dry,1.1,0,0,0,1,D,,1
+urban_204,Sample 4_UrbanPopgen_Plate15_7-7-23_data.csv,Cnat,Miami urban,MacArthur North,23-Jan,Winter,Dry,1.1,0,0,0,1,D,,1
+urban_206,Sample 5_UrbanPopgen_Plate15_7-7-23_data.csv,Cnat,Miami urban,MacArthur North,23-Jan,Winter,Dry,1.1,0,0.035511855,0,0.964488145,D,B,1
+urban_207,Sample 6_UrbanPopgen_Plate15_7-7-23_data.csv,Cnat,Miami urban,MacArthur North,23-Jan,Winter,Dry,1.1,0,0,0,1,D,,1
+urban_208,Sample 7_UrbanPopgen_Plate15_7-7-23_data.csv,Cnat,Miami urban,MacArthur North,23-Jan,Winter,Dry,1.1,0,0,0,1,D,,1
+urban_001,Sample 8_UrbanPopgen_Plate15_7-7-23_data.csv,Cnat,Miami urban,Star Island,22-Jul,Summer,Wet,2.4,0,1,0,0,B,,1
+urban_013,Sample 9_UrbanPopgen_Plate15_7-7-23_data.csv,Cnat,Miami urban,Star Island,22-Jul,Summer,Wet,2.4,0,0.842947502,0,0.157052498,B,,1
+urban_016,Sample 10_UrbanPopgen_Plate15_7-7-23_data.csv,Cnat,Miami urban,Star Island,22-Jul,Summer,Wet,2.4,0,0.030351719,0,0.969648281,D,B,1
+urban_017,Sample 11_UrbanPopgen_Plate15_7-7-23_data.csv,Cnat,Miami urban,Star Island,22-Jul,Summer,Wet,2.4,0,0.948773667,2.92314E-05,0.051197101,B,CD,1
+urban_024,Sample 12_UrbanPopgen_Plate15_7-7-23_data.csv,Cnat,Miami urban,Star Island,22-Jul,Summer,Wet,2.4,0,0.817632987,0,0.182367013,B,,1
+urban_025 rex,Sample 1_UrbanPopgen_Plate16_7-7-23_data.csv,Cnat,Miami urban,Star Island,22-Jul,Summer,Wet,2.4,0,0.386307236,0,0.613692764,D,,1
+urban_028,Sample 2_UrbanPopgen_Plate16_7-7-23_data.csv,Cnat,Miami urban,Star Island,22-Jul,Summer,Wet,2.4,0,0.454449612,0,0.545550388,D,,1
+urban_030,Sample 3_UrbanPopgen_Plate16_7-7-23_data.csv,Cnat,Miami urban,Star Island,22-Jul,Summer,Wet,2.4,0,0.972109435,0,0.027890565,B,D,1
+urban_041,Sample 4_UrbanPopgen_Plate16_7-7-23_data.csv,Cnat,Miami urban,Star Island,22-Jul,Summer,Wet,2.4,0,0.002095199,0,0.997904801,D,B,1
+urban_130,Sample 5_UrbanPopgen_Plate16_7-7-23_data.csv,Cnat,Miami urban,Star Island,22-Oct,Fall,Wet,2.4,0,0,9.12261E-05,0.999908774,D,C,1
+urban_136,Sample 6_UrbanPopgen_Plate16_7-7-23_data.csv,Cnat,Miami urban,Star Island,22-Oct,Fall,Wet,2.4,0,0.009577667,0,0.990422333,D,B,1
+urban_137,Sample 7_UrbanPopgen_Plate16_7-7-23_data.csv,Cnat,Miami urban,Star Island,22-Oct,Fall,Wet,2.4,0,0,0,1,D,,1
+urban_138,Sample 8_UrbanPopgen_Plate16_7-7-23_data.csv,Cnat,Miami urban,Star Island,22-Oct,Fall,Wet,2.4,0,0.002484798,0,0.997515202,D,B,1
+urban_140,Sample 9_UrbanPopgen_Plate16_7-7-23_data.csv,Cnat,Miami urban,Star Island,22-Oct,Fall,Wet,2.4,0,0,0,1,D,,1
+C1,Sample 10_UrbanPopgen_Plate16_7-7-23_data.csv,Cnat,Miami urban,Star Island,22-Oct,Fall,Wet,2.4,0,0.675199219,0,0.324800781,B,,1
+C2,Sample 11_UrbanPopgen_Plate16_7-7-23_data.csv,Cnat,Miami urban,Star Island,22-Oct,Fall,Wet,2.4,0,0.000708194,0,0.999291806,D,B,1
+urban_143,Sample 1_UrbanPopgen_Plate17_7-10-23_data.csv,Cnat,Miami urban,Star Island,22-Oct,Fall,Wet,2.4,0,0.25608054,0,0.74391946,D,,1
+urban_146 rex,Sample 2_UrbanPopgen_Plate17_7-10-23_data.csv,Cnat,Miami urban,Star Island,22-Oct,Fall,Wet,2.4,0,0.990873508,0,0.009126492,B,D,1
+urban_149 rex,Sample 3_UrbanPopgen_Plate17_7-10-23_data.csv,Cnat,Miami urban,Star Island,22-Oct,Fall,Wet,2.4,0,0,0,1,D,,1
+urban_150 rex,Sample 4_UrbanPopgen_Plate17_7-10-23_data.csv,Cnat,Miami urban,Star Island,22-Oct,Fall,Wet,2.4,0,0.159714333,0,0.840285667,D,,1
+urban_151 rex,Sample 5_UrbanPopgen_Plate17_7-10-23_data.csv,Cnat,Miami urban,Star Island,22-Oct,Fall,Wet,2.4,0,0.002585878,0,0.997414122,D,B,1
+urban_156,Sample 6_UrbanPopgen_Plate17_7-10-23_data.csv,Cnat,Miami urban,Star Island,22-Oct,Fall,Wet,2.4,0,0.032998299,0,0.967001701,D,B,1
+nmfs_013,Sample 7_UrbanPopgen_Plate17_7-10-23_data.csv,Pseu,Miami reef,Emerald Reef,21-Jan,Winter,Dry,6.7,0,0.99998476,1.52405E-05,0,B,C,1
+nmfs_016,Sample 8_UrbanPopgen_Plate17_7-10-23_data.csv,Pseu,Miami reef,Emerald Reef,21-Jan,Winter,Dry,6.7,0,0.999978082,2.19178E-05,0,B,C,1
+nmfs_021,Sample 9_UrbanPopgen_Plate17_7-10-23_data.csv,Pseu,Miami reef,Emerald Reef,21-Jan,Winter,Dry,6.7,0,1,0,0,B,,1
+nmfs_022,Sample 10_UrbanPopgen_Plate17_7-10-23_data.csv,Pseu,Miami reef,Emerald Reef,21-Jan,Winter,Dry,6.4,0,0.999979252,2.07483E-05,0,B,C,1
+nmfs_023,Sample 11_UrbanPopgen_Plate17_7-10-23_data.csv,Pseu,Miami reef,Emerald Reef,21-Jan,Winter,Dry,7.6,0,1,0,0,B,,1
+nmfs_024,Sample 12_UrbanPopgen_Plate17_7-10-23_data.csv,Pseu,Miami reef,Emerald Reef,21-Jan,Winter,Dry,6.7,0,1,0,0,B,,1
+OS1 rex,Sample 1_UrbanPopgen_Plate18_7-10-23_data.csv,Pseu,Miami reef,Emerald Reef,22-Jun,Summer,Wet,8.2,0,0,0,1,D,,1
+OS2 rex,Sample 2_UrbanPopgen_Plate18_7-10-23_data.csv,Pseu,Miami reef,Emerald Reef,22-Jun,Summer,Wet,8.2,0,0.001250251,0,0.998749749,D,B,1
+OS21,Sample 3_UrbanPopgen_Plate18_7-10-23_data.csv,Pseu,Miami reef,Emerald Reef,22-Jul,Summer,Wet,6.1,0,1,0,0,B,,1
+OS22 rex,Sample 4_UrbanPopgen_Plate18_7-10-23_data.csv,Pseu,Miami reef,Emerald Reef,22-Jul,Summer,Wet,6.1,0,1,0,0,B,,1
+OS23 rex,Sample 5_UrbanPopgen_Plate18_7-10-23_data.csv,Pseu,Miami reef,Emerald Reef,22-Jul,Summer,Wet,6.1,0,1,0,0,B,,1
+OS24,Sample 6_UrbanPopgen_Plate18_7-10-23_data.csv,Pseu,Miami reef,Emerald Reef,22-Jul,Summer,Wet,6.1,0,1,0,0,B,,1
+OS5 rex,Sample 7_UrbanPopgen_Plate18_7-10-23_data.csv,Pseu,Miami reef,Emerald Reef,22-Jun,Summer,Wet,8.2,0,0,0,1,D,,1
+OS6 rex,Sample 8_UrbanPopgen_Plate18_7-10-23_data.csv,Pseu,Miami reef,Emerald Reef,22-Jun,Summer,Wet,6.7,0,0.00348667,0.000445738,0.996067592,D,BC,1
+OS7 rex,Sample 9_UrbanPopgen_Plate18_7-10-23_data.csv,Pseu,Miami reef,Emerald Reef,22-Jun,Summer,Wet,6.4,0,0.004610857,0,0.995389143,D,B,1
+OS8 rex,Sample 10_UrbanPopgen_Plate18_7-10-23_data.csv,Pseu,Miami reef,Emerald Reef,22-Jun,Summer,Wet,6.7,0,0.969918815,0,0.030081185,B,D,1
+OS9 rex,Sample 11_UrbanPopgen_Plate18_7-10-23_data.csv,Pseu,Miami reef,Emerald Reef,22-Jun,Summer,Wet,7,0,1,0,0,B,,1
+urban_078,Sample 1_UrbanPopgen_Plate19_7-10-23_data.csv,Pseu,Miami reef,Emerald Reef,22-Oct,Fall,Wet,7.9,0,0,0,1,D,,1
+urban_079,Sample 2_UrbanPopgen_Plate19_7-10-23_data.csv,Pseu,Miami reef,Emerald Reef,22-Oct,Fall,Wet,7.3,0,0.999725821,0,0.000274179,B,D,1
+urban_086,Sample 3_UrbanPopgen_Plate19_7-10-23_data.csv,Pseu,Miami reef,Emerald Reef,22-Oct,Fall,Wet,7.9,0,0,0.000162379,0.999837621,D,C,1
+urban_090,Sample 4_UrbanPopgen_Plate19_7-10-23_data.csv,Pseu,Miami reef,Emerald Reef,22-Oct,Fall,Wet,7.6,0,0,0,1,D,,1
+urban_171,Sample 5_UrbanPopgen_Plate19_7-10-23_data.csv,Pseu,Miami reef,Emerald Reef,23-Jan,Winter,Dry,7.5,0,0.027466567,0.006176397,0.966357035,D,BC,1
+urban_173,Sample 6_UrbanPopgen_Plate19_7-10-23_data.csv,Pseu,Miami reef,Emerald Reef,23-Jan,Winter,Dry,7.5,0,0.999738737,0.000261263,0,B,C,1
+urban_321,Sample 7_UrbanPopgen_Plate19_7-10-23_data.csv,Pseu,Miami reef,Emerald Reef,23-Jun,Summer,Wet,8.5,0,0.003263226,0.001026202,0.995710572,D,BC,1
+urban_322 cc5,Sample 8_UrbanPopgen_Plate19_7-10-23_data.csv,Pseu,Miami reef,Emerald Reef,23-Jun,Summer,Wet,8.5,0,0.996287002,0.000547604,0.003165394,B,CD,1
+urban_323 cc5,Sample 9_UrbanPopgen_Plate19_7-10-23_data.csv,Pseu,Miami reef,Emerald Reef,23-Jun,Summer,Wet,8.5,0,0.999966261,3.37394E-05,0,B,C,1
+urban_324,Sample 10_UrbanPopgen_Plate19_7-10-23_data.csv,Pseu,Miami reef,Emerald Reef,23-Jun,Summer,Wet,7.9,0,0.007669588,0.006661623,0.985668789,D,BC,1
+urban_325 cc5,Sample 11_UrbanPopgen_Plate19_7-10-23_data.csv,Pseu,Miami reef,Emerald Reef,23-Jun,Summer,Wet,6.4,0,0.999190016,0.000809984,0,B,C,1
+nmfs_006,Sample 12_UrbanPopgen_Plate19_7-10-23_data.csv,Pseu,Miami reef,Rainbow Reef,21-Jan,Winter,Dry,5.5,0,1,0,0,B,,1
+nmfs_007,Sample 1_UrbanPopgen_Plate20_7-10-23_data.csv,Pseu,Miami reef,Rainbow Reef,21-Jan,Winter,Dry,6.4,0,0.998507933,0,0.001492067,B,D,1
+nmfs_008,Sample 2_UrbanPopgen_Plate20_7-10-23_data.csv,Pseu,Miami reef,Rainbow Reef,21-Jan,Winter,Dry,7,0,1,0,0,B,,1
+nmfs_009,Sample 3_UrbanPopgen_Plate20_7-10-23_data.csv,Pseu,Miami reef,Rainbow Reef,21-Jan,Winter,Dry,7,0,1,0,0,B,,1
+nmfs_010,Sample 4_UrbanPopgen_Plate20_7-10-23_data.csv,Pseu,Miami reef,Rainbow Reef,21-Jan,Winter,Dry,7.6,0,0.999624081,0,0.000375919,B,D,1
+OS11 cc5,Sample 5_UrbanPopgen_Plate20_7-10-23_data.csv,Pseu,Miami reef,Rainbow Reef,22-Jun,Summer,Wet,7.9,0,1,0,0,B,,1
+OS12 rex2,Sample 6_UrbanPopgen_Plate20_7-10-23_data.csv,Pseu,Miami reef,Rainbow Reef,22-Jun,Summer,Wet,8.2,0,0.006110015,0,0.993889985,D,B,1
+OS13 rex,Sample 7_UrbanPopgen_Plate20_7-10-23_data.csv,Pseu,Miami reef,Rainbow Reef,22-Jun,Summer,Wet,8.5,0,0.002720741,0,0.997279259,D,B,1
+OS14 rex,Sample 8_UrbanPopgen_Plate20_7-10-23_data.csv,Pseu,Miami reef,Rainbow Reef,22-Jun,Summer,Wet,8.8,0,1,0,0,B,,1
+OS15 rex,Sample 9_UrbanPopgen_Plate20_7-10-23_data.csv,Pseu,Miami reef,Rainbow Reef,22-Jun,Summer,Wet,8.2,0,0.002156079,0.000260263,0.997583658,D,BC,1
+OS16 rex,Sample 10_UrbanPopgen_Plate20_7-10-23_data.csv,Pseu,Miami reef,Rainbow Reef,22-Jun,Summer,Wet,7,0,0,0,0,,,0
+OS17 rex,Sample 11_UrbanPopgen_Plate20_7-10-23_data.csv,Pseu,Miami reef,Rainbow Reef,22-Jun,Summer,Wet,6.7,0,1,0,0,B,,1
+OS18 rex,Sample 1_UrbanPopgen_Plate21_7-10-23_data.csv,Pseu,Miami reef,Rainbow Reef,22-Jun,Summer,Wet,6.7,0,1,0,0,B,,1
+OS19 rex2,Sample 2_UrbanPopgen_Plate21_7-10-23_data.csv,Pseu,Miami reef,Rainbow Reef,22-Jun,Summer,Wet,6.7,0,1,0,0,B,,1
+OS20 rex,Sample 3_UrbanPopgen_Plate21_7-10-23_data.csv,Pseu,Miami reef,Rainbow Reef,22-Jun,Summer,Wet,6.1,0,0.999985086,1.49136E-05,0,B,C,1
+urban_092,Sample 4_UrbanPopgen_Plate21_7-10-23_data.csv,Pseu,Miami reef,Rainbow Reef,22-Oct,Fall,Wet,8.5,0,0,0,1,D,,1
+urban_103,Sample 5_UrbanPopgen_Plate21_7-10-23_data.csv,Pseu,Miami reef,Rainbow Reef,22-Oct,Fall,Wet,8.5,0,1,0,0,B,,1
+urban_107,Sample 6_UrbanPopgen_Plate21_7-10-23_data.csv,Pseu,Miami reef,Rainbow Reef,22-Oct,Fall,Wet,5.5,0,0.002858999,0,0.997141001,D,B,1
+urban_108,Sample 7_UrbanPopgen_Plate21_7-10-23_data.csv,Pseu,Miami reef,Rainbow Reef,22-Oct,Fall,Wet,5.5,0,0,0,1,D,,1
+urban_109,Sample 8_UrbanPopgen_Plate21_7-10-23_data.csv,Pseu,Miami reef,Rainbow Reef,22-Oct,Fall,Wet,6.7,0,0.999357799,0,0.000642201,B,D,1
+urban_110,Sample 9_UrbanPopgen_Plate21_7-10-23_data.csv,Pseu,Miami reef,Rainbow Reef,22-Oct,Fall,Wet,6.1,0,0.998726527,0.000777181,0.000496292,B,CD,1
+urban_111,Sample 10_UrbanPopgen_Plate21_7-10-23_data.csv,Pseu,Miami reef,Rainbow Reef,22-Oct,Fall,Wet,6.1,0,1,0,0,B,,1
+urban_311,Sample 11_UrbanPopgen_Plate21_7-10-23_data.csv,Pseu,Miami reef,Rainbow Reef,23-Jun,Summer,Wet,4.6,0,0.999991712,8.28762E-06,0,B,C,1
+urban_312,Sample 12_UrbanPopgen_Plate21_7-10-23_data.csv,Pseu,Miami reef,Rainbow Reef,23-Jun,Summer,Wet,4.6,0,0.886491131,0,0.113508869,B,,1
+urban_315,Sample 1_UrbanPopgen_Plate22_7-10-23_data.csv,Pseu,Miami reef,Rainbow Reef,23-Jun,Summer,Wet,1.8,0,1,0,0,B,,1
+urban_317,Sample 2_UrbanPopgen_Plate22_7-10-23_data.csv,Pseu,Miami reef,Rainbow Reef,23-Jun,Summer,Wet,5.5,0,0.042473644,0.00042541,0.957100946,D,BC,1
+urban_319,Sample 3_UrbanPopgen_Plate22_7-10-23_data.csv,Pseu,Miami reef,Rainbow Reef,23-Jun,Summer,Wet,4.9,0,1,0,0,B,,1
+urban_211,Sample 4_UrbanPopgen_Plate22_7-10-23_data.csv,Pseu,Miami urban,Belle Isle,23-Apr,Spring,Dry,0.3,0,0,0,1,D,,1
+urban_212,Sample 5_UrbanPopgen_Plate22_7-10-23_data.csv,Pseu,Miami urban,Belle Isle,23-Apr,Spring,Dry,0.9,0,0.024805783,0,0.975194217,D,B,1
+urban_215,Sample 6_UrbanPopgen_Plate22_7-10-23_data.csv,Pseu,Miami urban,Belle Isle,23-Apr,Spring,Dry,0.6,0,0,0,1,D,,1
+urban_216,Sample 7_UrbanPopgen_Plate22_7-10-23_data.csv,Pseu,Miami urban,Belle Isle,23-Apr,Spring,Dry,0.3,0,0,0,1,D,,1
+urban_217,Sample 8_UrbanPopgen_Plate22_7-10-23_data.csv,Pseu,Miami urban,Belle Isle,23-Apr,Spring,Dry,0.6,0,0,0,1,D,,1
+urban_218,Sample 9_UrbanPopgen_Plate22_7-10-23_data.csv,Pseu,Miami urban,Belle Isle,23-Apr,Spring,Dry,0.9,0,0,0,1,D,,1
+urban_219,Sample 10_UrbanPopgen_Plate22_7-10-23_data.csv,Pseu,Miami urban,Belle Isle,23-Apr,Spring,Dry,0.6,0,0.02870978,0,0.97129022,D,B,1
+urban_220,Sample 11_UrbanPopgen_Plate22_7-10-23_data.csv,Pseu,Miami urban,Belle Isle,23-Apr,Spring,Dry,0.9,0,0.010025397,0,0.989974603,D,B,1
+urban_221,Sample 1_UrbanPopgen_Plate23_7-11-23_data.csv,Pseu,Miami urban,Belle Isle,23-Apr,Spring,Dry,0.3,0,0.127300065,0,0.872699935,D,,1
+urban_223,Sample 2_UrbanPopgen_Plate23_7-11-23_data.csv,Pseu,Miami urban,Belle Isle,23-Apr,Spring,Dry,0.6,0,0.002383829,0,0.997616171,D,B,1
+urban_225,Sample 3_UrbanPopgen_Plate23_7-11-23_data.csv,Pseu,Miami urban,Belle Isle,23-Apr,Spring,Dry,0.6,0,0.001360901,0,0.998639099,D,B,1
+urban_227,Sample 4_UrbanPopgen_Plate23_7-11-23_data.csv,Pseu,Miami urban,Belle Isle,23-Apr,Spring,Dry,0.9,0,0,0,1,D,,1
+urban_228,Sample 5_UrbanPopgen_Plate23_7-11-23_data.csv,Pseu,Miami urban,Belle Isle,23-Apr,Spring,Dry,0.6,0,0,0,1,D,,1
+urban_229,Sample 6_UrbanPopgen_Plate23_7-11-23_data.csv,Pseu,Miami urban,Belle Isle,23-Apr,Spring,Dry,0.6,0,0,0,1,D,,1
+urban_230,Sample 7_UrbanPopgen_Plate23_7-11-23_data.csv,Pseu,Miami urban,Belle Isle,23-Apr,Spring,Dry,0.3,0,0,0,1,D,,1
+urban_232,Sample 8_UrbanPopgen_Plate23_7-11-23_data.csv,Pseu,Miami urban,Belle Isle,23-Apr,Spring,Dry,1.2,0,0,0,1,D,,1
+urban_233,Sample 9_UrbanPopgen_Plate23_7-11-23_data.csv,Pseu,Miami urban,Belle Isle,23-Apr,Spring,Dry,1.4,0,0.008995508,0,0.991004492,D,B,1
+urban_234,Sample 10_UrbanPopgen_Plate23_7-11-23_data.csv,Pseu,Miami urban,Belle Isle,23-Apr,Spring,Dry,1,0,0.038171478,0,0.961828522,D,B,1
+urban_235,Sample 11_UrbanPopgen_Plate23_7-11-23_data.csv,Pseu,Miami urban,Belle Isle,23-Apr,Spring,Dry,0.7,0,0,0,1,D,,1
+urban_236,Sample 12_UrbanPopgen_Plate23_7-11-23_data.csv,Pseu,Miami urban,Belle Isle,23-Apr,Spring,Dry,0.5,0,0,5.41838E-05,0.999945816,D,C,1
+urban_237,Sample 1_UrbanPopgen_Plate24_7-11-23_data.csv,Pseu,Miami urban,Belle Isle,23-Apr,Spring,Dry,0.8,0,0,0,1,D,,1
+urban_238,Sample 2_UrbanPopgen_Plate24_7-11-23_data.csv,Pseu,Miami urban,Belle Isle,23-Apr,Spring,Dry,1.1,0,0.00556337,0,0.99443663,D,B,1
+urban_239,Sample 3_UrbanPopgen_Plate24_7-11-23_data.csv,Pseu,Miami urban,Belle Isle,23-Apr,Spring,Dry,1.1,0,0.016738145,0,0.983261855,D,B,1
+urban_241,Sample 4_UrbanPopgen_Plate24_7-11-23_data.csv,Pseu,Miami urban,Belle Isle,23-Apr,Spring,Dry,1.1,0,0.011666885,0,0.988333115,D,B,1
+urban_242,Sample 5_UrbanPopgen_Plate24_7-11-23_data.csv,Pseu,Miami urban,Belle Isle,23-Apr,Spring,Dry,0.8,0,0.082584257,0,0.917415743,D,B,1
+urban_244,Sample 6_UrbanPopgen_Plate24_7-11-23_data.csv,Pseu,Miami urban,Belle Isle,23-Apr,Spring,Dry,0.8,0,0,0,1,D,,1
+nmfs_026,Sample 7_UrbanPopgen_Plate24_7-11-23_data.csv,Pseu,Miami urban,MacArthur North,21-Jan,Winter,Dry,0.9,0,0,2.53034E-05,0.999974697,D,C,1
+nmfs_027,Sample 8_UrbanPopgen_Plate24_7-11-23_data.csv,Pseu,Miami urban,MacArthur North,21-Jan,Winter,Dry,0.9,0,0,0,1,D,,1
+nmfs_028,Sample 9_UrbanPopgen_Plate24_7-11-23_data.csv,Pseu,Miami urban,MacArthur North,21-Jan,Winter,Dry,1.2,0,0,0,1,D,,1
+nmfs_029,Sample 10_UrbanPopgen_Plate24_7-11-23_data.csv,Pseu,Miami urban,MacArthur North,21-Jan,Winter,Dry,0.9,0,0,0,1,D,,1
+nmfs_030,Sample 11_UrbanPopgen_Plate24_7-11-23_data.csv,Pseu,Miami urban,MacArthur North,21-Jan,Winter,Dry,0.9,0,0,0,1,D,,1
+UR1 rex2,Sample 1_UrbanPopgen_Plate25_7-11-23_data.csv,Pseu,Miami urban,MacArthur North,22-Jun,Summer,Wet,0.6,0,0,0,1,D,,1
+UR10 rex,Sample 2_UrbanPopgen_Plate25_7-11-23_data.csv,Pseu,Miami urban,MacArthur North,22-Jun,Summer,Wet,0.3,0,0,6.36844E-05,0.999936316,D,C,1
+UR11 rex,Sample 3_UrbanPopgen_Plate25_7-11-23_data.csv,Pseu,Miami urban,MacArthur North,22-Jun,Summer,Wet,0.3,0,0,0,1,D,,1
+UR12 cc5,Sample 4_UrbanPopgen_Plate25_7-11-23_data.csv,Pseu,Miami urban,MacArthur North,22-Jun,Summer,Wet,0.3,0,0,0,1,D,,1
+UR13 cc5,Sample 5_UrbanPopgen_Plate25_7-11-23_data.csv,Pseu,Miami urban,MacArthur North,22-Jun,Summer,Wet,0.3,0,0.00223988,0,0.99776012,D,B,1
+UR14 rex2,Sample 6_UrbanPopgen_Plate25_7-11-23_data.csv,Pseu,Miami urban,MacArthur North,22-Jun,Summer,Wet,0.3,0,0,0,1,D,,1
+UR15 rex,Sample 7_UrbanPopgen_Plate25_7-11-23_data.csv,Pseu,Miami urban,MacArthur North,22-Jun,Summer,Wet,0.3,0,0,0,1,D,,1
+UR16 rex2,Sample 8_UrbanPopgen_Plate25_7-11-23_data.csv,Pseu,Miami urban,MacArthur North,22-Jun,Summer,Wet,0.3,0,0,0,0,,,0
+UR17 rex,Sample 9_UrbanPopgen_Plate25_7-11-23_data.csv,Pseu,Miami urban,MacArthur North,22-Jun,Summer,Wet,0.6,0,0.999900039,2.62489E-05,7.3712E-05,B,CD,1
+UR18 rex2,Sample 10_UrbanPopgen_Plate25_7-11-23_data.csv,Pseu,Miami urban,MacArthur North,22-Jun,Summer,Wet,0.6,0,0,0,1,D,,1
+UR19 rex,Sample 11_UrbanPopgen_Plate25_7-11-23_data.csv,Pseu,Miami urban,MacArthur North,22-Jun,Summer,Wet,0.3,0,0.005860781,0,0.994139219,D,B,1
+UR2 rex,Sample 12_UrbanPopgen_Plate25_7-11-23_data.csv,Pseu,Miami urban,MacArthur North,22-Jun,Summer,Wet,0.3,0,0.998691453,0.000219178,0.001089369,B,CD,1
+UR20,Sample 1_UrbanPopgen_Plate26_7-11-23_data.csv,Pseu,Miami urban,MacArthur North,22-Jun,Summer,Wet,0.3,0,0.004803192,0,0.995196808,D,B,1
+UR3 rex,Sample 2_UrbanPopgen_Plate26_7-11-23_data.csv,Pseu,Miami urban,MacArthur North,22-Jun,Summer,Wet,0.3,0,0.999958426,0,4.15739E-05,B,D,1
+UR4 rex,Sample 3_UrbanPopgen_Plate26_7-11-23_data.csv,Pseu,Miami urban,MacArthur North,22-Jun,Summer,Wet,0.6,0,0,0,1,D,,1
+UR5 cc5,Sample 4_UrbanPopgen_Plate26_7-11-23_data.csv,Pseu,Miami urban,MacArthur North,22-Jun,Summer,Wet,0.3,0,0,0,1,D,,1
+UR6 rex,Sample 5_UrbanPopgen_Plate26_7-11-23_data.csv,Pseu,Miami urban,MacArthur North,22-Jun,Summer,Wet,0.3,0,0,0,1,D,,1
+UR7 rex,Sample 6_UrbanPopgen_Plate26_7-11-23_data.csv,Pseu,Miami urban,MacArthur North,22-Jun,Summer,Wet,0.3,0,0,0,1,D,,1
+UR8 rex,Sample 7_UrbanPopgen_Plate26_7-11-23_data.csv,Pseu,Miami urban,MacArthur North,22-Jun,Summer,Wet,0.6,0,0,0,1,D,,1
+UR9 rex,Sample 8_UrbanPopgen_Plate26_7-11-23_data.csv,Pseu,Miami urban,MacArthur North,22-Jun,Summer,Wet,0.6,0,0.003154044,0,0.996845956,D,B,1
+urban_116,Sample 9_UrbanPopgen_Plate26_7-11-23_data.csv,Pseu,Miami urban,MacArthur North,22-Oct,Fall,Wet,0.9,0,0,0,1,D,,1
+urban_120,Sample 10_UrbanPopgen_Plate26_7-11-23_data.csv,Pseu,Miami urban,MacArthur North,22-Oct,Fall,Wet,0.9,0,0.999414251,0,0.000585749,B,D,1
+urban_123,Sample 11_UrbanPopgen_Plate26_7-11-23_data.csv,Pseu,Miami urban,MacArthur North,22-Oct,Fall,Wet,0.9,0,0,0,1,D,,1
+urban_124,Sample 1_UrbanPopgen_Plate27_7-13-23_data.csv,Pseu,Miami urban,MacArthur North,22-Oct,Fall,Wet,0.9,0,0.007387246,0,0.992612754,D,B,1
+urban_125,Sample 2_UrbanPopgen_Plate27_7-13-23_data.csv,Pseu,Miami urban,MacArthur North,22-Oct,Fall,Wet,0.9,0,0.003764938,0.000145995,0.996089067,D,BC,1
+urban_126,Sample 3_UrbanPopgen_Plate27_7-13-23_data.csv,Pseu,Miami urban,MacArthur North,22-Oct,Fall,Wet,0.9,0,0.998287218,0.000311381,0.001401401,B,CD,1
+urban_127,Sample 4_UrbanPopgen_Plate27_7-13-23_data.csv,Pseu,Miami urban,MacArthur North,22-Oct,Fall,Wet,0.9,0,0,0,1,D,,1
+urban_129,Sample 5_UrbanPopgen_Plate27_7-13-23_data.csv,Pseu,Miami urban,MacArthur North,22-Oct,Fall,Wet,0.9,0,0.996966648,0,0.003033352,B,D,1
+urban_181,Sample 6_UrbanPopgen_Plate27_7-13-23_data.csv,Pseu,Miami urban,MacArthur North,23-Jan,Winter,Dry,1.2,0,0.999815708,0.000184292,0,B,C,1
+urban_183,Sample 7_UrbanPopgen_Plate27_7-13-23_data.csv,Pseu,Miami urban,MacArthur North,23-Jan,Winter,Dry,1.2,0,0.995060516,0.004939484,0,B,C,1
+urban_185,Sample 8_UrbanPopgen_Plate27_7-13-23_data.csv,Pseu,Miami urban,MacArthur North,23-Jan,Winter,Dry,1.1,0,0.999890167,8.48818E-06,0.000101345,B,CD,1
+urban_186,Sample 9_UrbanPopgen_Plate27_7-13-23_data.csv,Pseu,Miami urban,MacArthur North,23-Jan,Winter,Dry,1.1,0,0.999879734,0.000120266,0,B,C,1
+urban_187,Sample 10_UrbanPopgen_Plate27_7-13-23_data.csv,Pseu,Miami urban,MacArthur North,23-Jan,Winter,Dry,1.1,0,0.011970209,0,0.988029791,D,B,1
+urban_188,Sample 11_UrbanPopgen_Plate27_7-13-23_data.csv,Pseu,Miami urban,MacArthur North,23-Jan,Winter,Dry,1.1,0,0.999843083,0,0.000156917,B,D,1
+UR21,Sample 12_UrbanPopgen_Plate27_7-13-23_data.csv,Pseu,Miami urban,Star Island,22-Jun,Summer,Wet,1.5,0,0.021669008,0,0.978330992,D,B,1
+UR22 rex2,Sample 1_UrbanPopgen_Plate28_7-13-23_data.csv,Pseu,Miami urban,Star Island,22-Jun,Summer,Wet,1.2,0,0.120827762,0,0.879172238,D,,1
+UR23 rex2,Sample 2_UrbanPopgen_Plate28_7-13-23_data.csv,Pseu,Miami urban,Star Island,22-Jun,Summer,Wet,0.9,0,1,0,0,B,,1
+UR24,Sample 3_UrbanPopgen_Plate28_7-13-23_data.csv,Pseu,Miami urban,Star Island,22-Jun,Summer,Wet,0.6,0,0.999265075,0,0.000734925,B,D,1
+UR25 rex,Sample 4_UrbanPopgen_Plate28_7-13-23_data.csv,Pseu,Miami urban,Star Island,22-Jun,Summer,Wet,0.3,0,0.999995138,4.86151E-06,0,B,C,1
+UR26 rex2,Sample 5_UrbanPopgen_Plate28_7-13-23_data.csv,Pseu,Miami urban,Star Island,22-Jun,Summer,Wet,1.2,0,0,0,1,D,,1
+UR27 rex,Sample 6_UrbanPopgen_Plate28_7-13-23_data.csv,Pseu,Miami urban,Star Island,22-Jun,Summer,Wet,1.2,0,0.000784944,0,0.999215056,D,B,1
+UR28 rex,Sample 7_UrbanPopgen_Plate28_7-13-23_data.csv,Pseu,Miami urban,Star Island,22-Jun,Summer,Wet,1.5,0,0.198145293,0,0.801854707,D,,1
+UR29,Sample 8_UrbanPopgen_Plate28_7-13-23_data.csv,Pseu,Miami urban,Star Island,22-Jun,Summer,Wet,0.9,0,0,0,1,D,,1
+UR30,Sample 9_UrbanPopgen_Plate28_7-13-23_data.csv,Pseu,Miami urban,Star Island,22-Jun,Summer,Wet,1.2,0,0,0,1,D,,1
+urban_003,Sample 10_UrbanPopgen_Plate28_7-13-23_data.csv,Pseu,Miami urban,Star Island,22-Jul,Summer,Wet,2.4,0,0.999786304,0.000111549,0.000102147,B,CD,1
+urban_004,Sample 11_UrbanPopgen_Plate28_7-13-23_data.csv,Pseu,Miami urban,Star Island,22-Jul,Summer,Wet,2.4,0,0.136490106,0.000795309,0.862714585,D,C,1
+urban_007,Sample 1_UrbanPopgen_Plate29_7-13-23_data.csv,Pseu,Miami urban,Star Island,22-Jul,Summer,Wet,2.4,0,1,0,0,B,,1
+urban_008,Sample 2_UrbanPopgen_Plate29_7-13-23_data.csv,Pseu,Miami urban,Star Island,22-Jul,Summer,Wet,2.4,0,0.974286685,0,0.025713315,B,D,1
+urban_011,Sample 3_UrbanPopgen_Plate29_7-13-23_data.csv,Pseu,Miami urban,Star Island,22-Jul,Summer,Wet,2.4,0,0.997285868,1.80426E-05,0.002696089,B,CD,1
+urban_014,Sample 4_UrbanPopgen_Plate29_7-13-23_data.csv,Pseu,Miami urban,Star Island,22-Jul,Summer,Wet,2.4,0,0.999325246,0,0.000674754,B,D,1
+urban_018,Sample 5_UrbanPopgen_Plate29_7-13-23_data.csv,Pseu,Miami urban,Star Island,22-Jul,Summer,Wet,2.4,0,0,0.000389512,0.999610488,D,C,1
+urban_022,Sample 6_UrbanPopgen_Plate29_7-13-23_data.csv,Pseu,Miami urban,Star Island,22-Jul,Summer,Wet,2.4,0,0.996213822,0,0.003786178,B,D,1
+urban_023,Sample 7_UrbanPopgen_Plate29_7-13-23_data.csv,Pseu,Miami urban,Star Island,22-Jul,Summer,Wet,2.4,0,0.959208083,0.001328574,0.039463343,B,CD,1
+urban_026,Sample 8_UrbanPopgen_Plate29_7-13-23_data.csv,Pseu,Miami urban,Star Island,22-Jul,Summer,Wet,2.4,0,0.009417726,0,0.990582274,D,B,1
+urban_027,Sample 9_UrbanPopgen_Plate29_7-13-23_data.csv,Pseu,Miami urban,Star Island,22-Jul,Summer,Wet,2.4,0,0.993500546,0,0.006499454,B,D,1
+urban_029,Sample 10_UrbanPopgen_Plate29_7-13-23_data.csv,Pseu,Miami urban,Star Island,22-Jul,Summer,Wet,2.4,0,0,0,1,D,,1
+urban_032,Sample 11_UrbanPopgen_Plate29_7-13-23_data.csv,Pseu,Miami urban,Star Island,22-Jul,Summer,Wet,2.4,0,1,0,0,B,,1
+urban_033,Sample 12_UrbanPopgen_Plate29_7-13-23_data.csv,Pseu,Miami urban,Star Island,22-Jul,Summer,Wet,2.4,0,0.999159828,0.000840172,0,B,C,1
+urban_034,Sample 1_UrbanPopgen_Plate30_7-13-23_data.csv,Pseu,Miami urban,Star Island,22-Jul,Summer,Wet,2.4,0,0.003440594,0,0.996559406,D,B,1
+urban_035,Sample 2_UrbanPopgen_Plate30_7-13-23_data.csv,Pseu,Miami urban,Star Island,22-Jul,Summer,Wet,2.4,0,0.298603277,0,0.701396723,D,,1
+urban_036,Sample 3_UrbanPopgen_Plate30_7-13-23_data.csv,Pseu,Miami urban,Star Island,22-Jul,Summer,Wet,2.4,0,0.999903507,9.6493E-05,0,B,C,1
+urban_037,Sample 4_UrbanPopgen_Plate30_7-13-23_data.csv,Pseu,Miami urban,Star Island,22-Jul,Summer,Wet,2.4,0,0.994265101,2.10932E-05,0.005713806,B,CD,1
+urban_038,Sample 5_UrbanPopgen_Plate30_7-13-23_data.csv,Pseu,Miami urban,Star Island,22-Jul,Summer,Wet,2.4,0,1,0,0,B,,1
+urban_039,Sample 6_UrbanPopgen_Plate30_7-13-23_data.csv,Pseu,Miami urban,Star Island,22-Jul,Summer,Wet,2.4,0,0.997706417,0,0.002293583,B,D,1
+urban_040,Sample 7_UrbanPopgen_Plate30_7-13-23_data.csv,Pseu,Miami urban,Star Island,22-Jul,Summer,Wet,2.4,0,1,0,0,B,,1
+P1,Sample 8_UrbanPopgen_Plate30_7-13-23_data.csv,Pseu,Miami urban,Star Island,22-Oct,Fall,Wet,2.4,0,0.997226418,0.000407525,0.002366057,B,CD,1
+urban_139,Sample 9_UrbanPopgen_Plate30_7-13-23_data.csv,Pseu,Miami urban,Star Island,22-Oct,Fall,Wet,2.4,0,0,0,1,D,,1
+urban_148 rex,Sample 10_UrbanPopgen_Plate30_7-13-23_data.csv,Pseu,Miami urban,Star Island,22-Oct,Fall,Wet,2.4,0,0.995360194,2.2414E-05,0.004617392,B,CD,1
+urban_152,Sample 11_UrbanPopgen_Plate30_7-13-23_data.csv,Pseu,Miami urban,Star Island,22-Oct,Fall,Wet,2.4,0,0.118961427,0,0.881038573,D,,1
+urban_155,Sample 1_UrbanPopgen_Plate31_7-13-23_data.csv,Pseu,Miami urban,Star Island,22-Oct,Fall,Wet,2.4,0,0.018011461,0,0.981988539,D,B,1
+urban_161 rex,Sample 2_UrbanPopgen_Plate31_7-13-23_data.csv,Pseu,Miami urban,Star Island,22-Oct,Fall,Wet,2.4,0,0.003600125,0,0.996399875,D,B,1
+urban_193,Sample 3_UrbanPopgen_Plate31_7-13-23_data.csv,Mcav,Miami urban,MacArthur North,23-Jan,Winter,Dry,1.1,0,0,0,1,D,,1
+urban_209,Sample 4_UrbanPopgen_Plate31_7-13-23_data.csv,Mcav,Miami urban,MacArthur North,23-Jan,Winter,Dry,1.1,0,0,0,1,D,,1
+urban_210,Sample 5_UrbanPopgen_Plate31_7-13-23_data.csv,Mcav,Miami urban,MacArthur North,23-Jan,Winter,Dry,1.1,0,0,0,1,D,,1
+urban_012,Sample 6_UrbanPopgen_Plate31_7-13-23_data.csv,Mcav,Miami urban,Star Island,22-Jul,Summer,Wet,2.4,0,0,0,1,D,,1
+urban_072,Sample 7_UrbanPopgen_Plate31_7-13-23_data.csv,Mcav,Miami urban,Star Island,22-Sep,Fall,Wet,5,0,0,1.93316E-05,0.999980668,D,C,1
+urban_073,Sample 8_UrbanPopgen_Plate31_7-13-23_data.csv,Mcav,Miami urban,Star Island,22-Sep,Fall,Wet,5,0,0,1.46658E-05,0.999985334,D,C,1
+urban_075,Sample 9_UrbanPopgen_Plate31_7-13-23_data.csv,Mcav,Miami urban,Star Island,22-Sep,Fall,Wet,5,0,0,6.65437E-05,0.999933456,D,C,1
+M2,Sample 10_UrbanPopgen_Plate31_7-13-23_data.csv,Mcav,Miami urban,Star Island,22-Oct,Fall,Wet,2.4,0,0,0,1,D,,1
+urban_097,Sample 11_UrbanPopgen_Plate31_7-13-23_data.csv,Ofav,Miami reef,Rainbow Reef,22-Oct,Fall,Wet,7.6,0,0.045025349,0.002134649,0.952840002,D,BC,1
+OS16 rex,Sample 12_UrbanPopgen_Plate31_7-13-23_data.csv,Pseu,Miami reef,Rainbow Reef,22-Jun,Summer,Wet,7,0,1,0,0,B,,1
+urban_087,Sample 1_UrbanPopgen_Plate32_7-13-23_data.csv,Ofav,Miami reef,Emerald Reef,22-Oct,Fall,Wet,7,0,0.423622756,0,0.576377244,D,,1
+urban_088,Sample 2_UrbanPopgen_Plate32_7-13-23_data.csv,Ofav,Miami reef,Emerald Reef,22-Oct,Fall,Wet,7.3,0,1,0,0,B,,1
+urban_089,Sample 3_UrbanPopgen_Plate32_7-13-23_data.csv,Ofav,Miami reef,Emerald Reef,22-Oct,Fall,Wet,7.3,0,0.986822211,0.00026544,0.012912349,B,CD,1
+urban_158b,Sample 4_UrbanPopgen_Plate32_7-13-23_data.csv,Ofav,Miami reef,Emerald Reef,23-Jan,Winter,Dry,7.3,0,0.539746586,0.00011848,0.460134934,B,C,1
+urban_159b,Sample 5_UrbanPopgen_Plate32_7-13-23_data.csv,Ofav,Miami reef,Emerald Reef,23-Jan,Winter,Dry,7.3,0,0.998017591,0,0.001982409,B,D,1
+urban_161b,Sample 6_UrbanPopgen_Plate32_7-13-23_data.csv,Ofav,Miami reef,Emerald Reef,23-Jan,Winter,Dry,7.3,0,0.092101492,0,0.907898508,D,B,1
+urban_163b,Sample 7_UrbanPopgen_Plate32_7-13-23_data.csv,Ofav,Miami reef,Emerald Reef,23-Jan,Winter,Dry,7.3,0,0.01492394,2.77961E-05,0.985048264,D,BC,1
+urban_166,Sample 8_UrbanPopgen_Plate32_7-13-23_data.csv,Ofav,Miami reef,Emerald Reef,23-Jan,Winter,Dry,7.5,0,1,0,0,B,,1
+nmfs_001 cc5,Sample 9_UrbanPopgen_Plate32_7-13-23_data.csv,Ofav,Miami reef,Rainbow Reef,21-Jan,Winter,Dry,7,0,0.128746704,0,0.871253296,D,,1
+nmfs_002,Sample 10_UrbanPopgen_Plate32_7-13-23_data.csv,Ofav,Miami reef,Rainbow Reef,21-Jan,Winter,Dry,6.7,0,0.755616249,0,0.244383751,B,,1
+nmfs_003,Sample 11_UrbanPopgen_Plate32_7-13-23_data.csv,Ofav,Miami reef,Rainbow Reef,21-Jan,Winter,Dry,6.4,0,0.248986965,0.493390433,0.257622602,,,1
+nmfs_004,Sample 12_UrbanPopgen_Plate32_7-13-23_data.csv,Ofav,Miami reef,Rainbow Reef,21-Jan,Winter,Dry,7,0,0.479358579,0,0.520641421,D,,1
+OS3 rex2,Sample 1_UrbanPopgen_Plate33_7-17-23_data.csv,Dlab,Miami reef,Emerald Reef,22-Jun,Summer,Wet,9.1,0,1,0,0,B,,1
+OS4 rex2,Sample 2_UrbanPopgen_Plate33_7-17-23_data.csv,Dlab,Miami reef,Emerald Reef,22-Jun,Summer,Wet,9.1,0,0,0.000450168,0.999549832,D,C,1
+urban_326,Sample 3_UrbanPopgen_Plate33_7-17-23_data.csv,Dlab,Miami reef,Emerald Reef,23-Jun,Summer,Wet,8.2,0,0,0.933952229,0.066047771,C,D,1
+urban_307,Sample 4_UrbanPopgen_Plate33_7-17-23_data.csv,Dlab,Miami reef,Rainbow Reef,23-Jun,Summer,Wet,6.1,0,0,0.15729101,0.84270899,D,,1
+urban_308,Sample 5_UrbanPopgen_Plate33_7-17-23_data.csv,Dlab,Miami reef,Rainbow Reef,23-Jun,Summer,Wet,6.1,0,0.890760805,0,0.109239195,B,,1
+urban_309,Sample 6_UrbanPopgen_Plate33_7-17-23_data.csv,Dlab,Miami reef,Rainbow Reef,23-Jun,Summer,Wet,4.9,0,1,0,0,B,,1
+urban_310,Sample 7_UrbanPopgen_Plate33_7-17-23_data.csv,Dlab,Miami reef,Rainbow Reef,23-Jun,Summer,Wet,4.9,0,0.999453658,0.000546342,0,B,C,1
+urban_318,Sample 8_UrbanPopgen_Plate33_7-17-23_data.csv,Dlab,Miami reef,Rainbow Reef,23-Jun,Summer,Wet,5.5,0,0,0.00040211,0.99959789,D,C,1
+urban_320,Sample 9_UrbanPopgen_Plate33_7-17-23_data.csv,Dlab,Miami reef,Rainbow Reef,23-Jun,Summer,Wet,5.8,0,0.096059046,0,0.903940954,D,B,1
+urban_213,Sample 10_UrbanPopgen_Plate33_7-17-23_data.csv,Dlab,Miami urban,Belle Isle,23-Apr,Spring,Dry,0.6,0,0,0,1,D,,1
+urban_214,Sample 11_UrbanPopgen_Plate33_7-17-23_data.csv,Dlab,Miami urban,Belle Isle,23-Apr,Spring,Dry,0.6,0,0,0,1,D,,1
+urban_222,Sample 12_UrbanPopgen_Plate33_7-17-23_data.csv,Dlab,Miami urban,Belle Isle,23-Apr,Spring,Dry,0.6,0,0,0,1,D,,1
+urban_224,Sample 1_UrbanPopgen_Plate34_7-17-23_data.csv,Dlab,Miami urban,Belle Isle,23-Apr,Spring,Dry,0.6,0,0,0,1,D,,1
+urban_226,Sample 2_UrbanPopgen_Plate34_7-17-23_data.csv,Dlab,Miami urban,Belle Isle,23-Apr,Spring,Dry,1.2,0,0,0,1,D,,1
+urban_231,Sample 3_UrbanPopgen_Plate34_7-17-23_data.csv,Dlab,Miami urban,Belle Isle,23-Apr,Spring,Dry,0.3,0,0,0,1,D,,1
+urban_240,Sample 4_UrbanPopgen_Plate34_7-17-23_data.csv,Dlab,Miami urban,Belle Isle,23-Apr,Spring,Dry,1.1,0,0,0,1,D,,1
+urban_243,Sample 5_UrbanPopgen_Plate34_7-17-23_data.csv,Dlab,Miami urban,Belle Isle,23-Apr,Spring,Dry,0.8,0,0,0,1,D,,1
+urban_331,Sample 6_UrbanPopgen_Plate34_7-17-23_data.csv,Dlab,Miami reef,Emerald Reef,23-Jul,Spring,Dry,6.4,0,0,0,1,D,,1
+urban_332,Sample 7_UrbanPopgen_Plate34_7-17-23_data.csv,Dlab,Miami reef,Emerald Reef,23-Jul,Spring,Dry,5.8,0,0,0.978100905,0.021899095,C,D,1
+urban_333,Sample 8_UrbanPopgen_Plate34_7-17-23_data.csv,Dlab,Miami reef,Emerald Reef,23-Jul,Spring,Dry,6.7,0,0,0,1,D,,1
+urban_334,Sample 9_UrbanPopgen_Plate34_7-17-23_data.csv,Dlab,Miami reef,Emerald Reef,23-Jul,Spring,Dry,6.7,0,0,0,1,D,,1
+urban_335,Sample 10_UrbanPopgen_Plate34_7-17-23_data.csv,Dlab,Miami reef,Emerald Reef,23-Jul,Spring,Dry,6.7,0,1,0,0,B,,1
+urban_222,Sample 11_UrbanPopgen_Plate34_7-17-23_data.csv,Dlab,Miami urban,Belle Isle,23-Apr,Spring,Dry,0.6,0,0,0,1,D,,1
+urban_042,Sample 1_UrbanPopgen_Plate39_1-16-24_data.csv,Mcav,Broward reef,FTL4,22-Aug,Summer,Wet,5.5,0,0,1,0,C,,1
+urban_043,Sample 2_UrbanPopgen_Plate39_1-16-24_data.csv,Mcav,Broward reef,FTL4,22-Aug,Summer,Wet,5.5,0,0,1,0,C,,1
+urban_044,Sample 3_UrbanPopgen_Plate39_1-16-24_data.csv,Mcav,Broward reef,FTL4,22-Aug,Summer,Wet,5.5,0,0,1,0,C,,1
+urban_045,Sample 4_UrbanPopgen_Plate39_1-16-24_data.csv,Mcav,Broward reef,FTL4,22-Aug,Summer,Wet,5.5,0,0,1,0,C,,1
+urban_046,Sample 5_UrbanPopgen_Plate39_1-16-24_data.csv,Mcav,Broward reef,FTL4,22-Aug,Summer,Wet,5.8,0,0,1,0,C,,1
+urban_047,Sample 6_UrbanPopgen_Plate39_1-16-24_data.csv,Mcav,Broward reef,FTL4,22-Aug,Summer,Wet,6.1,0,1,0,0,B,,1
+urban_048,Sample 7_UrbanPopgen_Plate39_1-16-24_data.csv,Mcav,Broward reef,FTL4,22-Aug,Summer,Wet,5.8,0,1,0,0,B,,1
+urban_049,Sample 8_UrbanPopgen_Plate39_1-16-24_data.csv,Mcav,Broward reef,FTL4,22-Aug,Summer,Wet,6.1,0,0,0,0,,,0
+urban_050,Sample 9_UrbanPopgen_Plate39_1-16-24_data.csv,Mcav,Broward reef,FTL4,22-Aug,Summer,Wet,6.1,0,0,1,0,C,,1
+urban_051,Sample 10_UrbanPopgen_Plate39_1-16-24_data.csv,Mcav,Broward reef,FTL4,22-Aug,Summer,Wet,5.8,0,0,1,0,C,,1
+urban_055,Sample 11_UrbanPopgen_Plate39_1-16-24_data.csv,Mcav,Broward reef,BC1,22-Aug,Summer,Wet,5.5,0,0.999985036,1.49643E-05,0,B,C,1
+urban_056,Sample 12_UrbanPopgen_Plate39_1-16-24_data.csv,Mcav,Broward reef,BC1,22-Aug,Summer,Wet,5.5,0,0,1,0,C,,1
+urban_058,Sample 1_UrbanPopgen_Plate40_1-16-24_data.csv,Mcav,Broward reef,BC1,22-Aug,Summer,Wet,5.8,0,0.037400249,0.962599751,0,C,B,1
+urban_061,Sample 2_UrbanPopgen_Plate40_1-16-24_data.csv,Mcav,Broward reef,BC1,22-Aug,Summer,Wet,5.5,0,0,0,0,,,0
+urban_062,Sample 3_UrbanPopgen_Plate40_1-16-24_data.csv,Mcav,Broward reef,BC1,22-Aug,Summer,Wet,5.8,0,0,1,0,C,,1
+urban_064,Sample 4_UrbanPopgen_Plate40_1-16-24_data.csv,Mcav,Broward reef,BC1,22-Aug,Summer,Wet,5.8,0,0.051227543,0.948772457,0,C,B,1
+urban_067,Sample 5_UrbanPopgen_Plate40_1-16-24_data.csv,Mcav,Broward reef,BC1,22-Aug,Summer,Wet,6.4,0,0.092807334,0.907192666,0,C,B,1
+urban_071,Sample 6_UrbanPopgen_Plate40_1-16-24_data.csv,Mcav,Broward reef,BC1,22-Aug,Summer,Wet,7.3,0,0.1165378,0.8834622,0,C,,1
+urban_246,Sample 7_UrbanPopgen_Plate40_1-16-24_data.csv,Mcav,Broward reef,BC1,23-Apr,Spring,Dry,6.4,0,0.121131717,0.878868283,0,C,,1
+urban_248,Sample 8_UrbanPopgen_Plate40_1-16-24_data.csv,Mcav,Broward reef,BC1,23-Apr,Spring,Dry,6.4,0,0,1,0,C,,1
+urban_249,Sample 9_UrbanPopgen_Plate40_1-16-24_data.csv,Mcav,Broward reef,BC1,23-Apr,Spring,Dry,6.4,0,0,1,0,C,,1
+urban_250,Sample 10_UrbanPopgen_Plate40_1-16-24_data.csv,Mcav,Broward reef,BC1,23-Apr,Spring,Dry,6.4,0,0,1,0,C,,1
+urban_271,Sample 11_UrbanPopgen_Plate40_1-16-24_data.csv,Mcav,Broward reef,BC1,23-Apr,Spring,Dry,6.4,0,0,0.743603473,0.256396527,C,,1
+urban_272,Sample 12_UrbanPopgen_Plate40_1-16-24_data.csv,Mcav,Broward reef,BC1,23-Apr,Spring,Dry,8.5,0,0,0.58279085,0.41720915,C,,1
+urban_274,Sample 1_UrbanPopgen_Plate41_1-17-24_data.csv,Mcav,Broward reef,BC1,23-Apr,Spring,Dry,7,0,0,0.019998836,0.980001164,D,C,1
+urban_275,Sample 2_UrbanPopgen_Plate41_1-17-24_data.csv,Mcav,Broward reef,BC1,23-Apr,Spring,Dry,7,0,0,0.987725603,0.012274397,C,D,1
+urban_276,Sample 3_UrbanPopgen_Plate41_1-17-24_data.csv,Mcav,Broward reef,BC1,23-May,Spring,Dry,6.4,0,0,1,0,C,,1
+urban_277,Sample 4_UrbanPopgen_Plate41_1-17-24_data.csv,Mcav,Broward reef,BC1,23-May,Spring,Dry,6.4,0,0,1,0,C,,1
+urban_278,Sample 5_UrbanPopgen_Plate41_1-17-24_data.csv,Mcav,Broward reef,BC1,23-May,Spring,Dry,6.4,0,0,0.994991633,0.005008367,C,D,1
+urban_280,Sample 6_UrbanPopgen_Plate41_1-17-24_data.csv,Mcav,Broward reef,BC1,23-May,Spring,Dry,6.4,0,0,1,0,C,,1
+urban_279,Sample 7_UrbanPopgen_Plate41_1-17-24_data.csv,Mcav,Broward reef,BC1,23-May,Spring,Dry,8.2,0,0,1,0,C,,1
+urban_281,Sample 8_UrbanPopgen_Plate41_1-17-24_data.csv,Mcav,Broward reef,BC1,23-May,Spring,Dry,8.2,0,0,1,0,C,,1
+urban_290,Sample 9_UrbanPopgen_Plate41_1-17-24_data.csv,Mcav,Broward reef,T328,23-May,Spring,Dry,5.5,0,0,0.957723824,0.042276176,C,D,1
+urban_291,Sample 10_UrbanPopgen_Plate41_1-17-24_data.csv,Mcav,Broward reef,T328,23-May,Spring,Dry,5.8,0,0,0.981267099,0.018732901,C,D,1
+urban_292,Sample 11_UrbanPopgen_Plate41_1-17-24_data.csv,Mcav,Broward reef,T328,23-May,Spring,Dry,5.8,0,0.041299957,0.338393155,0.620306887,D,B,1
+urban_295,Sample 12_UrbanPopgen_Plate41_1-17-24_data.csv,Mcav,Broward reef,T328,23-May,Spring,Dry,5.5,0,0,0.490371893,0.509628107,,,1
+urban_053,Sample 1_UrbanPopgen_Plate42_1-17-24_data.csv,Ofav,Broward reef,FTL4,22-Aug,Summer,Wet,6.4,0,1,0,0,B,,1
+urban_057,Sample 2_UrbanPopgen_Plate42_1-17-24_data.csv,Ofav,Broward reef,BC1,22-Aug,Summer,Wet,5.5,0,0.977561938,0,0.022438062,B,D,1
+urban_059,Sample 3_UrbanPopgen_Plate42_1-17-24_data.csv,Ofav,Broward reef,BC1,22-Aug,Summer,Wet,5.5,0,0,1,0,C,,1
+urban_060,Sample 4_UrbanPopgen_Plate42_1-17-24_data.csv,Ofav,Broward reef,BC1,22-Aug,Summer,Wet,5.5,0,0.996925434,0,0.003074566,B,D,1
+urban_065,Sample 5_UrbanPopgen_Plate42_1-17-24_data.csv,Ofav,Broward reef,BC1,22-Aug,Summer,Wet,6.1,0,0.997583749,4.9368E-05,0.002366883,B,CD,1
+urban_068,Sample 6_UrbanPopgen_Plate42_1-17-24_data.csv,Ofav,Broward reef,BC1,22-Aug,Summer,Wet,6.1,0,0.986966529,0.000133099,0.012900373,B,CD,1
+urban_069,Sample 7_UrbanPopgen_Plate42_1-17-24_data.csv,Ofav,Broward reef,BC1,22-Aug,Summer,Wet,6.1,0,0.999840865,8.47169E-05,7.4418E-05,B,CD,1
+urban_070,Sample 8_UrbanPopgen_Plate42_1-17-24_data.csv,Ofav,Broward reef,BC1,22-Aug,Summer,Wet,6.1,0,0.995383579,0.000189428,0.004426992,B,CD,1
+urban_245,Sample 9_UrbanPopgen_Plate42_1-17-24_data.csv,Ofav,Broward reef,BC1,23-Apr,Spring,Dry,6.4,0,1,0,0,B,,1
+urban_247,Sample 10_UrbanPopgen_Plate42_1-17-24_data.csv,Ofav,Broward reef,BC1,23-Apr,Spring,Dry,6.4,0,0.082951509,0.019596423,0.897452069,D,BC,1
+urban_282,Sample 11_UrbanPopgen_Plate42_1-17-24_data.csv,Ofav,Broward reef,BC1,23-May,Spring,Dry,7,0,0.999937104,6.28956E-05,0,B,C,1
+urban_063,Sample 1_UrbanPopgen_Plate43_1-18-24_data.csv,Pseu,Broward reef,BC1,22-Aug,Summer,Wet,5.8,0,0,0,1,D,,1
+urban_286,Sample 2_UrbanPopgen_Plate43_1-18-24_data.csv,Pseu,Broward reef,BC1,23-May,Spring,Dry,8.5,0,0,0,1,D,,1
+urban_293,Sample 3_UrbanPopgen_Plate43_1-18-24_data.csv,Pseu,Broward reef,T328,23-May,Spring,Dry,5.5,0,0.999434626,0.000565374,0,B,C,1
+urban_296,Sample 4_UrbanPopgen_Plate43_1-18-24_data.csv,Pseu,Broward reef,T328,23-May,Spring,Dry,5.2,0,0.058385112,0.007808488,0.933806399,D,BC,1
+urban_298,Sample 5_UrbanPopgen_Plate43_1-18-24_data.csv,Pseu,Broward reef,T328,23-May,Spring,Dry,5.2,0,0.999610957,0.000147855,0.000241189,B,CD,1
+urban_301,Sample 6_UrbanPopgen_Plate43_1-18-24_data.csv,Pseu,Broward reef,FTL4,23-May,Spring,Dry,5.8,0,0.999918614,0,8.13865E-05,B,D,1
+urban_302,Sample 7_UrbanPopgen_Plate43_1-18-24_data.csv,Pseu,Broward reef,FTL4,23-May,Spring,Dry,6.4,0,0,0,1,D,,1
+urban_303,Sample 8_UrbanPopgen_Plate43_1-18-24_data.csv,Pseu,Broward reef,FTL4,23-May,Spring,Dry,7,0,0.999743202,0.000256798,0,B,C,1
+urban_304,Sample 9_UrbanPopgen_Plate43_1-18-24_data.csv,Pseu,Broward reef,FTL4,23-May,Spring,Dry,5.5,0,0.999318164,0,0.000681836,B,D,1
+urban_054,Sample 10_UrbanPopgen_Plate43_1-18-24_data.csv,Dlab,Broward reef,FTL4,22-Aug,Summer,Wet,5.2,0,0,0.000178214,0.999821786,D,C,1
+urban_306,Sample 11_UrbanPopgen_Plate43_1-18-24_data.csv,Dlab,Broward reef,FTL4,23-May,Spring,Dry,6.1,0,0,0.000681687,0.999318313,D,C,1
+urban_283,Sample 12_UrbanPopgen_Plate43_1-18-24_data.csv,Ofav,Broward reef,BC1,23-May,Spring,Dry,9.1,0,0,0,0,,,0
+urban_288,Sample 1_UrbanPopgen_Plate44_1-18-24_data.csv,Ofav,Broward reef,BC1,23-May,Spring,Dry,7.6,0,0.964899893,0,0.035100107,B,D,1
+urban_289,Sample 2_UrbanPopgen_Plate44_1-18-24_data.csv,Ofav,Broward reef,BC1,23-May,Spring,Dry,7.6,0,0.40665749,0,0.59334251,D,,1
+urban_294,Sample 3_UrbanPopgen_Plate44_1-18-24_data.csv,Ofav,Broward reef,T328,23-May,Spring,Dry,5.8,0,0.061036189,0.85602041,0.082943401,C,BD,1
+urban_297,Sample 4_UrbanPopgen_Plate44_1-18-24_data.csv,Ofav,Broward reef,T328,23-May,Spring,Dry,5.5,0,0.996979117,3.00985E-05,0.002990785,B,CD,1
+urban_300,Sample 5_UrbanPopgen_Plate44_1-18-24_data.csv,Ofav,Broward reef,FTL4,23-May,Spring,Dry,6.1,0,0.949370288,0.000125689,0.050504023,B,CD,1
+urban_305,Sample 6_UrbanPopgen_Plate44_1-18-24_data.csv,Ofav,Broward reef,FTL4,23-May,Spring,Dry,6.1,0,0.98440884,2.75706E-05,0.015563589,B,CD,1
+urban_284,Sample 7_UrbanPopgen_Plate44_1-18-24_data.csv,Cnat,Broward reef,BC1,23-May,Spring,Dry,9.8,0,0,0,1,D,,1
+urban_285,Sample 8_UrbanPopgen_Plate44_1-18-24_data.csv,Cnat,Broward reef,BC1,23-May,Spring,Dry,9.1,0,0.532571611,0,0.467428389,B,,1
+urban_287,Sample 9_UrbanPopgen_Plate44_1-18-24_data.csv,Cnat,Broward reef,BC1,23-May,Spring,Dry,10.1,0,0.999949477,0,5.05228E-05,B,D,1
+urban_299,Sample 10_UrbanPopgen_Plate44_1-18-24_data.csv,Cnat,Broward reef,FTL4,23-May,Spring,Dry,6.1,0,0.999862994,1.48227E-05,0.000122183,B,CD,1
+urban_052,Sample 11_UrbanPopgen_Plate44_1-18-24_data.csv,Cnat,Broward reef,FTL4,22-Aug,Summer,Wet,6.4,0,0.999987265,1.27352E-05,0,B,C,1
+urban_066,Sample 12_UrbanPopgen_Plate44_1-18-24_data.csv,Cnat,Broward reef,BC1,22-Aug,Summer,Wet,6.1,0,0.9999752,1.08145E-05,1.39853E-05,B,CD,1
+Peanut_017,Sample 1_UrbanPopgen_Plate45_1-19-24_data.csv,Pseu,Palm Beach urban,Peanut Island,23-Mar,Spring,Dry,1.6,0,0,0,0,,,0
+Peanut_021,Sample 2_UrbanPopgen_Plate45_1-19-24_data.csv,Pseu,Palm Beach urban,Peanut Island,23-Mar,Spring,Dry,1.6,0,0,0,0,,,0
+Peanut_025,Sample 3_UrbanPopgen_Plate45_1-19-24_data.csv,Pseu,Palm Beach urban,Peanut Island,23-Mar,Spring,Dry,1.6,0,1,0,0,B,,1
+Peanut_026,Sample 4_UrbanPopgen_Plate45_1-19-24_data.csv,Pseu,Palm Beach urban,Peanut Island,23-Mar,Spring,Dry,1.6,0,0,0,1,D,,1
+Peanut_027,Sample 5_UrbanPopgen_Plate45_1-19-24_data.csv,Pseu,Palm Beach urban,Peanut Island,23-Mar,Spring,Dry,1.6,0,0,0,0,,,0
+Peanut_028,Sample 6_UrbanPopgen_Plate45_1-19-24_data.csv,Pseu,Palm Beach urban,Peanut Island,23-Mar,Spring,Dry,1.6,0,0,0,1,D,,1
+Peanut_030,Sample 7_UrbanPopgen_Plate45_1-19-24_data.csv,Pseu,Palm Beach urban,Peanut Island,23-Mar,Spring,Dry,1.6,0,0,0,1,D,,1
+Peanut_031,Sample 8_UrbanPopgen_Plate45_1-19-24_data.csv,Pseu,Palm Beach urban,Peanut Island,23-Mar,Spring,Dry,1.6,0,0,0,1,D,,1
+Peanut_032,Sample 9_UrbanPopgen_Plate45_1-19-24_data.csv,Pseu,Palm Beach urban,Peanut Island,23-Mar,Spring,Dry,1.6,0,0,0,1,D,,1
+Peanut_033,Sample 10_UrbanPopgen_Plate45_1-19-24_data.csv,Pseu,Palm Beach urban,Peanut Island,23-Mar,Spring,Dry,1.6,0,0,0,1,D,,1
+Peanut_034,Sample 11_UrbanPopgen_Plate45_1-19-24_data.csv,Pseu,Palm Beach urban,Peanut Island,23-Mar,Spring,Dry,1.6,0,0,0,1,D,,1
+Peanut_035,Sample 12_UrbanPopgen_Plate45_1-19-24_data.csv,Pseu,Palm Beach urban,Peanut Island,23-Mar,Spring,Dry,1.6,0,0,0,1,D,,1
+Peanut_036,Sample 1_UrbanPopgen_Plate46_1-19-24_data.csv,Pseu,Palm Beach urban,Peanut Island,23-Mar,Spring,Dry,1.6,0,0,0,1,D,,1
+Peanut_037,Sample 2_UrbanPopgen_Plate46_1-19-24_data.csv,Pseu,Palm Beach urban,Peanut Island,23-Mar,Spring,Dry,1.6,0,0,0,1,D,,1
+Peanut_038,Sample 3_UrbanPopgen_Plate46_1-19-24_data.csv,Pseu,Palm Beach urban,Peanut Island,23-Mar,Spring,Dry,1.6,0,1,0,0,B,,1
+Peanut_039,Sample 4_UrbanPopgen_Plate46_1-19-24_data.csv,Pseu,Palm Beach urban,Peanut Island,23-Mar,Spring,Dry,1.6,0,1,0,0,B,,1
+Peanut_040,Sample 5_UrbanPopgen_Plate46_1-19-24_data.csv,Pseu,Palm Beach urban,Peanut Island,23-Mar,Spring,Dry,1.6,0,0,0,1,D,,1
+Peanut_042,Sample 6_UrbanPopgen_Plate46_1-19-24_data.csv,Pseu,Palm Beach urban,Peanut Island,23-Mar,Spring,Dry,1.6,0,0,0,1,D,,1
+Peanut_043,Sample 7_UrbanPopgen_Plate46_1-19-24_data.csv,Pseu,Palm Beach urban,Peanut Island,23-Mar,Spring,Dry,1.6,0,0,0,1,D,,1
+Peanut_044,Sample 8_UrbanPopgen_Plate46_1-19-24_data.csv,Pseu,Palm Beach urban,Peanut Island,23-Mar,Spring,Dry,1.6,0,0,0,1,D,,1
+Peanut_046,Sample 9_UrbanPopgen_Plate46_1-19-24_data.csv,Pseu,Palm Beach urban,Peanut Island,23-Mar,Spring,Dry,1.6,0,0,0,1,D,,1
+Peanut_047,Sample 10_UrbanPopgen_Plate46_1-19-24_data.csv,Pseu,Palm Beach urban,Peanut Island,23-Mar,Spring,Dry,1.6,0,0,0,1,D,,1
+Peanut_050,Sample 11_UrbanPopgen_Plate46_1-19-24_data.csv,Pseu,Palm Beach urban,Peanut Island,23-Mar,Spring,Dry,1.6,0,0,0,1,D,,1
+Peanut_008,Sample 1_UrbanPopgen_Plate47_1-16-24_data.csv,Dlab,Palm Beach urban,Peanut Island,23-Mar,Spring,Dry,1.6,0,0,0,1,D,,1
+Peanut_009,Sample 2_UrbanPopgen_Plate47_1-16-24_data.csv,Dlab,Palm Beach urban,Peanut Island,23-Mar,Spring,Dry,1.6,0,0,0,0,,,0
+Peanut_041,Sample 3_UrbanPopgen_Plate47_1-16-24_data.csv,Dlab,Palm Beach urban,Peanut Island,23-Mar,Spring,Dry,1.6,0,0,0,1,D,,1
+Peanut_052,Sample 4_UrbanPopgen_Plate47_1-16-24_data.csv,Dlab,Palm Beach urban,Peanut Island,23-Mar,Spring,Dry,1.6,0,0,0,1,D,,1
+Peanut_060,Sample 5_UrbanPopgen_Plate47_1-16-24_data.csv,Dlab,Palm Beach urban,Peanut Island,23-Mar,Spring,Dry,1.6,0,0,0,1,D,,1
+Peanut_076,Sample 6_UrbanPopgen_Plate47_1-16-24_data.csv,Dlab,Palm Beach urban,Peanut Island,23-Mar,Spring,Dry,1.6,0,0,0,1,D,,1
+Peanut_080,Sample 7_UrbanPopgen_Plate47_1-16-24_data.csv,Dlab,Palm Beach urban,Peanut Island,23-Mar,Spring,Dry,1.6,0,0,0,1,D,,1
+Peanut_023,Sample 8_UrbanPopgen_Plate47_1-16-24_data.csv,Cnat,Palm Beach urban,Peanut Island,23-Mar,Spring,Dry,1.6,0,0,0,1,D,,1
+Peanut_045,Sample 9_UrbanPopgen_Plate47_1-16-24_data.csv,Cnat,Palm Beach urban,Peanut Island,23-Mar,Spring,Dry,1.6,0,0,0,1,D,,1
+Peanut_048,Sample 10_UrbanPopgen_Plate47_1-16-24_data.csv,Cnat,Palm Beach urban,Peanut Island,23-Mar,Spring,Dry,1.6,0,0,0,1,D,,1
+Peanut_073,Sample 11_UrbanPopgen_Plate47_1-16-24_data.csv,Cnat,Palm Beach urban,Peanut Island,23-Mar,Spring,Dry,1.6,0,0,0,1,D,,1
+Peanut_081,Sample 12_UrbanPopgen_Plate47_1-16-24_data.csv,Cnat,Palm Beach urban,Peanut Island,23-Mar,Spring,Dry,1.6,0,0,0,1,D,,1
+Peanut_051,Sample 1_UrbanPopgen_Plate48_1-19-24_data.csv,Pseu,Palm Beach urban,Peanut Island,23-Mar,Spring,Dry,1.6,0,0,0,0,,,0
+Peanut_055,Sample 2_UrbanPopgen_Plate48_1-19-24_data.csv,Pseu,Palm Beach urban,Peanut Island,23-Mar,Spring,Dry,1.6,0,0,0,1,D,,1
+Peanut_058,Sample 3_UrbanPopgen_Plate48_1-19-24_data.csv,Pseu,Palm Beach urban,Peanut Island,23-Mar,Spring,Dry,1.6,0,0,0,1,D,,1
+Peanut_066,Sample 4_UrbanPopgen_Plate48_1-19-24_data.csv,Pseu,Palm Beach urban,Peanut Island,23-Mar,Spring,Dry,1.6,0,1,0,0,B,,1
+Peanut_072,Sample 5_UrbanPopgen_Plate48_1-19-24_data.csv,Pseu,Palm Beach urban,Peanut Island,23-Mar,Spring,Dry,1.6,0,0,0,1,D,,1
+Peanut_088,Sample 6_UrbanPopgen_Plate48_1-19-24_data.csv,Pseu,Palm Beach urban,Peanut Island,23-Mar,Spring,Dry,1.6,0,1,0,0,B,,1
+Peanut_090,Sample 7_UrbanPopgen_Plate48_1-19-24_data.csv,Pseu,Palm Beach urban,Peanut Island,23-Mar,Spring,Dry,1.6,0,1,0,0,B,,1
+Peanut_092,Sample 8_UrbanPopgen_Plate48_1-19-24_data.csv,Pseu,Palm Beach urban,Peanut Island,23-Mar,Spring,Dry,1.6,0,1,0,0,B,,1
+Peanut_096,Sample 9_UrbanPopgen_Plate48_1-19-24_data.csv,Pseu,Palm Beach urban,Peanut Island,23-Mar,Spring,Dry,1.6,0,0,0,1,D,,1
+Peanut_097,Sample 10_UrbanPopgen_Plate48_1-19-24_data.csv,Pseu,Palm Beach urban,Peanut Island,23-Mar,Spring,Dry,1.6,0,0,0,1,D,,1
+Peanut_077,Sample 11_UrbanPopgen_Plate48_1-19-24_data.csv,Ofav,Palm Beach urban,Peanut Island,23-Mar,Spring,Dry,1.6,0,0,0,1,D,,1
+Peanut_002,Sample 1_UrbanPopgen_Plate49_1-19-24_data.csv,Mcav,Palm Beach urban,Peanut Island,23-Mar,Spring,Dry,1.6,0,0,0,0,,,0
+Peanut_013,Sample 2_UrbanPopgen_Plate49_1-19-24_data.csv,Mcav,Palm Beach urban,Peanut Island,23-Mar,Spring,Dry,1.6,0,0,0,0,,,0
+Peanut_014,Sample 3_UrbanPopgen_Plate49_1-19-24_data.csv,Mcav,Palm Beach urban,Peanut Island,23-Mar,Spring,Dry,1.6,0,0,0,0,,,0
+Peanut_016,Sample 4_UrbanPopgen_Plate49_1-19-24_data.csv,Mcav,Palm Beach urban,Peanut Island,23-Mar,Spring,Dry,1.6,0,0,0,0,,,0
+Peanut_049,Sample 5_UrbanPopgen_Plate49_1-19-24_data.csv,Mcav,Palm Beach urban,Peanut Island,23-Mar,Spring,Dry,1.6,0,0,0,0,,,0
+Peanut_053,Sample 6_UrbanPopgen_Plate49_1-19-24_data.csv,Mcav,Palm Beach urban,Peanut Island,23-Mar,Spring,Dry,1.6,0,0,0,0,,,0
+Peanut_069,Sample 7_UrbanPopgen_Plate49_1-19-24_data.csv,Mcav,Palm Beach urban,Peanut Island,23-Mar,Spring,Dry,1.6,0,0,0,0,,,0
+Peanut_086,Sample 8_UrbanPopgen_Plate49_1-19-24_data.csv,Mcav,Palm Beach urban,Peanut Island,23-Mar,Spring,Dry,1.6,0,0,0,0,,,0
+Peanut_091,Sample 9_UrbanPopgen_Plate49_1-19-24_data.csv,Mcav,Palm Beach urban,Peanut Island,23-Mar,Spring,Dry,1.6,0,0,0,0,,,0
+Peanut_093,Sample 10_UrbanPopgen_Plate49_1-19-24_data.csv,Mcav,Palm Beach urban,Peanut Island,23-Mar,Spring,Dry,1.6,0,0,0,0,,,0
+Peanut_098,Sample 11_UrbanPopgen_Plate49_1-19-24_data.csv,Mcav,Palm Beach urban,Peanut Island,23-Mar,Spring,Dry,1.6,0,0,0,0,,,0
+Baggs_039,Sample 1_UrbanPopgen_Plate50_1-19-24_data.csv,Ofav,Miami urban,Bill Baggs,21-Oct,Fall,Dry,1,0,0,0,0,,,0
+Baggs_108,Sample 2_UrbanPopgen_Plate50_1-19-24_data.csv,Ofav,Miami urban,Bill Baggs,21-Oct,Fall,Dry,1,0,0,0,0,,,0
+Baggs_206,Sample 3_UrbanPopgen_Plate50_1-19-24_data.csv,Ofav,Miami urban,Bill Baggs,20-Jun,Summer,Wet,1,0,0,0,0,,,0
+Baggs_201,Sample 4_UrbanPopgen_Plate50_1-19-24_data.csv,Pseu,Miami urban,Bill Baggs,20-Jun,Summer,Wet,1,0,1,0,0,B,,1
+Baggs_210,Sample 5_UrbanPopgen_Plate50_1-19-24_data.csv,Pseu,Miami urban,Bill Baggs,20-Jun,Summer,Wet,1,0,1,0,0,B,,1
+Baggs_009,Sample 6_UrbanPopgen_Plate50_1-19-24_data.csv,Pseu,Miami urban,Bill Baggs,21-Sep,Fall,Wet,1,0,1,0,0,B,,1
+Baggs_204,Sample 7_UrbanPopgen_Plate50_1-19-24_data.csv,Cnat,Miami urban,Bill Baggs,20-Jun,Summer,Wet,1,0,0,0,0,,,0
+Baggs_205,Sample 8_UrbanPopgen_Plate50_1-19-24_data.csv,Cnat,Miami urban,Bill Baggs,20-Jun,Summer,Wet,1,0,0,0,0,,,0
+Baggs_070,Sample 9_UrbanPopgen_Plate50_1-19-24_data.csv,Cnat,Miami urban,Bill Baggs,21-Jun,Summer,Wet,1,0,0,0,0,,,0
+Baggs_072,Sample 10_UrbanPopgen_Plate50_1-19-24_data.csv,Cnat,Miami urban,Bill Baggs,21-Jun,Summer,Wet,1,0,1,0,0,B,,1
+Baggs_073,Sample 11_UrbanPopgen_Plate50_1-19-24_data.csv,Cnat,Miami urban,Bill Baggs,21-Jun,Summer,Wet,1,0,0,0,0,,,0
+Baggs_077,Sample 12_UrbanPopgen_Plate50_1-19-24_data.csv,Cnat,Miami urban,Bill Baggs,21-Jun,Summer,Wet,1,0,1,0,0,B,,1
+Baggs_067,Sample 1_UrbanPopgen_Plate51_1-22-24_data.csv,Cnat,Miami urban,Bill Baggs,21-Jun,Summer,Wet,1,0,0,0,1,D,,1
+Baggs_082,Sample 2_UrbanPopgen_Plate51_1-22-24_data.csv,Cnat,Miami urban,Bill Baggs,21-Jun,Summer,Wet,1,0,0.968827558,0,0.031172442,B,D,1
+Baggs_085,Sample 3_UrbanPopgen_Plate51_1-22-24_data.csv,Cnat,Miami urban,Bill Baggs,21-Jun,Summer,Wet,1,0,0.988894233,0,0.011105767,B,D,1
+Baggs_087,Sample 4_UrbanPopgen_Plate51_1-22-24_data.csv,Cnat,Miami urban,Bill Baggs,21-Jun,Summer,Wet,1,0,0.997854215,0,0.002145785,B,D,1
+urban_387,Sample 5_UrbanPopgen_Plate51_1-22-24_data.csv,Dlab,Miami urban,MacArthur North,24-Jan,Winter,Dry,0.9,0,0,0,1,D,,1
+urban_386,Sample 6_UrbanPopgen_Plate51_1-22-24_data.csv,Dlab,Miami urban,MacArthur North,24-Jan,Winter,Dry,0.9,0,0,0,1,D,,1
+urban_385,Sample 7_UrbanPopgen_Plate51_1-22-24_data.csv,Dlab,Miami urban,MacArthur North,24-Jan,Winter,Dry,0.9,0,0,0,1,D,,1
+urban_383,Sample 8_UrbanPopgen_Plate51_1-22-24_data.csv,Dlab,Miami urban,MacArthur North,24-Jan,Winter,Dry,0.9,0,0.000453849,0,0.999546151,D,B,1
+urban_382,Sample 9_UrbanPopgen_Plate51_1-22-24_data.csv,Dlab,Miami urban,MacArthur North,24-Jan,Winter,Dry,0.9,0,0.000390105,0,0.999609895,D,B,1
+urban_381,Sample 10_UrbanPopgen_Plate51_1-22-24_data.csv,Dlab,Miami urban,MacArthur North,24-Jan,Winter,Dry,0.9,0,0.000382527,0,0.999617473,D,B,1
+urban_379,Sample 11_UrbanPopgen_Plate51_1-22-24_data.csv,Dlab,Miami urban,MacArthur North,24-Jan,Winter,Dry,0.9,0,0,0,1,D,,1
+urban_380,Sample 1_UrbanPopgen_Plate52_1-22-24_data.csv,Dlab,Miami urban,MacArthur North,24-Jan,Winter,Dry,0.9,0,0,0,1,D,,1
+urban_378,Sample 2_UrbanPopgen_Plate52_1-22-24_data.csv,Dlab,Miami urban,MacArthur North,24-Jan,Winter,Dry,1.2,0,0,0,1,D,,1
+urban_377,Sample 3_UrbanPopgen_Plate52_1-22-24_data.csv,Dlab,Miami urban,MacArthur North,24-Jan,Winter,Dry,1.2,0,0,0,1,D,,1
+urban_376,Sample 4_UrbanPopgen_Plate52_1-22-24_data.csv,Dlab,Miami urban,MacArthur North,24-Jan,Winter,Dry,1.2,0,0,0,1,D,,1
+urban_375,Sample 5_UrbanPopgen_Plate52_1-22-24_data.csv,Dlab,Miami urban,MacArthur North,24-Jan,Winter,Dry,0.9,0,0,0,1,D,,1
+urban_374,Sample 6_UrbanPopgen_Plate52_1-22-24_data.csv,Dlab,Miami urban,MacArthur North,24-Jan,Winter,Dry,0.9,0,0,0,0,,,0
+urban_328,Sample 7_UrbanPopgen_Plate52_1-22-24_data.csv,Dlab,Miami urban,MacArthur North,23-Aug,Summer,Wet,1.2,0,0,0,0,,,0
+urban_349,Sample 8_UrbanPopgen_Plate52_1-22-24_data.csv,Dlab,Miami urban,MacArthur North,23-Aug,Summer,Wet,0.9,0,0,0,1,D,,1
+urban_348,Sample 9_UrbanPopgen_Plate52_1-22-24_data.csv,Dlab,Miami urban,MacArthur North,23-Aug,Summer,Wet,0.9,0,0,0,1,D,,1
+urban_347,Sample 10_UrbanPopgen_Plate52_1-22-24_data.csv,Dlab,Miami urban,MacArthur North,23-Aug,Summer,Wet,1.2,0,0,0,1,D,,1
+urban_346,Sample 11_UrbanPopgen_Plate52_1-22-24_data.csv,Dlab,Miami urban,MacArthur North,23-Aug,Summer,Wet,0.9,0,0,0,1,D,,1
+urban_373,Sample 12_UrbanPopgen_Plate52_1-22-24_data.csv,Dlab,Miami urban,MacArthur North,24-Jan,Winter,Dry,0.9,0,0.00014526,0,0.99985474,D,B,1
+urban_388,Sample 1_UrbanPopgen_Plate53_1-23-24_data.csv,Pseu,North Miami reef,Pillars,24-Jan,Winter,Dry,9.8,0,0.99985561,0,0.00014439,B,D,1
+urban_393,Sample 2_UrbanPopgen_Plate53_1-23-24_data.csv,Pseu,North Miami reef,South Canyon,24-Jan,Winter,Dry,5.5,0,1,0,0,B,,1
+urban_395,Sample 3_UrbanPopgen_Plate53_1-23-24_data.csv,Pseu,North Miami reef,South Canyon,24-Jan,Winter,Dry,5.5,0,1,0,0,B,,1
+urban_403,Sample 4_UrbanPopgen_Plate53_1-23-24_data.csv,Pseu,North Miami reef,Pillars,24-Jan,Winter,Dry,8.8,0,0,0,0,,,0
+urban_404,Sample 5_UrbanPopgen_Plate53_1-23-24_data.csv,Pseu,North Miami reef,Pillars,24-Jan,Winter,Dry,8.5,0,0.999471742,0,0.000528258,B,D,1
+urban_406,Sample 6_UrbanPopgen_Plate53_1-23-24_data.csv,Pseu,North Miami reef,Pillars,24-Jan,Winter,Dry,8.5,0,0.998919905,0,0.001080095,B,D,1
+urban_408,Sample 7_UrbanPopgen_Plate53_1-23-24_data.csv,Pseu,North Miami reef,South Canyon,24-Jan,Winter,Dry,4.9,0,0.999998175,1.82453E-06,0,B,C,1
+urban_411,Sample 8_UrbanPopgen_Plate53_1-23-24_data.csv,Pseu,North Miami reef,South Canyon,24-Jan,Winter,Dry,6.1,0,0,0,0,,,0
+urban_412,Sample 9_UrbanPopgen_Plate53_1-23-24_data.csv,Pseu,North Miami reef,South Canyon,24-Jan,Winter,Dry,5.5,0,1,0,0,B,,1
+urban_413,Sample 10_UrbanPopgen_Plate53_1-23-24_data.csv,Pseu,North Miami reef,South Canyon,24-Jan,Winter,Dry,5.5,0,1,0,0,B,,1
+urban_414,Sample 11_UrbanPopgen_Plate53_1-23-24_data.csv,Pseu,North Miami reef,South Canyon,24-Jan,Winter,Dry,5.2,0,0.053419569,0,0.946580431,D,B,1
+urban_416,Sample 12_UrbanPopgen_Plate53_1-23-24_data.csv,Pseu,North Miami reef,Pillars,24-Jan,Winter,Dry,9.8,0,1,0,0,B,,1
+urban_417,Sample 1_UrbanPopgen_Plate54_1-23-24_data.csv,Pseu,North Miami reef,Pillars,24-Jan,Winter,Dry,9.8,0,0.999687558,0,0.000312442,B,D,1
+urban_389,Sample 2_UrbanPopgen_Plate54_1-23-24_data.csv,Mcav,North Miami reef,Pillars,24-Jan,Winter,Dry,9.8,0,0.007565785,0,0.992434215,D,B,1
+urban_390,Sample 3_UrbanPopgen_Plate54_1-23-24_data.csv,Mcav,North Miami reef,Pillars,24-Jan,Winter,Dry,9.4,0,0.005166761,0,0.994833239,D,B,1
+urban_396,Sample 4_UrbanPopgen_Plate54_1-23-24_data.csv,Mcav,North Miami reef,Graceland,24-Jan,Winter,Dry,5.5,0,0,1,0,C,,1
+urban_397,Sample 5_UrbanPopgen_Plate54_1-23-24_data.csv,Mcav,North Miami reef,Graceland,24-Jan,Winter,Dry,5.5,0,0.013412235,0.837708119,0.148879647,C,B,1
+urban_407,Sample 6_UrbanPopgen_Plate54_1-23-24_data.csv,Mcav,North Miami reef,Graceland,24-Jan,Winter,Dry,5.8,0,0.090074929,0.909925071,0,C,B,1
+urban_405,Sample 7_UrbanPopgen_Plate54_1-23-24_data.csv,Ofav,North Miami reef,Pillars,24-Jan,Winter,Dry,8.5,0,0.011569896,0,0.988430104,D,B,1
+urban_409,Sample 8_UrbanPopgen_Plate54_1-23-24_data.csv,Ofav,North Miami reef,South Canyon,24-Jan,Winter,Dry,5.5,0,0.027207068,0,0.972792932,D,B,1
+urban_415,Sample 9_UrbanPopgen_Plate54_1-23-24_data.csv,Ofav,North Miami reef,Pillars,24-Jan,Winter,Dry,9.4,0,1,0,0,B,,1
+urban_392,Sample 10_UrbanPopgen_Plate54_1-23-24_data.csv,Cnat,North Miami reef,Pillars,24-Jan,Winter,Dry,8.5,0,0.999988805,0,1.11946E-05,B,D,1
+urban_394,Sample 11_UrbanPopgen_Plate54_1-23-24_data.csv,Cnat,North Miami reef,South Canyon,24-Jan,Winter,Dry,5.2,0,1,0,0,B,,1
+urban_438,Sample 1_UrbanPopgen_Plate55_1-24-24_data.csv,Pseu,Miami urban,Miami Beach Marina,24-Jan,Winter,Dry,1.8,0,1,0,0,B,,1
+urban_439,Sample 2_UrbanPopgen_Plate55_1-24-24_data.csv,Pseu,Miami urban,Miami Beach Marina,24-Jan,Winter,Dry,1.8,0,0,0,1,D,,1
+urban_440,Sample 3_UrbanPopgen_Plate55_1-24-24_data.csv,Pseu,Miami urban,Miami Beach Marina,24-Jan,Winter,Dry,2,0,0.999604626,0.000395374,0,B,C,1
+urban_441,Sample 4_UrbanPopgen_Plate55_1-24-24_data.csv,Pseu,Miami urban,Miami Beach Marina,24-Jan,Winter,Dry,2.8,0,0.999930011,6.99888E-05,0,B,C,1
+urban_442,Sample 5_UrbanPopgen_Plate55_1-24-24_data.csv,Pseu,Miami urban,Miami Beach Marina,24-Jan,Winter,Dry,2.7,0,0,1,0,C,,1
+urban_453,Sample 6_UrbanPopgen_Plate55_1-24-24_data.csv,Pseu,Miami urban,Miami Beach Marina,24-Jan,Winter,Dry,2,0,0,1,0,C,,1
+urban_454,Sample 7_UrbanPopgen_Plate55_1-24-24_data.csv,Pseu,Miami urban,Miami Beach Marina,24-Jan,Winter,Dry,2,0,1,0,0,B,,1
+urban_455,Sample 8_UrbanPopgen_Plate55_1-24-24_data.csv,Dlab,Miami urban,Miami Beach Marina,24-Jan,Winter,Dry,1.3,0,1,0,0,B,,1
+urban_456,Sample 9_UrbanPopgen_Plate55_1-24-24_data.csv,Pseu,Miami urban,Miami Beach Marina,24-Jan,Winter,Dry,2,0,0.999829113,0,0.000170887,B,D,1
+urban_457,Sample 10_UrbanPopgen_Plate55_1-24-24_data.csv,Pseu,Miami urban,Miami Beach Marina,24-Jan,Winter,Dry,2,0,0.999945654,3.15922E-05,2.27536E-05,B,CD,1
+urban_458,Sample 11_UrbanPopgen_Plate55_1-24-24_data.csv,Pseu,Miami urban,Miami Beach Marina,24-Jan,Winter,Dry,2.2,0,0.854205104,0.12505119,0.020743707,B,D,1
+urban_459,Sample 12_UrbanPopgen_Plate55_1-24-24_data.csv,Pseu,Miami urban,Miami Beach Marina,24-Jan,Winter,Dry,2.2,0,0.999785471,0.00017964,3.48894E-05,B,CD,1
+urban_428,Sample 1_UrbanPopgen_Plate56_1-24-24_data.csv,Mcav,North Miami reef,Graceland,24-Jan,Winter,Dry,5.5,0,0,0,1,D,,1
+urban_429,Sample 2_UrbanPopgen_Plate56_1-24-24_data.csv,Mcav,North Miami reef,Graceland,24-Jan,Winter,Dry,5.8,0,0.013004169,0.986995831,0,C,B,1
+urban_430,Sample 3_UrbanPopgen_Plate56_1-24-24_data.csv,Mcav,North Miami reef,Graceland,24-Jan,Winter,Dry,5.8,0,0.005766806,0.994233194,0,C,B,1
+urban_432,Sample 4_UrbanPopgen_Plate56_1-24-24_data.csv,Mcav,North Miami reef,Graceland,24-Jan,Winter,Dry,6.7,0,0.015452447,0.983365714,0.001181839,C,BD,1
+urban_433,Sample 5_UrbanPopgen_Plate56_1-24-24_data.csv,Mcav,North Miami reef,Graceland,24-Jan,Winter,Dry,6.7,0,0,1,0,C,,1
+urban_434,Sample 6_UrbanPopgen_Plate56_1-24-24_data.csv,Mcav,North Miami reef,Graceland,24-Jan,Winter,Dry,7,0,0.999905984,9.4016E-05,0,B,C,1
+urban_436,Sample 7_UrbanPopgen_Plate56_1-24-24_data.csv,Mcav,North Miami reef,Graceland,24-Jan,Winter,Dry,5.5,0,0,1,0,C,,1
+urban_443,Sample 8_UrbanPopgen_Plate56_1-24-24_data.csv,Mcav,North Miami reef,Graceland,24-Jan,Winter,Dry,5.5,0,0.086692325,0.913307675,0,C,B,1
+urban_444,Sample 9_UrbanPopgen_Plate56_1-24-24_data.csv,Mcav,North Miami reef,Graceland,24-Jan,Winter,Dry,5.3,0,0,0.954414963,0.045585037,C,D,1
+urban_445,Sample 10_UrbanPopgen_Plate56_1-24-24_data.csv,Mcav,North Miami reef,Graceland,24-Jan,Winter,Dry,5.8,0,0,1,0,C,,1
+urban_446,Sample 11_UrbanPopgen_Plate56_1-24-24_data.csv,Mcav,North Miami reef,Graceland,24-Jan,Winter,Dry,5.8,0,0,0,0,,,0
+urban_391,Sample 1_UrbanPopgen_Plate57_1-24-24_data.csv,Dlab,North Miami reef,Pillars,24-Jan,Winter,Dry,9.1,0,0.009410803,0,0.990589197,D,B,1
+urban_417,Sample 2_UrbanPopgen_Plate57_1-24-24_data.csv,Pseu,North Miami reef,Pillars,24-Jan,Winter,Dry,9.8,0,0.999992801,7.19929E-06,0,B,C,1
+urban_418,Sample 3_UrbanPopgen_Plate57_1-24-24_data.csv,Dlab,North Miami reef,Pillars,24-Jan,Winter,Dry,9.8,0,0.002094062,0,0.997905938,D,B,1
+urban_419,Sample 4_UrbanPopgen_Plate57_1-24-24_data.csv,Pseu,North Miami reef,Pillars,24-Jan,Winter,Dry,8.8,0,1,0,0,B,,1
+urban_420,Sample 5_UrbanPopgen_Plate57_1-24-24_data.csv,Cnat,North Miami reef,Pillars,24-Jan,Winter,Dry,8.8,0,1,0,0,B,,1
+urban_421,Sample 6_UrbanPopgen_Plate57_1-24-24_data.csv,Pseu,North Miami reef,Pillars,24-Jan,Winter,Dry,9.1,0,1,0,0,B,,1
+urban_422,Sample 7_UrbanPopgen_Plate57_1-24-24_data.csv,Pseu,North Miami reef,Pillars,24-Jan,Winter,Dry,9.1,0,1,0,0,B,,1
+urban_423,Sample 8_UrbanPopgen_Plate57_1-24-24_data.csv,Cnat,North Miami reef,Pillars,24-Jan,Winter,Dry,9.1,0,1,0,0,B,,1
+urban_424,Sample 9_UrbanPopgen_Plate57_1-24-24_data.csv,Pseu,North Miami reef,Pillars,24-Jan,Winter,Dry,8.8,0,0.999978839,2.1161E-05,0,B,C,1
+urban_425,Sample 10_UrbanPopgen_Plate57_1-24-24_data.csv,Pseu,North Miami reef,Pillars,24-Jan,Winter,Dry,9.1,0,0.999985913,1.40871E-05,0,B,C,1
+urban_426,Sample 11_UrbanPopgen_Plate57_1-24-24_data.csv,Pseu,North Miami reef,Pillars,24-Jan,Winter,Dry,9.1,0,1,0,0,B,,1
+urban_427,Sample 12_UrbanPopgen_Plate57_1-24-24_data.csv,Pseu,North Miami reef,Pillars,24-Jan,Winter,Dry,9.1,0,0.048009513,7.20856E-05,0.951918402,D,BC,1
+urban_448,Sample 1_UrbanPopgen_Plate58-1-24-24_data.csv,Mcav,North Miami reef,Graceland,24-Jan,Winter,Dry,5.8,0,0,0,0,0,0,0
+urban_449,Sample 2_UrbanPopgen_Plate58-1-24-24_data.csv,Mcav,North Miami reef,Graceland,24-Jan,Winter,Dry,5.9,0,0,0,1,D,,1
+urban_450,Sample 3_UrbanPopgen_Plate58-1-24-24_data.csv,Mcav,North Miami reef,Graceland,24-Jan,Winter,Dry,5.9,0,0,0.67517595,0.32482405,C,,1
+urban_451,Sample 4_UrbanPopgen_Plate58-1-24-24_data.csv,Mcav,North Miami reef,Graceland,24-Jan,Winter,Dry,5.8,0,0,1,0,C,,1
+urban_452,Sample 5_UrbanPopgen_Plate58-1-24-24_data.csv,Pseu,North Miami reef,Graceland,24-Jan,Winter,Dry,5.6,0,0.999989818,1.01823E-05,0,B,,1
+urban_460,Sample 6_UrbanPopgen_Plate58-1-24-24_data.csv,Pseu,Miami urban,Miami Beach Marina,24-Jan,Winter,Dry,2.2,0,1,0,0,B,,1
+urban_461,Sample 7_UrbanPopgen_Plate58-1-24-24_data.csv,Pseu,Miami urban,Miami Beach Marina,24-Jan,Winter,Dry,2.2,0,0,0,1,D,,1
+urban_462,Sample 8_UrbanPopgen_Plate58-1-24-24_data.csv,Pseu,Miami urban,Miami Beach Marina,24-Jan,Winter,Dry,2.2,0,0.999999059,9.4108E-07,0,B,,1
+urban_478,Sample 9_UrbanPopgen_Plate58-1-24-24_data.csv,Pseu,Miami urban,Miami Beach Marina,24-Jan,Winter,Dry,1.3,0,0.999984919,1.50811E-05,0,B,,1
+urban_479,Sample 10_UrbanPopgen_Plate58-1-24-24_data.csv,Pseu,Miami urban,Miami Beach Marina,24-Jan,Winter,Dry,2.9,0,1,0,0,B,,1
+urban_480,Sample 11_UrbanPopgen_Plate58-1-24-24_data.csv,Pseu,Miami urban,Miami Beach Marina,24-Jan,Winter,Dry,3,0,0.99999441,5.58978E-06,0,B,,1
+urban_481,Sample 1_UrbanPopgen_Plate59_1-24-24_data.csv,Pseu,Miami urban,Miami Beach Marina,24-Jan,Winter,Dry,3,0,0.999991405,0,8.59536E-06,,,1
+urban_482,Sample 2_UrbanPopgen_Plate59_1-24-24_data.csv,Pseu,Miami urban,Miami Beach Marina,24-Jan,Winter,Dry,2,0,0.272160047,0,0.727839953,D,0,1
+urban_488,Sample 3_UrbanPopgen_Plate59_1-24-24_data.csv,Pseu,Miami urban,Miami Beach Marina,24-Jan,Winter,Dry,2.6,0,1,0,0,B,,1
+urban_489,Sample 4_UrbanPopgen_Plate59_1-24-24_data.csv,Dlab,Miami urban,Miami Beach Marina,24-Jan,Winter,Dry,2,0,0,0,1,D,,1
+urban_490,Sample 5_UrbanPopgen_Plate59_1-24-24_data.csv,Pseu,Miami urban,Miami Beach Marina,24-Jan,Winter,Dry,2.6,0,1,0,0,B,0,1
+urban_491,Sample 6_UrbanPopgen_Plate59_1-24-24_data.csv,Pseu,Miami urban,Miami Beach Marina,24-Jan,Winter,Dry,2.3,0,1,0,0,B,,1
+urban_492,Sample 7_UrbanPopgen_Plate59_1-24-24_data.csv,Pseu,Miami urban,Miami Beach Marina,24-Jan,Winter,Dry,2.4,0,1,0,0,B,,1
+urban_493,Sample 8_UrbanPopgen_Plate59_1-24-24_data.csv,Pseu,Miami urban,Miami Beach Marina,24-Jan,Winter,Dry,2.2,0,1,0,0,B,,1
+urban_494,Sample 9_UrbanPopgen_Plate59_1-24-24_data.csv,Pseu,Miami urban,Miami Beach Marina,24-Jan,Winter,Dry,2.2,0,1,0,0,B,,1
+urban_495,Sample 10_UrbanPopgen_Plate59_1-24-24_data.csv,Pseu,Miami urban,Miami Beach Marina,24-Jan,Winter,Dry,2.2,0,1,0,0,B,0,1
+urban_496,Sample 11_UrbanPopgen_Plate59_1-24-24_data.csv,Pseu,Miami urban,Miami Beach Marina,24-Jan,Winter,Dry,2.2,0,1,0,0,B,,1
+Baggs_009,Sample 1_UrbanPopgen_Plate60_3-24-24_data.csv,Pseu,Miami urban,Bill Baggs,21-Sep,Fall,Wet,1,0,0,0,0,0,,0
+Baggs_085,Sample 2_UrbanPopgen_Plate60_3-24-24_data.csv,Cnat,Miami urban,Bill Baggs,21-Jun,Summer,Wet,1,0,0.98004749,0,0.01995251,,,1
+urban_398,Sample 3_UrbanPopgen_Plate60_3-24-24_data.csv,Pseu,Miami urban,Seaquarium,24-Jan,Winter,Dry,0.3,0,0,0,1,,,1
+urban_464,Sample 4_UrbanPopgen_Plate60_3-24-24_data.csv,Pseu,Miami urban,Seaquarium,24-Jan,Winter,Dry,1.2,0,0.482204421,0,0.517795579,,,1
+urban_472,Sample 5_UrbanPopgen_Plate60_3-24-24_data.csv,Pseu,Miami urban,Coral City Camera,24-Jan,Winter,Dry,2.4,0,0.013318683,0,0.986681317,D,B,1
+urban_486,Sample 6_UrbanPopgen_Plate60_3-24-24_data.csv,Pseu,Miami urban,Coral City Camera,24-Jan,Winter,Dry,2,0,0,0,1,,,1
+urban_503,Sample 7_UrbanPopgen_Plate60_3-24-24_data.csv,Pseu,Miami urban,Coral City Camera,24-Jan,Winter,Dry,1.5,0,0.182443213,0.23097399,0.586582797,D,,1
+urban_512,Sample 8_UrbanPopgen_Plate60_3-24-24_data.csv,Pseu,Miami urban,Coral City Camera,24-Jan,Winter,Dry,1.5,0,0,0,1,,,1
+urban_520,Sample 9_UrbanPopgen_Plate60_3-24-24_data.csv,Pseu,Miami urban,Coral City Camera,24-Jan,Winter,Dry,1.5,0,0,1,0,C,,1
+urban_528,Sample 10_UrbanPopgen_Plate60_3-24-24_data.csv,Pseu,Miami urban,Coral City Camera,24-Jan,Winter,Dry,1.7,0,0.012618951,0,0.987381049,D,B,1
+urban_538,Sample 11_UrbanPopgen_Plate60_3-24-24_data.csv,Mcav,Miami urban,Coral City Camera,24-Jan,Winter,Dry,2.4,0,0,0,1,D,,1
+urban_546,Sample 12_UrbanPopgen_Plate60_3-24-24_data.csv,Ofav,Miami urban,Coral City Camera,24-Jan,Winter,Dry,0.9,0,0,0,1,D,,1
+Baggs_039,Sample 1_UrbanPopgen_Plate61_3-24-24_data.csv,Ofav,Miami urban,Bill Baggs,21-Oct,Fall,Dry,1,0,0,0,0,,,0
+Baggs_087,Sample 2_UrbanPopgen_Plate61_3-24-24_data.csv,Cnat,Miami urban,Bill Baggs,21-Jun,Summer,Wet,1,0,0,0,0,0,,0
+urban_399,Sample 3_UrbanPopgen_Plate61_3-24-24_data.csv,Dlab,Miami urban,Seaquarium,24-Jan,Winter,Dry,0.6,0,0,0,0,0,,0
+urban_465,Sample 4_UrbanPopgen_Plate61_3-24-24_data.csv,Pseu,Miami urban,Seaquarium,24-Jan,Winter,Dry,0.6,0,0.92905743,0.033269825,0.037672745,B,,1
+urban_473,Sample 5_UrbanPopgen_Plate61_3-24-24_data.csv,Ofav,Miami urban,Coral City Camera,24-Jan,Winter,Dry,2.4,0,0,0,0,0,,0
+urban_487,Sample 6_UrbanPopgen_Plate61_3-24-24_data.csv,Cnat,Miami urban,Coral City Camera,24-Jan,Winter,Dry,2,0,0,0,1,D,,1
+urban_504,Sample 7_UrbanPopgen_Plate61_3-24-24_data.csv,Pseu,Miami urban,Coral City Camera,24-Jan,Winter,Dry,1.5,0,0.35726318,0.33374956,0.308987259,0,,1
+urban_513,Sample 8_UrbanPopgen_Plate61_3-24-24_data.csv,Pseu,Miami urban,Coral City Camera,24-Jan,Winter,Dry,1.5,0,0,0,1,D,,1
+urban_521,Sample 9_UrbanPopgen_Plate61_3-24-24_data.csv,Pseu,Miami urban,Coral City Camera,24-Jan,Winter,Dry,1.5,0,0.997439759,7.22471E-06,0.002553017,B,,1
+urban_529,Sample 10_UrbanPopgen_Plate61_3-24-24_data.csv,Pseu,Miami urban,Coral City Camera,24-Jan,Winter,Dry,1.7,0,0,0,1,D,,1
+urban_539,Sample 11_UrbanPopgen_Plate61_3-24-24_data.csv,Cnat,Miami urban,Coral City Camera,24-Jan,Winter,Dry,2.4,0,0,0,1,D,0,1
+urban_547,Sample 1_UrbanPopgen_Plate62_3-24-24_data.csv,Dlab,Miami urban,Coral City Camera,24-Jan,Winter,Dry,0.9,0,0,0,0,0,,0
+Baggs_067,Sample 2_UrbanPopgen_Plate62_3-24-24_data.csv,Cnat,Miami urban,Bill Baggs,21-Jun,Summer,Wet,1,0,0,0,1,D,0,1
+Baggs_108,Sample 3_UrbanPopgen_Plate62_3-24-24_data.csv,Ofav,Miami urban,Bill Baggs,21-Oct,Fall,Dry,1,0,0,0,1,D,,1
+urban_400,Sample 4_UrbanPopgen_Plate62_3-24-24_data.csv,Pseu,Miami urban,Seaquarium,24-Jan,Winter,Dry,1.8,0,0,0,1,,,1
+urban_466,Sample 5_UrbanPopgen_Plate62_3-24-24_data.csv,Cnat,Miami urban,Seaquarium,24-Jan,Winter,Dry,0.9,0,0,0,1,D,,1
+urban_474,Sample 6_UrbanPopgen_Plate62_3-24-24_data.csv,Pseu,Miami urban,Coral City Camera,24-Jan,Winter,Dry,2.1,0,1,0,0,B,,1
+urban_497,Sample 7_UrbanPopgen_Plate62_3-24-24_data.csv,Mcav,Palm Beach urban,Peanut Island,24-Jan,Winter,Dry,0.9,0,0,0,1,D,0,1
+urban_506,Sample 8_UrbanPopgen_Plate62_3-24-24_data.csv,Pseu,Miami urban,Coral City Camera,24-Jan,Winter,Dry,1.5,0,0.640139942,0,0.359860058,B,0,1
+urban_514,Sample 9_UrbanPopgen_Plate62_3-24-24_data.csv,Pseu,Miami urban,Coral City Camera,24-Jan,Winter,Dry,1.5,0,0,0,1,D,0,1
+urban_522,Sample 10_UrbanPopgen_Plate62_3-24-24_data.csv,Pseu,Miami urban,Coral City Camera,24-Jan,Winter,Dry,1.5,0,0,0.632015441,0.367984559,C,0,1
+urban_530,Sample 11_UrbanPopgen_Plate62_3-24-24_data.csv,Pseu,Miami urban,Coral City Camera,24-Jan,Winter,Dry,1.7,0,0.084353149,0,0.915646851,D,B,1
+urban_540,Sample 12_UrbanPopgen_Plate62_3-24-24_data.csv,Dlab,Miami urban,Coral City Camera,24-Jan,Winter,Dry,1.8,0,0,0,1,D,0,1
+urban_548,Sample 1_UrbanPopgen_Plate63_3-24-24_data.csv,Dlab,Miami urban,Coral City Camera,24-Jan,Winter,Dry,1.5,0,0,0.002700202,0.997299798,D,,1
+Baggs_070,Sample 2_UrbanPopgen_Plate63_3-24-24_data.csv,Cnat,Miami urban,Bill Baggs,21-Jun,Summer,Wet,1,0,0,0,1,D,,1
+Baggs_201,Sample 3_UrbanPopgen_Plate63_3-24-24_data.csv,Pseu,Miami urban,Bill Baggs,20-Jun,Summer,Wet,1,0,0,0,0,0,0,0
+urban_401,Sample 4_UrbanPopgen_Plate63_3-24-24_data.csv,Pseu,Miami urban,Seaquarium,24-Jan,Winter,Dry,1.2,0,0,0,1,D,,1
+urban_467,Sample 5_UrbanPopgen_Plate63_3-24-24_data.csv,Pseu,Miami urban,Seaquarium,24-Jan,Winter,Dry,0.3,0,1,0,0,B,,1
+urban_475,Sample 6_UrbanPopgen_Plate63_3-24-24_data.csv,Pseu,Miami urban,Coral City Camera,24-Jan,Winter,Dry,2.1,0,0.999563842,0,0.000436158,B,D,1
+urban_498,Sample 7_UrbanPopgen_Plate63_3-24-24_data.csv,Dlab,Miami urban,Coral City Camera,24-Jan,Winter,Dry,1.5,0,0,0.08422042,0.91577958,D,C,1
+urban_507,Sample 8_UrbanPopgen_Plate63_3-24-24_data.csv,Pseu,Miami urban,Coral City Camera,24-Jan,Winter,Dry,1.5,0,0,0.000884002,0.999115998,,,1
+urban_515,Sample 9_UrbanPopgen_Plate63_3-24-24_data.csv,Pseu,Miami urban,Coral City Camera,24-Jan,Winter,Dry,1.5,0,0.976814924,0,0.023185076,B,,1
+urban_523,Sample 10_UrbanPopgen_Plate63_3-24-24_data.csv,Pseu,Miami urban,Coral City Camera,24-Jan,Winter,Dry,1.7,0,0.998844006,0.001155994,0,,,1
+urban_533,Sample 11_UrbanPopgen_Plate63_3-24-24_data.csv,Dlab,Miami urban,Coral City Camera,24-Jan,Winter,Dry,0.3,0,0,0.000385922,0.999614078,D,,1
+urban_540,Sample 1_UrbanPopgen_Plate64_3-24-24_data.csv,Dlab,Miami urban,Coral City Camera,24-Jan,Winter,Dry,1.8,0,0,0,1,D,,1
+urban_548,Sample 2_UrbanPopgen_Plate64_3-24-24_data.csv,Dlab,Miami urban,Coral City Camera,24-Jan,Winter,Dry,1.5,0,0,0.575010189,0.424989811,,,1
+Baggs_070,Sample 3_UrbanPopgen_Plate64_3-24-24_data.csv,Cnat,Miami urban,Bill Baggs,21-Jun,Summer,Wet,1,0,0.52665394,0.460149935,0.013196126,,,1
+Baggs_201,Sample 4_UrbanPopgen_Plate64_3-24-24_data.csv,Pseu,Miami urban,Bill Baggs,20-Jun,Summer,Wet,1,0,0,0,1,,,1
+urban_401,Sample 5_UrbanPopgen_Plate64_3-24-24_data.csv,Pseu,Miami urban,Seaquarium,24-Jan,Winter,Dry,1.2,0,0,0,1,,,1
+urban_467,Sample 6_UrbanPopgen_Plate64_3-24-24_data.csv,Pseu,Miami urban,Seaquarium,24-Jan,Winter,Dry,0.3,0,0,0.99838827,0.00161173,,,1
+urban_475,Sample 7_UrbanPopgen_Plate64_3-24-24_data.csv,Pseu,Miami urban,Coral City Camera,24-Jan,Winter,Dry,2.1,0,0.01067702,0.012574632,0.976748348,,,1
+urban_498,Sample 8_UrbanPopgen_Plate64_3-24-24_data.csv,Dlab,Miami urban,Coral City Camera,24-Jan,Winter,Dry,1.5,0,0,0,0,,,0
+urban_507,Sample 9_UrbanPopgen_Plate64_3-24-24_data.csv,Pseu,Miami urban,Coral City Camera,24-Jan,Winter,Dry,1.5,0,0,1,0,,,1
+urban_515,Sample 10_UrbanPopgen_Plate64_3-24-24_data.csv,Pseu,Miami urban,Coral City Camera,24-Jan,Winter,Dry,1.5,0,0,0,0,,,0
+urban_523,Sample 11_UrbanPopgen_Plate64_3-24-24_data.csv,Pseu,Miami urban,Coral City Camera,24-Jan,Winter,Dry,1.7,0,0,0,1,,,1
+urban_533,Sample 12_UrbanPopgen_Plate64_3-24-24_data.csv,Dlab,Miami urban,Coral City Camera,24-Jan,Winter,Dry,0.3,0,0,0,1,,,1
+urban_541,Sample 1_UrbanPopgen_Plate65_3-24-24_data.csv,Dlab,Miami urban,Coral City Camera,24-Jan,Winter,Dry,1.8,0,0,0,0,,,0
+urban_549,Sample 2_UrbanPopgen_Plate65_3-24-24_data.csv,Dlab,Miami urban,Coral City Camera,24-Jan,Winter,Dry,1.2,0,0,0,0,0,,0
+Baggs_072,Sample 3_UrbanPopgen_Plate65_3-24-24_data.csv,Cnat,Miami urban,Bill Baggs,21-Jun,Summer,Wet,1,0,0,0,0,0,,0
+Baggs_204,Sample 4_UrbanPopgen_Plate65_3-24-24_data.csv,Cnat,Miami urban,Bill Baggs,20-Jun,Summer,Wet,1,0,0,0,0,0,,0
+urban_402,Sample 5_UrbanPopgen_Plate65_3-24-24_data.csv,Cnat,Miami urban,Seaquarium,24-Jan,Winter,Dry,0.9,0,0,0,0,0,,0
+urban_468,Sample 6_UrbanPopgen_Plate65_3-24-24_data.csv,Cnat,Miami urban,Seaquarium,24-Jan,Winter,Dry,0.6,0,0,0,0,0,,0
+urban_476,Sample 7_UrbanPopgen_Plate65_3-24-24_data.csv,Dlab,Miami urban,Coral City Camera,24-Jan,Winter,Dry,2.4,0,0,0,0,0,,0
+urban_499,Sample 8_UrbanPopgen_Plate65_3-24-24_data.csv,Pseu,Miami urban,Coral City Camera,24-Jan,Winter,Dry,1.5,0,0,0,0,0,,0
+urban_508,Sample 9_UrbanPopgen_Plate65_3-24-24_data.csv,Pseu,Miami urban,Coral City Camera,24-Jan,Winter,Dry,1.5,0,0,0,0,0,,0
+urban_516,Sample 10_UrbanPopgen_Plate65_3-24-24_data.csv,Pseu,Miami urban,Coral City Camera,24-Jan,Winter,Dry,1.5,0,0,0,0,0,0,0
+urban_524,Sample 11_UrbanPopgen_Plate65_3-24-24_data.csv,Pseu,Miami urban,Coral City Camera,24-Jan,Winter,Dry,1.7,0,0,0,0,0,,0
+urban_534,Sample 12_UrbanPopgen_Plate65_3-24-24_data.csv,Cnat,Miami urban,Coral City Camera,24-Jan,Winter,Dry,1.8,0,0,0,0,,0,0
+urban_542,Sample 1_UrbanPopgen_Plate66_3-24-24_data.csv,Ofav,Miami urban,Coral City Camera,24-Jan,Winter,Dry,1.8,0,0,0,1,D,,1
+urban_550,Sample 2_UrbanPopgen_Plate66_3-24-24_data.csv,Dlab,Miami urban,Coral City Camera,24-Jan,Winter,Dry,1.5,0,0,0,1,D,,1
+Baggs_073,Sample 3_UrbanPopgen_Plate66_3-24-24_data.csv,Cnat,Miami urban,Bill Baggs,21-Jun,Summer,Wet,1,0,0,0,1,D,0,1
+Baggs_205,Sample 4_UrbanPopgen_Plate66_3-24-24_data.csv,Cnat,Miami urban,Bill Baggs,20-Jun,Summer,Wet,1,0,0.859652285,0,0.140347715,B,,1
+urban_410,Sample 5_UrbanPopgen_Plate66_3-24-24_data.csv,Pseu,Miami urban,Seaquarium,24-Jan,Winter,Dry,2.4,0,0,0,1,D,,1
+urban_469,Sample 6_UrbanPopgen_Plate66_3-24-24_data.csv,Dlab,Miami urban,Coral City Camera,24-Jan,Winter,Dry,2.7,0,0,0,1,D,,1
+urban_483,Sample 7_UrbanPopgen_Plate66_3-24-24_data.csv,Dlab,Miami urban,Coral City Camera,24-Jan,Winter,Dry,2,0,0,0,1,D,,1
+urban_500,Sample 8_UrbanPopgen_Plate66_3-24-24_data.csv,Mcav,Miami urban,Coral City Camera,24-Jan,Winter,Dry,1.8,0,0,0,1,D,,1
+urban_509,Sample 9_UrbanPopgen_Plate66_3-24-24_data.csv,Pseu,Miami urban,Coral City Camera,24-Jan,Winter,Dry,1.5,0,0.761291711,0.027889265,0.210819025,B,,1
+urban_517,Sample 10_UrbanPopgen_Plate66_3-24-24_data.csv,Pseu,Miami urban,Coral City Camera,24-Jan,Winter,Dry,1.5,0,0,0,1,,,1
+urban_525,Sample 11_UrbanPopgen_Plate66_3-24-24_data.csv,Pseu,Miami urban,Coral City Camera,24-Jan,Winter,Dry,1.7,0,0.483935981,0.014848228,0.501215791,0,,1
+urban_535,Sample 1_UrbanPopgen_Plate67_3-24-24_data.csv,Ofav,Miami urban,Coral City Camera,24-Jan,Winter,Dry,1.8,0,0,0,1,D,0,1
+urban_543,Sample 2_UrbanPopgen_Plate67_3-24-24_data.csv,Ofav,Miami urban,Coral City Camera,24-Jan,Winter,Dry,0.9,0,0,0,1,D,,1
+urban_551,Sample 3_UrbanPopgen_Plate67_3-24-24_data.csv,Dlab,Miami urban,Coral City Camera,24-Jan,Winter,Dry,1.5,0,0.91677611,0,0.08322389,B,,1
+Baggs_077,Sample 4_UrbanPopgen_Plate67_3-24-24_data.csv,Cnat,Miami urban,Bill Baggs,21-Jun,Summer,Wet,1,0,1,0,0,B,0,1
+Baggs_206,Sample 5_UrbanPopgen_Plate67_3-24-24_data.csv,Ofav,Miami urban,Bill Baggs,20-Jun,Summer,Wet,1,0,0,0,1,D,0,1
+urban_437,Sample 6_UrbanPopgen_Plate67_3-24-24_data.csv,Pseu,Miami urban,Seaquarium,24-Jan,Winter,Dry,0.6,0,0,0,1,D,0,1
+urban_470,Sample 7_UrbanPopgen_Plate67_3-24-24_data.csv,Pseu,Miami urban,Coral City Camera,24-Jan,Winter,Dry,2.7,0,0,0,1,D,,1
+urban_484,Sample 8_UrbanPopgen_Plate67_3-24-24_data.csv,Dlab,Miami urban,Coral City Camera,24-Jan,Winter,Dry,2,0,0,0,1,D,,1
+urban_501,Sample 9_UrbanPopgen_Plate67_3-24-24_data.csv,Mcav,Miami urban,Coral City Camera,24-Jan,Winter,Dry,1.5,0,0,0,1,D,,1
+urban_510,Sample 10_UrbanPopgen_Plate67_3-24-24_data.csv,Pseu,Miami urban,Coral City Camera,24-Jan,Winter,Dry,1.5,0,0,0,0,0,,0
+urban_518,Sample 11_UrbanPopgen_Plate67_3-24-24_data.csv,Pseu,Miami urban,Coral City Camera,24-Jan,Winter,Dry,1.5,0,0,0,1,D,0,1
+urban_526,Sample 12_UrbanPopgen_Plate67_3-24-24_data.csv,Pseu,Miami urban,Coral City Camera,24-Jan,Winter,Dry,1.7,0,0.994555383,0,0.005444617,B,,1
+urban_536,Sample 1_UrbanPopgen_Plate68_3-25-24_data.csv,Dlab,Miami urban,Coral City Camera,24-Jan,Winter,Dry,2.1,0,0,0,1,,,1
+urban_544,Sample 2_UrbanPopgen_Plate68_3-25-24_data.csv,Dlab,Miami urban,Coral City Camera,24-Jan,Winter,Dry,0.9,0,0,0,1,D,,1
+urban_552,Sample 3_UrbanPopgen_Plate68_3-25-24_data.csv,Ofav,Miami urban,Coral City Camera,24-Jan,Winter,Dry,1.8,0,0.009026694,0,0.990973306,D,,1
+Baggs_082,Sample 4_UrbanPopgen_Plate68_3-25-24_data.csv,Cnat,Miami urban,Bill Baggs,21-Jun,Summer,Wet,1,0,0.921537617,0,0.078462383,B,,1
+Baggs_210,Sample 5_UrbanPopgen_Plate68_3-25-24_data.csv,Pseu,Miami urban,Bill Baggs,20-Jun,Summer,Wet,1,0,0.991127386,0,0.008872614,B,,1
+urban_463,Sample 6_UrbanPopgen_Plate68_3-25-24_data.csv,Cnat,Miami urban,Seaquarium,24-Jan,Winter,Dry,1.2,0,0,0,1,D,0,1
+urban_471,Sample 7_UrbanPopgen_Plate68_3-25-24_data.csv,Pseu,Miami urban,Coral City Camera,24-Jan,Winter,Dry,2.7,0,0,0,1,D,,1
+urban_485,Sample 8_UrbanPopgen_Plate68_3-25-24_data.csv,Dlab,Miami urban,Coral City Camera,24-Jan,Winter,Dry,2,0,0,0,1,D,,1
+urban_502,Sample 9_UrbanPopgen_Plate68_3-25-24_data.csv,Pseu,Miami urban,Coral City Camera,24-Jan,Winter,Dry,1.5,0,0.128390615,0,0.871609385,D,,1
+urban_511,Sample 10_UrbanPopgen_Plate68_3-25-24_data.csv,Pseu,Miami urban,Coral City Camera,24-Jan,Winter,Dry,1.5,0,0.954593458,0.000953035,0.044453508,B,,1
+urban_519,Sample 11_UrbanPopgen_Plate68_3-25-24_data.csv,Pseu,Miami urban,Coral City Camera,24-Jan,Winter,Dry,1.5,0,0,0,1,D,,1
+urban_527,Sample 1_UrbanPopgen_Plate69_3-25-24_data.csv,Pseu,Miami urban,Coral City Camera,24-Jan,Winter,Dry,1.7,0,0,0,0,0,,0
+urban_537,Sample 2_UrbanPopgen_Plate69_3-25-24_data.csv,Mcav,Miami urban,Coral City Camera,24-Jan,Winter,Dry,2.4,0,0,0,1,D,,1
+urban_545,Sample 3_UrbanPopgen_Plate69_3-25-24_data.csv,Dlab,Miami urban,Coral City Camera,24-Jan,Winter,Dry,1.2,0,0,0,1,D,,1
+urban_553,Sample 4_UrbanPopgen_Plate69_3-25-24_data.csv,Ofav,Miami urban,Coral City Camera,24-Jan,Winter,Dry,0.6,0,0,0,1,D,,1
+urban_554,Sample 5_UrbanPopgen_Plate69_3-25-24_data.csv,Ofav,Miami urban,Coral City Camera,24-Jan,Winter,Dry,0.6,0,0,0,1,D,,1
+urban_562,Sample 6_UrbanPopgen_Plate69_3-25-24_data.csv,Ofav,Miami urban,Coral City Camera,24-Jan,Winter,Dry,0.6,0,0.99919981,0,0.00080019,B,,1
+urban_570,Sample 7_UrbanPopgen_Plate69_3-25-24_data.csv,Ofav,Miami urban,Coral City Camera,24-Jan,Winter,Dry,1.7,0,0,0,1,D,,1
+urban_583,Sample 8_UrbanPopgen_Plate69_3-25-24_data.csv,Pseu,Palm Beach urban,Peanut Island,24-Jan,Winter,Dry,0.9,0,0.261021197,0,0.738978803,D,,1
+urban_591,Sample 9_UrbanPopgen_Plate69_3-25-24_data.csv,Pseu,Miami urban,Fisher Island,24-Jan,Winter,Dry,0.9,0,0,1,0,C,,1
+urban_599,Sample 10_UrbanPopgen_Plate69_3-25-24_data.csv,Pseu,Miami urban,Fisher Island,24-Jan,Winter,Dry,0.3,0,0,0.445743589,0.554256411,D,0,1
+urban_607,Sample 11_UrbanPopgen_Plate69_3-25-24_data.csv,Cnat,Miami urban,Fisher Island,24-Jan,Winter,Dry,1.5,0,0,0,1,D,,1
+urban_615,Sample 12_UrbanPopgen_Plate69_3-25-24_data.csv,Ofav,Miami urban,Fisher Island,24-Jan,Winter,Dry,0.3,0,0,0,1,D,,1
+urban_623,Sample 1_UrbanPopgen_Plate70_3-25-24_data.csv,Pseu,Miami urban,Fisher Island,24-Jan,Winter,Dry,0.9,0,0.235476017,0,0.764523983,,,1
+urban_631,Sample 2_UrbanPopgen_Plate70_3-25-24_data.csv,Cnat,Palm Beach urban,Peanut Island,24-Jan,Winter,Dry,1.8,0,0,0,1,D,0,1
+urban_639,Sample 3_UrbanPopgen_Plate70_3-25-24_data.csv,Cnat,Miami urban,Fisher Island,24-Jan,Winter,Dry,1.2,0,0,0,1,D,,1
+urban_647,Sample 4_UrbanPopgen_Plate70_3-25-24_data.csv,Pseu,Miami urban,Fisher Island,24-Jan,Winter,Dry,0.6,0,0,0,1,D,,1
+urban_555,Sample 5_UrbanPopgen_Plate70_3-25-24_data.csv,Cnat,Miami urban,Coral City Camera,24-Jan,Winter,Dry,1.5,0,0,0,1,D,,1
+urban_563,Sample 6_UrbanPopgen_Plate70_3-25-24_data.csv,Cnat,Miami urban,Coral City Camera,24-Jan,Winter,Dry,1.7,0,0,0,1,D,,1
+urban_571,Sample 7_UrbanPopgen_Plate70_3-25-24_data.csv,Mcav,Miami urban,Coral City Camera,24-Jan,Winter,Dry,1.7,0,0,0,1,D,,1
+urban_584,Sample 8_UrbanPopgen_Plate70_3-25-24_data.csv,Mcav,Palm Beach urban,Peanut Island,24-Jan,Winter,Dry,0.9,0,0,0,1,D,,1
+urban_592,Sample 9_UrbanPopgen_Plate70_3-25-24_data.csv,Pseu,Miami urban,Fisher Island,24-Jan,Winter,Dry,0.9,0,0.566883066,0.015614807,0.417502127,B,,1
+urban_600,Sample 10_UrbanPopgen_Plate70_3-25-24_data.csv,Pseu,Miami urban,Fisher Island,24-Jan,Winter,Dry,0.3,0,0.17177162,0.252879453,0.575348927,D,,1
+urban_608,Sample 11_UrbanPopgen_Plate70_3-25-24_data.csv,Cnat,Miami urban,Fisher Island,24-Jan,Winter,Dry,0.6,0,0,0,1,D,,1
+urban_616,Sample 1_UrbanPopgen_Plate71_3-25-24_data.csv,Ofav,Miami urban,Fisher Island,24-Jan,Winter,Dry,0.3,0,0,0,0,0,,0
+urban_624,Sample 2_UrbanPopgen_Plate71_3-25-24_data.csv,Ofav,Miami urban,Fisher Island,24-Jan,Winter,Dry,0.9,0,0.00803502,0.000414189,0.991550791,D,,1
+urban_632,Sample 3_UrbanPopgen_Plate71_3-25-24_data.csv,Dlab,Palm Beach urban,Peanut Island,24-Jan,Winter,Dry,1.8,0,0,0,1,D,,1
+urban_640,Sample 4_UrbanPopgen_Plate71_3-25-24_data.csv,Dlab,Miami urban,Fisher Island,24-Jan,Winter,Dry,1.2,0,0,0,1,D,,1
+urban_648,Sample 5_UrbanPopgen_Plate71_3-25-24_data.csv,Pseu,Miami urban,Fisher Island,24-Jan,Winter,Dry,0.6,0,0,0,1,D,,1
+urban_556,Sample 6_UrbanPopgen_Plate71_3-25-24_data.csv,Mcav,Miami urban,Coral City Camera,24-Jan,Winter,Dry,1.5,0,0,0,1,D,,1
+urban_564,Sample 7_UrbanPopgen_Plate71_3-25-24_data.csv,Cnat,Miami urban,Coral City Camera,24-Jan,Winter,Dry,1.7,0,0,0,1,D,,1
+urban_572,Sample 8_UrbanPopgen_Plate71_3-25-24_data.csv,Mcav,Miami urban,Coral City Camera,24-Jan,Winter,Dry,1.7,0,0,0,1,D,,1
+urban_585,Sample 9_UrbanPopgen_Plate71_3-25-24_data.csv,Cnat,Palm Beach urban,Peanut Island,24-Jan,Winter,Dry,0.9,0,0,0,1,D,,1
+urban_593,Sample 10_UrbanPopgen_Plate71_3-25-24_data.csv,Cnat,Miami urban,Fisher Island,24-Jan,Winter,Dry,0.9,0,0,0,1,,,1
+urban_601,Sample 11_UrbanPopgen_Plate71_3-25-24_data.csv,Dlab,Miami urban,Fisher Island,24-Jan,Winter,Dry,0.9,0,0,0,1,D,,1
+urban_609,Sample 12_UrbanPopgen_Plate71_3-25-24_data.csv,Ofav,Miami urban,Fisher Island,24-Jan,Winter,Dry,1.2,0,0,0,1,D,0,1
+urban_557,Sample 1_UrbanPopgen_Plate72_3-26-24_data.csv,Ofav,Miami urban,Coral City Camera,24-Jan,Winter,Dry,1.5,0,0,0,1,D,,1
+urban_558,Sample 2_UrbanPopgen_Plate72_3-26-24_data.csv,Cnat,Miami urban,Coral City Camera,24-Jan,Winter,Dry,1.5,0,0,0,1,D,,1
+urban_559,Sample 3_UrbanPopgen_Plate72_3-26-24_data.csv,Cnat,Miami urban,Coral City Camera,24-Jan,Winter,Dry,1.5,0,0,0,1,D,,1
+urban_560,Sample 4_UrbanPopgen_Plate72_3-26-24_data.csv,Cnat,Miami urban,Coral City Camera,24-Jan,Winter,Dry,1.5,0,0,0,1,D,,1
+urban_561,Sample 5_UrbanPopgen_Plate72_3-26-24_data.csv,Mcav,Miami urban,Coral City Camera,24-Jan,Winter,Dry,1.5,0,0,0,1,,,1
+urban_565,Sample 6_UrbanPopgen_Plate72_3-26-24_data.csv,Cnat,Miami urban,Coral City Camera,24-Jan,Winter,Dry,1.7,0,0,0,1,D,,1
+urban_566,Sample 7_UrbanPopgen_Plate72_3-26-24_data.csv,Sbou,Miami urban,Coral City Camera,24-Jan,Winter,Dry,1.7,0,1,0,0,B,0,1
+urban_567,Sample 8_UrbanPopgen_Plate72_3-26-24_data.csv,Cnat,Miami urban,Coral City Camera,24-Jan,Winter,Dry,1.7,0,0,0,1,D,,1
+urban_568,Sample 9_UrbanPopgen_Plate72_3-26-24_data.csv,Sbou,Miami urban,Coral City Camera,24-Jan,Winter,Dry,1.7,0,0,0,0,0,0,0
+urban_569,Sample 10_UrbanPopgen_Plate72_3-26-24_data.csv,Mcav,Miami urban,Coral City Camera,24-Jan,Winter,Dry,1.7,0,0,0,1,D,,1
+urban_573,Sample 11_UrbanPopgen_Plate72_3-26-24_data.csv,Pseu,Miami urban,Fisher Island,24-Jan,Winter,Dry,0.9,0,0.524977169,0.057981493,0.417041338,B,,1
+urban_574,Sample 1_UrbanPopgen_Plate73_3-26-24_data.csv,Cnat,Miami urban,Fisher Island,24-Jan,Winter,Dry,0.9,0,0,0,1,D,,1
+urban_575,Sample 2_UrbanPopgen_Plate73_3-26-24_data.csv,Cnat,Miami urban,Fisher Island,24-Jan,Winter,Dry,0.9,0,0,0,1,D,0,1
+urban_576,Sample 3_UrbanPopgen_Plate73_3-26-24_data.csv,Ofav,Miami urban,Fisher Island,24-Jan,Winter,Dry,0.9,0,0,0,1,D,,1
+urban_577,Sample 4_UrbanPopgen_Plate73_3-26-24_data.csv,Ofav,Miami urban,Fisher Island,24-Jan,Winter,Dry,0.9,0,0,0,1,D,,1
+urban_586,Sample 5_UrbanPopgen_Plate73_3-26-24_data.csv,Pseu,Palm Beach urban,Peanut Island,24-Jan,Winter,Dry,0.9,0,0,0,0,0,0,0
+urban_587,Sample 6_UrbanPopgen_Plate73_3-26-24_data.csv,Mcav,Palm Beach urban,Peanut Island,24-Jan,Winter,Dry,1.8,0,0,0,1,D,,1
+urban_588,Sample 7_UrbanPopgen_Plate73_3-26-24_data.csv,Pseu,Miami urban,Fisher Island,24-Jan,Winter,Dry,0.9,0,0.160483498,0.076909661,0.762606842,D,,1
+urban_589,Sample 8_UrbanPopgen_Plate73_3-26-24_data.csv,Ofav,Miami urban,Fisher Island,24-Jan,Winter,Dry,0.9,0,0,0,1,D,,1
+urban_590,Sample 9_UrbanPopgen_Plate73_3-26-24_data.csv,Cnat,Miami urban,Fisher Island,24-Jan,Winter,Dry,0.9,0,0,0.00093843,0.99906157,D,,1
+urban_594,Sample 10_UrbanPopgen_Plate73_3-26-24_data.csv,Pseu,Miami urban,Fisher Island,24-Jan,Winter,Dry,0.9,0,0.289678701,0,0.710321299,,,1
+urban_595,Sample 11_UrbanPopgen_Plate73_3-26-24_data.csv,Pseu,Miami urban,Fisher Island,24-Jan,Winter,Dry,0.9,0,0,0.434026786,0.565973214,D,,1
+urban_596,Sample 12_UrbanPopgen_Plate73_3-26-24_data.csv,Mcav,Miami urban,Fisher Island,24-Jan,Winter,Dry,0.9,0,0,0,1,D,,1
+urban_597,Sample 1_UrbanPopgen_Plate74_3-26-24_data.csv,Pseu,Miami urban,Fisher Island,24-Jan,Winter,Dry,0.9,0,0.252109708,0.09040964,0.657480651,D,,1
+urban_598,Sample 2_UrbanPopgen_Plate74_3-26-24_data.csv,Pseu,Miami urban,Fisher Island,24-Jan,Winter,Dry,2.4,0,0,0,1,D,0,1
+urban_602,Sample 3_UrbanPopgen_Plate74_3-26-24_data.csv,Ofav,Miami urban,Fisher Island,24-Jan,Winter,Dry,1.2,0,0,0,1,D,0,1
+urban_603,Sample 4_UrbanPopgen_Plate74_3-26-24_data.csv,Ofav,Miami urban,Fisher Island,24-Jan,Winter,Dry,0.3,0,0,5.38958E-05,0.999946104,D,,1
+urban_604,Sample 5_UrbanPopgen_Plate74_3-26-24_data.csv,Pseu,Miami urban,Fisher Island,24-Jan,Winter,Dry,0.3,0,0,0,1,D,,1
+urban_605,Sample 6_UrbanPopgen_Plate74_3-26-24_data.csv,Ofav,Miami urban,Fisher Island,24-Jan,Winter,Dry,1.5,0,0,0,1,D,,1
+urban_606,Sample 7_UrbanPopgen_Plate74_3-26-24_data.csv,Ofav,Miami urban,Fisher Island,24-Jan,Winter,Dry,0.9,0,0,0,1,,,1
+urban_610,Sample 8_UrbanPopgen_Plate74_3-26-24_data.csv,Cnat,Miami urban,Fisher Island,24-Jan,Winter,Dry,1.2,0,0,0,1,D,,1
+urban_611,Sample 9_UrbanPopgen_Plate74_3-26-24_data.csv,Cnat,Miami urban,Fisher Island,24-Jan,Winter,Dry,0.6,0,0,0,0,0,,0
+urban_612,Sample 10_UrbanPopgen_Plate74_3-26-24_data.csv,Cnat,Miami urban,Fisher Island,24-Jan,Winter,Dry,0.6,0,0,0,1,D,0,1
+urban_613,Sample 11_UrbanPopgen_Plate74_3-26-24_data.csv,Ofav,Miami urban,Fisher Island,24-Jan,Winter,Dry,1.2,0,0,0,1,D,0,1
+urban_614,Sample 1_UrbanPopgen_Plate75_3-26-24_data.csv,Pseu,Miami urban,Fisher Island,24-Jan,Winter,Dry,1.2,0,0.820135724,0,0.179864276,B,,1
+urban_617,Sample 2_UrbanPopgen_Plate75_3-26-24_data.csv,Dlab,Miami urban,Fisher Island,24-Jan,Winter,Dry,1.5,0,0.06613871,0,0.93386129,D,,1
+urban_618,Sample 3_UrbanPopgen_Plate75_3-26-24_data.csv,Pseu,Miami urban,Fisher Island,24-Jan,Winter,Dry,1.5,0,0.083700818,0.374336149,0.541963033,D,,1
+urban_619,Sample 4_UrbanPopgen_Plate75_3-26-24_data.csv,Pseu,Miami urban,Fisher Island,24-Jan,Winter,Dry,2.1,0,0,0,1,D,,1
+urban_620,Sample 5_UrbanPopgen_Plate75_3-26-24_data.csv,Cnat,Miami urban,Fisher Island,24-Jan,Winter,Dry,1.2,0,0,0,1,D,,1
+urban_621,Sample 6_UrbanPopgen_Plate75_3-26-24_data.csv,Pseu,Miami urban,Fisher Island,24-Jan,Winter,Dry,1.2,0,0.123466362,0,0.876533638,D,,1
+urban_622,Sample 7_UrbanPopgen_Plate75_3-26-24_data.csv,Mcav,Miami urban,Fisher Island,24-Jan,Winter,Dry,1.2,0,0,0,0,0,,0
+urban_625,Sample 8_UrbanPopgen_Plate75_3-26-24_data.csv,Ofav,Miami urban,Fisher Island,24-Jan,Winter,Dry,0.9,0,0.10804676,0,0.89195324,D,,1
+urban_626,Sample 9_UrbanPopgen_Plate75_3-26-24_data.csv,Cnat,Miami urban,Fisher Island,24-Jan,Winter,Dry,0.9,0,0,0,1,D,0,1
+urban_627,Sample 10_UrbanPopgen_Plate75_3-26-24_data.csv,Cnat,Miami urban,Fisher Island,24-Jan,Winter,Dry,0.9,0,0,4.68537E-05,0.999953146,D,,1
+urban_628,Sample 11_UrbanPopgen_Plate75_3-26-24_data.csv,Cnat,Miami urban,Fisher Island,24-Jan,Winter,Dry,0.9,0,0,9.57283E-05,0.999904272,D,,1
+urban_629,Sample 12_UrbanPopgen_Plate75_3-26-24_data.csv,Mcav,Palm Beach urban,Peanut Island,24-Jan,Winter,Dry,1.5,0,0,0,1,D,0,1
+urban_630,Sample 1_UrbanPopgen_Plate76_3-27-24_data.csv,Mcav,Palm Beach urban,Peanut Island,24-Jan,Winter,Dry,1.8,0,0,0,1,D,0,1
+urban_633,Sample 2_UrbanPopgen_Plate76_3-27-24_data.csv,Dlab,Palm Beach urban,Peanut Island,24-Jan,Winter,Dry,2.5,0,0,0,1,D,0,1
+urban_634,Sample 3_UrbanPopgen_Plate76_3-27-24_data.csv,Cnat,Palm Beach urban,Peanut Island,24-Jan,Winter,Dry,2.5,0,0,0,1,D,,1
+urban_635,Sample 4_UrbanPopgen_Plate76_3-27-24_data.csv,Mcav,Palm Beach urban,Peanut Island,24-Jan,Winter,Dry,1.2,0,0,0,1,D,,1
+urban_636,Sample 5_UrbanPopgen_Plate76_3-27-24_data.csv,Mcav,Palm Beach urban,Peanut Island,24-Jan,Winter,Dry,1.8,0,0,0,1,D,,1
+urban_637,Sample 6_UrbanPopgen_Plate76_3-27-24_data.csv,Mcav,Palm Beach urban,Peanut Island,24-Jan,Winter,Dry,1.8,0,0,0,1,D,,1
+urban_638,Sample 7_UrbanPopgen_Plate76_3-27-24_data.csv,Ofav,Miami urban,Fisher Island,24-Jan,Winter,Dry,0.3,0,0,0,1,D,,1
+urban_641,Sample 8_UrbanPopgen_Plate76_3-27-24_data.csv,Pseu,Miami urban,Fisher Island,24-Jan,Winter,Dry,0.3,0,0,0.002868603,0.997131397,D,,1
+urban_642,Sample 9_UrbanPopgen_Plate76_3-27-24_data.csv,Pseu,Miami urban,Fisher Island,24-Jan,Winter,Dry,0.9,0,0,0,1,D,,1
+urban_643,Sample 10_UrbanPopgen_Plate76_3-27-24_data.csv,Ofav,Miami urban,Fisher Island,24-Jan,Winter,Dry,0.9,0,0,0,1,D,,1
+urban_644,Sample 11_UrbanPopgen_Plate76_3-27-24_data.csv,Pseu,Miami urban,Fisher Island,24-Jan,Winter,Dry,0.9,0,0,0.003641994,0.996358006,D,,1
+urban_645,Sample 1_UrbanPopgen_Plate77_3-27-24_data.csv,Mcav,Miami urban,Fisher Island,24-Jan,Winter,Dry,0.9,0,0,0.000803176,0.999196824,D,,1
+urban_646,Sample 2_UrbanPopgen_Plate77_3-27-24_data.csv,Pseu,Miami urban,Fisher Island,24-Jan,Winter,Dry,0.3,0,0,0.074381251,0.925618749,D,C,1
+urban_649,Sample 3_UrbanPopgen_Plate77_3-27-24_data.csv,Ofav,Miami urban,Fisher Island,24-Jan,Winter,Dry,0.3,0,0,0,1,D,0,1
+urban_650,Sample 4_UrbanPopgen_Plate77_3-27-24_data.csv,Dlab,Miami urban,Fisher Island,24-Jan,Winter,Dry,0.6,0,0,0,1,D,,1
+urban_651,Sample 5_UrbanPopgen_Plate77_3-27-24_data.csv,Pseu,Miami urban,Fisher Island,24-Jan,Winter,Dry,0.6,0,0,0,1,D,,1
+urban_652,Sample 6_UrbanPopgen_Plate77_3-27-24_data.csv,Ofav,Miami urban,Fisher Island,24-Jan,Winter,Dry,0.6,0,0,0,1,D,,1
+urban_653,Sample 7_UrbanPopgen_Plate77_3-27-24_data.csv,Ofav,Miami urban,Fisher Island,24-Jan,Winter,Dry,0.9,0,0,0,1,D,,1
+urban_654,Sample 8_UrbanPopgen_Plate77_3-27-24_data.csv,Ofav,Miami urban,Fisher Island,24-Jan,Winter,Dry,0.9,0,0,0,1,D,,1
+urban_655,Sample 9_UrbanPopgen_Plate77_3-27-24_data.csv,Cnat,Miami urban,Fisher Island,24-Jan,Winter,Dry,0.9,0,0,0,1,D,,1
+urban_656,Sample 10_UrbanPopgen_Plate77_3-27-24_data.csv,Pseu,Miami urban,Fisher Island,24-Jan,Winter,Dry,0.9,0,0,0,1,D,,1
+urban_657,Sample 11_UrbanPopgen_Plate77_3-27-24_data.csv,Mcav,Miami urban,Fisher Island,24-Jan,Winter,Dry,0.9,0,0,0,1,D,,1
+urban_658,Sample 12_UrbanPopgen_Plate77_3-27-24_data.csv,Pseu,Miami urban,Fisher Island,24-Jan,Winter,Dry,0.9,0,0.278827742,0.116203577,0.604968681,D,,1
+urban_659,Sample 1_UrbanPopgen_Plate78_3-30-24_data.csv,Pseu,Miami urban,Fisher Island,24-Jan,Winter,Dry,0.9,0,0.009789123,0.55197679,0.438234087,C,,1
+urban_660,Sample 2_UrbanPopgen_Plate78_3-30-24_data.csv,Pseu,Miami urban,Fisher Island,24-Jan,Winter,Dry,0.9,0,0.976811209,0.023188791,0,B,,1
+urban_661,Sample 3_UrbanPopgen_Plate78_3-30-24_data.csv,Cnat,Miami urban,Fisher Island,24-Jan,Winter,Dry,0.9,0,0,0,1,D,,1
+urban_662,Sample 4_UrbanPopgen_Plate78_3-30-24_data.csv,Cnat,Miami urban,Fisher Island,24-Jan,Winter,Dry,0.9,0,0,0,1,D,0,1
+urban_663,Sample 5_UrbanPopgen_Plate78_3-30-24_data.csv,Dlab,Palm Beach urban,Peanut Island,24-Jan,Winter,Dry,1.8,0,0,0,1,D,0,1
+urban_664,Sample 6_UrbanPopgen_Plate78_3-30-24_data.csv,Cnat,Palm Beach urban,Peanut Island,24-Jan,Winter,Dry,1.8,0,0,0,1,D,,1
+urban_665,Sample 7_UrbanPopgen_Plate78_3-30-24_data.csv,Cnat,Palm Beach urban,Peanut Island,24-Jan,Winter,Dry,1.8,0,0,0,1,D,,1
+urban_666,Sample 8_UrbanPopgen_Plate78_3-30-24_data.csv,Mcav,Palm Beach urban,Peanut Island,24-Jan,Winter,Dry,1.8,0,0,0,1,D,,1
+urban_667,Sample 9_UrbanPopgen_Plate78_3-30-24_data.csv,Mcav,Palm Beach urban,Peanut Island,24-Jan,Winter,Dry,1.8,0,0,0,1,D,,1
+urban_668,Sample 10_UrbanPopgen_Plate78_3-30-24_data.csv,Dlab,Palm Beach urban,Peanut Island,24-Jan,Winter,Dry,1.5,0,0,0,1,D,,1
+urban_669,Sample 11_UrbanPopgen_Plate78_3-30-24_data.csv,Dlab,Palm Beach urban,Peanut Island,24-Jan,Winter,Dry,2.1,0,0,0,1,D,,1
+urban_670,Sample 1_UrbanPopgen_Plate79_3-30-24_data.csv,Dlab,Palm Beach urban,Peanut Island,24-Jan,Winter,Dry,2.1,0,0,0,0,,,0
+urban_671,Sample 2_UrbanPopgen_Plate79_3-30-24_data.csv,Dlab,Palm Beach urban,Peanut Island,24-Jan,Winter,Dry,1.8,0,0,0,0,0,,0
+urban_672,Sample 3_UrbanPopgen_Plate79_3-30-24_data.csv,Dlab,Palm Beach urban,Peanut Island,24-Jan,Winter,Dry,1.5,0,0,0,1,D,,1
+urban_673,Sample 4_UrbanPopgen_Plate79_3-30-24_data.csv,Cnat,Palm Beach urban,Peanut Island,24-Jan,Winter,Dry,1.5,0,0,0,0,0,,0
+urban_674,Sample 5_UrbanPopgen_Plate79_3-30-24_data.csv,Cnat,Palm Beach urban,Peanut Island,24-Jan,Winter,Dry,1.5,0,0,0,0,0,,0
+urban_675,Sample 6_UrbanPopgen_Plate79_3-30-24_data.csv,Mcav,Palm Beach urban,Peanut Island,24-Jan,Winter,Dry,1.5,0,0,0,0,0,,0
+urban_676,Sample 7_UrbanPopgen_Plate79_3-30-24_data.csv,Dlab,Palm Beach urban,Peanut Island,24-Jan,Winter,Dry,0.9,0,0,0,0,,,0
+urban_677,Sample 8_UrbanPopgen_Plate79_3-30-24_data.csv,Dlab,Palm Beach urban,Peanut Island,24-Jan,Winter,Dry,0.9,0,0,0,0,,,0
+urban_678,Sample 9_UrbanPopgen_Plate79_3-30-24_data.csv,Pseu,North Miami urban,FIU Biscayne Bay,24-Jan,Winter,Dry,1.9,0,0,0,0,0,,0
+urban_679,Sample 10_UrbanPopgen_Plate79_3-30-24_data.csv,Ofav,North Miami urban,FIU Biscayne Bay,24-Jan,Winter,Dry,1.2,0,0,0,0,,,0
+urban_680,Sample 11_UrbanPopgen_Plate79_3-30-24_data.csv,Pseu,North Miami urban,FIU Biscayne Bay,24-Jan,Winter,Dry,2.4,0,0,0,0,0,,0
+urban_681,Sample 12_UrbanPopgen_Plate79_3-30-24_data.csv,Mcav,North Miami urban,FIU Biscayne Bay,24-Jan,Winter,Dry,2.4,0,0,0,0,0,,0
+urban_682,Sample 1_UrbanPopgen_Plate80_3-30-24_data.csv,Mcav,North Miami urban,FIU Biscayne Bay,24-Jan,Winter,Dry,2.4,0,0,0,1,D,,1
+urban_683,Sample 2_UrbanPopgen_Plate80_3-30-24_data.csv,Mcav,North Miami urban,FIU Biscayne Bay,24-Jan,Winter,Dry,2.4,0,1,0,0,B,,1
+urban_684,Sample 3_UrbanPopgen_Plate80_3-30-24_data.csv,Pseu,North Miami urban,Haulover Inlet,24-Jan,Winter,Dry,1.2,0,1,0,0,B,,1
+urban_685,Sample 4_UrbanPopgen_Plate80_3-30-24_data.csv,Pseu,North Miami urban,Haulover Inlet,24-Jan,Winter,Dry,0.6,0,0.999784268,0,0.000215732,B,,1
+urban_686,Sample 5_UrbanPopgen_Plate80_3-30-24_data.csv,Pseu,North Miami urban,Haulover Inlet,24-Jan,Winter,Dry,0.6,0,0.997238989,0,0.002761011,B,,1
+urban_687,Sample 6_UrbanPopgen_Plate80_3-30-24_data.csv,Pseu,North Miami urban,Haulover Inlet,24-Jan,Winter,Dry,1.2,0,1,0,0,B,,1
+urban_688,Sample 7_UrbanPopgen_Plate80_3-30-24_data.csv,Pseu,North Miami urban,Haulover Inlet,24-Jan,Winter,Dry,0.6,0,1,0,0,B,,1
+urban_689,Sample 8_UrbanPopgen_Plate80_3-30-24_data.csv,Cnat,North Miami urban,Arch Creek,24-Jan,Winter,Dry,2,0,0,0,1,D,0,1
+urban_690,Sample 9_UrbanPopgen_Plate80_3-30-24_data.csv,Cnat,North Miami urban,Arch Creek,24-Jan,Winter,Dry,2.7,0,0,0,1,D,,1
+urban_691,Sample 10_UrbanPopgen_Plate80_3-30-24_data.csv,Cnat,North Miami urban,Arch Creek,24-Jan,Winter,Dry,2.3,0,0,0,1,D,,1
+urban_692,Sample 11_UrbanPopgen_Plate80_3-30-24_data.csv,Cnat,North Miami urban,Arch Creek,24-Jan,Winter,Dry,1.8,0,0,0,1,D,,1
+urban_693,Sample 1_UrbanPopgen_Plate81_3-30-24_data.csv,Pseu,North Miami urban,Haulover Inlet,24-Jan,Winter,Dry,0.9,0,0,0,0,0,,0
+urban_694,Sample 2_UrbanPopgen_Plate81_3-30-24_data.csv,Pseu,Miami urban,FEC Slip Downtown,24-Jan,Winter,Dry,4,0,0,0,1,D,,1
+urban_698,Sample 3_UrbanPopgen_Plate81_3-30-24_data.csv,Pseu,North Miami urban,FIU Biscayne Bay,24-Jan,Winter,Dry,2.7,0,0,0,1,D,,1
+urban_699,Sample 4_UrbanPopgen_Plate81_3-30-24_data.csv,Mcav,North Miami urban,FIU Biscayne Bay,24-Jan,Winter,Dry,2.1,0,0,0,1,D,0,1
+urban_700,Sample 5_UrbanPopgen_Plate81_3-30-24_data.csv,Cnat,North Miami urban,FIU Biscayne Bay,24-Jan,Winter,Dry,3,0,0,0,1,D,,1
+urban_708,Sample 6_UrbanPopgen_Plate81_3-30-24_data.csv,Mcav,North Miami urban,Arch Creek,24-Jan,Winter,Dry,2.7,0,0,0,1,D,,1
+urban_709,Sample 7_UrbanPopgen_Plate81_3-30-24_data.csv,Cnat,North Miami urban,Arch Creek,24-Jan,Winter,Dry,2.7,0,0,0,0,0,,0
+Peanut_016,Sample 8_UrbanPopgen_Plate81_3-30-24_data.csv,Mcav,Palm Beach urban,Peanut Island,23-Mar,Spring,Dry,1.6,0,0,0,0,0,,0
+Peanut_017,Sample 9_UrbanPopgen_Plate81_3-30-24_data.csv,Pseu,Palm Beach urban,Peanut Island,23-Mar,Spring,Dry,1.6,0,0,0,1,D,,1
+Peanut_027,Sample 10_UrbanPopgen_Plate81_3-30-24_data.csv,Pseu,Palm Beach urban,Peanut Island,23-Mar,Spring,Dry,1.6,0,0,0,0,0,0,0
+Peanut_031,Sample 11_UrbanPopgen_Plate81_3-30-24_data.csv,Pseu,Palm Beach urban,Peanut Island,23-Mar,Spring,Dry,1.6,0,0,0,1,,,1
+Peanut_040,Sample 12_UrbanPopgen_Plate81_3-30-24_data.csv,Pseu,Palm Beach urban,Peanut Island,23-Mar,Spring,Dry,1.6,0,0,0,1,,,1
+Peanut_046,Sample 1_UrbanPopgen_Plate82_3-31-24_data.csv,Pseu,Palm Beach urban,Peanut Island,23-Mar,Spring,Dry,1.6,0,0,0,1,D,,1
+Peanut_051,Sample 2_UrbanPopgen_Plate82_3-31-24_data.csv,Pseu,Palm Beach urban,Peanut Island,23-Mar,Spring,Dry,1.6,0,0,0,1,D,0,1
+Peanut_053,Sample 3_UrbanPopgen_Plate82_3-31-24_data.csv,Mcav,Palm Beach urban,Peanut Island,23-Mar,Spring,Dry,1.6,0,0,0,1,D,0,1
+Peanut_060,Sample 4_UrbanPopgen_Plate82_3-31-24_data.csv,Dlab,Palm Beach urban,Peanut Island,23-Mar,Spring,Dry,1.6,0,0,0,1,D,,1
+Peanut_091,Sample 5_UrbanPopgen_Plate82_3-31-24_data.csv,Mcav,Palm Beach urban,Peanut Island,23-Mar,Spring,Dry,1.6,0,0,0,1,D,,1
+urban_006,Sample 6_UrbanPopgen_Plate82_3-31-24_data.csv,Mcav,Miami urban,Star Island,22-Jul,Summer,Wet,2.4,0,0,0,1,D,0,1
+urban_015,Sample 7_UrbanPopgen_Plate82_3-31-24_data.csv,Mcav,Miami urban,Star Island,22-Jul,Summer,Wet,2.4,0,0,0,1,D,0,1
+urban_031,Sample 8_UrbanPopgen_Plate82_3-31-24_data.csv,Mcav,Miami urban,Star Island,22-Jul,Summer,Wet,2.4,0,0.708097691,0.222144267,0.069758042,B,D,1
+urban_043,Sample 9_UrbanPopgen_Plate82_3-31-24_data.csv,Mcav,Broward reef,FTL4,22-Aug,Summer,Wet,5.5,0,0,1,0,C,0,1
+urban_044,Sample 10_UrbanPopgen_Plate82_3-31-24_data.csv,Mcav,Broward reef,FTL4,22-Aug,Summer,Wet,5.5,0,0,1,0,C,0,1
+urban_045,Sample 11_UrbanPopgen_Plate82_3-31-24_data.csv,Mcav,Broward reef,FTL4,22-Aug,Summer,Wet,5.5,0,0,1,0,C,0,1
+urban_046,Sample 1_UrbanPopgen_Plate83_3-31-24_data.csv,Mcav,Broward reef,FTL4,22-Aug,Summer,Wet,5.8,0,0,1,0,,,1
+urban_050,Sample 2_UrbanPopgen_Plate83_3-31-24_data.csv,Mcav,Broward reef,FTL4,22-Aug,Summer,Wet,6.1,0,0,1,0,C,,1
+urban_051,Sample 3_UrbanPopgen_Plate83_3-31-24_data.csv,Mcav,Broward reef,FTL4,22-Aug,Summer,Wet,5.8,0,0,1,0,C,,1
+urban_055,Sample 4_UrbanPopgen_Plate83_3-31-24_data.csv,Mcav,Broward reef,BC1,22-Aug,Summer,Wet,5.5,0,0.99920809,0.00079191,0,B,C,1
+urban_058,Sample 5_UrbanPopgen_Plate83_3-31-24_data.csv,Mcav,Broward reef,BC1,22-Aug,Summer,Wet,5.8,0,0,1,0,C,,1
+urban_067,Sample 6_UrbanPopgen_Plate83_3-31-24_data.csv,Mcav,Broward reef,BC1,22-Aug,Summer,Wet,6.4,0,0,0,1,D,,1
+urban_071,Sample 7_UrbanPopgen_Plate83_3-31-24_data.csv,Mcav,Broward reef,BC1,22-Aug,Summer,Wet,7.3,0,0,1,0,C,,1
+urban_074,Sample 8_UrbanPopgen_Plate83_3-31-24_data.csv,Mcav,Miami urban,Star Island,22-Sep,Fall,Wet,5,0,0,1,0,C,,1
+urban_104,Sample 9_UrbanPopgen_Plate83_3-31-24_data.csv,Mcav,Miami reef,Rainbow Reef,22-Oct,Fall,Wet,8.5,0,0,0.419124223,0.580875777,D,,1
+urban_131,Sample 10_UrbanPopgen_Plate83_3-31-24_data.csv,Mcav,Miami urban,Star Island,22-Oct,Fall,Wet,2.4,0,0.091078245,0,0.908921755,D,,1
+urban_134,Sample 11_UrbanPopgen_Plate83_3-31-24_data.csv,Mcav,Miami urban,Star Island,22-Oct,Fall,Wet,2.4,0,0,0,0,0,,0
+urban_166,Sample 12_UrbanPopgen_Plate83_3-31-24_data.csv,Ofav,Miami reef,Emerald Reef,23-Jan,Winter,Dry,7.5,0,0,0,0,0,,0
+urban_199,Sample 1_UrbanPopgen_Plate84_3-31-24_data.csv,Mcav,Miami urban,MacArthur North,23-Jan,Winter,Dry,1.1,0,0,0,1,,,1
+urban_293,Sample 2_UrbanPopgen_Plate84_3-31-24_data.csv,Pseu,Broward reef,T328,23-May,Spring,Dry,5.5,0,0.998847385,0.001152615,0,B,,1
+urban_296,Sample 3_UrbanPopgen_Plate84_3-31-24_data.csv,Pseu,Broward reef,T328,23-May,Spring,Dry,5.2,0,0.008825043,0.002936523,0.988238434,D,BC,1
+urban_347,Sample 4_UrbanPopgen_Plate84_3-31-24_data.csv,Dlab,Miami urban,MacArthur North,23-Aug,Summer,Wet,1.2,0,0,0,1,D,,1
+urban_348,Sample 5_UrbanPopgen_Plate84_3-31-24_data.csv,Dlab,Miami urban,MacArthur North,23-Aug,Summer,Wet,0.9,0,0,0.669365261,0.330634739,C,,1
+urban_389,Sample 6_UrbanPopgen_Plate84_3-31-24_data.csv,Mcav,North Miami reef,Pillars,24-Jan,Winter,Dry,9.8,0,0,0.00013544,0.99986456,D,,1
+urban_390,Sample 7_UrbanPopgen_Plate84_3-31-24_data.csv,Mcav,North Miami reef,Pillars,24-Jan,Winter,Dry,9.4,0,0.004351704,0,0.995648296,D,B,1
+urban_396,Sample 8_UrbanPopgen_Plate84_3-31-24_data.csv,Mcav,North Miami reef,Graceland,24-Jan,Winter,Dry,5.5,0,0,0.998750201,0.001249799,C,,1
+urban_397,Sample 9_UrbanPopgen_Plate84_3-31-24_data.csv,Mcav,North Miami reef,Graceland,24-Jan,Winter,Dry,5.5,0,0.002889683,0.936732758,0.060377559,C,,1
+urban_408,Sample 10_UrbanPopgen_Plate84_3-31-24_data.csv,Pseu,North Miami reef,South Canyon,24-Jan,Winter,Dry,4.9,0,0.999924828,7.51717E-05,0,B,C,1
+urban_414,Sample 11_UrbanPopgen_Plate84_3-31-24_data.csv,Pseu,North Miami reef,South Canyon,24-Jan,Winter,Dry,5.2,0,0.024135266,0,0.975864734,D,B,1
+urban_429,Sample 1_UrbanPopgen_Plate85_3-31-24_data.csv,Mcav,North Miami reef,Graceland,24-Jan,Winter,Dry,5.8,0,0,0,0,,,0
+urban_428,Sample 2_UrbanPopgen_Plate85_3-31-24_data.csv,Mcav,North Miami reef,Graceland,24-Jan,Winter,Dry,5.5,0,0,0,1,,,1
+urban_451,Sample 3_UrbanPopgen_Plate85_3-31-24_data.csv,Mcav,North Miami reef,Graceland,24-Jan,Winter,Dry,5.8,0,0,0.335168995,0.664831005,,,1
+urban_455,Sample 4_UrbanPopgen_Plate85_3-31-24_data.csv,Dlab,Miami urban,Miami Beach Marina,24-Jan,Winter,Dry,1.3,0,0.004132076,9.05951E-05,0.995777329,,,1
+urban_456,Sample 5_UrbanPopgen_Plate85_3-31-24_data.csv,Pseu,Miami urban,Miami Beach Marina,24-Jan,Winter,Dry,2,0,1,0,0,,,1
+urban_457,Sample 6_UrbanPopgen_Plate85_3-31-24_data.csv,Pseu,Miami urban,Miami Beach Marina,24-Jan,Winter,Dry,2,0,0,1,0,C,,1
+urban_460,Sample 7_UrbanPopgen_Plate85_3-31-24_data.csv,Pseu,Miami urban,Miami Beach Marina,24-Jan,Winter,Dry,2.2,0,1,0,0,,,1
+urban_478,Sample 8_UrbanPopgen_Plate85_3-31-24_data.csv,Pseu,Miami urban,Miami Beach Marina,24-Jan,Winter,Dry,1.3,0,1,0,0,,,1
+urban_384,Sample 9_UrbanPopgen_Plate85_3-31-24_data.csv,Pseu,Miami urban,MacArthur North,24-Jan,Winter,Dry,1.2,0,0,0,1,,,1
+urban_431,Sample 10_UrbanPopgen_Plate85_3-31-24_data.csv,Ofav,North Miami reef,Graceland,24-Jan,Winter,Dry,6.7,0,1,0,0,,,1
+urban_435,Sample 11_UrbanPopgen_Plate85_3-31-24_data.csv,Pseu,North Miami reef,Graceland,24-Jan,Winter,Dry,5.5,0,0,1,0,,,1
+urban_671,Sample 12_UrbanPopgen_Plate85_3-31-24_data.csv,Dlab,Palm Beach urban,Peanut Island,24-Jan,Winter,Dry,1.8,0,0,0,1,,,1
+Peanut_002,Sample 1_UrbanPopgen_Plate86_4-3-24_data.csv,Mcav,Palm Beach urban,Peanut Island,23-Mar,Spring,Dry,1.6,0,0,0,0,,,0
+Peanut_013,Sample 2_UrbanPopgen_Plate86_4-3-24_data.csv,Mcav,Palm Beach urban,Peanut Island,23-Mar,Spring,Dry,1.6,0,0,0,0,,,0
+Peanut_014,Sample 3_UrbanPopgen_Plate86_4-3-24_data.csv,Mcav,Palm Beach urban,Peanut Island,23-Mar,Spring,Dry,1.6,0,0,0,0,,,0
+Peanut_016,Sample 4_UrbanPopgen_Plate86_4-3-24_data.csv,Mcav,Palm Beach urban,Peanut Island,23-Mar,Spring,Dry,1.6,0,0,0,0,,,0
+Peanut_049,Sample 5_UrbanPopgen_Plate86_4-3-24_data.csv,Mcav,Palm Beach urban,Peanut Island,23-Mar,Spring,Dry,1.6,0,0,0,0,,,0
+Peanut_053,Sample 6_UrbanPopgen_Plate86_4-3-24_data.csv,Mcav,Palm Beach urban,Peanut Island,23-Mar,Spring,Dry,1.6,0,0,0,0,,,0
+Peanut_069,Sample 7_UrbanPopgen_Plate86_4-3-24_data.csv,Mcav,Palm Beach urban,Peanut Island,23-Mar,Spring,Dry,1.6,0,0,0,0,,,0
+Peanut_086,Sample 8_UrbanPopgen_Plate86_4-3-24_data.csv,Mcav,Palm Beach urban,Peanut Island,23-Mar,Spring,Dry,1.6,0,0,0,0,,,0
+Peanut_091,Sample 9_UrbanPopgen_Plate86_4-3-24_data.csv,Mcav,Palm Beach urban,Peanut Island,23-Mar,Spring,Dry,1.6,0,0,0,0,,,0
+Peanut_093,Sample 10_UrbanPopgen_Plate86_4-3-24_data.csv,Mcav,Palm Beach urban,Peanut Island,23-Mar,Spring,Dry,1.6,0,0,0,0,,,0
+Peanut_098,Sample 11_UrbanPopgen_Plate86_4-3-24_data.csv,Mcav,Palm Beach urban,Peanut Island,23-Mar,Spring,Dry,1.6,0,0,0,0,,,0
+nmfs_015,Sample 1_UrbanPopgen_Plate87_4-3-24_data.csv,Ofav,Miami reef,Emerald Reef,21-Jan,Winter,Dry,6.4,0,1,0,0,B,,1
+UR16 rex2,Sample 2_UrbanPopgen_Plate87_4-3-24_data.csv,Pseu,Miami urban,MacArthur North,22-Jun,Summer,Wet,0.3,0,0,0,0,,,0
+OS3 rex2,Sample 3_UrbanPopgen_Plate87_4-3-24_data.csv,Dlab,Miami reef,Emerald Reef,22-Jun,Summer,Wet,9.1,0,1,0,0,B,,1
+urban_018,Sample 4_UrbanPopgen_Plate87_4-3-24_data.csv,Pseu,Miami urban,Star Island,22-Jul,Summer,Wet,2.4,0,0.98915985,0,0.01084015,,,1
+urban_430,Sample 5_UrbanPopgen_Plate87_4-3-24_data.csv,Mcav,North Miami reef,Graceland,24-Jan,Winter,Dry,5.8,0,0.002330541,0.997669459,0,,,1
+urban_448,Sample 6_UrbanPopgen_Plate87_4-3-24_data.csv,Mcav,North Miami reef,Graceland,24-Jan,Winter,Dry,5.8,0,0,0,0,0,,0
+urban_449,Sample 7_UrbanPopgen_Plate87_4-3-24_data.csv,Mcav,North Miami reef,Graceland,24-Jan,Winter,Dry,5.9,0,0,0,1,D,0,1
+urban_671,Sample 8_UrbanPopgen_Plate87_4-3-24_data.csv,Dlab,Palm Beach urban,Peanut Island,24-Jan,Winter,Dry,1.8,0,0,0,1,D,0,1
+Peanut_031,Sample 9_UrbanPopgen_Plate87_4-3-24_data.csv,Pseu,Palm Beach urban,Peanut Island,23-Mar,Spring,Dry,1.6,0,0,0,1,,,1
+Peanut_040,Sample 10_UrbanPopgen_Plate87_4-3-24_data.csv,Pseu,Palm Beach urban,Peanut Island,23-Mar,Spring,Dry,1.6,0,0,0,0,0,,0
+Baggs_072,Sample 11_UrbanPopgen_Plate87_4-3-24_data.csv,Cnat,Miami urban,Bill Baggs,21-Jun,Summer,Wet,1,0,1,0,0,B,,1
+Baggs_204,Sample 12_UrbanPopgen_Plate87_4-3-24_data.csv,Cnat,Miami urban,Bill Baggs,20-Jun,Summer,Wet,1,0,0,0,0,0,,0
+urban_541,Sample 1_UrbanPopgen_Plate88_4-4-24_data.csv,Dlab,Miami urban,Coral City Camera,24-Jan,Winter,Dry,1.8,0,0,0,1,D,,1
+urban_549,Sample 2_UrbanPopgen_Plate88_4-4-24_data.csv,Dlab,Miami urban,Coral City Camera,24-Jan,Winter,Dry,1.2,0,0,0,1,D,0,1
+urban_402,Sample 3_UrbanPopgen_Plate88_4-4-24_data.csv,Cnat,Miami urban,Seaquarium,24-Jan,Winter,Dry,0.9,0,0,0,1,D,,1
+urban_468,Sample 4_UrbanPopgen_Plate88_4-4-24_data.csv,Cnat,Miami urban,Seaquarium,24-Jan,Winter,Dry,0.6,0,0,0,1,D,,1
+urban_476,Sample 5_UrbanPopgen_Plate88_4-4-24_data.csv,Dlab,Miami urban,Coral City Camera,24-Jan,Winter,Dry,2.4,0,0,0,1,D,,1
+urban_499,Sample 6_UrbanPopgen_Plate88_4-4-24_data.csv,Pseu,Miami urban,Coral City Camera,24-Jan,Winter,Dry,1.5,0,0,0,1,D,,1
+urban_508,Sample 7_UrbanPopgen_Plate88_4-4-24_data.csv,Pseu,Miami urban,Coral City Camera,24-Jan,Winter,Dry,1.5,0,0.999175616,0,0.000824384,B,,1
+urban_516,Sample 8_UrbanPopgen_Plate88_4-4-24_data.csv,Pseu,Miami urban,Coral City Camera,24-Jan,Winter,Dry,1.5,0,0,0,1,D,,1
+urban_524,Sample 9_UrbanPopgen_Plate88_4-4-24_data.csv,Pseu,Miami urban,Coral City Camera,24-Jan,Winter,Dry,1.7,0,0.999496453,0.00013318,0.000370367,B,,1
+urban_534,Sample 10_UrbanPopgen_Plate88_4-4-24_data.csv,Cnat,Miami urban,Coral City Camera,24-Jan,Winter,Dry,1.8,0,0.068223553,0,0.931776447,D,B,1
+urban_586,Sample 11_UrbanPopgen_Plate88_4-4-24_data.csv,Pseu,Palm Beach urban,Peanut Island,24-Jan,Winter,Dry,0.9,0,0,0,1,D,,1
+urban_709,Sample 12_UrbanPopgen_Plate88_4-4-24_data.csv,Cnat,North Miami urban,Arch Creek,24-Jan,Winter,Dry,2.7,0,0,0,1,D,0,1
+urban_670,Sample 1_UrbanPopgen_Plate89_4-4-24_data.csv,Dlab,Palm Beach urban,Peanut Island,24-Jan,Winter,Dry,2.1,0,0,0,1,D,,1
+urban_673,Sample 2_UrbanPopgen_Plate89_4-4-24_data.csv,Cnat,Palm Beach urban,Peanut Island,24-Jan,Winter,Dry,1.5,0,0,0,1,D,,1
+urban_674,Sample 3_UrbanPopgen_Plate89_4-4-24_data.csv,Cnat,Palm Beach urban,Peanut Island,24-Jan,Winter,Dry,1.5,0,0,0,1,D,,1
+urban_675,Sample 4_UrbanPopgen_Plate89_4-4-24_data.csv,Mcav,Palm Beach urban,Peanut Island,24-Jan,Winter,Dry,1.5,0,0,0,1,D,,1
+urban_676,Sample 5_UrbanPopgen_Plate89_4-4-24_data.csv,Dlab,Palm Beach urban,Peanut Island,24-Jan,Winter,Dry,0.9,0,0,0,1,D,,1
+urban_677,Sample 6_UrbanPopgen_Plate89_4-4-24_data.csv,Dlab,Palm Beach urban,Peanut Island,24-Jan,Winter,Dry,0.9,0,0,0,1,D,,1
+urban_678,Sample 7_UrbanPopgen_Plate89_4-4-24_data.csv,Pseu,North Miami urban,FIU Biscayne Bay,24-Jan,Winter,Dry,1.9,0,0,0,1,D,,1
+urban_679,Sample 8_UrbanPopgen_Plate89_4-4-24_data.csv,Ofav,North Miami urban,FIU Biscayne Bay,24-Jan,Winter,Dry,1.2,0,1,0,0,B,,1
+urban_680,Sample 9_UrbanPopgen_Plate89_4-4-24_data.csv,Pseu,North Miami urban,FIU Biscayne Bay,24-Jan,Winter,Dry,2.4,0,0,0,1,D,,1
+urban_681,Sample 10_UrbanPopgen_Plate89_4-4-24_data.csv,Mcav,North Miami urban,FIU Biscayne Bay,24-Jan,Winter,Dry,2.4,0,0,0,1,D,,1
+urban_683,Sample 11_UrbanPopgen_Plate89_4-4-24_data.csv,Mcav,North Miami urban,FIU Biscayne Bay,24-Jan,Winter,Dry,2.4,0,0,0,1,D,,1
+urban_693,Sample 12_UrbanPopgen_Plate89_4-4-24_data.csv,Pseu,North Miami urban,Haulover Inlet,24-Jan,Winter,Dry,0.9,0,0,0,1,D,,1
+urban_399,Sample 1_UrbanPopgen_Plate90_4-4-24_data.csv,Dlab,Miami urban,Seaquarium,24-Jan,Winter,Dry,0.6,0,0,0,1,,,1
+urban_474,Sample 2_UrbanPopgen_Plate90_4-4-24_data.csv,Pseu,Miami urban,Coral City Camera,24-Jan,Winter,Dry,2.1,0,0,0,1,D,,1
+urban_547,Sample 3_UrbanPopgen_Plate90_4-4-24_data.csv,Dlab,Miami urban,Coral City Camera,24-Jan,Winter,Dry,0.9,0,0,0,1,D,,1
+urban_622,Sample 4_UrbanPopgen_Plate90_4-4-24_data.csv,Mcav,Miami urban,Fisher Island,24-Jan,Winter,Dry,1.2,0,0,0,1,D,,1
+urban_520,Sample 1_UrbanPopgen_Plate91_4-5-24_data.csv,Pseu,Miami urban,Coral City Camera,24-Jan,Winter,Dry,1.5,0,0.990869561,0.009130439,0,B,,1
+urban_513,Sample 2_UrbanPopgen_Plate91_4-5-24_data.csv,Pseu,Miami urban,Coral City Camera,24-Jan,Winter,Dry,1.5,0,0.946796859,0,0.053203141,B,D,1
+urban_527,Sample 3_UrbanPopgen_Plate91_4-5-24_data.csv,Pseu,Miami urban,Coral City Camera,24-Jan,Winter,Dry,1.7,0,0,0,1,D,0,1
+urban_591,Sample 4_UrbanPopgen_Plate91_4-5-24_data.csv,Pseu,Miami urban,Fisher Island,24-Jan,Winter,Dry,0.9,0,0,0,1,D,,1
+urban_616,Sample 5_UrbanPopgen_Plate91_4-5-24_data.csv,Ofav,Miami urban,Fisher Island,24-Jan,Winter,Dry,0.3,0,0,0.001802974,0.998197026,D,,1
+urban_473,Sample 6_UrbanPopgen_Plate91_4-5-24_data.csv,Ofav,Miami urban,Coral City Camera,24-Jan,Winter,Dry,2.4,0,0,0,1,D,0,1
+urban_611,Sample 7_UrbanPopgen_Plate91_4-5-24_data.csv,Cnat,Miami urban,Fisher Island,24-Jan,Winter,Dry,0.6,0,0,0,1,D,,1
+urban_273,Sample 8_UrbanPopgen_Plate91_4-5-24_data.csv,Cnat,Broward reef,BC1,23-Apr,Spring,Dry,8.5,0,0,0,1,D,,1

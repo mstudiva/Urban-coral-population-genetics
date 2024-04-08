@@ -9,6 +9,7 @@ library(ggplot2)
 library(RColorBrewer)
 library(gridExtra) # install.packages("gridExtra")
 library(vegan) # install.packages("vegan")
+library(rcompanion)
 library(ape) # install.packages("ape")
 library(pairwiseAdonis) # install_github("pmartinezarbizu/pairwiseAdonis/pairwiseAdonis")
 set.seed(666) # Setting seed allows randomized processes (PERMANOVA) to be repeated later
@@ -32,22 +33,13 @@ Urban_Out <- steponeR(files=Plates, target.ratios=c("A.B","A.C","A.D","B.A","B.C
 # Target ratio results
 Urban<-Urban_Out$result
 
-# METADATA (not needed here since it's already included in the symbiont abundance data)
-# Metadata<-read.csv("metadata.csv")
-# Metadata$Species <- as.factor(Metadata$Species)
-# Metadata$Region <- as.factor(Metadata$Region)
-# Metadata$Site <- as.factor(Metadata$Site)
-# Metadata$CollectionDate <- as.factor(Metadata$CollectionDate)
-# Metadata$Season <- as.factor(Metadata$Season)
-# Metadata$Rain <- as.factor(Metadata$Rain)
-
 # Create unique sample ID+FileName to merge with symbiont abundance data  
 Urban$Sample.Plate<-paste(Urban$Sample.Name, Urban$File.Name, sep = "_" )
 
 # Importing the symbiont abundance data from Rich
-Urban_Prop <- read.csv("symProps_6Apr2024.csv", head=T)
+Urban_Prop <- read.csv("symProps_7Apr2024.csv", head=T)
 Urban_Prop$Species <- as.factor(Urban_Prop$Species)
-Urban_Prop$Region <- as.factor(Urban_Prop$Region)
+Urban_Prop$Site <- as.factor(Urban_Prop$Site)
 Urban_Prop$CollectionDate <- as.factor(Urban_Prop$CollectionDate)
 Urban_Prop$Season <- as.factor(Urban_Prop$Season)
 Urban_Prop$Rain <- as.factor(Urban_Prop$Rain)
@@ -112,30 +104,30 @@ Urban_Join %>%
 Urban_Join %>%
   filter(Species == "Mcav") %>%
   group_by(Region) %>%
-  summarize(across(propA:propD, mean, na.rm=TRUE)) -> Mcav_dom
+  summarize(across(Symbiodinium:Durusdinium, mean, na.rm=TRUE)) -> Mcav_dom
 Mcav_dom # reef: AC, urban: AD
 Urban_Join %>%
   filter(Species == "Ofav") %>%
   group_by(Region) %>%
-  summarize(across(propA:propD, mean, na.rm=TRUE)) -> Ofav_dom
+  summarize(across(Symbiodinium:Durusdinium, mean, na.rm=TRUE)) -> Ofav_dom
 Ofav_dom # reef: ABD, urban: D
 Urban_Join %>%
   filter(Species == "Cnat") %>%
   group_by(Region) %>%
-  summarize(across(propA:propD, mean, na.rm=TRUE)) -> Cnat_dom
+  summarize(across(Symbiodinium:Durusdinium, mean, na.rm=TRUE)) -> Cnat_dom
 Cnat_dom # reef: BD, urban: BD
 Urban_Join %>%
   filter(Species == "Pseu") %>%
   group_by(Region) %>%
-  summarize(across(propA:propD, mean, na.rm=TRUE)) -> Pseu_dom
+  summarize(across(Symbiodinium:Durusdinium, mean, na.rm=TRUE)) -> Pseu_dom
 Pseu_dom # reef: BD, urban: BD
 Urban_Join %>%
   filter(Species == "Dlab") %>%
   group_by(Region) %>%
-  summarize(across(propA:propD, mean, na.rm=TRUE)) -> Dlab_dom
+  summarize(across(Symbiodinium:Durusdinium, mean, na.rm=TRUE)) -> Dlab_dom
 Dlab_dom # reef: ABD, urban: D
 
-# Further filtering species by site based on dominant symbionts
+# Further filtering species by region based on dominant symbionts
 Mcav %>%
   filter(grepl('reef', Region)) -> Mcav_reef
 Mcav %>%
@@ -304,6 +296,7 @@ ReRuns_Done %>%
   left_join(select(ToReRun_Failed, ID, failed), by = "ID") %>%
   filter(is.na(failed)) -> ReRuns_Worked
 # Sanity check: The number of rows in ReRuns_Failed and ReRuns_Worked should sum to ReRuns_Done
+
 ReRuns_Worked %>%
   filter(count==2) -> ReRuns_2Worked # now filtering out any samples run thrice
 write.csv(ReRuns_2Worked, file = "ReRuns_Worked.csv")
@@ -351,6 +344,35 @@ Urban_Prop_Merged <- rbind(Urban_Prop_Good, Urban_Prop_2Good, Urban_Prop_3Good)
 # ReRuns_Remain %>%
 #   anti_join(AlreadyPlated, by = "ID") -> ReRuns_Remain_ForReal
 # write.csv(ReRuns_Remain_ForReal, file = "ReRuns_Remain.csv")
+
+# Identifying A-dominated samples for QAQC with TaqMan
+# Urban_Prop_Final %>% 
+#   filter(dom == "A" | grepl('A', coDom)) -> domA
+# 
+# Urban_Prop_Final %>% 
+#   filter(grepl('A', background)) %>%
+#   group_by(Species) %>%
+#   sample_n(1) %>%
+#   filter(Species != "Cnat") -> backA
+# 
+# testA <- rbind(domA, backA)
+# testA %>%
+#   arrange(Species, Region, Region, ID) -> testA
+# 
+# write.csv(testA, file = "qaqcA.csv")
+
+# Randomly selecting samples by regions for QAQC with TaqMan
+# Urban_Prop_Final %>% 
+#   filter(dom != "A" | grepl('A', coDom))
+#   group_by(Species, Region) %>%
+#   sample_n(3) %>%
+#   ungroup() %>%
+#   sample_n(28) -> testABCD
+# 
+# testABCD %>%
+#   arrange(Species, Region, Region, ID) -> testABCD
+# 
+# write.csv(testABCD, file = "qaqcABCD.csv")
 
 # Finds duplicated sample IDs with good data
 Urban_Prop_Merged %>%
@@ -408,6 +430,12 @@ write.csv(Urban_Prop_Final, file = "symProps_final.csv")
 
 #### STATISTICS ####
 
+Urban_Prop_Final <- read.csv("symProps_final.csv", head=T)
+Urban_Prop_Final$Species <- as.factor(Urban_Prop_Final$Species)
+Urban_Prop_Final$Site <- as.factor(Urban_Prop_Final$Site)
+Urban_Prop_Final$Season <- as.factor(Urban_Prop_Final$Season)
+Urban_Prop_Final$Rain <- as.factor(Urban_Prop_Final$Rain)
+
 # Filtering by species
 Urban_Prop_Final %>%
   filter(Species == "Mcav") -> Mcav_Prop
@@ -420,42 +448,44 @@ Urban_Prop_Final %>%
 Urban_Prop_Final %>%
   filter(Species == "Dlab") -> Dlab_Prop
 
-# Identifying A-dominated samples for QAQC with TaqMan
-Urban_Prop_Final %>% 
-  filter(dom == "A" | grepl('A', coDom)) -> domA
+# What is the sample size distribution among sites?
+Mcav_Prop %>% 
+  group_by(Region,Site) %>%
+  tally() 
+Ofav_Prop %>% 
+  group_by(Region,Site) %>%
+  tally() 
+Cnat_Prop %>% 
+  group_by(Region,Site) %>%
+  tally() 
+Pseu_Prop %>% 
+  group_by(Region,Site) %>%
+  tally() 
+Dlab_Prop %>% 
+  group_by(Region,Site) %>%
+  tally() 
+# A lot of sites have low sample sizes, so combining by region for statistical testing
+# Will also create abundance figures by site
 
-Urban_Prop_Final %>% 
-  filter(grepl('A', background)) %>%
-  group_by(Species) %>%
-  sample_n(1) %>%
-  filter(Species != "Cnat") -> backA
-
-testA <- rbind(domA, backA)
-testA %>%
-  arrange(Species, Region, Site, ID) -> testA
-
-write.csv(testA, file = "qaqcA.csv")
-
-# Randomly selecting samples by sites for QAQC with TaqMan
-Urban_Prop_Final %>% 
-  filter(dom != "A" | grepl('A', coDom))
-  group_by(Species, Region) %>%
-  sample_n(3) %>%
-  ungroup() %>%
-  sample_n(28) -> testABCD
-
-testABCD %>%
-  arrange(Species, Region, Site, ID) -> testABCD
-
-write.csv(testABCD, file = "qaqcABCD.csv")
+# Need to ungroup Region for PCoAs below
+Mcav_Prop %>%
+  ungroup() -> Mcav_Prop
+Ofav_Prop %>%
+  ungroup() -> Ofav_Prop
+Cnat_Prop %>%
+  ungroup() -> Cnat_Prop
+Pseu_Prop %>%
+  ungroup() -> Pseu_Prop
+Dlab_Prop %>%
+  ungroup() -> Dlab_Prop
 
 
 #### MCAV PERMANOVA/PCoA ####
 
 # making a matrix of just symbiont proportion data for each species
-Mcav_Matrix <- Mcav_Prop[c(10:13)]
-Mcav_Site <- make.unique(Mcav_Prop$Site, sep = "_") # making unique row names for dissimilarity matrix
-rownames(Mcav_Matrix) <- rownames(Mcav_Site) # setting row names
+Mcav_Matrix <- Mcav_Prop[c(12:14)]
+Mcav_Region <- make.unique(Mcav_Prop$Region, sep = "_") # making unique row names for dissimilarity matrix
+rownames(Mcav_Matrix) <- Mcav_Region # setting row names
 Mcav_Matrix <- sqrt(Mcav_Matrix) # sqrt transformation for zero-inflated data
 
 # dissimilarity matrix in vegan
@@ -463,65 +493,84 @@ Mcav_Diss <- vegdist(Mcav_Matrix, "bray") # using Bray-Curtis dissimilarity
 Mcav_Pcoa <- pcoa(Mcav_Diss) # running the PCoA
 Mcav_Vectors <- Mcav_Pcoa$vectors # vectors of datapoints for plot
 
-# setting site as a factor for signficance testing
-Mcav_Prop$Site <- factor(Mcav_Prop$Site, levels=c("Emerald Reef","Rainbow Reef","Star Island","Belle Isle", "MacArthur North"))
-fill.color<-c("#01665e","#5ab4ac","#f6e8c3","#d8b365","#8c510a") # custom color palette
+# setting region as a factor for significance testing
+Mcav_Prop$Region <- factor(Mcav_Prop$Region, levels=c("Palm Beach urban", "Broward reef", "North Miami reef", "North Miami urban", "Miami reef", "Miami urban"))
+fill.color<-c("#fddbc7", "#e0e0e0", "#999999", "#ef8a62", "#4d4d4d", "#b2182b") # custom color palette
 
 # PCoA plot
-pdf(file="Miami Mcav PCoA.pdf", width=8, height=6)
-plot(Mcav_Vectors[,1], Mcav_Vectors[,2],col=fill.color[as.numeric(as.factor(Mcav_Prop$Site))], pch=16, xlab=(paste("Coordinate 1 (", round((Mcav_Pcoa$values$Relative_eig[[1]] * 100), 2), "%)", sep = "")), ylab=(paste("Coordinate 2 (", round((Mcav_Pcoa$values$Relative_eig[[2]] * 100), 2), "%)", sep = "")), main="Montastraea cavernosa")
-legend("bottomright", legend=c("Emerald Reef","Rainbow Reef","Star Island","Belle Isle", "MacArthur North"), fill = fill.color, bty="n")
+pdf(file="Mcav PCoA.pdf", width=8, height=6)
+plot(Mcav_Vectors[,1], Mcav_Vectors[,2],col=fill.color[as.numeric(as.factor(Mcav_Prop$Region))], pch=16, xlab=(paste("Coordinate 1 (", round((Mcav_Pcoa$values$Rel_corr_eig[[1]] * 100), 2), "%)", sep = "")), ylab=(paste("Coordinate 2 (", round((Mcav_Pcoa$values$Rel_corr_eig[[2]] * 100), 2), "%)", sep = "")), main="Montastraea cavernosa")
+legend("bottomright", legend=c("Palm Beach urban", "Broward reef", "North Miami reef", "North Miami urban", "Miami reef", "Miami urban"), fill = fill.color, bty="n")
 dev.off()
 
 # testing for homogeneity of variance among species
-Mcav_Disp <- betadisper(Mcav_Diss, group=Mcav_Prop$Site)
+Mcav_Disp <- betadisper(Mcav_Diss, group=Mcav_Prop$Region)
 permutest(Mcav_Disp, bias.adjust = TRUE, perm = 9999)
 # Permutation test for homogeneity of multivariate dispersions
 # Permutation: free
 # Number of permutations: 9999
 # 
 # Response: Distances
-# Df  Sum Sq  Mean Sq      F N.Perm Pr(>F)  
-# Groups     4 0.39763 0.099407 2.2481   9999 0.0775 .
-# Residuals 48 2.12251 0.044219                       
+# Df Sum Sq  Mean Sq      F N.Perm Pr(>F)    
+# Groups      5 1.4271 0.285411 5.9691   9999  5e-04 ***
+#   Residuals 125 5.9768 0.047815                         
 # ---
 #   Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
-# variance is homogeneous among sites, proceed with PERMANOVA
+
+# variance is heterogeneous among regions, so need to determine whether highest variance is associated with region with the lowest sample size
+Mcav_Disp_Region <- TukeyHSD(Mcav_Disp)
+Mcav_Disp_Region
+boxplot(Mcav_Disp) # plots showing  variance among regions
+Mcav_Prop %>% 
+  group_by(Region) %>%
+  tally() # North Miami reef has the highest variance but also a decent sample size, so good to proceed with PERMANOVA
 
 # PERMANOVA
-Mcav_Perm <- adonis2(Mcav_Diss ~ Site + Rain + Depth, Mcav_Prop, permutations = 9999, parallel = getOption("mc.cores"))
+Mcav_Perm <- adonis2(Mcav_Diss ~ Region + Rain + Depth, Mcav_Prop, permutations = 9999, parallel = getOption("mc.cores"))
 Mcav_Perm
+write.csv(Mcav_Perm, file = "Mcav PERMANOVA.csv")
 # Permutation test for adonis under reduced model
 # Terms added sequentially (first to last)
 # Permutation: free
 # Number of permutations: 9999
 # 
-# adonis2(formula = Mcav_Diss ~ Site + Rain + Depth, data = Mcav_Prop, permutations = 9999, parallel = getOption("mc.cores"))
-# Df SumOfSqs      R2      F Pr(>F)    
-# Site      4   1.6539 0.34138 6.0516 0.0004 ***
-#   Rain      1   0.0070 0.00145 0.1025 0.8401    
-# Depth     1   0.0409 0.00844 0.5985 0.5455    
-# Residual 46   3.1430 0.64873                  
-# Total    52   4.8448 1.00000                  
+# adonis2(formula = Mcav_Diss ~ Region + Rain + Depth, data = Mcav_Prop, permutations = 9999, parallel = getOption("mc.cores"))
+# Df SumOfSqs      R2       F Pr(>F)    
+# Region     5  19.6861 0.71342 64.1905 0.0001 ***
+#   Rain       1   0.2902 0.01052  4.7319 0.0279 *  
+#   Depth      1   0.0734 0.00266  1.1973 0.2768    
+# Residual 123   7.5444 0.27341                   
+# Total    130  27.5942 1.00000                   
 # ---
 #   Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
-# Only site factor significant
+
+# Region and Rain factors significant
 
 # pairwise PERMANOVA
-Mcav_Pair <- pairwise.adonis2(Mcav_Diss ~ Site, data = Mcav_Prop)
+Mcav_Pair <- pairwise.adonis2(Mcav_Diss ~ Region, data = Mcav_Prop)
 Mcav_Pair 
 
 # creating dataframe of pairwise results for plotting below
-Mcav_Pair_Out <- bind_rows(Mcav_Pair$`Emerald Reef_vs_Rainbow Reef`, Mcav_Pair$`Emerald Reef_vs_Belle Isle`, Mcav_Pair$`Emerald Reef_vs_MacArthur North`, Mcav_Pair$`Emerald Reef_vs_Star Island`, Mcav_Pair$`Rainbow Reef_vs_Belle Isle`, Mcav_Pair$`Rainbow Reef_vs_MacArthur North`, Mcav_Pair$`Rainbow Reef_vs_Star Island`, Mcav_Pair$`Belle Isle_vs_MacArthur North`, Mcav_Pair$`Belle Isle_vs_Star Island`, Mcav_Pair$`MacArthur North_vs_Star Island`,  .id = "Comparison")
+Mcav_Pair_Out <- bind_rows(Mcav_Pair$`Miami reef_vs_Miami urban`, Mcav_Pair$`Miami reef_vs_Broward reef`, Mcav_Pair$`Miami reef_vs_North Miami reef`, Mcav_Pair$`Miami reef_vs_Palm Beach urban`, Mcav_Pair$`Miami reef_vs_North Miami urban`, Mcav_Pair$`Miami urban_vs_Broward reef`, Mcav_Pair$`Miami urban_vs_North Miami reef`, Mcav_Pair$`Miami urban_vs_Palm Beach urban`, Mcav_Pair$`Miami urban_vs_North Miami urban`, Mcav_Pair$`Broward reef_vs_North Miami reef`, Mcav_Pair$`Broward reef_vs_Palm Beach urban`, Mcav_Pair$`Broward reef_vs_North Miami urban`, Mcav_Pair$`North Miami reef_vs_Palm Beach urban`, Mcav_Pair$`North Miami reef_vs_North Miami urban`, Mcav_Pair$`Palm Beach urban_vs_North Miami urban`,  .id = "Comparison")
 Mcav_Pair_Out
+write.csv(Mcav_Pair_Out, file = "Mcav PERMANOVA pairwise.csv")
 
 
 #### OFAV PERMANOVA/PCoA ####
 
+# since Ofav doesn't have a lot of samples in some regions, need to create a new grouping variable for testing
+Ofav_Prop %>% mutate(RegionNew = case_when(
+  Region == "Palm Beach urban"  ~ "urban",
+  Region == "Broward reef"  ~ "Broward reef",
+  Region == "North Miami reef"  ~ "Miami reef",
+  Region == "North Miami urban"  ~ "urban",
+  Region == "Miami reef"  ~ "Miami reef",
+  Region == "Miami urban"  ~ "urban")) -> Ofav_Prop
+
 # making a matrix of just symbiont proportion data for each species
-Ofav_Matrix <- Ofav_Prop[c(10:13)]
-Ofav_Site <- make.unique(Ofav_Prop$Site, sep = "_") # making unique row names for dissimilarity matrix
-rownames(Ofav_Matrix) <- rownames(Ofav_Site) # setting row names
+Ofav_Matrix <- Ofav_Prop[c(12:14)]
+Ofav_Region <- make.unique(Ofav_Prop$RegionNew, sep = "_") # making unique row names for dissimilarity matrix
+rownames(Ofav_Matrix) <- Ofav_Region # setting row names
 Ofav_Matrix <- sqrt(Ofav_Matrix) # sqrt transformation for zero-inflated data
 
 # dissimilarity matrix in vegan
@@ -529,76 +578,84 @@ Ofav_Diss <- vegdist(Ofav_Matrix, "bray") # using Bray-Curtis dissimilarity
 Ofav_Pcoa <- pcoa(Ofav_Diss) # running the PCoA
 Ofav_Vectors <- Ofav_Pcoa$vectors # vectors of datapoints for plot
 
-# setting site as a factor for signficance testing
-Ofav_Prop$Site <- factor(Ofav_Prop$Site, levels=c("Emerald Reef","Rainbow Reef","Star Island","MacArthur North"))
-fill.color2<-c("#01665e","#5ab4ac","#f6e8c3","#8c510a") # custom color palette
+# setting region as a factor for signficance testing
+Ofav_Prop$RegionNew <- factor(Ofav_Prop$RegionNew, levels=c("Broward reef", "Miami reef", "urban"))
+fill.color2<-c("#999999", "#4d4d4d", "#b2182b") # custom color palette
 
 # PCoA plot
-pdf(file="Miami Ofav PCoA.pdf", width=8, height=6)
-plot(Ofav_Vectors[,1], Ofav_Vectors[,2],col=fill.color2[as.numeric(as.factor(Ofav_Prop$Site))], pch=16, xlab=(paste("Coordinate 1 (", round((Ofav_Pcoa$values$Relative_eig[[1]] * 100), 2), "%)", sep = "")), ylab=(paste("Coordinate 2 (", round((Ofav_Pcoa$values$Relative_eig[[2]] * 100), 2), "%)", sep = "")), main="Orbicella faveolata")
-legend("topright", legend=c("Emerald Reef","Rainbow Reef","Star Island", "MacArthur North"), fill = fill.color2, bty="n")
+pdf(file="Ofav PCoA.pdf", width=8, height=6)
+plot(Ofav_Vectors[,1], Ofav_Vectors[,2],col=fill.color2[as.numeric(as.factor(Ofav_Prop$RegionNew))], pch=16, xlab=(paste("Coordinate 1 (", round((Ofav_Pcoa$values$Rel_corr_eig[[1]] * 100), 2), "%)", sep = "")), ylab=(paste("Coordinate 2 (", round((Ofav_Pcoa$values$Rel_corr_eig[[2]] * 100), 2), "%)", sep = "")), main="Orbicella faveolata")
+legend("topright", legend=c("Broward reef", "Miami reef", "urban"), fill = fill.color2, bty="n")
 dev.off()
 
 # testing for homogeneity of variance among species
-Ofav_Disp <- betadisper(Ofav_Diss, group=Ofav_Prop$Site)
+Ofav_Disp <- betadisper(Ofav_Diss, group=Ofav_Prop$RegionNew)
 permutest(Ofav_Disp, bias.adjust = TRUE, perm = 9999)
 # Permutation test for homogeneity of multivariate dispersions
 # Permutation: free
 # Number of permutations: 9999
 # 
 # Response: Distances
-# Df  Sum Sq Mean Sq      F N.Perm Pr(>F)    
-# Groups     3 0.99483 0.33161 10.802   9999  1e-04 ***
-#   Residuals 65 1.99540 0.03070                         
+# Df Sum Sq Mean Sq      F N.Perm Pr(>F)    
+# Groups      2 1.6944 0.84720 16.151   9999  1e-04 ***
+#   Residuals 120 6.2946 0.05246                         
 # ---
 #   Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
-# variance is heterogeneous among sites, so need to determine whether highest variance is associated with site with the lowest sample size
 
-Ofav_Disp_Site <- TukeyHSD(Ofav_Disp)
-Ofav_Disp_Site
-boxplot(Ofav_Disp) # plots showing  variance among sites
+# variance is heterogeneous among regions, so need to determine whether highest variance is associated with region with the lowest sample size
+Ofav_Disp_Region <- TukeyHSD(Ofav_Disp)
+Ofav_Disp_Region
+boxplot(Ofav_Disp) # plots showing  variance among regions
 Ofav_Prop %>% 
-  group_by(Site) %>%
-  tally() # Emerald and Rainbow have the highest variance but also the highest sample size, so good to proceed with PERMANOVA
+  group_by(RegionNew) %>%
+  tally() # Miami reef has the highest variance but also a high sample size, so good to proceed with PERMANOVA
 
 # PERMANOVA
-Ofav_Perm <- adonis2(Ofav_Diss ~ Site + Rain + Depth, Ofav_Prop, permutations = 9999, parallel = getOption("mc.cores"))
+Ofav_Perm <- adonis2(Ofav_Diss ~ RegionNew + Rain + Depth, Ofav_Prop, permutations = 9999, parallel = getOption("mc.cores"))
 Ofav_Perm
+write.csv(Ofav_Perm, file = "Ofav PERMANOVA.csv")
 # Permutation test for adonis under reduced model
 # Terms added sequentially (first to last)
 # Permutation: free
 # Number of permutations: 9999
 # 
-# adonis2(formula = Ofav_Diss ~ Site + Rain + Depth, data = Ofav_Prop, permutations = 9999, parallel = getOption("mc.cores"))
+# adonis2(formula = Ofav_Diss ~ RegionNew + Rain + Depth, data = Ofav_Prop, permutations = 9999, parallel = getOption("mc.cores"))
 # Df SumOfSqs      R2       F Pr(>F)    
-# Site      3   4.3806 0.39236 16.5960 0.0001 ***
-#   Rain      1   1.1625 0.10412 13.2120 0.0003 ***
-#   Depth     1   0.0787 0.00705  0.8945 0.4010    
-# Residual 63   5.5431 0.49648                   
-# Total    68  11.1649 1.00000                   
+# RegionNew   2  10.5178 0.48821 56.7010 0.0001 ***
+#   Rain        1   0.0166 0.00077  0.1788 0.6940    
+# Depth       1   0.0648 0.00301  0.6988 0.4118    
+# Residual  118  10.9442 0.50801                   
+# Total     122  21.5434 1.00000                   
 # ---
 #   Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
-# Site and Rain factors signficant
+
+# RegionNew factor signficant
 
 # pairwise PERMANOVA
-Ofav_Pair <- pairwise.adonis2(Ofav_Diss ~ Site, data = Ofav_Prop)
+Ofav_Pair <- pairwise.adonis2(Ofav_Diss ~ RegionNew, data = Ofav_Prop)
 Ofav_Pair 
 
 # creating dataframe of pairwise results for plotting below
-Ofav_Pair_Out <- bind_rows(Ofav_Pair$`Emerald Reef_vs_Rainbow Reef`, Ofav_Pair$`Emerald Reef_vs_MacArthur North`, Ofav_Pair$`Emerald Reef_vs_Star Island`, Ofav_Pair$`Rainbow Reef_vs_MacArthur North`, Ofav_Pair$`Rainbow Reef_vs_Star Island`, Ofav_Pair$`MacArthur North_vs_Star Island`, .id = "Comparison")
+Ofav_Pair_Out <- bind_rows(Ofav_Pair$`Miami reef_vs_urban`, Ofav_Pair$`Miami reef_vs_Broward reef`, Ofav_Pair$`urban_vs_Broward reef`, .id = "Comparison")
 Ofav_Pair_Out
+write.csv(Ofav_Pair_Out, file = "Ofav PERMANOVA pairwise.csv")
 
 
 #### CNAT PERMANOVA/PCoA ####
 
-# Need to first combine Emerald and Rainbow as reef since sample size is low
-Cnat_Prop %>% 
-  mutate(across('Site', str_replace, 'Emerald Reef|Rainbow Reef', 'reef')) -> Cnat_Prop
+# since Cnat doesn't have a lot of samples in some regions, need to create a new grouping variable for testing
+Cnat_Prop %>% mutate(RegionNew = case_when(
+  Region == "Palm Beach urban"  ~ "Palm Beach urban",
+  Region == "Broward reef"  ~ "reef",
+  Region == "North Miami reef"  ~ "reef",
+  Region == "North Miami urban"  ~ "Miami Dade urban",
+  Region == "Miami reef"  ~ "reef",
+  Region == "Miami urban"  ~ "Miami Dade urban")) -> Cnat_Prop
 
 # making a matrix of just symbiont proportion data for each species
-Cnat_Matrix <- Cnat_Prop[c(10:13)]
-Cnat_Site <- make.unique(Cnat_Prop$Site, sep = "_") # making unique row names for dissimilarity matrix
-rownames(Cnat_Matrix) <- rownames(Cnat_Site) # setting row names
+Cnat_Matrix <- Cnat_Prop[c(12:14)]
+Cnat_Region <- make.unique(Cnat_Prop$RegionNew, sep = "_") # making unique row names for dissimilarity matrix
+rownames(Cnat_Matrix) <- Cnat_Region # setting row names
 Cnat_Matrix <- sqrt(Cnat_Matrix) # sqrt transformation for zero-inflated data
 
 # dissimilarity matrix in vegan
@@ -606,72 +663,75 @@ Cnat_Diss <- vegdist(Cnat_Matrix, "bray") # using Bray-Curtis dissimilarity
 Cnat_Pcoa <- pcoa(Cnat_Diss) # running the PCoA
 Cnat_Vectors <- Cnat_Pcoa$vectors # vectors of datapoints for plot
 
-# setting site as a factor for signficance testing
-Cnat_Prop$Site <- factor(Cnat_Prop$Site, levels=c("reef","Star Island","Belle Isle", "MacArthur North"))
-fill.color3<-c("#003c30","#f6e8c3","#d8b365","#8c510a") # custom color palette
+# setting region as a factor for signficance testing
+Cnat_Prop$RegionNew <- factor(Cnat_Prop$RegionNew, levels=c("reef", "Palm Beach urban", "Miami Dade urban"))
+fill.color3<-c("#4d4d4d","#fddbc7", "#b2182b") # custom color palette
 
 # PCoA plot
-pdf(file="Miami Cnat PCoA.pdf", width=8, height=6)
-plot(Cnat_Vectors[,1], Cnat_Vectors[,2],col=fill.color3[as.numeric(as.factor(Cnat_Prop$Site))], pch=16, xlab=(paste("Coordinate 1 (", round((Cnat_Pcoa$values$Relative_eig[[1]] * 100), 2), "%)", sep = "")), ylab=(paste("Coordinate 2 (", round((Cnat_Pcoa$values$Relative_eig[[2]] * 100), 2), "%)", sep = "")), main="Colpophyllia natans")
-legend("bottomleft", legend=c("reef","Star Island","Belle Isle", "MacArthur North"), fill = fill.color3, bty="n")
+pdf(file="Cnat PCoA.pdf", width=8, height=6)
+plot(Cnat_Vectors[,1], Cnat_Vectors[,2],col=fill.color3[as.numeric(as.factor(Cnat_Prop$RegionNew))], pch=16, xlab=(paste("Coordinate 1 (", round((Cnat_Pcoa$values$Rel_corr_eig[[1]] * 100), 2), "%)", sep = "")), ylab=(paste("Coordinate 2 (", round((Cnat_Pcoa$values$Rel_corr_eig[[2]] * 100), 2), "%)", sep = "")), main="Colpophyllia natans")
+legend("topright", legend=c("reef", "Palm Beach urban", "Miami Dade urban"), fill = fill.color3, bty="n")
 dev.off()
 
 # testing for homogeneity of variance among species
-Cnat_Disp <- betadisper(Cnat_Diss, group=Cnat_Prop$Site)
+Cnat_Disp <- betadisper(Cnat_Diss, group=Cnat_Prop$RegionNew)
 permutest(Cnat_Disp, bias.adjust = TRUE, perm = 9999)
 # Permutation test for homogeneity of multivariate dispersions
 # Permutation: free
 # Number of permutations: 9999
 # 
 # Response: Distances
-# Df  Sum Sq  Mean Sq      F N.Perm Pr(>F)    
-# Groups     3 0.83445 0.278150 13.826   9999  2e-04 ***
-#   Residuals 64 1.28757 0.020118                         
+# Df  Sum Sq Mean Sq      F N.Perm Pr(>F)  
+# Groups      2  0.6553 0.32767 3.9445   9999 0.0222 *
+#   Residuals 135 11.2145 0.08307                       
 # ---
 #   Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
-# variance is heterogeneous among sites, so need to determine whether highest variance is associated with site with the lowest sample size
 
-Cnat_Disp_Site <- TukeyHSD(Cnat_Disp)
-Cnat_Disp_Site
-boxplot(Cnat_Disp) # plots showing  variance among sites
+# variance is heterogeneous among regions, so need to determine whether highest variance is associated with region with the lowest sample size
+Cnat_Disp_Region <- TukeyHSD(Cnat_Disp)
+Cnat_Disp_Region
+boxplot(Cnat_Disp) # plots showing  variance among regions
 Cnat_Prop %>% 
-  group_by(Site) %>%
-  tally() # Star Island has the highest variance but also a high sample size, so good to proceed with PERMANOVA
+  group_by(RegionNew) %>%
+  tally() # reef has the highest variance but does not have the smallest sample size, so good to proceed with PERMANOVA
 
 # PERMANOVA
-Cnat_Perm <- adonis2(Cnat_Diss ~ Site + Rain + Depth, Cnat_Prop, permutations = 9999, parallel = getOption("mc.cores"))
+Cnat_Perm <- adonis2(Cnat_Diss ~ RegionNew + Rain + Depth, Cnat_Prop, permutations = 9999, parallel = getOption("mc.cores"))
 Cnat_Perm
+write.csv(Cnat_Perm, file = "Cnat PERMANOVA.csv")
 # Permutation test for adonis under reduced model
 # Terms added sequentially (first to last)
 # Permutation: free
 # Number of permutations: 9999
 # 
-# adonis2(formula = Cnat_Diss ~ Site + Rain + Depth, data = Cnat_Prop, permutations = 9999, parallel = getOption("mc.cores"))
+# adonis2(formula = Cnat_Diss ~ RegionNew + Rain + Depth, data = Cnat_Prop, permutations = 9999, parallel = getOption("mc.cores"))
 # Df SumOfSqs       R2       F Pr(>F)    
-# Site      3   1.4054  0.29643  8.7382 0.0004 ***
-#   Rain      1   0.0186  0.00392  0.3470 0.6318    
-# Depth     1  -0.0068 -0.00143 -0.1261 0.9823    
-# Residual 62   3.3238  0.70108                   
-# Total    67   4.7411  1.00000                   
+# RegionNew   2   4.0949  0.26996 31.1861 0.0001 ***
+#   Rain        1   2.3633  0.15581 35.9978 0.0001 ***
+#   Depth       1  -0.0217 -0.00143 -0.3309 0.9994    
+# Residual  133   8.7318  0.57566                   
+# Total     137  15.1683  1.00000                   
 # ---
 #   Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
-# Only site factor significant
+
+# RegionNew and Rain factors significant
 
 # pairwise PERMANOVA
-Cnat_Pair <- pairwise.adonis2(Cnat_Diss ~ Site, data = Cnat_Prop)
+Cnat_Pair <- pairwise.adonis2(Cnat_Diss ~ RegionNew, data = Cnat_Prop)
 Cnat_Pair 
 
 # creating dataframe of pairwise results for plotting below
-Cnat_Pair_Out <- bind_rows(Cnat_Pair$`reef_vs_Belle Isle`, Cnat_Pair$`reef_vs_MacArthur North`, Cnat_Pair$`reef_vs_Star Island`, Cnat_Pair$`Belle Isle_vs_MacArthur North`, Cnat_Pair$`Belle Isle_vs_Star Island`, Cnat_Pair$`MacArthur North_vs_Star Island`, .id = "Comparison")
+Cnat_Pair_Out <- bind_rows(Cnat_Pair$`reef_vs_Miami Dade urban`, Cnat_Pair$`reef_vs_Palm Beach urban`, Cnat_Pair$`Miami Dade urban_vs_Palm Beach urban`, .id = "Comparison")
 Cnat_Pair_Out
+write.csv(Cnat_Pair_Out, file = "Cnat PERMANOVA pairwise.csv")
 
 
 #### PSEU PERMANOVA/PCoA ####
 
 # making a matrix of just symbiont proportion data for each species
-Pseu_Matrix <- Pseu_Prop[c(10:13)]
-Pseu_Site <- make.unique(Pseu_Prop$Site, sep = "_") # making unique row names for dissimilarity matrix
-rownames(Pseu_Matrix) <- rownames(Pseu_Site) # setting row names
+Pseu_Matrix <- Pseu_Prop[c(12:14)]
+Pseu_Region <- make.unique(Pseu_Prop$Region, sep = "_") # making unique row names for dissimilarity matrix
+rownames(Pseu_Matrix) <- Pseu_Region # setting row names
 Pseu_Matrix <- sqrt(Pseu_Matrix) # sqrt transformation for zero-inflated data
 
 # dissimilarity matrix in vegan
@@ -679,71 +739,82 @@ Pseu_Diss <- vegdist(Pseu_Matrix, "bray") # using Bray-Curtis dissimilarity
 Pseu_Pcoa <- pcoa(Pseu_Diss) # running the PCoA
 Pseu_Vectors <- Pseu_Pcoa$vectors # vectors of datapoints for plot
 
-# setting site as a factor for signficance testing
-Pseu_Prop$Site <- factor(Pseu_Prop$Site, levels=c("Emerald Reef","Rainbow Reef","Star Island","Belle Isle", "MacArthur North"))
+# setting region as a factor for signficance testing
+Pseu_Prop$Region <- factor(Pseu_Prop$Region, levels=c("Palm Beach urban", "Broward reef", "North Miami reef", "North Miami urban", "Miami reef", "Miami urban"))
 
 # PCoA plot
-pdf(file="Miami Pseu PCoA.pdf", width=8, height=6)
-plot(Pseu_Vectors[,1], Pseu_Vectors[,2],col=fill.color[as.numeric(as.factor(Pseu_Prop$Site))], pch=16, xlab=(paste("Coordinate 1 (", round((Pseu_Pcoa$values$Relative_eig[[1]] * 100), 2), "%)", sep = "")), ylab=(paste("Coordinate 2 (", round((Pseu_Pcoa$values$Relative_eig[[2]] * 100), 2), "%)", sep = "")), main="Pseudodiploria spp.")
-legend("topright", legend=c("Emerald Reef","Rainbow Reef","Star Island","Belle Isle", "MacArthur North"), fill = fill.color, bty="n")
+pdf(file="Pseu PCoA.pdf", width=8, height=6)
+plot(Pseu_Vectors[,1], Pseu_Vectors[,2],col=fill.color[as.numeric(as.factor(Pseu_Prop$Region))], pch=16, xlab=(paste("Coordinate 1 (", round((Pseu_Pcoa$values$Rel_corr_eig[[1]] * 100), 2), "%)", sep = "")), ylab=(paste("Coordinate 2 (", round((Pseu_Pcoa$values$Rel_corr_eig[[2]] * 100), 2), "%)", sep = "")), main="Pseudodiploria spp.")
+legend("topleft", legend=c("Palm Beach urban", "Broward reef", "North Miami reef", "North Miami urban", "Miami reef", "Miami urban"), fill = fill.color, bty="n")
 dev.off()
 
 # testing for homogeneity of variance among species
-Pseu_Disp <- betadisper(Pseu_Diss, group=Pseu_Prop$Site)
+Pseu_Disp <- betadisper(Pseu_Diss, group=Pseu_Prop$Region)
 permutest(Pseu_Disp, bias.adjust = TRUE, perm = 9999)
 # Permutation test for homogeneity of multivariate dispersions
 # Permutation: free
 # Number of permutations: 9999
 # 
 # Response: Distances
-# Df  Sum Sq Mean Sq      F N.Perm Pr(>F)    
-# Groups      4  1.7167 0.42918 6.1812   9999  5e-04 ***
-#   Residuals 151 10.4843 0.06943                         
+# Df Sum Sq Mean Sq      F N.Perm Pr(>F)  
+# Groups      5  1.775 0.35492 2.5382   9999 0.0291 *
+#   Residuals 317 44.326 0.13983                       
 # ---
 #   Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
-# variance is heterogeneous among sites, so need to determine whether highest variance is associated with site with the lowest sample size
 
-Pseu_Disp_Site <- TukeyHSD(Pseu_Disp)
-Pseu_Disp_Site
-boxplot(Pseu_Disp) # plots showing  variance among sites
+# variance is heterogeneous among regions, so need to determine whether highest variance is associated with region with the lowest sample size
+Pseu_Disp_Region <- TukeyHSD(Pseu_Disp)
+Pseu_Disp_Region
+boxplot(Pseu_Disp) # plots showing  variance among regions
 Pseu_Prop %>% 
-  group_by(Site) %>%
-  tally() # Sample sizes roughly equal, so good to proceed with PERMANOVA
+  group_by(Region) %>%
+  tally() # Highest variance is not necessarily associated with lowest sample sizes, so good to proceed with PERMANOVA
 
 # PERMANOVA
-Pseu_Perm <- adonis2(Pseu_Diss ~ Site + Rain + Depth, Pseu_Prop, permutations = 9999, parallel = getOption("mc.cores"))
+Pseu_Perm <- adonis2(Pseu_Diss ~ Region + Rain + Depth, Pseu_Prop, permutations = 9999, parallel = getOption("mc.cores"))
 Pseu_Perm
+write.csv(Pseu_Perm, file = "Pseu PERMANOVA.csv")
 # Permutation test for adonis under reduced model
 # Terms added sequentially (first to last)
 # Permutation: free
 # Number of permutations: 9999
 # 
-# adonis2(formula = Pseu_Diss ~ Site + Rain + Depth, data = Pseu_Prop, permutations = 9999, parallel = getOption("mc.cores"))
+# adonis2(formula = Pseu_Diss ~ Region + Rain + Depth, data = Pseu_Prop, permutations = 9999, parallel = getOption("mc.cores"))
 # Df SumOfSqs      R2       F Pr(>F)    
-# Site       4    7.236 0.22652 11.5825 0.0001 ***
-#   Rain       1    1.002 0.03136  6.4145 0.0081 ** 
-#   Depth      1    0.435 0.01361  2.7845 0.0864 .  
-# Residual 149   23.271 0.72850                   
-# Total    155   31.943 1.00000                   
+# Region     5    9.518 0.13790 10.2326 0.0001 ***
+#   Rain       1    0.105 0.00153  0.5663 0.4627    
+# Depth      1    0.797 0.01155  4.2868 0.0407 *  
+#   Residual 315   58.598 0.84902                   
+# Total    322   69.018 1.00000                   
 # ---
 #   Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
-# Site and Rain factors signficant
+
+# Region and Depth factors significant
 
 # pairwise PERMANOVA
-Pseu_Pair <- pairwise.adonis2(Pseu_Diss ~ Site, data = Pseu_Prop)
+Pseu_Pair <- pairwise.adonis2(Pseu_Diss ~ Region, data = Pseu_Prop)
 Pseu_Pair 
 
 # creating dataframe of pairwise results for plotting below
-Pseu_Pair_Out <- bind_rows(Pseu_Pair$`Emerald Reef_vs_Rainbow Reef`, Pseu_Pair$`Emerald Reef_vs_Belle Isle`, Pseu_Pair$`Emerald Reef_vs_MacArthur North`, Pseu_Pair$`Emerald Reef_vs_Star Island`, Pseu_Pair$`Rainbow Reef_vs_Belle Isle`, Pseu_Pair$`Rainbow Reef_vs_MacArthur North`, Pseu_Pair$`Rainbow Reef_vs_Star Island`, Pseu_Pair$`Belle Isle_vs_MacArthur North`, Pseu_Pair$`Belle Isle_vs_Star Island`, Pseu_Pair$`MacArthur North_vs_Star Island`,  .id = "Comparison")
+Pseu_Pair_Out <- bind_rows(Pseu_Pair$`Miami reef_vs_Miami urban`, Pseu_Pair$`Miami reef_vs_Broward reef`, Pseu_Pair$`Miami reef_vs_Palm Beach urban`, Pseu_Pair$`Miami reef_vs_North Miami reef`, Pseu_Pair$`Miami reef_vs_North Miami urban`, Pseu_Pair$`Miami urban_vs_Broward reef`, Pseu_Pair$`Miami urban_vs_Palm Beach urban`, Pseu_Pair$`Miami urban_vs_North Miami reef`, Pseu_Pair$`Miami urban_vs_North Miami urban`, Pseu_Pair$`Broward reef_vs_Palm Beach urban`, Pseu_Pair$`Broward reef_vs_North Miami reef`, Pseu_Pair$`Broward reef_vs_North Miami urban`, Pseu_Pair$`Palm Beach urban_vs_North Miami reef`, Pseu_Pair$`Palm Beach urban_vs_North Miami urban`, Pseu_Pair$`North Miami reef_vs_North Miami urban`,  .id = "Comparison")
 Pseu_Pair_Out
+write.csv(Pseu_Pair_Out, file = "Pseu PERMANOVA pairwise.csv")
 
 
 #### DLAB PERMANOVA/PCoA ####
 
+# since Dlab doesn't have a lot of samples in some regions, need to create a new grouping variable for testing
+Dlab_Prop %>% mutate(RegionNew = case_when(
+  Region == "Palm Beach urban"  ~ "Palm Beach urban",
+  Region == "Broward reef"  ~ "reef",
+  Region == "North Miami reef"  ~ "reef",
+  Region == "Miami reef"  ~ "reef",
+  Region == "Miami urban"  ~ "Miami urban")) -> Dlab_Prop
+
 # making a matrix of just symbiont proportion data for each species
-Dlab_Matrix <- Dlab_Prop[c(10:13)]
-Dlab_Site <- make.unique(Dlab_Prop$Site, sep = "_") # making unique row names for dissimilarity matrix
-rownames(Dlab_Matrix) <- rownames(Dlab_Site) # setting row names
+Dlab_Matrix <- Dlab_Prop[c(12:14)]
+Dlab_Region <- make.unique(Dlab_Prop$RegionNew, sep = "_") # making unique row names for dissimilarity matrix
+rownames(Dlab_Matrix) <- Dlab_Region # setting row names
 Dlab_Matrix <- sqrt(Dlab_Matrix) # sqrt transformation for zero-inflated data
 
 # dissimilarity matrix in vegan
@@ -751,46 +822,66 @@ Dlab_Diss <- vegdist(Dlab_Matrix, "bray") # using Bray-Curtis dissimilarity
 Dlab_Pcoa <- pcoa(Dlab_Diss) # running the PCoA
 Dlab_Vectors <- Dlab_Pcoa$vectors # vectors of datapoints for plot
 
-# setting site as a factor for signficance testing
-Dlab_Prop$Site <- factor(Dlab_Prop$Site, levels=c("Emerald Reef","Rainbow Reef","Belle Isle"))
-fill.color4<-c("#01665e","#5ab4ac","#d8b365") # custom color palette
+# setting region as a factor for signficance testing
+Dlab_Prop$RegionNew <- factor(Dlab_Prop$RegionNew, levels=c("reef","Palm Beach urban","Miami urban"))
 
 # PCoA plot
-pdf(file="Miami Dlab PCoA.pdf", width=8, height=6)
-plot(Dlab_Vectors[,1], Dlab_Vectors[,2],col=fill.color4[as.numeric(as.factor(Dlab_Prop$Site))], pch=16, xlab=(paste("Coordinate 1 (", round((Dlab_Pcoa$values$Relative_eig[[1]] * 100), 2), "%)", sep = "")), ylab=(paste("Coordinate 2 (", round((Dlab_Pcoa$values$Relative_eig[[2]] * 100), 2), "%)", sep = "")), main="Diploria labyrinthiformis")
-legend("topleft", legend=c("Emerald Reef","Rainbow Reef","Belle Isle"), fill = fill.color4, bty="n")
+pdf(file="Dlab PCoA.pdf", width=8, height=6)
+plot(Dlab_Vectors[,1], Dlab_Vectors[,2],col=fill.color3[as.numeric(as.factor(Dlab_Prop$RegionNew))], pch=16, xlab=(paste("Coordinate 1 (", round((Dlab_Pcoa$values$Rel_corr_eig[[1]] * 100), 2), "%)", sep = "")), ylab=(paste("Coordinate 2 (", round((Dlab_Pcoa$values$Rel_corr_eig[[2]] * 100), 2), "%)", sep = "")), main="Diploria labyrinthiformis")
+legend("topleft", legend=c("reef","Palm Beach urban","Miami urban"), fill = fill.color3, bty="n")
 dev.off()
 
 # testing for homogeneity of variance among species
-Dlab_Disp <- betadisper(Dlab_Diss, group=Dlab_Prop$Site)
+Dlab_Disp <- betadisper(Dlab_Diss, group=Dlab_Prop$RegionNew)
 permutest(Dlab_Disp, bias.adjust = TRUE, perm = 9999)
 # Permutation test for homogeneity of multivariate dispersions
 # Permutation: free
 # Number of permutations: 9999
 # 
 # Response: Distances
-# Df  Sum Sq  Mean Sq      F N.Perm Pr(>F)  
-# Groups     2 0.41539 0.207695 2.9523   9999  0.079 .
-# Residuals 19 1.33666 0.070351                       
+# Df Sum Sq Mean Sq      F N.Perm Pr(>F)    
+# Groups     2 1.6812 0.84059 18.901   9999  1e-04 ***
+#   Residuals 80 3.5578 0.04447                         
 # ---
 #   Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
-# variance is homogeneous among sites, proceed with PERMANOVA
+
+# variance is heterogeneous among regions, so need to determine whether highest variance is associated with region with the lowest sample size
+Dlab_Disp_Region <- TukeyHSD(Dlab_Disp)
+Dlab_Disp_Region
+boxplot(Dlab_Disp) # plots showing  variance among regions
+Dlab_Prop %>% 
+  group_by(RegionNew) %>%
+  tally() # reef has the highest variance but not the lowest sample size, so good to proceed with PERMANOVA
 
 # PERMANOVA
-Dlab_Perm <- adonis2(Dlab_Diss ~ Site + Rain + Depth, Dlab_Prop, permutations = 9999, parallel = getOption("mc.cores"))
+Dlab_Perm <- adonis2(Dlab_Diss ~ RegionNew + Rain + Depth, Dlab_Prop, permutations = 9999, parallel = getOption("mc.cores"))
 Dlab_Perm
+write.csv(Dlab_Perm, file = "Dlab PERMANOVA.csv")
 # Permutation test for adonis under reduced model
 # Terms added sequentially (first to last)
 # Permutation: free
 # Number of permutations: 9999
 # 
-# adonis2(formula = Dlab_Diss ~ Site + Rain + Depth, data = Dlab_Prop, permutations = 9999, parallel = getOption("mc.cores"))
-# Df SumOfSqs      R2      F Pr(>F)
-# Site      2   0.3864 0.08478 0.8933 0.4860
-# Depth     1   0.2784 0.06109 1.2874 0.2942
-# Residual 18   3.8925 0.85413              
-# Total    21   4.5573 1.00000   
-# No factors signficant
+# adonis2(formula = Dlab_Diss ~ RegionNew + Rain + Depth, data = Dlab_Prop, permutations = 9999, parallel = getOption("mc.cores"))
+# Df SumOfSqs      R2       F Pr(>F)    
+# RegionNew  2   1.3994 0.22875 12.0764 0.0002 ***
+#   Rain       1   0.1751 0.02863  3.0228 0.0672 .  
+# Depth      1   0.0237 0.00387  0.4085 0.6034    
+# Residual  78   4.5193 0.73875                   
+# Total     82   6.1176 1.00000                   
+# ---
+#   Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+# Region factor significant, Rain marginal
+
+# pairwise PERMANOVA
+Dlab_Pair <- pairwise.adonis2(Dlab_Diss ~ RegionNew, data = Dlab_Prop)
+Dlab_Pair 
+
+# creating dataframe of pairwise results for plotting below
+Dlab_Pair_Out <- bind_rows(Dlab_Pair$`reef_vs_Miami urban`, Dlab_Pair$`reef_vs_Palm Beach urban`, Dlab_Pair$`Miami urban_vs_Palm Beach urban`, .id = "Comparison")
+Dlab_Pair_Out
+write.csv(Dlab_Pair_Out, file = "Dlab PERMANOVA pairwise.csv")
 
 
 #### RELATIVE ABUNDANCE ####
@@ -803,39 +894,43 @@ values = colorRampPalette(brewer.pal(6, "Accent"))(6)
 #### MCAV ABUNDANCE ####
 
 # transposing and reformatting dataframes to make abundance a single column
-Mcav_Perc <- dplyr::select(Mcav_Prop, 5, 10:13)
-Mcav_Perc <- reshape2::melt(Mcav_Perc, id = "Site")
-Mcav_Perc$Site=factor(Mcav_Perc$Site, levels=c("Emerald Reef","Rainbow Reef","Star Island","Belle Isle", "MacArthur North")) 
-Mcav_Perc <- dcast(Mcav_Perc, Site~variable, mean)
-Mcav_Perc <- melt(Mcav_Perc, id = "Site")
+Mcav_Perc <- dplyr::select(Mcav_Prop, 5, 11:14)
+Mcav_Perc <- reshape2::melt(Mcav_Perc, id = "Region")
+Mcav_Perc$Region=factor(Mcav_Perc$Region, levels=c("Palm Beach urban", "Broward reef", "North Miami reef", "North Miami urban", "Miami reef", "Miami urban")) 
+Mcav_Perc <- dcast(Mcav_Perc, Region~variable, mean)
+Mcav_Perc <- melt(Mcav_Perc, id = "Region")
 Mcav_Perc <- dplyr::rename(Mcav_Perc, symtype = variable, abundance = value)
 
 # creating dataframe of the pairwise comparisons needed for plots and doing a bit of table reformatting
 Mcav_Letters <- data.frame(cbind(Mcav_Pair_Out$Comparison,Mcav_Pair_Out$'Pr(>F)'))
 Mcav_Letters <- na.omit(Mcav_Letters)
+Mcav_Letters %>%
+  add_row(X1 = "15", X2 = "1") -> Mcav_Letters
 Mcav_Letters <- dplyr::rename(Mcav_Letters, comparison = X1, p.adj = X2)
-Mcav_Letters$comparison = c("Emerald Reef-Rainbow Reef", "Emerald Reef-Belle Isle", "Emerald Reef-MacArthur North", "Emerald Reef-Star Island", "Rainbow Reef-Belle Isle", "Rainbow Reef-MacArthur North", "Rainbow Reef-Star Island", "Belle Isle-MacArthur North", "Belle Isle-Star Island", "MacArthur North-Star Island")
+Mcav_Letters$comparison = c("Miami reef-Miami urban", "Miami reef-Broward reef", "Miami reef-North Miami reef", "Miami reef-Palm Beach urban", "Miami reef-North Miami urban", "Miami urban-Broward reef", "Miami urban-North Miami reef", "Miami urban-Palm Beach urban", "Miami urban-North Miami urban", "Broward reef-North Miami reef", "Broward reef-Palm Beach urban", "Broward reef-North Miami urban", "North Miami reef-Palm Beach urban", "North Miami reef-North Miami urban", "Palm Beach urban-North Miami urban")
 Mcav_Letters$p.adj <- as.numeric(paste(Mcav_Letters$p.adj))
 Mcav_Letters
 
 # creates compact letter display of significant pairwise differences for figure
 Mcav_Cld <- cldList(p.adj ~ comparison, data = Mcav_Letters, threshold = 0.05, remove.zero = FALSE, remove.space = FALSE)
 Mcav_Cld=Mcav_Cld[order(Mcav_Cld$Group),] 
-Mcav_Cld$Site <- Mcav_Cld$Group
-Mcav_Cld <- Mcav_Cld %>% mutate(symtype="Symbiodinium")
+Mcav_Cld$Region <- Mcav_Cld$Group
+Mcav_Cld <- Mcav_Cld %>% mutate(symtype="Durusdinium")
 Mcav_Cld
 
 # percent stacked barplot
-Mcav_Plot <- ggplot(Mcav_Perc, aes(fill=symtype, y=abundance, x=Site)) + 
+Mcav_Plot <- ggplot(Mcav_Perc, aes(fill=symtype, y=abundance, x=Region)) + 
   geom_bar(position="fill", stat="identity") +
-  labs(x = "Site",
+  labs(x = "Region",
        y = "Relative Abundance",
        fill = 'Symbiodiniaceae Genus',
        title = "Montastraea cavernosa") + 
   scale_fill_manual(values = colorRampPalette(brewer.pal(8, "Accent"))(6)) +
   theme_classic() +
+  # ylim(-0.05,1.1) +
   geom_text(data = Mcav_Cld, aes(y=-0.05, label=Letter)) +
-  geom_text(x = 1.8, y=1.035, label = "Site: F4,52 = 6.1, R2 = 0.341, p < 0.001") +
+  geom_text(x = 1.85, y=1.035, label = "Region: F5,130 = 29.1, R2 = 0.515, p < 0.001") +
+  # geom_text(x = 5.25, y=1.035, label = "Rain: F1,130 = 12.9, R2 = 0.046, p < 0.001") +
   theme(plot.title = element_text(hjust=0.5))
 Mcav_Plot 
 
@@ -849,49 +944,153 @@ get_legend <-function(Mcav_Plot){
 legend=get_legend(Mcav_Plot)
 
 # replotting without legend and x axis label
-Mcav_Plot <- ggplot(Mcav_Perc, aes(fill=symtype, y=abundance, x=Site)) + 
+Mcav_Plot <- ggplot(Mcav_Perc, aes(fill=symtype, y=abundance, x=Region)) + 
   geom_bar(position="fill", stat="identity") +
-  labs(x = "Site",
+  labs(x = "Region",
        y = "Relative Abundance",
        fill = 'Symbiodiniaceae Genus',
        title = "Montastraea cavernosa") + 
   scale_fill_manual(values = colorRampPalette(brewer.pal(8, "Accent"))(6)) +
   theme_classic() +
+  # ylim(-0.05,1.1) +
   geom_text(data = Mcav_Cld, aes(y=-0.05, label=Letter)) +
-  geom_text(x = 1.8, y=1.035, label = "Site: F4,52 = 6.1, R2 = 0.341, p < 0.001") +
+  geom_text(x = 1.85, y=1.035, label = "Region: F5,130 = 29.1, R2 = 0.515, p < 0.001") +
+  # geom_text(x = 5.25, y=1.035, label = "Rain: F1,130 = 12.9, R2 = 0.046, p < 0.001") +
   theme(plot.title = element_text(hjust=0.5), legend.position = "none")
 Mcav_Plot 
 
-ggsave("Miami Mcav symbionts.pdf", plot= Mcav_Plot, width=6, height=4, units="in", dpi=300)
+ggsave("Mcav symbionts.pdf", plot= Mcav_Plot, width=8, height=4, units="in", dpi=300)
+
+# Symbiont abundance by site
+Mcav_Perc_Site <- dplyr::select(Mcav_Prop, 6, 11:14)
+Mcav_Perc_Site <- reshape2::melt(Mcav_Perc_Site, id = "Site")
+Mcav_Perc_Site$Site=factor(Mcav_Perc_Site$Site, levels=c("Peanut Island","T328","BC1","FTL4","South Canyon","Pillars","Graceland","Haulover Inlet","FIU Biscayne Bay","Arch Creek","Emerald Reef","Rainbow Reef","Bill Baggs","Seaquarium","Fisher Island","Coral City Camera","Miami Beach Marina","Star Island","MacArthur North","Belle Isle","FEC Slip Downtown"))
+Mcav_Perc_Site <- dcast(Mcav_Perc_Site, Site~variable, mean)
+Mcav_Perc_Site <- melt(Mcav_Perc_Site, id = "Site")
+Mcav_Perc_Site <- dplyr::rename(Mcav_Perc_Site, symtype = variable, abundance = value)
+
+# Adding region for facet_wrap
+Mcav_Perc_Site %>%
+  ungroup() %>%
+  mutate(Region = case_when(
+  Site == "Peanut Island"  ~ "Palm Beach urban",
+  Site == "T328"  ~ "Broward reef",
+  Site == "BC1"  ~ "Broward reef",
+  Site == "FTL4"  ~ "Broward reef",
+  Site == "South Canyon"  ~ "North Miami reef",
+  Site == "Pillars"  ~ "North Miami reef",
+  Site == "Graceland"  ~ "North Miami reef",
+  Site == "Haulover Inlet"  ~ "North Miami urban",
+  Site == "FIU Biscayne Bay"  ~ "North Miami urban",
+  Site == "Arch Creek"  ~ "North Miami urban",
+  Site == "Emerald Reef"  ~ "Miami reef",
+  Site == "Rainbow Reef"  ~ "Miami reef",
+  Site == "Bill Baggs"  ~ "Miami urban",
+  Site == "Seaquarium"  ~ "Miami urban",
+  Site == "Fisher Island"  ~ "Miami urban",
+  Site == "Coral City Camera"  ~ "Miami urban",
+  Site == "Miami Beach Marina"  ~ "Miami urban",
+  Site == "Star Island"  ~ "Miami urban",
+  Site == "MacArthur North"  ~ "Miami urban",
+  Site == "Belle Isle"  ~ "Miami urban",
+  Site == "FEC Slip Downtown"  ~ "Miami urban")) -> Mcav_Perc_Site
+Mcav_Perc_Site$Region=factor(Mcav_Perc_Site$Region, levels=c("Palm Beach urban","Broward reef","North Miami reef","North Miami urban","Miami reef","Miami urban"))
+
+# percent stacked barplot by site
+Mcav_Plot_Site <- ggplot(Mcav_Perc_Site, aes(fill=symtype, y=abundance, x=Site)) + 
+  geom_bar(position="fill", stat="identity") +
+    labs(x = "Site",
+       y = "Relative Abundance",
+       fill = 'Symbiodiniaceae Genus',
+       title = "Montastraea cavernosa") + 
+  scale_fill_manual(values = colorRampPalette(brewer.pal(8, "Accent"))(6)) +
+  theme_classic() +
+  theme(plot.title = element_text(hjust=0.5)) +
+  facet_grid(~Region, scales = "free", space='free') 
+Mcav_Plot_Site 
+
+ggsave("Mcav symbionts by site.pdf", plot= Mcav_Plot_Site, width=20, height=4, units="in", dpi=300)
 
 
 #### OFAV ABUNDANCE ####
 
 # transposing and reformatting dataframes to make abundance a single column
-Ofav_Perc <- dplyr::select(Ofav_Prop, 5, 10:13)
-Ofav_Perc <- reshape2::melt(Ofav_Perc, id = "Site")
-Ofav_Perc$Site=factor(Ofav_Perc$Site, levels=c("Emerald Reef","Rainbow Reef","Star Island","Belle Isle", "MacArthur North")) 
-Ofav_Perc <- dcast(Ofav_Perc, Site~variable, mean)
-Ofav_Perc <- melt(Ofav_Perc, id = "Site")
+Ofav_Perc <- dplyr::select(Ofav_Prop, 21, 11:14)
+Ofav_Perc <- reshape2::melt(Ofav_Perc, id = "RegionNew")
+Ofav_Perc$RegionNew=factor(Ofav_Perc$RegionNew, levels=c("Broward reef", "Miami reef", "urban")) 
+Ofav_Perc <- dcast(Ofav_Perc, RegionNew~variable, mean)
+Ofav_Perc <- melt(Ofav_Perc, id = "RegionNew")
 Ofav_Perc <- dplyr::rename(Ofav_Perc, symtype = variable, abundance = value)
 
 # creating dataframe of the pairwise comparisons needed for plots and doing a bit of table reformatting
 Ofav_Letters <- data.frame(cbind(Ofav_Pair_Out$Comparison,Ofav_Pair_Out$'Pr(>F)'))
 Ofav_Letters <- na.omit(Ofav_Letters)
 Ofav_Letters <- dplyr::rename(Ofav_Letters, comparison = X1, p.adj = X2)
-Ofav_Letters$comparison = c("Emerald Reef-Rainbow Reef", "Emerald Reef-MacArthur North", "Emerald Reef-Star Island", "Rainbow Reef-MacArthur North", "Rainbow Reef-Star Island", "MacArthur North-Star Island")
+Ofav_Letters$comparison = c("Miami reef-urban", "Miami reef-Broward reef", "urban-Broward reef")
 Ofav_Letters$p.adj <- as.numeric(paste(Ofav_Letters$p.adj))
 Ofav_Letters
 
 # creates compact letter display of significant pairwise differences for figure
 Ofav_Cld <- cldList(p.adj ~ comparison, data = Ofav_Letters, threshold = 0.05, remove.zero = FALSE, remove.space = FALSE)
 Ofav_Cld=Ofav_Cld[order(Ofav_Cld$Group),] 
-Ofav_Cld$Site <- Ofav_Cld$Group
-Ofav_Cld <- Ofav_Cld %>% mutate(symtype="Symbiodinium")
+Ofav_Cld$RegionNew <- Ofav_Cld$Group
+Ofav_Cld <- Ofav_Cld %>% mutate(symtype="Durusdinium")
 Ofav_Cld
 
 # percent stacked barplot
-Ofav_Plot <- ggplot(Ofav_Perc, aes(fill=symtype, y=abundance, x=Site)) + 
+Ofav_Plot <- ggplot(Ofav_Perc, aes(fill=symtype, y=abundance, x=RegionNew)) + 
+  geom_bar(position="fill", stat="identity") +
+  labs(x = "Region",
+       y = "Relative Abundance",
+       fill = 'Symbiodiniaceae Genus',
+       title = "Orbicella faveolata") + 
+  scale_fill_manual(values = colorRampPalette(brewer.pal(8, "Accent"))(6)) +
+  theme_classic() +
+  geom_text(data = Ofav_Cld, aes(y=-0.05, label=Letter)) +
+  geom_text(x = 1.85, y=1.035, label = "Region: F2,122 = 60.0, R2 = 0.492, p < 0.001") +
+  # geom_text(x = 2, y=1.035, label = "Rain: F1,122 = 4.7, R2 = 0.019, p = 0.026") +
+  theme(plot.title = element_text(hjust=0.5), legend.position = "none", axis.title.y = element_blank(), axis.text.y = element_blank())
+Ofav_Plot 
+
+ggsave("Ofav symbionts.pdf", plot= Ofav_Plot, width=4, height=4, units="in", dpi=300)
+
+# Symbiont abundance by site
+Ofav_Perc_Site <- dplyr::select(Ofav_Prop, 6, 11:14)
+Ofav_Perc_Site <- reshape2::melt(Ofav_Perc_Site, id = "Site")
+Ofav_Perc_Site$Site=factor(Ofav_Perc_Site$Site, levels=c("Peanut Island","T328","BC1","FTL4","South Canyon","Pillars","Graceland","Haulover Inlet","FIU Biscayne Bay","Arch Creek","Emerald Reef","Rainbow Reef","Bill Baggs","Seaquarium","Fisher Island","Coral City Camera","Miami Beach Marina","Star Island","MacArthur North","Belle Isle","FEC Slip Downtown"))
+Ofav_Perc_Site <- dcast(Ofav_Perc_Site, Site~variable, mean)
+Ofav_Perc_Site <- melt(Ofav_Perc_Site, id = "Site")
+Ofav_Perc_Site <- dplyr::rename(Ofav_Perc_Site, symtype = variable, abundance = value)
+
+# Adding region for facet_wrap
+Ofav_Perc_Site %>%
+  ungroup() %>%
+  mutate(Region = case_when(
+    Site == "Peanut Island"  ~ "Palm Beach urban",
+    Site == "T328"  ~ "Broward reef",
+    Site == "BC1"  ~ "Broward reef",
+    Site == "FTL4"  ~ "Broward reef",
+    Site == "South Canyon"  ~ "North Miami reef",
+    Site == "Pillars"  ~ "North Miami reef",
+    Site == "Graceland"  ~ "North Miami reef",
+    Site == "Haulover Inlet"  ~ "North Miami urban",
+    Site == "FIU Biscayne Bay"  ~ "North Miami urban",
+    Site == "Arch Creek"  ~ "North Miami urban",
+    Site == "Emerald Reef"  ~ "Miami reef",
+    Site == "Rainbow Reef"  ~ "Miami reef",
+    Site == "Bill Baggs"  ~ "Miami urban",
+    Site == "Seaquarium"  ~ "Miami urban",
+    Site == "Fisher Island"  ~ "Miami urban",
+    Site == "Coral City Camera"  ~ "Miami urban",
+    Site == "Miami Beach Marina"  ~ "Miami urban",
+    Site == "Star Island"  ~ "Miami urban",
+    Site == "MacArthur North"  ~ "Miami urban",
+    Site == "Belle Isle"  ~ "Miami urban",
+    Site == "FEC Slip Downtown"  ~ "Miami urban")) -> Ofav_Perc_Site
+Ofav_Perc_Site$Region=factor(Ofav_Perc_Site$Region, levels=c("Palm Beach urban","Broward reef","North Miami reef","North Miami urban","Miami reef","Miami urban"))
+
+# percent stacked barplot by site
+Ofav_Plot_Site <- ggplot(Ofav_Perc_Site, aes(fill=symtype, y=abundance, x=Site)) + 
   geom_bar(position="fill", stat="identity") +
   labs(x = "Site",
        y = "Relative Abundance",
@@ -899,41 +1098,92 @@ Ofav_Plot <- ggplot(Ofav_Perc, aes(fill=symtype, y=abundance, x=Site)) +
        title = "Orbicella faveolata") + 
   scale_fill_manual(values = colorRampPalette(brewer.pal(8, "Accent"))(6)) +
   theme_classic() +
-  geom_text(data = Ofav_Cld, aes(y=-0.05, label=Letter)) +
-  geom_text(x = 1.8, y=1.035, label = "Site: F3,68 = 16.6, R2 = 0.392, p < 0.001") +
-  theme(plot.title = element_text(hjust=0.5), legend.position = "none", axis.title.y = element_blank(), axis.text.y = element_blank())
-Ofav_Plot 
+  theme(plot.title = element_text(hjust=0.5)) +
+  facet_grid(~Region, scales = "free", space='free') 
+Ofav_Plot_Site 
 
-ggsave("Miami Ofav symbionts.pdf", plot= Ofav_Plot, width=6, height=4, units="in", dpi=300)
+ggsave("Ofav symbionts by site.pdf", plot= Ofav_Plot_Site, width=20, height=4, units="in", dpi=300)
 
 
 #### CNAT ABUNDANCE ####
 
 # transposing and reformatting dataframes to make abundance a single column
-Cnat_Perc <- dplyr::select(Cnat_Prop, 5, 10:13)
-Cnat_Perc <- reshape2::melt(Cnat_Perc, id = "Site")
-Cnat_Perc$Site=factor(Cnat_Perc$Site, levels=c("reef","Star Island","Belle Isle", "MacArthur North")) 
-Cnat_Perc <- dcast(Cnat_Perc, Site~variable, mean)
-Cnat_Perc <- melt(Cnat_Perc, id = "Site")
+Cnat_Perc <- dplyr::select(Cnat_Prop, 21, 11:14)
+Cnat_Perc <- reshape2::melt(Cnat_Perc, id = "RegionNew")
+Cnat_Perc$RegionNew=factor(Cnat_Perc$RegionNew, levels=c("reef", "Palm Beach urban", "Miami Dade urban")) 
+Cnat_Perc <- dcast(Cnat_Perc, RegionNew~variable, mean)
+Cnat_Perc <- melt(Cnat_Perc, id = "RegionNew")
 Cnat_Perc <- dplyr::rename(Cnat_Perc, symtype = variable, abundance = value)
 
 # creating dataframe of the pairwise comparisons needed for plots and doing a bit of table reformatting
 Cnat_Letters <- data.frame(cbind(Cnat_Pair_Out$Comparison,Cnat_Pair_Out$'Pr(>F)'))
 Cnat_Letters <- na.omit(Cnat_Letters)
 Cnat_Letters <- dplyr::rename(Cnat_Letters, comparison = X1, p.adj = X2)
-Cnat_Letters$comparison = c("reef-Belle Isle", "reef-MacArthur North", "reef-Star Island", "Belle Isle-MacArthur North", "Belle Isle-Star Island", "MacArthur North-Star Island")
+Cnat_Letters$comparison = c("reef-Miami Dade urban", "reef-Palm Beach urban", "Miami Dade urban-Palm Beach urban")
 Cnat_Letters$p.adj <- as.numeric(paste(Cnat_Letters$p.adj))
 Cnat_Letters
 
 # creates compact letter display of significant pairwise differences for figure
 Cnat_Cld <- cldList(p.adj ~ comparison, data = Cnat_Letters, threshold = 0.05, remove.zero = FALSE, remove.space = FALSE)
 Cnat_Cld=Cnat_Cld[order(Cnat_Cld$Group),] 
-Cnat_Cld$Site <- Cnat_Cld$Group
-Cnat_Cld <- Cnat_Cld %>% mutate(symtype="Symbiodinium")
+Cnat_Cld$RegionNew <- Cnat_Cld$Group
+Cnat_Cld <- Cnat_Cld %>% mutate(symtype="Durusdinium")
 Cnat_Cld
 
 # percent stacked barplot
-Cnat_Plot <- ggplot(Cnat_Perc, aes(fill=symtype, y=abundance, x=Site)) + 
+Cnat_Plot <- ggplot(Cnat_Perc, aes(fill=symtype, y=abundance, x=RegionNew)) + 
+  geom_bar(position="fill", stat="identity") +
+  labs(x = "Region",
+       y = "Relative Abundance",
+       fill = 'Symbiodiniaceae Genus',
+       title = "Colpophyllia natans") + 
+  scale_fill_manual(values = colorRampPalette(brewer.pal(8, "Accent"))(6)) +
+  theme_classic() +
+  geom_text(data = Cnat_Cld, aes(y=-0.05, label=Letter)) +
+  geom_text(x = 1.85, y=1.035, label = "Region: F2,137 = 31.2, R2 = 0.270, p < 0.001") +
+  # geom_text(x = 2, y=1.035, label = "Rain: F1,137 = 36.0, R2 = 0.156, p < 0.001") +
+  theme(plot.title = element_text(hjust=0.5), legend.position = "none", axis.title.x = element_blank(), axis.title.y = element_blank(), axis.text.y = element_blank())
+Cnat_Plot 
+
+ggsave("Cnat symbionts.pdf", plot= Cnat_Plot, width=4, height=4, units="in", dpi=300)
+
+# Symbiont abundance by site
+Cnat_Perc_Site <- dplyr::select(Cnat_Prop, 6, 11:14)
+Cnat_Perc_Site <- reshape2::melt(Cnat_Perc_Site, id = "Site")
+Cnat_Perc_Site$Site=factor(Cnat_Perc_Site$Site, levels=c("Peanut Island","T328","BC1","FTL4","South Canyon","Pillars","Graceland","Haulover Inlet","FIU Biscayne Bay","Arch Creek","Emerald Reef","Rainbow Reef","Bill Baggs","Seaquarium","Fisher Island","Coral City Camera","Miami Beach Marina","Star Island","MacArthur North","Belle Isle","FEC Slip Downtown"))
+Cnat_Perc_Site <- dcast(Cnat_Perc_Site, Site~variable, mean)
+Cnat_Perc_Site <- melt(Cnat_Perc_Site, id = "Site")
+Cnat_Perc_Site <- dplyr::rename(Cnat_Perc_Site, symtype = variable, abundance = value)
+
+# Adding region for facet_wrap
+Cnat_Perc_Site %>%
+  ungroup() %>%
+  mutate(Region = case_when(
+    Site == "Peanut Island"  ~ "Palm Beach urban",
+    Site == "T328"  ~ "Broward reef",
+    Site == "BC1"  ~ "Broward reef",
+    Site == "FTL4"  ~ "Broward reef",
+    Site == "South Canyon"  ~ "North Miami reef",
+    Site == "Pillars"  ~ "North Miami reef",
+    Site == "Graceland"  ~ "North Miami reef",
+    Site == "Haulover Inlet"  ~ "North Miami urban",
+    Site == "FIU Biscayne Bay"  ~ "North Miami urban",
+    Site == "Arch Creek"  ~ "North Miami urban",
+    Site == "Emerald Reef"  ~ "Miami reef",
+    Site == "Rainbow Reef"  ~ "Miami reef",
+    Site == "Bill Baggs"  ~ "Miami urban",
+    Site == "Seaquarium"  ~ "Miami urban",
+    Site == "Fisher Island"  ~ "Miami urban",
+    Site == "Coral City Camera"  ~ "Miami urban",
+    Site == "Miami Beach Marina"  ~ "Miami urban",
+    Site == "Star Island"  ~ "Miami urban",
+    Site == "MacArthur North"  ~ "Miami urban",
+    Site == "Belle Isle"  ~ "Miami urban",
+    Site == "FEC Slip Downtown"  ~ "Miami urban")) -> Cnat_Perc_Site
+Cnat_Perc_Site$Region=factor(Cnat_Perc_Site$Region, levels=c("Palm Beach urban","Broward reef","North Miami reef","North Miami urban","Miami reef","Miami urban"))
+
+# percent stacked barplot by site
+Cnat_Plot_Site <- ggplot(Cnat_Perc_Site, aes(fill=symtype, y=abundance, x=Site)) + 
   geom_bar(position="fill", stat="identity") +
   labs(x = "Site",
        y = "Relative Abundance",
@@ -941,41 +1191,92 @@ Cnat_Plot <- ggplot(Cnat_Perc, aes(fill=symtype, y=abundance, x=Site)) +
        title = "Colpophyllia natans") + 
   scale_fill_manual(values = colorRampPalette(brewer.pal(8, "Accent"))(6)) +
   theme_classic() +
-  geom_text(data = Cnat_Cld, aes(y=-0.05, label=Letter)) +
-  geom_text(x = 1.8, y=1.035, label = "Site: F3,67 = 8.7, R2 = 0.296, p < 0.001") +
-  theme(plot.title = element_text(hjust=0.5), legend.position = "none", axis.title.x = element_blank(), axis.title.y = element_blank(), axis.text.y = element_blank())
-Cnat_Plot 
+  theme(plot.title = element_text(hjust=0.5)) +
+  facet_grid(~Region, scales = "free", space='free') 
+Cnat_Plot_Site 
 
-ggsave("Miami Cnat symbionts.pdf", plot= Cnat_Plot, width=6, height=4, units="in", dpi=300)
+ggsave("Cnat symbionts by site.pdf", plot= Cnat_Plot_Site, width=20, height=4, units="in", dpi=300)
 
 
 #### PSEU ABUNDANCE ####
 
 # transposing and reformatting dataframes to make abundance a single column
-Pseu_Perc <- dplyr::select(Pseu_Prop, 5, 10:13)
-Pseu_Perc <- reshape2::melt(Pseu_Perc, id = "Site")
-Pseu_Perc$Site=factor(Pseu_Perc$Site, levels=c("Emerald Reef","Rainbow Reef","Star Island","Belle Isle", "MacArthur North")) 
-Pseu_Perc <- dcast(Pseu_Perc, Site~variable, mean)
-Pseu_Perc <- melt(Pseu_Perc, id = "Site")
+Pseu_Perc <- dplyr::select(Pseu_Prop, 5, 11:14)
+Pseu_Perc <- reshape2::melt(Pseu_Perc, id = "Region")
+Pseu_Perc$Region=factor(Pseu_Perc$Region, levels=c("Palm Beach urban", "Broward reef", "North Miami reef", "North Miami urban", "Miami reef", "Miami urban")) 
+Pseu_Perc <- dcast(Pseu_Perc, Region~variable, mean)
+Pseu_Perc <- melt(Pseu_Perc, id = "Region")
 Pseu_Perc <- dplyr::rename(Pseu_Perc, symtype = variable, abundance = value)
 
 # creating dataframe of the pairwise comparisons needed for plots and doing a bit of table reformatting
 Pseu_Letters <- data.frame(cbind(Pseu_Pair_Out$Comparison,Pseu_Pair_Out$'Pr(>F)'))
 Pseu_Letters <- na.omit(Pseu_Letters)
 Pseu_Letters <- dplyr::rename(Pseu_Letters, comparison = X1, p.adj = X2)
-Pseu_Letters$comparison = c("Emerald Reef-Rainbow Reef", "Emerald Reef-Belle Isle", "Emerald Reef-MacArthur North", "Emerald Reef-Star Island", "Rainbow Reef-Belle Isle", "Rainbow Reef-MacArthur North", "Rainbow Reef-Star Island", "Belle Isle-MacArthur North", "Belle Isle-Star Island", "MacArthur North-Star Island")
+Pseu_Letters$comparison = c("Miami reef-Miami urban", "Miami reef-Broward reef", "Miami reef-Palm Beach urban", "Miami reef-North Miami reef", "Miami reef-North Miami urban", "Miami urban-Broward reef", "Miami urban-Palm Beach urban", "Miami urban-North Miami reef", "Miami urban-North Miami urban", "Broward reef-Palm Beach urban", "Broward reef-North Miami reef", "Broward reef-North Miami urban", "Palm Beach urban-North Miami reef", "Palm Beach urban-North Miami urban", "North Miami reef-North Miami urban")
 Pseu_Letters$p.adj <- as.numeric(paste(Pseu_Letters$p.adj))
 Pseu_Letters
 
 # creates compact letter display of significant pairwise differences for figure
 Pseu_Cld <- cldList(p.adj ~ comparison, data = Pseu_Letters, threshold = 0.05, remove.zero = FALSE, remove.space = FALSE)
 Pseu_Cld=Pseu_Cld[order(Pseu_Cld$Group),] 
-Pseu_Cld$Site <- Pseu_Cld$Group
-Pseu_Cld <- Pseu_Cld %>% mutate(symtype="Symbiodinium")
+Pseu_Cld$Region <- Pseu_Cld$Group
+Pseu_Cld <- Pseu_Cld %>% mutate(symtype="Durusdinium")
 Pseu_Cld
 
 # percent stacked barplot
-Pseu_Plot <- ggplot(Pseu_Perc, aes(fill=symtype, y=abundance, x=Site)) + 
+Pseu_Plot <- ggplot(Pseu_Perc, aes(fill=symtype, y=abundance, x=Region)) + 
+  geom_bar(position="fill", stat="identity") +
+  labs(x = "Region",
+       y = "Relative Abundance",
+       fill = 'Symbiodiniaceae Genus',
+       title = "Pseudodiploria spp.") + 
+  scale_fill_manual(values = colorRampPalette(brewer.pal(8, "Accent"))(6)) +
+  theme_classic() +
+  geom_text(data = Pseu_Cld, aes(y=-0.05, label=Letter)) +
+  geom_text(x = 1.85, y=1.035, label = "Region: F5,322 = 10.2, R2 = 0.140, p < 0.001") +
+  # geom_text(x = 2, y=1.035, label = "Depth: F1,322 = 4.3, R2 = 0.012, p = 0.041") +
+  theme(plot.title = element_text(hjust=0.5), legend.position = "none", axis.title.x = element_blank())
+Pseu_Plot 
+
+ggsave("Pseu symbionts.pdf", plot= Pseu_Plot, width=8, height=4, units="in", dpi=300)
+
+# Symbiont abundance by site
+Pseu_Perc_Site <- dplyr::select(Pseu_Prop, 6, 11:14)
+Pseu_Perc_Site <- reshape2::melt(Pseu_Perc_Site, id = "Site")
+Pseu_Perc_Site$Site=factor(Pseu_Perc_Site$Site, levels=c("Peanut Island","T328","BC1","FTL4","South Canyon","Pillars","Graceland","Haulover Inlet","FIU Biscayne Bay","Arch Creek","Emerald Reef","Rainbow Reef","Bill Baggs","Seaquarium","Fisher Island","Coral City Camera","Miami Beach Marina","Star Island","MacArthur North","Belle Isle","FEC Slip Downtown"))
+Pseu_Perc_Site <- dcast(Pseu_Perc_Site, Site~variable, mean)
+Pseu_Perc_Site <- melt(Pseu_Perc_Site, id = "Site")
+Pseu_Perc_Site <- dplyr::rename(Pseu_Perc_Site, symtype = variable, abundance = value)
+
+# Adding region for facet_wrap
+Pseu_Perc_Site %>%
+  ungroup() %>%
+  mutate(Region = case_when(
+    Site == "Peanut Island"  ~ "Palm Beach urban",
+    Site == "T328"  ~ "Broward reef",
+    Site == "BC1"  ~ "Broward reef",
+    Site == "FTL4"  ~ "Broward reef",
+    Site == "South Canyon"  ~ "North Miami reef",
+    Site == "Pillars"  ~ "North Miami reef",
+    Site == "Graceland"  ~ "North Miami reef",
+    Site == "Haulover Inlet"  ~ "North Miami urban",
+    Site == "FIU Biscayne Bay"  ~ "North Miami urban",
+    Site == "Arch Creek"  ~ "North Miami urban",
+    Site == "Emerald Reef"  ~ "Miami reef",
+    Site == "Rainbow Reef"  ~ "Miami reef",
+    Site == "Bill Baggs"  ~ "Miami urban",
+    Site == "Seaquarium"  ~ "Miami urban",
+    Site == "Fisher Island"  ~ "Miami urban",
+    Site == "Coral City Camera"  ~ "Miami urban",
+    Site == "Miami Beach Marina"  ~ "Miami urban",
+    Site == "Star Island"  ~ "Miami urban",
+    Site == "MacArthur North"  ~ "Miami urban",
+    Site == "Belle Isle"  ~ "Miami urban",
+    Site == "FEC Slip Downtown"  ~ "Miami urban")) -> Pseu_Perc_Site
+Pseu_Perc_Site$Region=factor(Pseu_Perc_Site$Region, levels=c("Palm Beach urban","Broward reef","North Miami reef","North Miami urban","Miami reef","Miami urban"))
+
+# percent stacked barplot by site
+Pseu_Plot_Site <- ggplot(Pseu_Perc_Site, aes(fill=symtype, y=abundance, x=Site)) + 
   geom_bar(position="fill", stat="identity") +
   labs(x = "Site",
        y = "Relative Abundance",
@@ -983,26 +1284,92 @@ Pseu_Plot <- ggplot(Pseu_Perc, aes(fill=symtype, y=abundance, x=Site)) +
        title = "Pseudodiploria spp.") + 
   scale_fill_manual(values = colorRampPalette(brewer.pal(8, "Accent"))(6)) +
   theme_classic() +
-  geom_text(data = Pseu_Cld, aes(y=-0.05, label=Letter)) +
-  geom_text(x = 1.8, y=1.035, label = "Site: F4,155 = 11.6, R2 = 0.227, p < 0.001") +
-  theme(plot.title = element_text(hjust=0.5), legend.position = "none", axis.title.x = element_blank())
-Pseu_Plot 
+  theme(plot.title = element_text(hjust=0.5)) +
+  facet_grid(~Region, scales = "free", space='free') 
+Pseu_Plot_Site 
 
-ggsave("Miami Pseu symbionts.pdf", plot= Pseu_Plot, width=6, height=4, units="in", dpi=300)
+ggsave("Pseu symbionts by site.pdf", plot= Pseu_Plot_Site, width=27, height=4, units="in", dpi=300)
 
 
 #### DLAB ABUNDANCE ####
 
 # transposing and reformatting dataframes to make abundance a single column
-Dlab_Perc <- dplyr::select(Dlab_Prop, 5, 10:13)
-Dlab_Perc <- reshape2::melt(Dlab_Perc, id = "Site")
-Dlab_Perc$Site=factor(Dlab_Perc$Site, levels=c("Emerald Reef","Rainbow Reef","Belle Isle")) 
-Dlab_Perc <- dcast(Dlab_Perc, Site~variable, mean)
-Dlab_Perc <- melt(Dlab_Perc, id = "Site")
+Dlab_Perc <- dplyr::select(Dlab_Prop, 21, 11:14)
+Dlab_Perc <- reshape2::melt(Dlab_Perc, id = "RegionNew")
+Dlab_Perc$RegionNew=factor(Dlab_Perc$RegionNew, levels=c("reef","Palm Beach urban","Miami urban")) 
+Dlab_Perc <- dcast(Dlab_Perc, RegionNew~variable, mean)
+Dlab_Perc <- melt(Dlab_Perc, id = "RegionNew")
 Dlab_Perc <- dplyr::rename(Dlab_Perc, symtype = variable, abundance = value)
 
+# creating dataframe of the pairwise comparisons needed for plots and doing a bit of table reformatting
+Dlab_Letters <- data.frame(cbind(Dlab_Pair_Out$Comparison,Dlab_Pair_Out$'Pr(>F)'))
+Dlab_Letters <- na.omit(Dlab_Letters)
+Dlab_Letters <- dplyr::rename(Dlab_Letters, comparison = X1, p.adj = X2)
+Dlab_Letters$comparison = c("reef-Miami urban", "reef-Palm Beach urban", "Miami urban-Palm Beach urban")
+Dlab_Letters$p.adj <- as.numeric(paste(Dlab_Letters$p.adj))
+Dlab_Letters
+
+# creates compact letter display of significant pairwise differences for figure
+Dlab_Cld <- cldList(p.adj ~ comparison, data = Dlab_Letters, threshold = 0.05, remove.zero = FALSE, remove.space = FALSE)
+Dlab_Cld=Dlab_Cld[order(Dlab_Cld$Group),] 
+Dlab_Cld$RegionNew <- Dlab_Cld$Group
+Dlab_Cld <- Dlab_Cld %>% mutate(symtype="Durusdinium")
+Dlab_Cld
+
 # percent stacked barplot
-Dlab_Plot <- ggplot(Dlab_Perc, aes(fill=symtype, y=abundance, x=Site)) + 
+Dlab_Plot <- ggplot(Dlab_Perc, aes(fill=symtype, y=abundance, x=RegionNew)) + 
+  geom_bar(position="fill", stat="identity") +
+  labs(x = "Region",
+       y = "Relative Abundance",
+       fill = 'Symbiodiniaceae Genus',
+       title = "Diploria labyrinthiformis") + 
+  scale_fill_manual(values = colorRampPalette(brewer.pal(8, "Accent"))(6)) +
+  theme_classic() +
+  geom_text(data = Dlab_Cld, aes(y=-0.05, label=Letter)) +
+  geom_text(x = 1.85, y=1.035, label = "Region: F2,82 = 12.1, R2 = 0.229, p < 0.001") +
+  # geom_text(x = 2, y=1.035, label = "Rain: F1,82 = 3.0, R2 = 0.029, p = 0.067") +
+  theme(plot.title = element_text(hjust=0.5), legend.position = "none", axis.title.y = element_blank(), axis.text.y = element_blank(), axis.title.x = element_blank()) 
+Dlab_Plot 
+
+ggsave("Dlab symbionts.pdf", plot= Dlab_Plot, width=4, height=4, units="in", dpi=300)
+
+# Symbiont abundance by site
+Dlab_Perc_Site <- dplyr::select(Dlab_Prop, 6, 11:14)
+Dlab_Perc_Site <- reshape2::melt(Dlab_Perc_Site, id = "Site")
+Dlab_Perc_Site$Site=factor(Dlab_Perc_Site$Site, levels=c("Peanut Island","T328","BC1","FTL4","South Canyon","Pillars","Graceland","Haulover Inlet","FIU Biscayne Bay","Arch Creek","Emerald Reef","Rainbow Reef","Bill Baggs","Seaquarium","Fisher Island","Coral City Camera","Miami Beach Marina","Star Island","MacArthur North","Belle Isle","FEC Slip Downtown"))
+Dlab_Perc_Site <- dcast(Dlab_Perc_Site, Site~variable, mean)
+Dlab_Perc_Site <- melt(Dlab_Perc_Site, id = "Site")
+Dlab_Perc_Site <- dplyr::rename(Dlab_Perc_Site, symtype = variable, abundance = value)
+
+# Adding region for facet_wrap
+Dlab_Perc_Site %>%
+  ungroup() %>%
+  mutate(Region = case_when(
+    Site == "Peanut Island"  ~ "Palm Beach urban",
+    Site == "T328"  ~ "Broward reef",
+    Site == "BC1"  ~ "Broward reef",
+    Site == "FTL4"  ~ "Broward reef",
+    Site == "South Canyon"  ~ "North Miami reef",
+    Site == "Pillars"  ~ "North Miami reef",
+    Site == "Graceland"  ~ "North Miami reef",
+    Site == "Haulover Inlet"  ~ "North Miami urban",
+    Site == "FIU Biscayne Bay"  ~ "North Miami urban",
+    Site == "Arch Creek"  ~ "North Miami urban",
+    Site == "Emerald Reef"  ~ "Miami reef",
+    Site == "Rainbow Reef"  ~ "Miami reef",
+    Site == "Bill Baggs"  ~ "Miami urban",
+    Site == "Seaquarium"  ~ "Miami urban",
+    Site == "Fisher Island"  ~ "Miami urban",
+    Site == "Coral City Camera"  ~ "Miami urban",
+    Site == "Miami Beach Marina"  ~ "Miami urban",
+    Site == "Star Island"  ~ "Miami urban",
+    Site == "MacArthur North"  ~ "Miami urban",
+    Site == "Belle Isle"  ~ "Miami urban",
+    Site == "FEC Slip Downtown"  ~ "Miami urban")) -> Dlab_Perc_Site
+Dlab_Perc_Site$Region=factor(Dlab_Perc_Site$Region, levels=c("Palm Beach urban","Broward reef","North Miami reef","North Miami urban","Miami reef","Miami urban"))
+
+# percent stacked barplot by site
+Dlab_Plot_Site <- ggplot(Dlab_Perc_Site, aes(fill=symtype, y=abundance, x=Site)) + 
   geom_bar(position="fill", stat="identity") +
   labs(x = "Site",
        y = "Relative Abundance",
@@ -1010,14 +1377,15 @@ Dlab_Plot <- ggplot(Dlab_Perc, aes(fill=symtype, y=abundance, x=Site)) +
        title = "Diploria labyrinthiformis") + 
   scale_fill_manual(values = colorRampPalette(brewer.pal(8, "Accent"))(6)) +
   theme_classic() +
-  geom_text(x = 1.8, y=1.035, label = "Site: F2,21 = 0.9, R2 = 0.085, p = ns") +
-  theme(plot.title = element_text(hjust=0.5), legend.position = "none", axis.title.y = element_blank(), axis.text.y = element_blank(), axis.title.x = element_blank())
-Dlab_Plot 
+  theme(plot.title = element_text(hjust=0.5)) +
+  facet_grid(~Region, scales = "free", space='free') 
+Dlab_Plot_Site 
 
-ggsave("Miami Dlab symbionts.pdf", plot= Dlab_Plot, width=6, height=4, units="in", dpi=300)
+ggsave("Dlab symbionts by site.pdf", plot= Dlab_Plot_Site, width=16, height=4, units="in", dpi=300)
 
-#### ABUNDANCE MULTIPLOT ####
 
-Perc_Multiplot <- grid.arrange(Pseu_Plot, Cnat_Plot, Dlab_Plot, Mcav_Plot, Ofav_Plot, legend, ncol=3, nrow=2, widths=c(6,4.5,3.5), heights=c(3.75,4))
+#### ABUNDANCE MULTIPLOTS ####
 
-ggsave("Miami multiplot symbionts.pdf", plot= Perc_Multiplot, width=14, height=8, units="in", dpi=300)
+Perc_Multiplot <- grid.arrange(Pseu_Plot, Cnat_Plot, Dlab_Plot, Mcav_Plot, Ofav_Plot, legend, ncol=3, nrow=2, widths=c(6,3,3), heights=c(3.75,4))
+
+ggsave("Multiplot symbionts.pdf", plot= Perc_Multiplot, width=16, height=8, units="in", dpi=300)
