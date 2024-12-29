@@ -1,0 +1,15 @@
+This is cutadapt 3.4 with Python 3.9.2
+Command line parameters: -q 15,15 -m 36 -o OFAV_urban_409.trim OFAV_urban_409.tr0
+Processing reads on 1 core in single-end mode ...
+Finished in 8.98 s (4 µs/read; 14.86 M reads/minute).
+
+=== Summary ===
+
+Total reads processed:               2,223,272
+Reads with adapters:                         0 (0.0%)
+Reads that were too short:              36,622 (1.6%)
+Reads written (passing filters):     2,186,650 (98.4%)
+
+Total basepairs processed:    80,037,792 bp
+Quality-trimmed:                  44,137 bp (0.1%)
+Total written (filtered):     78,719,400 bp (98.4%)

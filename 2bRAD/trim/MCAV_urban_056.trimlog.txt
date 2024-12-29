@@ -1,0 +1,15 @@
+This is cutadapt 3.4 with Python 3.9.2
+Command line parameters: -q 15,15 -m 36 -o MCAV_urban_056.trim MCAV_urban_056.tr0
+Processing reads on 1 core in single-end mode ...
+Finished in 12.06 s (4 µs/read; 15.06 M reads/minute).
+
+=== Summary ===
+
+Total reads processed:               3,026,399
+Reads with adapters:                         0 (0.0%)
+Reads that were too short:              50,530 (1.7%)
+Reads written (passing filters):     2,975,869 (98.3%)
+
+Total basepairs processed:   108,950,364 bp
+Quality-trimmed:                  60,860 bp (0.1%)
+Total written (filtered):    107,131,284 bp (98.3%)

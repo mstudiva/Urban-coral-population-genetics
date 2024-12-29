@@ -1,0 +1,15 @@
+This is cutadapt 3.4 with Python 3.9.2
+Command line parameters: -q 15,15 -m 36 -o DLAB_urban_243.trim DLAB_urban_243.tr0
+Processing reads on 1 core in single-end mode ...
+Finished in 7.05 s (5 µs/read; 11.50 M reads/minute).
+
+=== Summary ===
+
+Total reads processed:               1,351,469
+Reads with adapters:                         0 (0.0%)
+Reads that were too short:              22,725 (1.7%)
+Reads written (passing filters):     1,328,744 (98.3%)
+
+Total basepairs processed:    48,652,884 bp
+Quality-trimmed:                  27,405 bp (0.1%)
+Total written (filtered):     47,834,784 bp (98.3%)

@@ -1,0 +1,15 @@
+This is cutadapt 3.4 with Python 3.9.2
+Command line parameters: -q 15,15 -m 36 -o PCLI_urban_129.trim PCLI_urban_129.tr0
+Processing reads on 1 core in single-end mode ...
+Finished in 5.71 s (4 µs/read; 15.34 M reads/minute).
+
+=== Summary ===
+
+Total reads processed:               1,460,598
+Reads with adapters:                         0 (0.0%)
+Reads that were too short:              31,093 (2.1%)
+Reads written (passing filters):     1,429,505 (97.9%)
+
+Total basepairs processed:    52,581,528 bp
+Quality-trimmed:                  37,850 bp (0.1%)
+Total written (filtered):     51,462,180 bp (97.9%)

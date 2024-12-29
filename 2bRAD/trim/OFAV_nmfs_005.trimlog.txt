@@ -1,0 +1,15 @@
+This is cutadapt 3.4 with Python 3.9.2
+Command line parameters: -q 15,15 -m 36 -o OFAV_nmfs_005.trim OFAV_nmfs_005.tr0
+Processing reads on 1 core in single-end mode ...
+Finished in 11.54 s (4 µs/read; 16.73 M reads/minute).
+
+=== Summary ===
+
+Total reads processed:               3,217,488
+Reads with adapters:                         0 (0.0%)
+Reads that were too short:              85,966 (2.7%)
+Reads written (passing filters):     3,131,522 (97.3%)
+
+Total basepairs processed:   115,829,568 bp
+Quality-trimmed:                 102,157 bp (0.1%)
+Total written (filtered):    112,734,792 bp (97.3%)

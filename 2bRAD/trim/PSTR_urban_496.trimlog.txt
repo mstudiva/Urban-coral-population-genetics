@@ -1,0 +1,15 @@
+This is cutadapt 3.4 with Python 3.9.2
+Command line parameters: -q 15,15 -m 36 -o PSTR_urban_496.trim PSTR_urban_496.tr0
+Processing reads on 1 core in single-end mode ...
+Finished in 1.09 s (5 µs/read; 11.72 M reads/minute).
+
+=== Summary ===
+
+Total reads processed:                 213,062
+Reads with adapters:                         0 (0.0%)
+Reads that were too short:               7,746 (3.6%)
+Reads written (passing filters):       205,316 (96.4%)
+
+Total basepairs processed:     7,670,232 bp
+Quality-trimmed:                   9,450 bp (0.1%)
+Total written (filtered):      7,391,376 bp (96.4%)

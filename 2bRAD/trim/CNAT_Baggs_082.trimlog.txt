@@ -1,0 +1,15 @@
+This is cutadapt 3.4 with Python 3.9.2
+Command line parameters: -q 15,15 -m 36 -o CNAT_Baggs_082.trim CNAT_Baggs_082.tr0
+Processing reads on 1 core in single-end mode ...
+Finished in 5.94 s (9 µs/read; 6.98 M reads/minute).
+
+=== Summary ===
+
+Total reads processed:                 690,784
+Reads with adapters:                         0 (0.0%)
+Reads that were too short:              14,516 (2.1%)
+Reads written (passing filters):       676,268 (97.9%)
+
+Total basepairs processed:    24,868,224 bp
+Quality-trimmed:                  17,497 bp (0.1%)
+Total written (filtered):     24,345,648 bp (97.9%)
