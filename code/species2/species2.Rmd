@@ -1,0 +1,14 @@
+---
+title: "Species 2 Workflow"
+output: html_document
+---
+
+# Introduction
+
+This is the R Markdown file for Species 2.
+
+```{r}
+# Example R code chunk
+summary(cars)
+```
+
