@@ -12,7 +12,7 @@
 <meta name="author" content="Michael Studivan" />
 
 
-<title>2bRAD - from raw reads to trimmed samples</title>
+<title>Orbicella faveolata 2bRAD</title>
 
 <script>// Pandoc 2.9 adds attributes on both header and div. We remove the former (to
 // be compatible with the behavior of Pandoc < 2.8).
@@ -1496,8 +1496,7 @@ border-radius: 0px;
 
 
 
-<h1 class="title toc-ignore">2bRAD - from raw reads to trimmed
-samples</h1>
+<h1 class="title toc-ignore"><em>Orbicella faveolata</em> 2bRAD</h1>
 <h4 class="author">Michael Studivan</h4>
 
 </div>
@@ -1513,20 +1512,14 @@ samples</h1>
 </div>
 <div id="a-b-o-u-t-t-h-i-s-d-o-c-u-m-e-n-t" class="section level2">
 <h2>A B O U T   T H I S   D O C U M E N T</h2>
-<p>This walkthrough describes the initial processing of 2bRAD reads
-generated from six coral species collected across urbanized and reef
-habitats in southeast Florida. It describes (1) setting up the
-workspace, (2) downloading, unzipping, and concatenating reads, (3)
-demultiplexing row pools and removing Illumina adapters, and (4)
-performing quality filtering. For species-specific pipelines from genome
-alignment on, please see below:</p>
+<p>This walkthrough describes the downstream processing and analysis of
+2bRAD reads generated from <em>Orbicella faveolata</em> samples
+collected across urbanized and reef habitats in southeast Florida.
+Sequence alignments are based on an existing genome assembly by Young
+and colleagues: <a href="https://doi.org/10.1186/s12864-024-10092-w" class="uri">https://doi.org/10.1186/s12864-024-10092-w</a>. For initial
+processing of 2bRAD reads regardless of species, please see below:</p>
 <ul>
-<li><a href="ofav/"><em>Orbicella faveolata</em></a></li>
-<li><a href="species2/">Species 2</a></li>
-<li><a href="species3/">Species 3</a></li>
-<li><a href="species4/">Species 4</a></li>
-<li><a href="species5/">Species 5</a></li>
-<li><a href="species6/">Species 6</a></li>
+<li><a href="../trim2bRAD.Rmd">2bRAD processing</a></li>
 </ul>
 <p>Library prep, bioinformatics, and analysis protocols are credited to
 the 2bRAD pipeline originally developed by Misha Matz: <a href="https://doi.org/10.1038/nmeth.2023" class="uri">https://doi.org/10.1038/nmeth.2023</a>, and further refined
@@ -1534,185 +1527,301 @@ by Ryan Eckert: <a href="https://ryaneckert.github.io/Stephanocoenia_FKNMS_PopGe
 <p><br></p>
 <hr />
 </div>
-<div id="s-e-t-u-p" class="section level2">
-<h2>S E T U P</h2>
+<div id="m-a-p-p-i-n-g-t-o-r-e-f-e-r-e-n-c-e" class="section level2">
+<h2>M A P P I N G   T O   R E F E R E N C E</h2>
 <hr />
-<p>Download necessary scripts and load modules for
-processing/analysis</p>
-<div id="downloading-scripts" class="section level3">
-<h3>Downloading scripts</h3>
-<pre class="bash"><code>cd ~/bin
-git clone https://github.com/mstudiva/Urban-coral-population-genetics
-mv Urban-coral-population-genetics/scripts/* .
-
-git clone https://github.com/xiaoming-liu/stairway-plot-v2.git
-mv stairway-plot-v2.git/trunk/stairway_plot_v2.1.2.zip .
-unzip stairway_plot_v2.1.2.zip
-rm -r stairway_plot_v2.1.2.zip stairway-plot-v2.git
-
-wget https://github.com/ANGSD/angsd/releases/download/0.940/angsd0.940.tar.gz;
-tar xf angsd0.940.tar.gz;
-cd htslib; make;
-cd ..; cd angsd;
-make HTSSRC=../htslib;</code></pre>
-<p>Make all bin scripts executable</p>
-<pre class="bash"><code>chmod +x *.sh *.pl *.py</code></pre>
+<div id="formatting-genome-assembly-with-bowtie2" class="section level3">
+<h3>Formatting genome assembly with Bowtie2</h3>
+<pre class="bash"><code>mkdir ~/db/symGenomes
+cd ~/db/symGenomes</code></pre>
+<p>Using Symbiodiniaceae references from NCBI’s most recent genomes:
+Symbiodinium (NCBI GCA_965279495.1), Breviolum (GCA_965643015.1),
+Cladocopium (GCA_947184155.2), Durusdinium (GCA_963970005.1)</p>
+<pre class="bash"><code>python concatFasta.py -o symbConcatGenome.fasta -s symbConcatGenome_summary.tsv -m symbConcatGenome_contig_to_fakechr.tsv GCA_965279495.1_pySymTrid1.1_genomic.fna GCA_965643015.1_pyBreMinu3.1_genomic.fna GCA_947184155.2_Cgoreaui_SCF055-01_v2.1_genomic.fna GCA_963970005.1_Durusdinium_trenchii_CCMP2556_genomic.fna</code></pre>
+<p>Building bowtie2 index for concatenated symbiont genomes</p>
+<pre class="bash"><code>conda activate 2bRAD
+echo &#39;#!/bin/bash&#39; &gt;genomeBuild.sh
+echo bowtie2-build symbConcatGenome.fasta symbConcatGenome &gt;&gt;genomeBuild.sh
+echo samtools faidx symbConcatGenome.fasta &gt;&gt;genomeBuild.sh
+sbatch -o genomeBuild.o%j -e genomeBuild.e%j --mail-type=ALL --mail-user=studivanms@gmail.com genomeBuild.sh</code></pre>
+<p>Building bowtie2 index for <em>O. faveolata</em> genome</p>
+<pre class="bash"><code>conda activate 2bRAD
+echo &#39;#!/bin/bash&#39; &gt;genomeBuild.sh
+echo bowtie2-build Orbicella_faveolata_gen_17.scaffolds.fa OfaveolataGenome &gt;&gt;genomeBuild.sh
+echo samtools faidx Orbicella_faveolata_gen_17.scaffolds.fa &gt;&gt;genomeBuild.sh
+sbatch -o genomeBuild.o%j -e genomeBuild.e%j --mail-type=ALL --mail-user=studivanms@gmail.com genomeBuild.sh</code></pre>
 <p><br></p>
 </div>
-<div id="creating-conda-environments" class="section level3">
-<h3>Creating conda environments</h3>
-<p>These packages don’t play well with KoKo modules, or they require
-specific dependencies that conflict with base installations</p>
-<pre class="bash"><code>module load anaconda3-2021.05-gcc-9.4.0-llhdqho
-conda config --add channels defaults
-conda config --add channels bioconda
-conda config --add channels conda-forge
+<div id="aligning-reads-to-concatenated-symbiont-genomes" class="section level3">
+<h3>Aligning reads to concatenated symbiont genomes</h3>
+<pre class="bash"><code>conda activate 2bRAD
+SYMGENOME=~/db/symGenomes/symbConcatGenome
+2bRAD_bowtie2_launcher.py -g $SYMGENOME -f trim -n zooxMaps --split -u un -a zoox --launcher -e studivanms@gmail.com
+sbatch zooxMaps.slurm
 
-conda create -n 2bRAD bowtie2 samtools
-
-conda create -n cutadapt cutadapt
-
-conda create -n pcangsd bioconda::pcangsd
-
-conda create -n moments bioconda::moments
-
-conda create -n pgdspider bioconda::pgdspider</code></pre>
-<p><br></p>
-</div>
-<div id="installing-illumina-basespace" class="section level3">
-<h3>Installing Illumina BaseSpace</h3>
-<pre class="bash"><code>wget &quot;https://launch.basespace.illumina.com/CLI/latest/amd64-linux/bs&quot; -O $HOME/bin/bs
-
-chmod +x ~/bin/bs</code></pre>
-<p>Go to the website and confirm authorization by logging in to your
-BaseSpace account</p>
-<pre class="bash"><code>bs auth</code></pre>
-<p><br></p>
-<hr />
-</div>
-</div>
-<div id="d-o-w-n-l-o-a-d-r-e-a-d-s" class="section level2">
-<h2>D O W N L O A D   R E A D S</h2>
-<hr />
-<div id="downloading-and-concatenating-raw-reads" class="section level3">
-<h3>Downloading and concatenating raw reads</h3>
-<pre class="bash"><code>mkdir rawReads
-cd rawReads</code></pre>
-<p>Transfer directly from Illumina BaseSpace)</p>
-<pre class="bash"><code>echo &#39;#!/bin/bash&#39; &gt; downloadReads.sh
-echo &#39;bs download project --concurrency=high -q -n ######## -o .&#39; &gt;&gt; downloadReads.sh
-# -n is the project name and -o is the output directory
-
-echo &quot;find . -name &#39;*.gz&#39; -exec mv {} . \;&quot; &gt;&gt; downloadReads.sh
-echo &#39;rmdir SA*&#39; &gt;&gt;downloadReads.sh
-echo &#39;mkdir ../concatReads&#39; &gt;&gt; downloadReads.sh
-echo &#39;cp *.gz ../concatReads&#39; &gt;&gt; downloadReads.sh
-echo &#39;cd ../concatReads&#39; &gt;&gt; downloadReads.sh
-echo &#39;mergeReads.sh -o mergeTemp&#39; &gt;&gt; downloadReads.sh
-# -o is the directory to put output files in
-
-echo &#39;rm *L00*&#39; &gt;&gt; downloadReads.sh
-echo &quot;find . -name &#39;*.gz&#39; -exec mv {} . \;&quot; &gt;&gt; downloadReads.sh
-echo &#39;gunzip *.gz&#39; &gt;&gt; downloadReads.sh
-echo &#39;rmdir mergeTemp&#39; &gt;&gt; downloadReads.sh
-
-chmod +x downloadReads.sh
-
-launcher_creator.py -b &#39;srun downloadReads.sh&#39; -n downloadReads -q shortq7 -t 06:00:00 -e studivanms@gmail.com
-sbatch --mem=200GB downloadReads.slurm</code></pre>
-<p>Counting raw reads</p>
-<pre class="bash"><code>echo &#39;#!/bin/bash&#39; &gt;rawReads.sh
-echo readCounts.sh -e gz -o Raw &gt;&gt;rawReads.sh
-sbatch -o rawReads.o%j -e rawReads.e%j --mail-type=ALL --mail-user=studivanms@gmail.com rawReads.sh</code></pre>
-<p>scp RawReadCounts to local machine</p>
-<p><br></p>
-<hr />
-</div>
-</div>
-<div id="d-e-m-u-l-t-i-p-l-e-x-i-n-g-t-r-i-m-m-i-n-g" class="section level2">
-<h2>D E M U L T I P L E X I N G   &amp;   T R I M M I N G</h2>
-<hr />
-<div id="demultiplex-reads-and-trim-illumina-adapters" class="section level3">
-<h3>Demultiplex reads and trim Illumina adapters</h3>
-<p>Deduplicates row pools into separate 3ill-BC’s (1-12), using reverse
-complement as the ID</p>
-<pre class="bash"><code>2bRAD_trim_launch_dedup.pl fastq &gt; trims.sh
-launcher_creator.py -j trims.sh -n trims -q shortq7 -t 06:00:00 -e studivanms@gmail.com
-sbatch --mem=200GB trims.slurm</code></pre>
+mkdir ../mappedReads
+mkdir ../mappedReads/symbionts
+mv *.sam ../mappedReads/symbionts
+mv *.zoox ../mappedReads/symbionts
+cd ../mappedReads/symbionts</code></pre>
 <p>Do we have the correct number of files?</p>
-<pre class="bash"><code>ls -l *.tr0 | wc -l
-
-mkdir trimmedReads
-srun mv *.tr0 trimmedReads/ &amp;
-
-# Rezips the raw fastq&#39;s for storage
-zipper.py -f fastq -a -9 --launcher -e studivanms@gmail.com
-sbatch --mem=200GB zip.slurm
-
-cd ../trimmedReads
-</code></pre>
-<p>Rename files based on two column lookup table (sampleID.csv):
-filename, then sample ID</p>
-<pre class="bash"><code>srun sampleRename.py -i sampleID -f tr0</code></pre>
-<p>If any files are not renamed, their barcodes have been mis-sequenced
-Move them to a different directory (the hyphen is only found in
-non-renamed files)</p>
-<pre class="bash"><code>mkdir unused
-mv *-* unused/</code></pre>
+<pre class="bash"><code>ls -l *.zoox | wc -l</code></pre>
+<p>Counting the mapped symbiont reads</p>
+<pre class="bash"><code>echo &#39;#!/bin/bash&#39; &gt;mappedZooxReads
+echo readCounts.sh -e zoox -o Zoox &gt;&gt;mappedZooxReads
+sbatch --mem=200GB --mail-type=ALL --mail-user=studivanms@gmail.com mappedZooxReads</code></pre>
+<p>scp ZooxReadCounts to local machine</p>
 <p><br></p>
-</div>
-<div id="quality-filtering-with-cutadapt" class="section level3">
-<h3>Quality filtering with cutadapt</h3>
-<p>For loop to generate a list of commands for each file</p>
-<pre class="bash"><code>echo &#39;#!/bin/bash&#39; &gt; trimse.sh
-echo &#39;module load miniconda3-4.6.14-gcc-8.3.0-eenl5dj&#39; &gt;&gt; trimse.sh
-echo &#39;conda activate cutadapt&#39; &gt;&gt; trimse.sh
-for file in *.tr0; do
-echo &quot;cutadapt -q 15,15 -m 36 -o ${file/.tr0/}.trim $file &gt; ${file/.tr0/}.trimlog.txt&quot; &gt;&gt; trimse.sh;
+<p>Making script to generate indexed bam files</p>
+<pre class="bash"><code>&gt;s2b
+for file in *.sam; do
+echo &quot;samtools sort -O bam -o ${file/.sam/}.bam $file &amp;&amp; samtools index ${file/.sam/}.bam&quot;&gt;&gt;s2b;
+done
+launcher_creator.py -j s2b -n s2b -t 6:00:00 -N 5 -e studivanms@gmail.com -q shortq7
+sbatch s2b.slurm</code></pre>
+<p>Counting the symbiont reads by genera</p>
+<pre class="bash"><code>&gt;ZooxReads
+for i in *.bam; do
+echo $i &gt;&gt;ZooxReads;
+samtools idxstats $i | cut -f 1,3 &gt;&gt;ZooxReads;
 done</code></pre>
-<p>Since this job cannot be run in parallel, split job script up and run
-each separately</p>
-<pre class="bash"><code>for i in {1..6}; do cp trimse.sh &quot;trimse$i.sh&quot;; done
-conda activate cutadapt
-sbatch -o trimse.o%j -e trimse.e%j --mem=200GB --mail-type=ALL --mail-user=studivanms@gmail.com trimse.sh
-sbatch -o trimse2.o%j -e trimse2.e%j --mem=200GB --mail-type=ALL --mail-user=studivanms@gmail.com trimse2.sh
-sbatch -o trimse3.o%j -e trimse3.e%j --mem=200GB --mail-type=ALL --mail-user=studivanms@gmail.com trimse3.sh
-sbatch -o trimse4.o%j -e trimse4.e%j --mem=200GB --mail-type=ALL --mail-user=studivanms@gmail.com trimse4.sh
-sbatch -o trimse5.o%j -e trimse5.e%j --mem=200GB --mail-type=ALL --mail-user=studivanms@gmail.com trimse5.sh
-sbatch -o trimse6.o%j -e trimse6.e%j --mem=200GB --mail-type=ALL --mail-user=studivanms@gmail.com trimse6.sh
-sbatch -o trimse7.o%j -e trimse7.e%j --mem=200GB --mail-type=ALL --mail-user=studivanms@gmail.com trimse7.sh
-conda deactivate</code></pre>
-<p>Do we have the correct number of files?</p>
-<pre class="bash"><code>ls -l *.trim | wc -l</code></pre>
-<p>Counting the trimmed reads</p>
-<pre class="bash"><code>echo &#39;#!/bin/bash&#39; &gt;cleanReads
-echo readCounts.sh -e trim -o Filt &gt;&gt;cleanReads
-sbatch --mem=200GB --mail-type=ALL --mail-user=studivanms@gmail.com cleanReads</code></pre>
-<p>scp FiltReadCounts to local machine</p>
+<p>scp ZooxReads to local machine</p>
 <p><br></p>
-<pre class="bash"><code>mkdir ../filteredReads
-mv *.trim ../filteredReads
+<p>Housekeeping for long-term storage</p>
+<pre class="bash"><code>zipper.py -a -9 -f sam --launcher -e studivanms@gmail.com
+sbatch zip.slurm
 
-# Rezips the row pools for storage
-zipper.py -f tr0 -a -9 --launcher -e studivanms@gmail.com
+zipper.py -a -9 -f zoox --launcher -e studivanms@gmail.com
+sbatch zip.slurm</code></pre>
+<p><br></p>
+</div>
+<div id="aligning-remaining-reads-to-coral-genome" class="section level3">
+<h3>Aligning remaining reads to coral genome</h3>
+<pre class="bash"><code>cd ~/urban/ofav/filteredReads
+conda activate 2bRAD
+HOSTGENOME=~/db/ofavGenome/OfaveolataGenome
+mkdir junk
+# mapping with --local option, enables clipping of mismatching ends (guards against deletions near ends of RAD tags)
+2bRAD_bowtie2_launcher.py -g $HOSTGENOME -f un --split -u junk -a host --undir junk --launcher -e studivanms@gmail.com
+sbatch --mem=200GB maps.slurm</code></pre>
+<p>Do we have the correct number of files?</p>
+<pre class="bash"><code>ls -l *.sam | wc -l</code></pre>
+<p>Counting the mapped coral reads</p>
+<pre class="bash"><code>echo &#39;#!/bin/bash&#39; &gt;mappedReads
+echo readCounts.sh -e al -o Host &gt;&gt;mappedReads
+sbatch --mem=200GB --mail-type=ALL --mail-user=studivanms@gmail.com mappedReads</code></pre>
+<p>scp HostReadCounts to local machine</p>
+<p><br></p>
+<p>Making script to generate indexed bam files</p>
+<pre class="bash"><code>&gt;s2b
+for file in *.sam; do
+echo &quot;samtools sort -O bam -o ${file/.sam/}.bam $file &amp;&amp; samtools index ${file/.sam/}.bam&quot;&gt;&gt;s2b;
+done
+
+launcher_creator.py -j s2b -n s2b -q shortq7 -t 06:00:00 -e studivanms@gmail.com
+sbatch --mem=200GB s2b.slurm
+
+ls *bam | wc -l</code></pre>
+<p>Housekeeping for long-term storage</p>
+<pre class="bash"><code>zipper.py -a -9 -f sam --launcher -e studivanms@gmail.com
+sbatch zip.slurm
+
+zipper.py -a -9 -f un --launcher -e studivanms@gmail.com
+sbatch zip.slurm
+
+zipper.py -a -9 -f trim --launcher -e studivanms@gmail.com
+sbatch zip.slurm
+
+zipper.py -a -9 -f host --launcher -e studivanms@gmail.com
+sbatch zip.slurm
+
+mv *.trim.gz ../../trimmedReads
+mv *.sam.gz ../mappedReads
+mv *.host.gz ../mappedReads
+mv *.bam ../mappedReads
+mv *.bai ../mappedReads
+
+cd junk
+zipper.py -a -9 -f junk --launcher -e studivanms@gmail.com
 sbatch zip.slurm</code></pre>
 <p><br></p>
 <hr />
 </div>
 </div>
-<div id="s-p-e-c-i-e-s-p-i-p-e-l-i-n-e-s" class="section level2">
-<h2>S P E C I E S   &amp;   P I P E L I N E S</h2>
+<div id="g-e-n-o-t-y-p-i-n-g" class="section level2">
+<h2>G E N O T Y P I N G</h2>
 <hr />
-<p>Now that your reads are demultiplexed and trimmed, follow the
-species-specific pipelines below:</p>
-<ul>
-<li><a href="code/ofav/"><em>Orbicella faveolata</em></a></li>
-<li><a href="code/species2/">Species 2</a></li>
-<li><a href="code/species3/">Species 3</a></li>
-<li><a href="code/species4/">Species 4</a></li>
-<li><a href="code/species5/">Species 5</a></li>
-<li><a href="code/species6/">Species 6</a></li>
-</ul>
+<div id="genotyping-with-angsd" class="section level3">
+<h3>Genotyping with ANGSD</h3>
+<p>Doesn’t call actual genotypes, but instead generates genotype
+likelihoods at each SNP. Optimal for low-coverage data (&lt;10x) like
+2bRAD.</p>
+<p>Copy all <em>.bam</em> files to a new directory ‘ANGSD’</p>
+<pre class="bash"><code>mkdir ../ANGSD
+cd ../ANGSD
+mv ../mappedReads/*.bam* .
+
+ls *bam &gt;bamsClones</code></pre>
+<p>Assessing base qualities and coverage depth <code>-minMapQ 20</code>:
+only highly unique mappings (prob of erroneous mapping =&lt; 1%)
+<code>-baq 1</code>: realign around indels (not terribly relevant for
+2bRAD reads mapped with –local option) <code>-maxDepth</code>: highest
+total depth (sum over all samples) to assess; set to 10x number of
+samples <code>-minInd</code>: the minimal number of individuals the site
+must be genotyped in. Set to 50% of total N at this stage.</p>
+<pre class="bash"><code>export FILTERS=&quot;-uniqueOnly 1 -remove_bads 1 -minMapQ 20 -maxDepth 1030 -minInd 52&quot;
+export TODO=&quot;-doQsDist 1 -doDepth 1 -doCounts 1 -dumpCounts 2&quot;
+
+echo &#39;#!/bin/bash&#39; &gt;ofavDD.sh
+echo angsd -b bamsClones -GL 1 $FILTERS $TODO -P 1 -out dd -nThreads 20 &gt;&gt;ofavDD.sh
+
+sbatch --mem=200GB -o ofavDD.o%j -e ofavDD.e%j --mail-user=studivanms@gmail.com --mail-type=ALL --partition=shortq7 ofavDD.sh</code></pre>
+<p>Summarizing results</p>
+<pre class="bash"><code>module load R/3.6.1
+echo &#39;#!/bin/bash&#39; &gt;RQC.sh
+echo Rscript ~/bin/plotQC.R prefix=dd &gt;&gt;RQC.sh
+echo gzip -9 dd.counts &gt;&gt;RQC.sh
+sbatch -e RQC.e%j -o RQC.o%j --dependency=afterok:460550 --mem=200GB --mail-type=ALL --mail-user=studivanms@gmail.com RQC.sh</code></pre>
+<p>Proportion of sites covered at &gt;5X:</p>
+<pre class="bash"><code>cat quality.txt</code></pre>
+<p>scp dd.pdf to local machine to look at distribution of base quality
+scores, fraction of sites in each sample passing coverage thresholds and
+fraction of sites passing genotyping rates cutoffs. Use these to guide
+choices of <code>-minQ</code>, <code>-minIndDepth</code> and
+<code>-minInd</code> filters in subsequent <code>ANGSD</code> runs</p>
+<p><br></p>
+</div>
+<div id="identifying-clones-and-technical-replicates" class="section level3">
+<h3>Identifying clones and technical replicates</h3>
+<p>Set the <code>-minInd</code> flag to 80% of the number of samples you
+have</p>
+<pre class="bash"><code>FILTERS=&quot;-uniqueOnly 1 -remove_bads 1 -minMapQ 20 -minQ 30 -dosnpstat 1 -doHWE 1 -hwe_pval 1e-5 -sb_pval 1e-5 -hetbias_pval 1e-5 -skipTriallelic 1 -minInd 77 -snp_pval 1e-6 -minMaf 0.05&quot;
+TODO=&quot;-doMajorMinor 1 -doMaf 1 -doCounts 1 -makeMatrix 1 -doIBS 1 -doCov 1 -doGeno 8 -doBcf 1 -doPost 1 -doGlf 2&quot;
+
+echo &#39;#!/bin/bash&#39; &gt; ofavClones.sh
+echo angsd -b bamsClones -GL 1 $FILTERS $TODO -P 1 -out ofavClones &gt;&gt;ofavClones.sh
+
+sbatch --mem=200GB -o radClones.o%j -e radClones.e%j --mail-type=ALL --mail-user=studivanms@gmail.com --partition=shortq7 radClones.sh</code></pre>
+<p><embed role="img" src="../../data/ofav/clones/dd.pdf"></embed></p>
+<p><br></p>
+<p>scp .ibsMat and .bcf files to local machine Use ibs matrix to
+identify clones with hierachial clustering in <code>R</code>.
+<code>scp</code> to local machine and run chunk below in
+<code>R</code></p>
+<pre class="r"><code># install.packages(&quot;rcartocolor&quot;)
+library(rcartocolor)
+
+pacman::p_load(&quot;dendextend&quot;, &quot;ggdendro&quot;, &quot;tidyverse&quot;)
+
+cloneBams = read.csv(&quot;ofavMetadata.csv&quot;) # list of bam files
+
+cloneMa = as.matrix(read.table(&quot;ANGSD/ofavClones.ibsMat&quot;)) # reads in IBS matrix produced by ANGSD 
+
+dimnames(cloneMa) = list(cloneBams[,2],cloneBams[,2])
+clonesHc = hclust(as.dist(cloneMa),&quot;ave&quot;)
+
+clonePops = cloneBams$region
+cloneSite = cloneBams$site
+
+cloneDend = cloneMa %&gt;% as.dist() %&gt;% hclust(.,&quot;ave&quot;) %&gt;% as.dendrogram()
+cloneDData = cloneDend %&gt;% dendro_data()
+
+# Making the branches hang shorter so we can easily see clonal groups
+cloneDData$segments$yend2 = cloneDData$segments$yend
+for(i in 1:nrow(cloneDData$segments)) {
+  if (cloneDData$segments$yend2[i] == 0) {
+    cloneDData$segments$yend2[i] = (cloneDData$segments$y[i] - 0.01)}}
+
+cloneDendPoints = cloneDData$labels
+cloneDendPoints$region = clonePops[order.dendrogram(cloneDend)]
+cloneDendPoints$site=cloneSite[order.dendrogram(cloneDend)]
+rownames(cloneDendPoints) = cloneDendPoints$label
+
+cloneDendPoints$region = as.factor(cloneDendPoints$region)
+cloneDendPoints$site = as.factor(cloneDendPoints$site)
+
+# Making points at the leaves to place symbols for regionulations
+point = as.vector(NA)
+for(i in 1:nrow(cloneDData$segments)) {
+  if (cloneDData$segments$yend[i] == 0) {
+    point[i] = cloneDData$segments$y[i] - 0.01
+  } else {
+    point[i] = NA}}
+
+cloneDendPoints$y = point[!is.na(point)]
+
+techReps = c(&quot;urban_080&quot;, &quot;urban_080_2&quot;, &quot;urban_080_3&quot;, &quot;urban_289&quot;, &quot;urban_289_2&quot;)
+cloneDendPoints$site = factor(cloneDendPoints$site,levels(cloneDendPoints$site)[c(3, 10, 4, 2, 12, 8, 11, 9, 5, 7, 6, 1, 13)])
+
+cloneDendPoints$region = factor(cloneDendPoints$region,levels(cloneDendPoints$region)[c(2, 3, 4, 5, 1)])
+
+nColor &lt;- 12
+scales::show_col(carto_pal(nColor, &quot;Safe&quot;))
+Pal &lt;- c(&quot;#88CCEE&quot;, &quot;#CC6677&quot;, &quot;#DDCC77&quot;, &quot;#117733&quot;, 
+        &quot;#332288&quot;, &quot;#AA4499&quot;, &quot;#44AA99&quot;, &quot;#999933&quot;,
+        &quot;#882255&quot;, &quot;#661100&quot;, &quot;#6699CC&quot;, &quot;#888888&quot;,
+        &quot;orange&quot;)
+
+cloneDendA = ggplot() +
+  geom_segment(data = segment(cloneDData), aes(x = x, y = y, xend = xend, yend = yend2), size = 0.5) +
+  geom_point(data = cloneDendPoints, aes(x = x, y = y, fill = site, shape = region), size = 4, stroke = 0.25) +
+  # scale_fill_brewer(palette = &quot;Dark2&quot;, name = &quot;Site&quot;) +
+  scale_fill_manual(values = Pal, name= &quot;Site&quot;)+
+  scale_shape_manual(values = c(21, 22, 23, 24, 25), name = &quot;Region&quot;)+
+  geom_hline(yintercept = 0.12, color = &quot;red&quot;, lty = 5, size = 0.75) + # creating a dashed line to indicate a clonal distance threshold
+  geom_text(data = subset(cloneDendPoints, subset = label %in% techReps), aes(x = x, y = (y - .045), label = label), angle = 90) + # spacing technical replicates further from leaf
+  geom_text(data = subset(cloneDendPoints, subset = !label %in% techReps), aes(x = x, y = (y - .025), label = label), angle = 90) +
+  labs(y = &quot;Genetic distance (1 - IBS)&quot;) +
+  guides(fill = guide_legend(override.aes = list(shape = 22)))+
+  theme_classic()
+
+cloneDend = cloneDendA + theme(
+  axis.title.x = element_blank(),
+  axis.text.x = element_blank(),
+  axis.line.x = element_blank(),
+  axis.ticks.x = element_blank(),
+  axis.title.y = element_text(size = 12, color = &quot;black&quot;, angle = 90),
+  axis.text.y = element_text(size = 10, color = &quot;black&quot;),
+  axis.line.y = element_line(),
+  axis.ticks.y = element_line(),
+  panel.grid = element_blank(),
+  panel.border = element_blank(),
+  panel.background = element_blank(),
+  plot.background = element_blank(),
+  legend.key = element_blank(),
+  legend.title = element_text(size = 12),
+  legend.text = element_text(size = 10),
+  legend.position = &quot;bottom&quot;)
+
+cloneDend
+
+ggsave(&quot;cloneDend.png&quot;, plot = cloneDend, height = 8, width = 24, units = &quot;in&quot;, dpi = 300)</code></pre>
+<p><img role="img" src="../../data/ofav/clones/cloneDend.png" /> <br></p>
+</div>
+<div id="removing-clones-and-re-running-angsd" class="section level3">
+<h3>Removing clones and re-running ANGSD</h3>
+<pre class="bash"><code>mkdir clones
+mv ofavClones* clones
+
+ls *.bam &gt; bamsNoClones
+
+cat bamsClones | grep -v &#39;OFAV_urban_359.trim.un.bt2.bam\|OFAV_nmfs_035.trim.un.bt2.bam\|OFAV_nmfs_069.trim.un.bt2.bam\|OFAV_nmfs_041.trim.un.bt2.bam\|OFAV_urban_080_2.trim.un.bt2.bam\|OFAV_urban_080_3.trim.un.bt2.bam\|OFAV_urban_289_2.trim.un.bt2.bam\|OFAV_urban_081.trim.un.bt2.bam\|OFAV_urban_415.trim.un.bt2.bam&#39; &gt;bamsNoClones
+
+module load angsd-0.933-gcc-9.2.0-65d64pp
+FILTERS=&quot;-uniqueOnly 1 -remove_bads 1 -minMapQ 20 -minQ 30 -dosnpstat 1 -doHWE 1 -hwe_pval 1e-5 -sb_pval 1e-5 -hetbias_pval 1e-5 -skipTriallelic 1 -minInd 70 -snp_pval 1e-6 -minMaf 0.05&quot;
+TODO=&quot;-doMajorMinor 1 -doMaf 1 -doCounts 1 -makeMatrix 1 -doIBS 1 -doCov 1 -doGeno 8 -doBcf 1 -doPost 1 -doGlf 2&quot;
+
+echo &#39;#!/bin/bash&#39; &gt; ofavNoClones.sh
+echo angsd -b bamsNoClones -GL 1 $FILTERS $TODO -P 1 -out ofavNoClones &gt;&gt; ofavNoClones.sh
+sbatch --mem=200GB -o radNoClones.o%j -e radNoClones.e%j -p shortq7 --mail-type=ALL --mail-user=studivanms@gmail.com radNoClones.sh</code></pre>
+<p>How many SNPs do we have?</p>
+<pre class="bash"><code>grep &quot;filtering:&quot; ofavNoClones.e*</code></pre>
+<p>Number of sites retained after filtering: 20323</p>
+<p><br></p>
+<p>Some housekeeping</p>
+<pre class="bash"><code>zipper.py -a -9 -f bam --launcher -e studivanms@gmail.com
+sbatch zip.slurm</code></pre>
+</div>
 </div>
 
 

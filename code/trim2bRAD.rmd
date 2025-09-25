@@ -1,0 +1,267 @@
+---
+title: "2bRAD - from raw reads to trimmed samples"
+author: "Michael Studivan"
+date: 
+output:
+  html_document:
+    theme: darkly
+    toc: yes
+    toc_depth: 3
+    toc_float: yes
+knit: (function(input, ...) {
+    rmarkdown::render(
+      input,
+      output_file = 'index.html',
+      envir = globalenv()
+    )
+  })
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, eval = FALSE)
+```
+
+<a href="https://github.com/mstudiva/Urban-coral-population-genetics" class="github-corner" aria-label="View source on GitHub"><svg width="80" height="80" viewBox="0 0 250 250" style="fill:#2C3E50; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
+
+```{=html}
+<style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+```
+
+#### version: `r library(magrittr)` `r Sys.Date() %>% format(format="%d %B, %Y")`
+
+#### [GitHub repository](https://github.com/mstudiva/Urban-coral-population-genetics){target="_blank"}
+
+## A B O U T &nbsp; T H I S &nbsp; D O C U M E N T
+
+This walkthrough describes the initial processing of 2bRAD reads generated from six coral species collected across urbanized and reef habitats in southeast Florida. It describes (1) setting up the workspace, (2) downloading, unzipping, and concatenating reads, (3) demultiplexing row pools and removing Illumina adapters, and (4) performing quality filtering. For species-specific pipelines from genome alignment on, please see below:
+
+- [*Orbicella faveolata*](ofav/)
+- [Species 2](species2/)
+- [Species 3](species3/)
+- [Species 4](species4/)
+- [Species 5](species5/)
+- [Species 6](species6/)
+
+Library prep, bioinformatics, and analysis protocols are credited to the 2bRAD pipeline originally developed by Misha Matz: https://doi.org/10.1038/nmeth.2023, and further refined by Ryan Eckert: https://ryaneckert.github.io/Stephanocoenia_FKNMS_PopGen/code/ 
+
+<br>
+
+***
+## S E T U P 
+***
+
+Download necessary scripts and load modules for processing/analysis
+
+### Downloading scripts
+
+```{bash, downloading scripts}
+cd ~/bin
+git clone https://github.com/mstudiva/Urban-coral-population-genetics
+mv Urban-coral-population-genetics/scripts/* .
+
+git clone https://github.com/xiaoming-liu/stairway-plot-v2.git
+mv stairway-plot-v2.git/trunk/stairway_plot_v2.1.2.zip .
+unzip stairway_plot_v2.1.2.zip
+rm -r stairway_plot_v2.1.2.zip stairway-plot-v2.git
+
+wget https://github.com/ANGSD/angsd/releases/download/0.940/angsd0.940.tar.gz;
+tar xf angsd0.940.tar.gz;
+cd htslib; make;
+cd ..; cd angsd;
+make HTSSRC=../htslib;
+```
+
+Make all bin scripts executable
+```{bash, scrips +x}
+chmod +x *.sh *.pl *.py
+```
+
+<br>
+
+### Creating conda environments
+
+These packages don't play well with KoKo modules, or they require specific dependencies that conflict with base installations
+```{bash, conda}
+module load anaconda3-2021.05-gcc-9.4.0-llhdqho
+conda config --add channels defaults
+conda config --add channels bioconda
+conda config --add channels conda-forge
+
+conda create -n 2bRAD bowtie2 samtools
+
+conda create -n cutadapt cutadapt
+
+conda create -n pcangsd bioconda::pcangsd
+
+conda create -n moments bioconda::moments
+
+conda create -n pgdspider bioconda::pgdspider
+```
+
+<br>
+
+### Installing Illumina BaseSpace
+
+```{bash, bs dl}
+wget "https://launch.basespace.illumina.com/CLI/latest/amd64-linux/bs" -O $HOME/bin/bs
+
+chmod +x ~/bin/bs
+```
+
+Go to the website and confirm authorization by logging in to your BaseSpace account
+```{bash, bs}
+bs auth
+```
+
+<br>
+
+***
+## D O W N L O A D &nbsp; R E A D S
+***
+
+### Downloading and concatenating raw reads
+```{bash, wd}
+mkdir rawReads
+cd rawReads
+```
+
+Transfer directly from Illumina BaseSpace)
+
+```{bash, download}
+echo '#!/bin/bash' > downloadReads.sh
+echo 'bs download project --concurrency=high -q -n ######## -o .' >> downloadReads.sh
+# -n is the project name and -o is the output directory
+
+echo "find . -name '*.gz' -exec mv {} . \;" >> downloadReads.sh
+echo 'rmdir SA*' >>downloadReads.sh
+echo 'mkdir ../concatReads' >> downloadReads.sh
+echo 'cp *.gz ../concatReads' >> downloadReads.sh
+echo 'cd ../concatReads' >> downloadReads.sh
+echo 'mergeReads.sh -o mergeTemp' >> downloadReads.sh
+# -o is the directory to put output files in
+
+echo 'rm *L00*' >> downloadReads.sh
+echo "find . -name '*.gz' -exec mv {} . \;" >> downloadReads.sh
+echo 'gunzip *.gz' >> downloadReads.sh
+echo 'rmdir mergeTemp' >> downloadReads.sh
+
+chmod +x downloadReads.sh
+
+launcher_creator.py -b 'srun downloadReads.sh' -n downloadReads -q shortq7 -t 06:00:00 -e studivanms@gmail.com
+sbatch --mem=200GB downloadReads.slurm
+```
+
+Counting raw reads
+```{bash, countraw}
+echo '#!/bin/bash' >rawReads.sh
+echo readCounts.sh -e gz -o Raw >>rawReads.sh
+sbatch -o rawReads.o%j -e rawReads.e%j --mail-type=ALL --mail-user=studivanms@gmail.com rawReads.sh
+```
+scp RawReadCounts to local machine
+
+<br>
+
+***
+## D E M U L T I P L E X I N G &nbsp; & &nbsp; T R I M M I N G
+***
+
+### Demultiplex reads and trim Illumina adapters
+Deduplicates row pools into separate 3ill-BC's (1-12), using reverse complement as the ID
+```{bash, trim}
+2bRAD_trim_launch_dedup.pl fastq > trims.sh
+launcher_creator.py -j trims.sh -n trims -q shortq7 -t 06:00:00 -e studivanms@gmail.com
+sbatch --mem=200GB trims.slurm
+```
+
+Do we have the correct number of files?
+```{bash, check count}
+ls -l *.tr0 | wc -l
+
+mkdir trimmedReads
+srun mv *.tr0 trimmedReads/ &
+
+# Rezips the raw fastq's for storage
+zipper.py -f fastq -a -9 --launcher -e studivanms@gmail.com
+sbatch --mem=200GB zip.slurm
+
+cd ../trimmedReads
+
+```
+
+Rename files based on two column lookup table (sampleID.csv): filename, then sample ID
+```{bash, rename}
+srun sampleRename.py -i sampleID -f tr0
+```
+
+If any files are not renamed, their barcodes have been mis-sequenced
+Move them to a different directory (the hyphen is only found in non-renamed files)
+```{bash, unused}
+mkdir unused
+mv *-* unused/
+```
+
+<br>
+
+### Quality filtering with cutadapt
+For loop to generate a list of commands for each file
+```{bash, clean}
+echo '#!/bin/bash' > trimse.sh
+echo 'module load miniconda3-4.6.14-gcc-8.3.0-eenl5dj' >> trimse.sh
+echo 'conda activate cutadapt' >> trimse.sh
+for file in *.tr0; do
+echo "cutadapt -q 15,15 -m 36 -o ${file/.tr0/}.trim $file > ${file/.tr0/}.trimlog.txt" >> trimse.sh;
+done
+```
+
+Since this job cannot be run in parallel, split job script up and run each separately
+```{bash, runclean}
+for i in {1..6}; do cp trimse.sh "trimse$i.sh"; done
+conda activate cutadapt
+sbatch -o trimse.o%j -e trimse.e%j --mem=200GB --mail-type=ALL --mail-user=studivanms@gmail.com trimse.sh
+sbatch -o trimse2.o%j -e trimse2.e%j --mem=200GB --mail-type=ALL --mail-user=studivanms@gmail.com trimse2.sh
+sbatch -o trimse3.o%j -e trimse3.e%j --mem=200GB --mail-type=ALL --mail-user=studivanms@gmail.com trimse3.sh
+sbatch -o trimse4.o%j -e trimse4.e%j --mem=200GB --mail-type=ALL --mail-user=studivanms@gmail.com trimse4.sh
+sbatch -o trimse5.o%j -e trimse5.e%j --mem=200GB --mail-type=ALL --mail-user=studivanms@gmail.com trimse5.sh
+sbatch -o trimse6.o%j -e trimse6.e%j --mem=200GB --mail-type=ALL --mail-user=studivanms@gmail.com trimse6.sh
+sbatch -o trimse7.o%j -e trimse7.e%j --mem=200GB --mail-type=ALL --mail-user=studivanms@gmail.com trimse7.sh
+conda deactivate
+```
+
+Do we have the correct number of files?
+```{bash, check count 2}
+ls -l *.trim | wc -l
+```
+
+Counting the trimmed reads
+```{bash, counttrim}
+echo '#!/bin/bash' >cleanReads
+echo readCounts.sh -e trim -o Filt >>cleanReads
+sbatch --mem=200GB --mail-type=ALL --mail-user=studivanms@gmail.com cleanReads
+```
+scp FiltReadCounts to local machine
+
+<br>
+
+```{bash, housekeeping}
+mkdir ../filteredReads
+mv *.trim ../filteredReads
+
+# Rezips the row pools for storage
+zipper.py -f tr0 -a -9 --launcher -e studivanms@gmail.com
+sbatch zip.slurm
+```
+
+<br>
+
+***
+## S P E C I E S &nbsp; & &nbsp; P I P E L I N E S
+***
+
+Now that your reads are demultiplexed and trimmed, follow the species-specific pipelines below:
+
+- [*Orbicella faveolata*](ofav/)
+- [Species 2](species2/)
+- [Species 3](species3/)
+- [Species 4](species4/)
+- [Species 5](species5/)
+- [Species 6](species6/)
