@@ -265,7 +265,7 @@ echo angsd -b bamsClones -GL 1 $FILTERS $TODO -P 1 -out ofavClones >>ofavClones.
 
 sbatch --mem=200GB -o radClones.o%j -e radClones.e%j --mail-type=ALL --mail-user=studivanms@gmail.com --partition=shortq7 radClones.sh
 ```
-![](../../data/ofav/clones/dd.pdf)
+![](../../figures/ofav/dd.pdf)
 
 <br>
 
@@ -362,7 +362,7 @@ cloneDend
 
 ggsave("cloneDend.png", plot = cloneDend, height = 8, width = 24, units = "in", dpi = 300)
 ```
-![](../../data/ofav/clones/cloneDend.png)
+![](../../figures/ofav/cloneDend.png)
 <br>
 
 ### Removing clones and re-running ANGSD
@@ -397,5 +397,246 @@ zipper.py -a -9 -f bam --launcher -e studivanms@gmail.com
 sbatch zip.slurm
 ```
 
+<br>
 
+***
+## P O P U L A T I O N &nbsp; S T R U C T U R E
+***
 
+### Resolving population structure with pcangsd
+```{bash, pcangsd}
+mkdir ../pcangsd
+cd pcangsd
+
+cp ../ANGSD/ofavNoClones.beagle.gz .
+
+conda activate pcangsd
+
+echo '#!/bin/bash' > pcangsd.sh
+echo 'pcangsd -b ofavNoClones.beagle.gz -o ofavPcangsd --admix --inbreed-samples --pcadapt --selection' >> pcangsd
+launcher_creator.py -j pcangsd -n pcangsd -q shortq7 -t 06:00:00 -e $EMAIL -w 1 -N 1
+sbatch pcangsd.slurm
+```
+
+Calculating population structure from genotype likelihoods using NGSadmix (part of ANGSD)
+Simulating (50x) different values of K (minimum of 1, maximum of the number of your sites + 3)
+```{bash, ngsadmix}
+ngsAdmixLauncher.py -f ofavNoClones.beagle.gz --maxK 16 -r 50 -n ofav --launcher -e studivanms@gmail.com
+
+sbatch --mem=200GB ofavNgsAdmix.slurm
+```
+
+<br>
+
+### Determining the most likely number of ancestral populations (K)
+Taking the likelihood value from each run of NGSadmix and put them into a file that can be used with Clumpak to calculate the most likely K using the methods of Evanno et al. (2005).
+```{bash, clumpak}
+>ofavNgsAdmixLogfile
+for log in ofav*.log; do
+grep -Po 'like=\K[^ ]+' $log >> ofavNgsAdmixLogfile;
+done
+```
+
+Start R in command line
+```{bash, R}
+R
+
+logs <- as.data.frame(read.table("ofavNgsAdmixLogfile"))
+
+# output is organized with 10, 11 preceding 1, 2, 3 etc.
+logs$K <- c(rep("10", 50), rep("11", 50), rep("12", 50), rep("13", 50), rep("14", 50), rep("15", 50), rep("16", 50), rep("1", 50), rep("2", 50), rep("3", 50), rep("4", 50), rep("5", 50), rep("6", 50), rep("7", 50), rep("8", 50), rep("9", 50))
+write.table(logs[, c(2, 1)], "ofavNgsAdmixLogfile_formatted", row.names = F, col.names = F, quote = F)
+quit()
+# No need to save workspace image [press 'n']
+n
+```
+
+Check that the formatted log file has the correct number of entries
+```{bash, check rows}
+cat ofavNgsAdmixLogfile_formatted | wc -l
+```
+800, so yes (K=16 * 50 simulations each)
+
+<br>
+
+Make copies of .qopt files to run structure selector on (.Q files)
+```{bash, qloop}
+for file in ofav*.qopt; do
+filename=$(basename -- "$file" .qopt);
+cp "$file" "$filename".Q;
+done
+
+mkdir ofavQ
+mv ofav*Q ofavQ
+
+zip -r ofavQ.zip ofavQ
+```
+scp .zip, formatted logfile, and ofavNoClones* to local machine
+Upload logfile to CLUMPAK as a Log Probability table file (http://clumpak.tau.ac.il/bestK.html)
+And .zip to structure selector as an ADMIXTURE file (https://lmme.ac.cn/StructureSelector/index.html)
+You also need to create a PopMap file from bamsNoClones: a two-column, tab-delimited text file with sampleID and populationID
+
+<br>
+
+### Optional: K determination in likely panmictic populations (K=1)
+If Clumpak fails due to all simulations of K=1 having zero standard deviation (all models having the same log likelihood), your populations may be acting as a single unit (panmixia)
+We can run the Evanno method another way to determine if K=1 is the most likely scenario, and can evaluate potential cryptic genetic lineages
+
+```{r, K determination, fig.width=4, fig.height=6, dpi=150}
+# Load libraries
+library(ggplot2)
+library(dplyr)
+library(patchwork)
+
+# -------------------------
+# 1. Read space-delimited input file
+# -------------------------
+data_file <- "ofavNgsAdmixLogfile_formatted"  # replace with your file
+df <- read.table(data_file, header = FALSE, sep = "", 
+                 col.names = c("K", "LogLikelihood"), stringsAsFactors = FALSE)
+
+# -------------------------
+# 2. Clean columns and convert to numeric
+# -------------------------
+df$K <- as.numeric(trimws(df$K))
+df$LogLikelihood <- as.numeric(trimws(df$LogLikelihood))
+df <- df[!is.na(df$K) & !is.na(df$LogLikelihood), ]
+
+if(nrow(df) == 0) stop("No valid data found in the file. Check file formatting.")
+
+# -------------------------
+# 3. Summarize mean and SD for each K
+# -------------------------
+summary_df <- df %>%
+  group_by(K) %>%
+  summarise(MeanLnP = mean(LogLikelihood, na.rm = TRUE),
+            SD = sd(LogLikelihood, na.rm = TRUE)) %>%
+  arrange(K)
+
+# -------------------------
+# 4. Calculate ΔK robustly
+# -------------------------
+L <- summary_df$MeanLnP
+n <- nrow(summary_df)
+deltaK <- rep(NA, n)
+
+if(n >= 3) {
+  for(i in 2:(n-1)) {
+    Li_minus1 <- L[i-1]; Li <- L[i]; Li_plus1 <- L[i+1]; SDi <- summary_df$SD[i]
+    if(all(is.finite(c(Li_minus1, Li, Li_plus1, SDi))) && SDi != 0) {
+      deltaK[i] <- abs(Li_plus1 - 2*Li + Li_minus1) / SDi
+    }
+  }
+}
+
+summary_df$deltaK <- deltaK
+
+# -------------------------
+# 5. Identify all ΔK peaks
+# -------------------------
+is_peak <- rep(FALSE, n)
+if(n >= 3 && any(!is.na(deltaK))) {
+  for(i in 2:(n-1)) {
+    if(!is.na(deltaK[i])) {
+      left <- deltaK[i-1]; right <- deltaK[i+1]
+      if((is.na(left) || deltaK[i] > left) && (is.na(right) || deltaK[i] > right)) {
+        is_peak[i] <- TRUE
+      }
+    }
+  }
+}
+peaks_df <- summary_df[is_peak, ]
+
+# Identify global best K (largest ΔK)
+global_best <- if(nrow(peaks_df) > 0) peaks_df[which.max(peaks_df$deltaK), ] else NULL
+
+# -------------------------
+# 6. Create plots
+# -------------------------
+
+# ΔK plot
+if(!all(is.na(summary_df$deltaK))) {
+  p_deltaK <- ggplot(summary_df, aes(x = K, y = deltaK)) +
+    geom_line(color = "steelblue") +
+    geom_point() +
+    theme_minimal() +
+    labs(title = "ΔK Plot (Evanno Method)",
+         x = "K",
+         y = expression(Delta*K)) +
+    coord_cartesian(clip = "off")  # prevent label clipping
+  
+  if(nrow(peaks_df) > 0) {
+    p_deltaK <- p_deltaK +
+      geom_point(data = peaks_df, aes(x = K, y = deltaK), color = "red", size = 3) +
+      geom_text(data = peaks_df, aes(x = K, y = deltaK, label = paste("K =", K)),
+                vjust = -0.5, color = "red", fontface = "bold", clip = "off")
+  }
+  
+  if(!is.null(global_best)) {
+    p_deltaK <- p_deltaK +
+      geom_point(data = global_best, aes(x = K, y = deltaK), color = "darkred", size = 5) +
+      geom_text(data = global_best, aes(x = K, y = deltaK, label = paste("Best K =", K)),
+                vjust = -1, color = "darkred", fontface = "bold", clip = "off")
+  }
+} else {
+  p_deltaK <- NULL
+}
+
+# Mean LogLikelihood plot
+p_mean <- ggplot(summary_df, aes(x = K, y = MeanLnP)) +
+  geom_line(color = "darkgreen") +
+  geom_point(size = 3) +
+  theme_minimal() +
+  labs(title = "Mean Log Likelihood vs K",
+       x = "K",
+       y = "Mean Log Likelihood") +
+  coord_cartesian(clip = "off")
+
+# Combine plots vertically
+if(!is.null(p_deltaK)) {
+  p_combined <- p_deltaK / p_mean + plot_layout(heights = c(1,1))
+} else {
+  p_combined <- p_mean
+}
+
+# -------------------------
+# 7. Save combined plot
+# -------------------------
+output_file <- "DeltaK_and_MeanLnP_plot.png"
+ggsave(output_file, plot = p_combined, width = 6, height = 8, dpi = 300)
+
+# -------------------------
+# 8. Print peak info
+# -------------------------
+cat("Plot saved as", output_file, "\n")
+if(!is.null(global_best)) {
+  cat("ΔK peaks at K =", paste(peaks_df$K, collapse = ", "), "\n")
+  cat("ΔK values:", paste(round(peaks_df$deltaK, 2), collapse = ", "), "\n")
+  cat("Global best K =", global_best$K, "with ΔK =", round(global_best$deltaK, 2), "\n")
+} else if(nrow(summary_df) > 0) {
+  cat("ΔK could not be calculated; showing Mean Log Likelihood plot.\n")
+} else {
+  cat("No valid data to plot.\n")
+}
+```
+![](../../figures/ofav/DeltaK_and_MeanLnP_plot.png)
+
+<br>
+
+While K=1 (panmixia) appears to be the most likely scenario based on model likelihoods, the Evanno method suggests K=3, so there may be cryptic lineages
+
+<br>
+
+K=1
+![](../../figures/ofav/K=1.png)
+K=2
+![](../../figures/ofav/K=2.png)
+K=3
+![](../../figures/ofav/K=3.png)
+
+K=4
+![](../../figures/ofav/K=4.png)
+
+<br>
+
+### Re-running ANGSD within lineages
