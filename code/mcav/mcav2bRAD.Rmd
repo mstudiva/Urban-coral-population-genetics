@@ -250,7 +250,8 @@ Proportion of sites covered at >5X:
 ```{bash, }
 cat quality.txt
 ```
-scp dd.pdf to local machine to look at distribution of base quality scores, fraction of sites in each sample passing coverage thresholds and fraction of sites passing genotyping rates cutoffs. Use these to guide choices of ```-minQ```,  ```-minIndDepth``` and ```-minInd``` filters in subsequent ```ANGSD``` runs
+scp dd.pdf to local machine to look at distribution of base quality scores, fraction of sites in each sample passing coverage thresholds and fraction of sites passing genotyping rates cutoffs. Use these to guide choices of ```-minQ```,  ```-minIndDepth``` and ```-minInd``` filters in subsequent ```ANGSD``` runs.  
+![](../../figures/mcav/dd.pdf)
 
 <br>
 
@@ -265,7 +266,6 @@ echo angsd -b bamsClones -GL 1 $FILTERS $TODO -P 1 -out mcavClones >>mcavClones.
 
 sbatch --mem=200GB -o radClones.o%j -e radClones.e%j --mail-type=ALL --mail-user=studivanms@gmail.com --partition=shortq7 radClones.sh
 ```
-![](../../figures/mcav/dd.pdf)
 
 <br>
 

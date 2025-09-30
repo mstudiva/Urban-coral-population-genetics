@@ -259,11 +259,11 @@ sbatch zip.slurm
 
 Now that your reads are demultiplexed and trimmed, follow the species-specific pipelines below:
 
+- [*Colpophyllia natans*](cnat/)
+- [*Diploria labyrinthiformis*](dlab/)
+- [*Montastraea cavernosa*](mcav/)
 - [*Orbicella faveolata*](ofav/)
-- [Species 2](species2/)
-- [Species 3](species3/)
-- [Species 4](species4/)
-- [Species 5](species5/)
-- [Species 6](species6/)
+- [*Pseudodiploria clivosa*](pcli/)
+- [*Pseudodiploria strigosa*](pstr/)
 
 <br>
