@@ -278,9 +278,9 @@ library(rcartocolor)
 
 pacman::p_load("dendextend", "ggdendro", "tidyverse")
 
-cloneBams = read.csv("dlabMetadata.csv") # list of bam files
+cloneBams = read.csv("../../data/dlab/dlabMetadata.csv") # list of bam files
 
-cloneMa = as.matrix(read.table("ANGSD/dlabClones.ibsMat")) # reads in IBS matrix produced by ANGSD 
+cloneMa = as.matrix(read.table("../../data/dlab/dlabClones.ibsMat")) # reads in IBS matrix produced by ANGSD 
 
 dimnames(cloneMa) = list(cloneBams[,2],cloneBams[,2])
 clonesHc = hclust(as.dist(cloneMa),"ave")
@@ -360,7 +360,7 @@ cloneDend = cloneDendA + theme(
 
 cloneDend
 
-ggsave("cloneDend.png", plot = cloneDend, height = 8, width = 24, units = "in", dpi = 300)
+ggsave("../../figures/dlab/cloneDend.png", plot = cloneDend, height = 8, width = 24, units = "in", dpi = 300)
 ```
 ![](../../figures/dlab/cloneDend.png)
 <br>
@@ -491,7 +491,7 @@ library(patchwork)
 # -------------------------
 # 1. Read space-delimited input file
 # -------------------------
-data_file <- "dlabNgsAdmixLogfile_formatted"  # replace with your file
+data_file <- "../../data/dlab/dlabNgsAdmixLogfile_formatted"  # replace with your file
 df <- read.table(data_file, header = FALSE, sep = "", 
                  col.names = c("K", "LogLikelihood"), stringsAsFactors = FALSE)
 
@@ -602,7 +602,7 @@ if(!is.null(p_deltaK)) {
 # -------------------------
 # 7. Save combined plot
 # -------------------------
-output_file <- "DeltaK_and_MeanLnP_plot.png"
+output_file <- "../../figures/dlab/DeltaK_and_MeanLnP_plot.png"
 ggsave(output_file, plot = p_combined, width = 6, height = 8, dpi = 300)
 
 # -------------------------
