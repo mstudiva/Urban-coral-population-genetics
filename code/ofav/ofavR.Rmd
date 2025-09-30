@@ -277,9 +277,6 @@ ggsave("../../figures/ofav/Dend.pdf", plot = Dend, height = 8, width = 24, units
 ```
 ![](../../figures/ofav/Dend.png)
 
-
-
-
 <br>
 
 ## Population structure
@@ -287,7 +284,7 @@ ggsave("../../figures/ofav/Dend.pdf", plot = Dend, height = 8, width = 24, units
 ### PCA
 
 ```{r, pcangsd}
-cov = read.table("../data/snps/pcangsd/fkSintPcangsd3x.cov") %>% as.matrix()
+cov = read.table("../../data/ofav/pcangsd/ofavPcangsd.cov") %>% as.matrix()
 
 pcAdmix = read.table("../data/snps/k/Clumpp3xK4.output") %>% dplyr::select(V6, V7, V8, V9)
 pcAdmix %>% summarise(sum(V6),sum(V7), sum(V8), sum(V9)) 

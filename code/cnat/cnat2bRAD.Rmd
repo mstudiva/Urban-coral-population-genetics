@@ -1,5 +1,5 @@
 ---
-title: "*Orbicella faveolata* 2bRAD"
+title: "*Colpophyllia natans* 2bRAD"
 author: "Michael Studivan"
 date: 
 output:
@@ -11,7 +11,7 @@ output:
 knit: (function(input, ...) {
     rmarkdown::render(
       input,
-      output_file = '../ofav/index.html',
+      output_file = '../cnat/index.html',
       envir = globalenv()
     )
   })
@@ -33,7 +33,7 @@ knitr::opts_chunk$set(echo = TRUE, eval = FALSE)
 
 ## A B O U T &nbsp; T H I S &nbsp; D O C U M E N T
 
-This walkthrough describes the downstream processing and analysis of 2bRAD reads generated from *Orbicella faveolata* samples collected across urbanized and reef habitats in southeast Florida. Sequence alignments are based on an existing genome assembly by Young and colleagues: https://doi.org/10.1186/s12864-024-10092-w. For initial processing of 2bRAD reads regardless of species, please see below: 
+This walkthrough describes the downstream processing and analysis of 2bRAD reads generated from *Colpophyllia natans* samples collected across urbanized and reef habitats in southeast Florida. Sequence alignments are based on an existing genome assembly by Locatelli and Baums: https://doi.org/10.1093/g3journal/jkaf020. For initial processing of 2bRAD reads regardless of species, please see below: 
 
 - [2bRAD processing](https://mstudiva.github.io/Urban-coral-population-genetics/code/)
 
@@ -67,12 +67,12 @@ echo samtools faidx symbConcatGenome.fasta >>genomeBuild.sh
 sbatch -o genomeBuild.o%j -e genomeBuild.e%j --mail-type=ALL --mail-user=studivanms@gmail.com genomeBuild.sh
 ```
 
-Building bowtie2 index for *O. faveolata* genome
+Building bowtie2 index for *C. natans* genome
 ```{bash, bowtie build 2}
 conda activate 2bRAD
 echo '#!/bin/bash' >genomeBuild.sh
-echo bowtie2-build Orbicella_faveolata_gen_17.scaffolds.fa OfaveolataGenome >>genomeBuild.sh
-echo samtools faidx Orbicella_faveolata_gen_17.scaffolds.fa >>genomeBuild.sh
+echo bowtie2-build GCA_043250805.1_PSU_CNat_1.0.0_genomic.fna CnatansGenome >>genomeBuild.sh
+echo samtools faidx GCA_043250805.1_PSU_CNat_1.0.0_genomic.fna >>genomeBuild.sh
 sbatch -o genomeBuild.o%j -e genomeBuild.e%j --mail-type=ALL --mail-user=studivanms@gmail.com genomeBuild.sh
 ```
 
@@ -142,9 +142,9 @@ sbatch zip.slurm
 
 ### Aligning remaining reads to coral genome
 ```{bash, bowtie align 2}
-cd ~/urban/ofav/filteredReads
+cd ~/urban/cnat/filteredReads
 conda activate 2bRAD
-HOSTGENOME=~/db/ofavGenome/OfaveolataGenome
+HOSTGENOME=~/db/cnatGenome/CnatansGenome
 mkdir junk
 # mapping with --local option, enables clipping of mismatching ends (guards against deletions near ends of RAD tags)
 2bRAD_bowtie2_launcher.py -g $HOSTGENOME -f un --split -u junk -a host --undir junk --launcher -e studivanms@gmail.com
@@ -228,13 +228,13 @@ Assessing base qualities and coverage depth
 ```-maxDepth```: highest total depth (sum over all samples) to assess; set to 10x number of samples
 ```-minInd```: the minimal number of individuals the site must be genotyped in. Set to 50% of total N at this stage.
 ```{bash, ANGSD}
-export FILTERS="-uniqueOnly 1 -remove_bads 1 -minMapQ 20 -maxDepth 1030 -minInd 52"
+export FILTERS="-uniqueOnly 1 -remove_bads 1 -minMapQ 20 -maxDepth 1340 -minInd 67"
 export TODO="-doQsDist 1 -doDepth 1 -doCounts 1 -dumpCounts 2"
 
-echo '#!/bin/bash' >ofavDD.sh
-echo angsd -b bamsClones -GL 1 $FILTERS $TODO -P 1 -out dd -nThreads 20 >>ofavDD.sh
+echo '#!/bin/bash' >cnatDD.sh
+echo angsd -b bamsClones -GL 1 $FILTERS $TODO -P 1 -out dd -nThreads 20 >>cnatDD.sh
 
-sbatch --mem=200GB -o ofavDD.o%j -e ofavDD.e%j --mail-user=studivanms@gmail.com --mail-type=ALL --partition=shortq7 ofavDD.sh
+sbatch --mem=200GB -o cnatDD.o%j -e cnatDD.e%j --mail-user=studivanms@gmail.com --mail-type=ALL --partition=shortq7 cnatDD.sh
 ```
 
 Summarizing results
@@ -251,18 +251,18 @@ Proportion of sites covered at >5X:
 cat quality.txt
 ```
 scp dd.pdf to local machine to look at distribution of base quality scores, fraction of sites in each sample passing coverage thresholds and fraction of sites passing genotyping rates cutoffs. Use these to guide choices of ```-minQ```,  ```-minIndDepth``` and ```-minInd``` filters in subsequent ```ANGSD``` runs
-![](../../figures/ofav/dd.pdf)
+![](../../figures/cnat/dd.pdf)
 
 <br>
 
 ### Identifying clones and technical replicates
 Set the ```-minInd``` flag to 80% of the number of samples you have
 ```{bash, ANGSD 2}
-FILTERS="-uniqueOnly 1 -remove_bads 1 -minMapQ 20 -minQ 30 -dosnpstat 1 -doHWE 1 -hwe_pval 1e-5 -sb_pval 1e-5 -hetbias_pval 1e-5 -skipTriallelic 1 -minInd 77 -snp_pval 1e-6 -minMaf 0.05"
+FILTERS="-uniqueOnly 1 -remove_bads 1 -minMapQ 20 -minQ 30 -dosnpstat 1 -doHWE 1 -hwe_pval 1e-5 -sb_pval 1e-5 -hetbias_pval 1e-5 -skipTriallelic 1 -minInd 107 -snp_pval 1e-6 -minMaf 0.05"
 TODO="-doMajorMinor 1 -doMaf 1 -doCounts 1 -makeMatrix 1 -doIBS 1 -doCov 1 -doGeno 8 -doBcf 1 -doPost 1 -doGlf 2"
 
-echo '#!/bin/bash' > ofavClones.sh
-echo angsd -b bamsClones -GL 1 $FILTERS $TODO -P 1 -out ofavClones >>ofavClones.sh
+echo '#!/bin/bash' > cnatClones.sh
+echo angsd -b bamsClones -GL 1 $FILTERS $TODO -P 1 -out cnatClones >>cnatClones.sh
 
 sbatch --mem=200GB -o radClones.o%j -e radClones.e%j --mail-type=ALL --mail-user=studivanms@gmail.com --partition=shortq7 radClones.sh
 ```
@@ -278,9 +278,9 @@ library(rcartocolor)
 
 pacman::p_load("dendextend", "ggdendro", "tidyverse")
 
-cloneBams = read.csv("ofavMetadata.csv") # list of bam files
+cloneBams = read.csv("cnatMetadata.csv") # list of bam files
 
-cloneMa = as.matrix(read.table("ANGSD/ofavClones.ibsMat")) # reads in IBS matrix produced by ANGSD 
+cloneMa = as.matrix(read.table("ANGSD/cnatClones.ibsMat")) # reads in IBS matrix produced by ANGSD 
 
 dimnames(cloneMa) = list(cloneBams[,2],cloneBams[,2])
 clonesHc = hclust(as.dist(cloneMa),"ave")
@@ -362,13 +362,13 @@ cloneDend
 
 ggsave("cloneDend.png", plot = cloneDend, height = 8, width = 24, units = "in", dpi = 300)
 ```
-![](../../figures/ofav/cloneDend.png)
+![](../../figures/cnat/cloneDend.png)
 <br>
 
 ### Removing clones and re-running ANGSD
 ```{bash, ANGSD no clones}
 mkdir clones
-mv ofavClones* clones
+mv cnatClones* clones
 
 ll *.bam > bamsNoClones
 
@@ -378,14 +378,14 @@ module load angsd-0.933-gcc-9.2.0-65d64pp
 FILTERS="-uniqueOnly 1 -remove_bads 1 -minMapQ 20 -minQ 30 -dosnpstat 1 -doHWE 1 -hwe_pval 1e-5 -sb_pval 1e-5 -hetbias_pval 1e-5 -skipTriallelic 1 -minInd 70 -snp_pval 1e-6 -minMaf 0.05"
 TODO="-doMajorMinor 1 -doMaf 1 -doCounts 1 -makeMatrix 1 -doIBS 1 -doCov 1 -doGeno 8 -doBcf 1 -doPost 1 -doGlf 2"
 
-echo '#!/bin/bash' > ofavNoClones.sh
-echo angsd -b bamsNoClones -GL 1 $FILTERS $TODO -P 1 -out ofavNoClones >> ofavNoClones.sh
+echo '#!/bin/bash' > cnatNoClones.sh
+echo angsd -b bamsNoClones -GL 1 $FILTERS $TODO -P 1 -out cnatNoClones >> cnatNoClones.sh
 sbatch --mem=200GB -o radNoClones.o%j -e radNoClones.e%j -p shortq7 --mail-type=ALL --mail-user=studivanms@gmail.com radNoClones.sh
 ```
 
 How many SNPs do we have?
 ```{bash, SNPs? 1}
-grep "filtering:" ofavNoClones.e*
+grep "filtering:" cnatNoClones.e*
 ```
 Number of sites retained after filtering: 20323 
 
@@ -408,12 +408,12 @@ sbatch zip.slurm
 mkdir ../pcangsd
 cd pcangsd
 
-cp ../ANGSD/ofavNoClones.beagle.gz .
+cp ../ANGSD/cnatNoClones.beagle.gz .
 
 conda activate pcangsd
 
 echo '#!/bin/bash' > pcangsd.sh
-echo 'pcangsd -b ofavNoClones.beagle.gz -o ofavPcangsd --admix --inbreed-samples --pcadapt --selection' >> pcangsd
+echo 'pcangsd -b cnatNoClones.beagle.gz -o cnatPcangsd --admix --inbreed-samples --pcadapt --selection' >> pcangsd
 launcher_creator.py -j pcangsd -n pcangsd -q shortq7 -t 06:00:00 -e $EMAIL -w 1 -N 1
 sbatch pcangsd.slurm
 ```
@@ -421,9 +421,9 @@ sbatch pcangsd.slurm
 Calculating population structure from genotype likelihoods using NGSadmix (part of ANGSD)
 Simulating (50x) different values of K (minimum of 1, maximum of the number of your sites + 3)
 ```{bash, ngsadmix}
-ngsAdmixLauncher.py -f ofavNoClones.beagle.gz --maxK 16 -r 50 -n ofav --launcher -e studivanms@gmail.com
+ngsAdmixLauncher.py -f cnatNoClones.beagle.gz --maxK 16 -r 50 -n cnat --launcher -e studivanms@gmail.com
 
-sbatch --mem=200GB ofavNgsAdmix.slurm
+sbatch --mem=200GB cnatNgsAdmix.slurm
 ```
 
 <br>
@@ -431,9 +431,9 @@ sbatch --mem=200GB ofavNgsAdmix.slurm
 ### Determining the most likely number of ancestral populations (K)
 Taking the likelihood value from each run of NGSadmix and put them into a file that can be used with Clumpak to calculate the most likely K using the methods of Evanno et al. (2005).
 ```{bash, clumpak}
->ofavNgsAdmixLogfile
-for log in ofav*.log; do
-grep -Po 'like=\K[^ ]+' $log >> ofavNgsAdmixLogfile;
+>cnatNgsAdmixLogfile
+for log in cnat*.log; do
+grep -Po 'like=\K[^ ]+' $log >> cnatNgsAdmixLogfile;
 done
 ```
 
@@ -441,11 +441,11 @@ Start R in command line
 ```{bash, R}
 R
 
-logs <- as.data.frame(read.table("ofavNgsAdmixLogfile"))
+logs <- as.data.frame(read.table("cnatNgsAdmixLogfile"))
 
 # output is organized with 10, 11 preceding 1, 2, 3 etc.
 logs$K <- c(rep("10", 50), rep("11", 50), rep("12", 50), rep("13", 50), rep("14", 50), rep("15", 50), rep("16", 50), rep("1", 50), rep("2", 50), rep("3", 50), rep("4", 50), rep("5", 50), rep("6", 50), rep("7", 50), rep("8", 50), rep("9", 50))
-write.table(logs[, c(2, 1)], "ofavNgsAdmixLogfile_formatted", row.names = F, col.names = F, quote = F)
+write.table(logs[, c(2, 1)], "cnatNgsAdmixLogfile_formatted", row.names = F, col.names = F, quote = F)
 quit()
 # No need to save workspace image [press 'n']
 n
@@ -453,7 +453,7 @@ n
 
 Check that the formatted log file has the correct number of entries
 ```{bash, check rows}
-cat ofavNgsAdmixLogfile_formatted | wc -l
+cat cnatNgsAdmixLogfile_formatted | wc -l
 ```
 800, so yes (K=16 * 50 simulations each)
 
@@ -461,17 +461,17 @@ cat ofavNgsAdmixLogfile_formatted | wc -l
 
 Make copies of .qopt files to run structure selector on (.Q files)
 ```{bash, qloop}
-for file in ofav*.qopt; do
+for file in cnat*.qopt; do
 filename=$(basename -- "$file" .qopt);
 cp "$file" "$filename".Q;
 done
 
-mkdir ofavQ
-mv ofav*Q ofavQ
+mkdir cnatQ
+mv cnat*Q cnatQ
 
-zip -r ofavQ.zip ofavQ
+zip -r cnatQ.zip cnatQ
 ```
-scp .zip, formatted logfile, and ofavNoClones* to local machine
+scp .zip, formatted logfile, and cnatNoClones* to local machine
 Upload logfile to CLUMPAK as a Log Probability table file (http://clumpak.tau.ac.il/bestK.html)
 And .zip to structure selector as an ADMIXTURE file (https://lmme.ac.cn/StructureSelector/index.html)
 You also need to create a PopMap file from bamsNoClones: a two-column, tab-delimited text file with sampleID and populationID
@@ -491,7 +491,7 @@ library(patchwork)
 # -------------------------
 # 1. Read space-delimited input file
 # -------------------------
-data_file <- "ofavNgsAdmixLogfile_formatted"  # replace with your file
+data_file <- "cnatNgsAdmixLogfile_formatted"  # replace with your file
 df <- read.table(data_file, header = FALSE, sep = "", 
                  col.names = c("K", "LogLikelihood"), stringsAsFactors = FALSE)
 
@@ -619,7 +619,7 @@ if(!is.null(global_best)) {
   cat("No valid data to plot.\n")
 }
 ```
-![](../../figures/ofav/DeltaK_and_MeanLnP_plot.png)
+![](../../figures/cnat/DeltaK_and_MeanLnP_plot.png)
 
 <br>
 
@@ -628,14 +628,14 @@ While K=1 (panmixia) appears to be the most likely scenario based on model likel
 <br>
 
 K=1
-![](../../figures/ofav/K=1.png)
+![](../../figures/cnat/K=1.png)
 K=2
-![](../../figures/ofav/K=2.png)
+![](../../figures/cnat/K=2.png)
 K=3
-![](../../figures/ofav/K=3.png)
+![](../../figures/cnat/K=3.png)
 
 K=4
-![](../../figures/ofav/K=4.png)
+![](../../figures/cnat/K=4.png)
 
 <br>
 
