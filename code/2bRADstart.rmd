@@ -35,12 +35,12 @@ knitr::opts_chunk$set(echo = TRUE, eval = FALSE)
 
 This walkthrough describes the initial processing of 2bRAD reads generated from six coral species collected across urbanized and reef habitats in southeast Florida. It describes (1) setting up the workspace, (2) downloading, unzipping, and concatenating reads, (3) demultiplexing row pools and removing Illumina adapters, and (4) performing quality filtering. For species-specific pipelines from genome alignment on, please see below:
 
+- [*Colpophyllia natans*](cnat/)
+- [*Diploria labyrinthiformis*](dlab/)
+- [*Montastraea cavernosa*](mcav/)
 - [*Orbicella faveolata*](ofav/)
-- [Species 2](species2/)
-- [Species 3](species3/)
-- [Species 4](species4/)
-- [Species 5](species5/)
-- [Species 6](species6/)
+- [*Pseudodiploria clivosa*](pcli/)
+- [*Pseudodiploria strigosa*](pstr/)
 
 Library prep, bioinformatics, and analysis protocols are credited to the 2bRAD pipeline originally developed by Misha Matz: https://doi.org/10.1038/nmeth.2023, and further refined by Ryan Eckert: https://ryaneckert.github.io/Stephanocoenia_FKNMS_PopGen/code/ 
 
