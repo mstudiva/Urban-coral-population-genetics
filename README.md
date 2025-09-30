@@ -3,9 +3,9 @@
 
 2bRAD initial processing: https://mstudiva.github.io/Urban-coral-population-genetics/code/
 
-*Colpophyllia natans*: https://mstudiva.github.io/Urban-coral-population-genetics/code/cnat/
-*Diploria labyrinthiformis*: https://mstudiva.github.io/Urban-coral-population-genetics/code/dlab/
-*Montastraea cavernosa*: https://mstudiva.github.io/Urban-coral-population-genetics/code/mcav/
-*Orbicella faveolata*: https://mstudiva.github.io/Urban-coral-population-genetics/code/ofav/
-*Pseudodiploria clivosa*: https://mstudiva.github.io/Urban-coral-population-genetics/code/pcli/
-*Pseudodiploria strigosa*: https://mstudiva.github.io/Urban-coral-population-genetics/code/pstr/
+*Colpophyllia natans*: https://mstudiva.github.io/Urban-coral-population-genetics/code/cnat/  
+*Diploria labyrinthiformis*: https://mstudiva.github.io/Urban-coral-population-genetics/code/dlab/  
+*Montastraea cavernosa*: https://mstudiva.github.io/Urban-coral-population-genetics/code/mcav/  
+*Orbicella faveolata*: https://mstudiva.github.io/Urban-coral-population-genetics/code/ofav/  
+*Pseudodiploria clivosa*: https://mstudiva.github.io/Urban-coral-population-genetics/code/pcli/  
+*Pseudodiploria strigosa*: https://mstudiva.github.io/Urban-coral-population-genetics/code/pstr/  
