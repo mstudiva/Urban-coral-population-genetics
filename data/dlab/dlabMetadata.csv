@@ -1,0 +1,92 @@
+fileID,sampleID,region,site,latitude,longitude,depthft,depthm,species,notes,permit,date
+DLAB_OS4.trim.un.bt2.bam,OS4,Miami reef,Emerald Reef,25.67735,-80.09738,30,9.1,Dlab,,isotopes,6/29/22
+DLAB_urban_054.trim.un.bt2.bam,urban_054,Broward reef,FTL4,26.1368,-80.0974,17,5.2,Dlab,,SAL,8/24/22
+DLAB_urban_213.trim.un.bt2.bam,urban_213,Miami urban,Belle Isle,25.789085,-80.147745,2,0.6,Dlab,,SAL,4/4/23
+DLAB_urban_224.trim.un.bt2.bam,urban_224,Miami urban,Belle Isle,25.789085,-80.147745,2,0.6,Dlab,,SAL,4/4/23
+DLAB_urban_226.trim.un.bt2.bam,urban_226,Miami urban,Belle Isle,25.789085,-80.147745,4,1.2,Dlab,,SAL,4/4/23
+DLAB_urban_226_2.trim.un.bt2.bam,urban_226_2,Miami urban,Belle Isle,25.789085,-80.147745,4,1.2,Dlab,,SAL,4/4/23
+DLAB_urban_226_3.trim.un.bt2.bam,urban_226_3,Miami urban,Belle Isle,25.789085,-80.147745,4,1.2,Dlab,,SAL,4/4/23
+DLAB_urban_231.trim.un.bt2.bam,urban_231,Miami urban,Belle Isle,25.789085,-80.147745,1,0.3,Dlab,,SAL,4/4/23
+DLAB_urban_240.trim.un.bt2.bam,urban_240,Miami urban,Belle Isle,25.789085,-80.147745,3.6,1.1,Dlab,,SAL,4/4/23
+DLAB_urban_243.trim.un.bt2.bam,urban_243,Miami urban,Belle Isle,25.789085,-80.147745,2.6,0.8,Dlab,,SAL,4/4/23
+DLAB_urban_306.trim.un.bt2.bam,urban_306,Broward reef,FTL4,26.1368,-80.0974,20,6.1,Dlab,,SAL,5/10/23
+DLAB_urban_307.trim.un.bt2.bam,urban_307,Miami reef,Rainbow Reef,25.69,-80.097,20,6.1,Dlab,,SAL,6/1/23
+DLAB_urban_308.trim.un.bt2.bam,urban_308,Miami reef,Rainbow Reef,25.69,-80.097,20,6.1,Dlab,,SAL,6/1/23
+DLAB_urban_309.trim.un.bt2.bam,urban_309,Miami reef,Rainbow Reef,25.69,-80.097,16,4.9,Dlab,,SAL,6/1/23
+DLAB_urban_310.trim.un.bt2.bam,urban_310,Miami reef,Rainbow Reef,25.69,-80.097,16,4.9,Dlab,,SAL,6/1/23
+DLAB_urban_318.trim.un.bt2.bam,urban_318,Miami reef,Rainbow Reef,25.69,-80.097,18,5.5,Dlab,,SAL,6/1/23
+DLAB_urban_320.trim.un.bt2.bam,urban_320,Miami reef,Rainbow Reef,25.69,-80.097,19,5.8,Dlab,,SAL,6/1/23
+DLAB_urban_326.trim.un.bt2.bam,urban_326,Miami reef,Emerald Reef,25.67735,-80.09738,27,8.2,Dlab,,SAL,6/1/23
+DLAB_urban_327.trim.un.bt2.bam,urban_327,Miami urban,MacArthur North,25.77293,-80.15263,3,0.9,Dlab,bleached,SAL,8/8/23
+DLAB_urban_328.trim.un.bt2.bam,urban_328,Miami urban,MacArthur North,25.77293,-80.15263,4,1.2,Dlab,not bleached,SAL,8/8/23
+DLAB_urban_329.trim.un.bt2.bam,urban_329,Miami urban,MacArthur North,25.77293,-80.15263,4,1.2,Dlab,bleached,SAL,8/8/23
+DLAB_urban_330.trim.un.bt2.bam,urban_330,Miami urban,MacArthur North,25.77293,-80.15263,3,0.9,Dlab,bleached,SAL,8/8/23
+DLAB_urban_331.trim.un.bt2.bam,urban_331,Miami reef,Emerald Reef,25.67735,-80.09738,21,6.4,Dlab,,SAL,7/11/23
+DLAB_urban_332.trim.un.bt2.bam,urban_332,Miami reef,Emerald Reef,25.67735,-80.09738,19,5.8,Dlab,,SAL,7/11/23
+DLAB_urban_333.trim.un.bt2.bam,urban_333,Miami reef,Emerald Reef,25.67735,-80.09738,22,6.7,Dlab,,SAL,7/11/23
+DLAB_urban_333_2.trim.un.bt2.bam,urban_333_2,Miami reef,Emerald Reef,25.67735,-80.09738,22,6.7,Dlab,,SAL,7/11/23
+DLAB_urban_334.trim.un.bt2.bam,urban_334,Miami reef,Emerald Reef,25.67735,-80.09738,22,6.7,Dlab,,SAL,7/11/23
+DLAB_urban_335.trim.un.bt2.bam,urban_335,Miami reef,Emerald Reef,25.67735,-80.09738,22,6.7,Dlab,,SAL,7/11/23
+DLAB_urban_337.trim.un.bt2.bam,urban_337,Miami urban,MacArthur North,25.77293,-80.15263,4,1.2,Dlab,bleached,SAL,8/8/23
+DLAB_urban_338.trim.un.bt2.bam,urban_338,Miami urban,MacArthur North,25.77293,-80.15263,4,1.2,Dlab,bleached,SAL,8/8/23
+DLAB_urban_339.trim.un.bt2.bam,urban_339,Miami urban,MacArthur North,25.77293,-80.15263,4,1.2,Dlab,bleached,SAL,8/8/23
+DLAB_urban_341.trim.un.bt2.bam,urban_341,Miami urban,MacArthur North,25.77293,-80.15263,3,0.9,Dlab,bleached,SAL,8/8/23
+DLAB_urban_342.trim.un.bt2.bam,urban_342,Miami urban,MacArthur North,25.77293,-80.15263,2,0.6,Dlab,bleached,SAL,8/8/23
+DLAB_urban_344.trim.un.bt2.bam,urban_344,Miami urban,MacArthur North,25.77293,-80.15263,1,0.3,Dlab,bleached,SAL,8/8/23
+DLAB_urban_347.trim.un.bt2.bam,urban_347,Miami urban,MacArthur North,25.77293,-80.15263,4,1.2,Dlab,bleached,SAL,8/7/23
+DLAB_urban_348.trim.un.bt2.bam,urban_348,Miami urban,MacArthur North,25.77293,-80.15263,3,0.9,Dlab,bleached,SAL,8/7/23
+DLAB_urban_349.trim.un.bt2.bam,urban_349,Miami urban,MacArthur North,25.77293,-80.15263,3,0.9,Dlab,bleached,SAL,8/7/23
+DLAB_urban_350.trim.un.bt2.bam,urban_350,Miami urban,MacArthur North,25.77293,-80.15263,4,1.2,Dlab,bleached,SAL,8/7/23
+DLAB_urban_351.trim.un.bt2.bam,urban_351,Miami urban,MacArthur North,25.77293,-80.15263,4,1.2,Dlab,bleached,SAL,8/7/23
+DLAB_urban_353.trim.un.bt2.bam,urban_353,Miami urban,MacArthur North,25.77293,-80.15263,3,0.9,Dlab,bleached,SAL,8/7/23
+DLAB_urban_354.trim.un.bt2.bam,urban_354,Miami urban,MacArthur North,25.77293,-80.15263,3,0.9,Dlab,bleached,SAL,8/7/23
+DLAB_urban_355.trim.un.bt2.bam,urban_355,Miami urban,MacArthur North,25.77293,-80.15263,3,0.9,Dlab,bleached,SAL,8/7/23
+DLAB_urban_355_2.trim.un.bt2.bam,urban_355_2,Miami urban,MacArthur North,25.77293,-80.15263,3,0.9,Dlab,bleached,SAL,8/7/23
+DLAB_urban_355_3.trim.un.bt2.bam,urban_355_3,Miami urban,MacArthur North,25.77293,-80.15263,3,0.9,Dlab,bleached,SAL,8/7/23
+DLAB_urban_373.trim.un.bt2.bam,urban_373,Miami urban,MacArthur North,25.77293,-80.15263,3,0.9,Dlab,,SAL,1/11/24
+DLAB_urban_376.trim.un.bt2.bam,urban_376,Miami urban,MacArthur North,25.77293,-80.15263,4,1.2,Dlab,,SAL,1/11/24
+DLAB_urban_377.trim.un.bt2.bam,urban_377,Miami urban,MacArthur North,25.77293,-80.15263,4,1.2,Dlab,,SAL,1/11/24
+DLAB_urban_378.trim.un.bt2.bam,urban_378,Miami urban,MacArthur North,25.77293,-80.15263,4,1.2,Dlab,,SAL,1/11/24
+DLAB_urban_379.trim.un.bt2.bam,urban_379,Miami urban,MacArthur North,25.77293,-80.15263,3,0.9,Dlab,,SAL,1/11/24
+DLAB_urban_380.trim.un.bt2.bam,urban_380,Miami urban,MacArthur North,25.77293,-80.15263,3,0.9,Dlab,,SAL,1/11/24
+DLAB_urban_381.trim.un.bt2.bam,urban_381,Miami urban,MacArthur North,25.77293,-80.15263,3,0.9,Dlab,,SAL,1/11/24
+DLAB_urban_382.trim.un.bt2.bam,urban_382,Miami urban,MacArthur North,25.77293,-80.15263,3,0.9,Dlab,,SAL,1/11/24
+DLAB_urban_385.trim.un.bt2.bam,urban_385,Miami urban,MacArthur North,25.77293,-80.15263,3,0.9,Dlab,,SAL,1/11/24
+DLAB_urban_386.trim.un.bt2.bam,urban_386,Miami urban,MacArthur North,25.77293,-80.15263,3,0.9,Dlab,,SAL,1/11/24
+DLAB_urban_387.trim.un.bt2.bam,urban_387,Miami urban,MacArthur North,25.77293,-80.15263,3,0.9,Dlab,,SAL,1/11/24
+DLAB_urban_391.trim.un.bt2.bam,urban_391,North Miami reef,Pillars,25.86203,-80.09978,30,9.1,Dlab,,SAL,1/19/24
+DLAB_urban_418.trim.un.bt2.bam,urban_418,North Miami reef,Pillars,25.86203,-80.09978,32,9.8,Dlab,,SAL,1/19/24
+DLAB_urban_455.trim.un.bt2.bam,urban_455,Miami urban,Miami Beach Marina,25.77001,-80.14122,4.3,1.3,Dlab,,SAL,1/19/24
+DLAB_urban_469.trim.un.bt2.bam,urban_469,Miami urban,Coral City Camera,25.76697,-80.14495,9,2.7,Dlab,,SAL,1/26/24
+DLAB_urban_476.trim.un.bt2.bam,urban_476,Miami urban,Coral City Camera,25.76697,-80.14495,8,2.4,Dlab,,SAL,1/26/24
+DLAB_urban_483.trim.un.bt2.bam,urban_483,Miami urban,Coral City Camera,25.76697,-80.14495,6,2,Dlab,,SAL,1/26/24
+DLAB_urban_484.trim.un.bt2.bam,urban_484,Miami urban,Coral City Camera,25.76697,-80.14495,7,2,Dlab,,SAL,1/26/24
+DLAB_urban_485.trim.un.bt2.bam,urban_485,Miami urban,Coral City Camera,25.76697,-80.14495,7,2,Dlab,,SAL,1/26/24
+DLAB_urban_489.trim.un.bt2.bam,urban_489,Miami urban,Miami Beach Marina,25.77001,-80.14122,6.6,2,Dlab,,SAL,1/19/24
+DLAB_urban_498.trim.un.bt2.bam,urban_498,Miami urban,Coral City Camera,25.76697,-80.14495,5,1.5,Dlab,,SAL,1/26/24
+DLAB_urban_533.trim.un.bt2.bam,urban_533,Miami urban,Coral City Camera,25.76697,-80.14495,1,0.3,Dlab,,SAL,1/26/24
+DLAB_urban_536.trim.un.bt2.bam,urban_536,Miami urban,Coral City Camera,25.76697,-80.14495,7,2.1,Dlab,,SAL,1/26/24
+DLAB_urban_540.trim.un.bt2.bam,urban_540,Miami urban,Coral City Camera,25.76697,-80.14495,6,1.8,Dlab,,SAL,1/26/24
+DLAB_urban_541.trim.un.bt2.bam,urban_541,Miami urban,Coral City Camera,25.76697,-80.14495,6,1.8,Dlab,,SAL,1/26/24
+DLAB_urban_545.trim.un.bt2.bam,urban_545,Miami urban,Coral City Camera,25.76697,-80.14495,4,1.2,Dlab,,SAL,1/26/24
+DLAB_urban_547.trim.un.bt2.bam,urban_547,Miami urban,Coral City Camera,25.76697,-80.14495,3,0.9,Dlab,,SAL,1/26/24
+DLAB_urban_548.trim.un.bt2.bam,urban_548,Miami urban,Coral City Camera,25.76697,-80.14495,5,1.5,Dlab,,SAL,1/26/24
+DLAB_urban_549.trim.un.bt2.bam,urban_549,Miami urban,Coral City Camera,25.76697,-80.14495,4,1.2,Dlab,,SAL,1/26/24
+DLAB_urban_550.trim.un.bt2.bam,urban_550,Miami urban,Coral City Camera,25.76697,-80.14495,5,1.5,Dlab,,SAL,1/26/24
+DLAB_urban_551.trim.un.bt2.bam,urban_551,Miami urban,Coral City Camera,25.76697,-80.14495,5,1.5,Dlab,,SAL,1/26/24
+DLAB_urban_601.trim.un.bt2.bam,urban_601,Miami urban,Fisher Island,25.75571,-80.14168,3,0.9,Dlab,mislabeled as urban_581,SAL,1/26/24
+DLAB_urban_617.trim.un.bt2.bam,urban_617,Miami urban,Fisher Island,25.75571,-80.14168,5,1.5,Dlab,,SAL,1/26/24
+DLAB_urban_632.trim.un.bt2.bam,urban_632,Palm Beach urban,Peanut Island,26.77153,-80.04421,6,1.8,Dlab,,SAL,1/30/24
+DLAB_urban_633.trim.un.bt2.bam,urban_633,Palm Beach urban,Peanut Island,26.77153,-80.04421,8.2,2.5,Dlab,,SAL,1/30/24
+DLAB_urban_640.trim.un.bt2.bam,urban_640,Miami urban,Fisher Island,25.75571,-80.14168,4,1.2,Dlab,,SAL,1/26/24
+DLAB_urban_650.trim.un.bt2.bam,urban_650,Miami urban,Fisher Island,25.75571,-80.14168,2,0.6,Dlab,,SAL,1/26/24
+DLAB_urban_650_2.trim.un.bt2.bam,urban_650_2,Miami urban,Fisher Island,25.75571,-80.14168,2,0.6,Dlab,,SAL,1/26/24
+DLAB_urban_650_3.trim.un.bt2.bam,urban_650_3,Miami urban,Fisher Island,25.75571,-80.14168,2,0.6,Dlab,,SAL,1/26/24
+DLAB_urban_663.trim.un.bt2.bam,urban_663,Palm Beach urban,Peanut Island,26.77153,-80.04421,6,1.8,Dlab,,SAL,1/30/24
+DLAB_urban_668.trim.un.bt2.bam,urban_668,Palm Beach urban,Peanut Island,26.77153,-80.04421,5,1.5,Dlab,,SAL,1/30/24
+DLAB_urban_669.trim.un.bt2.bam,urban_669,Palm Beach urban,Peanut Island,26.77153,-80.04421,7,2.1,Dlab,,SAL,1/30/24
+DLAB_urban_670.trim.un.bt2.bam,urban_670,Palm Beach urban,Peanut Island,26.77153,-80.04421,7,2.1,Dlab,,SAL,1/30/24
+DLAB_urban_671.trim.un.bt2.bam,urban_671,Palm Beach urban,Peanut Island,26.77153,-80.04421,6,1.8,Dlab,,SAL,1/30/24
+DLAB_urban_672.trim.un.bt2.bam,urban_672,Palm Beach urban,Peanut Island,26.77153,-80.04421,5,1.5,Dlab,,SAL,1/30/24
+DLAB_urban_676.trim.un.bt2.bam,urban_676,Palm Beach urban,Peanut Island,26.77153,-80.04421,3,0.9,Dlab,,SAL,1/30/24
+DLAB_urban_677.trim.un.bt2.bam,urban_677,Palm Beach urban,Peanut Island,26.77153,-80.04421,3,0.9,Dlab,,SAL,1/30/24

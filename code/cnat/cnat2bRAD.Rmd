@@ -366,6 +366,7 @@ ggsave("../../figures/cnat/cloneDend.png", plot = cloneDend, height = 8, width =
 <br>
 
 ### Removing clones and re-running ANGSD
+Set the ```-minInd``` flag to 80% of the number of samples you have remaining after removal of clones
 ```{bash, ANGSD no clones}
 mkdir clones
 mv cnatClones* clones

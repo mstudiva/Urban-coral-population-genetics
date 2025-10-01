@@ -1,0 +1,135 @@
+fileID,sampleID,region,site,latitude,longitude,depthft,depthm,species,notes,permit,date
+CNAT_Baggs_067.trim.un.bt2.bam,Baggs_067,Miami urban,Bill Baggs,25.66538,-80.15823,,,Cnat,,Baker,6/28/21
+CNAT_Baggs_072.trim.un.bt2.bam,Baggs_072,Miami urban,Bill Baggs,25.66538,-80.15823,,,Cnat,,Baker,6/28/21
+CNAT_Baggs_073.trim.un.bt2.bam,Baggs_073,Miami urban,Bill Baggs,25.66538,-80.15823,,,Cnat,,Baker,6/28/21
+CNAT_Baggs_082.trim.un.bt2.bam,Baggs_082,Miami urban,Bill Baggs,25.66538,-80.15823,,,Cnat,,Baker,6/28/21
+CNAT_Baggs_085.trim.un.bt2.bam,Baggs_085,Miami urban,Bill Baggs,25.66538,-80.15823,,,Cnat,,Baker,6/28/21
+CNAT_Baggs_087.trim.un.bt2.bam,Baggs_087,Miami urban,Bill Baggs,25.66538,-80.15823,,,Cnat,,Baker,6/28/21
+CNAT_urban_001.trim.un.bt2.bam,urban_001,Miami urban,Star Island,25.77477,-80.14886,8,2.4,Cnat,rescue,rescue,7/26/22
+CNAT_urban_013.trim.un.bt2.bam,urban_013,Miami urban,Star Island,25.77477,-80.14886,8,2.4,Cnat,rescue,rescue,7/26/22
+CNAT_urban_016.trim.un.bt2.bam,urban_016,Miami urban,Star Island,25.77477,-80.14886,8,2.4,Cnat,rescue,rescue,7/26/22
+CNAT_urban_017.trim.un.bt2.bam,urban_017,Miami urban,Star Island,25.77477,-80.14886,8,2.4,Cnat,rescue,rescue,7/26/22
+CNAT_urban_024.trim.un.bt2.bam,urban_024,Miami urban,Star Island,25.77477,-80.14886,8,2.4,Cnat,rescue,rescue,7/26/22
+CNAT_urban_025.trim.un.bt2.bam,urban_025,Miami urban,Star Island,25.77477,-80.14886,8,2.4,Cnat,rescue,rescue,7/26/22
+CNAT_urban_028.trim.un.bt2.bam,urban_028,Miami urban,Star Island,25.77477,-80.14886,8,2.4,Cnat,rescue,rescue,7/26/22
+CNAT_urban_030.trim.un.bt2.bam,urban_030,Miami urban,Star Island,25.77477,-80.14886,8,2.4,Cnat,rescue,rescue,7/26/22
+CNAT_urban_041.trim.un.bt2.bam,urban_041,Miami urban,Star Island,25.77477,-80.14886,8,2.4,Cnat,rescue,rescue,7/26/22
+CNAT_urban_052_2.trim.un.bt2.bam,urban_052_2,Broward reef,FTL4,26.1368,-80.0974,21,6.4,Cnat,,SAL,8/24/22
+CNAT_urban_052_3.trim.un.bt2.bam,urban_052_3,Broward reef,FTL4,26.1368,-80.0974,21,6.4,Cnat,,SAL,8/24/22
+CNAT_urban_052.trim.un.bt2.bam,urban_052,Broward reef,FTL4,26.1368,-80.0974,21,6.4,Cnat,,SAL,8/24/22
+CNAT_urban_066.trim.un.bt2.bam,urban_066,Broward reef,BC1,26.14758,-80.0961,20,6.1,Cnat,,SAL,8/24/22
+CNAT_urban_085_2.trim.un.bt2.bam,urban_085_2,Miami reef,Emerald Reef,25.67735,-80.09738,27,8.2,Cnat,,SAL,10/26/22
+CNAT_urban_085.trim.un.bt2.bam,urban_085,Miami reef,Emerald Reef,25.67735,-80.09738,27,8.2,Cnat,,SAL,10/26/22
+CNAT_urban_098.trim.un.bt2.bam,urban_098,Miami reef,Rainbow Reef,25.69,-80.097,25,7.6,Cnat,,SAL,10/26/22
+CNAT_urban_113.trim.un.bt2.bam,urban_113,Miami urban,MacArthur North,25.77293,-80.15263,3,0.9,Cnat,,SAL,10/26/22
+CNAT_urban_114.trim.un.bt2.bam,urban_114,Miami urban,MacArthur North,25.77293,-80.15263,3,0.9,Cnat,,SAL,10/26/22
+CNAT_urban_117.trim.un.bt2.bam,urban_117,Miami urban,MacArthur North,25.77293,-80.15263,3,0.9,Cnat,,SAL,10/26/22
+CNAT_urban_118.trim.un.bt2.bam,urban_118,Miami urban,MacArthur North,25.77293,-80.15263,3,0.9,Cnat,,SAL,10/26/22
+CNAT_urban_119_2.trim.un.bt2.bam,urban_119_2,Miami urban,MacArthur North,25.77293,-80.15263,3,0.9,Cnat,,SAL,10/26/22
+CNAT_urban_119_3.trim.un.bt2.bam,urban_119_3,Miami urban,MacArthur North,25.77293,-80.15263,3,0.9,Cnat,,SAL,10/26/22
+CNAT_urban_119.trim.un.bt2.bam,urban_119,Miami urban,MacArthur North,25.77293,-80.15263,3,0.9,Cnat,,SAL,10/26/22
+CNAT_urban_121.trim.un.bt2.bam,urban_121,Miami urban,MacArthur North,25.77293,-80.15263,3,0.9,Cnat,,SAL,10/26/22
+CNAT_urban_122.trim.un.bt2.bam,urban_122,Miami urban,MacArthur North,25.77293,-80.15263,3,0.9,Cnat,,SAL,10/26/22
+CNAT_urban_130.trim.un.bt2.bam,urban_130,Miami urban,Star Island,25.77477,-80.14886,8,2.4,Cnat,rescue,rescue,10/27/22
+CNAT_urban_136.trim.un.bt2.bam,urban_136,Miami urban,Star Island,25.77477,-80.14886,8,2.4,Cnat,,SAL,10/27/22
+CNAT_urban_137.trim.un.bt2.bam,urban_137,Miami urban,Star Island,25.77477,-80.14886,8,2.4,Cnat,,SAL,10/27/22
+CNAT_urban_138.trim.un.bt2.bam,urban_138,Miami urban,Star Island,25.77477,-80.14886,8,2.4,Cnat,,SAL,10/27/22
+CNAT_urban_140.trim.un.bt2.bam,urban_140,Miami urban,Star Island,25.77477,-80.14886,8,2.4,Cnat,,SAL,10/27/22
+CNAT_urban_141.trim.un.bt2.bam,urban_141,Miami urban,Star Island,25.77477,-80.14886,8,2.4,Cnat,,SAL,10/27/22
+CNAT_urban_142.trim.un.bt2.bam,urban_142,Miami urban,Star Island,25.77477,-80.14886,8,2.4,Cnat,,SAL,10/27/22
+CNAT_urban_143.trim.un.bt2.bam,urban_143,Miami urban,Star Island,25.77477,-80.14886,8,2.4,Cnat,,SAL,10/27/22
+CNAT_urban_146.trim.un.bt2.bam,urban_146,Miami urban,Star Island,25.77477,-80.14886,8,2.4,Cnat,,SAL,10/27/22
+CNAT_urban_149.trim.un.bt2.bam,urban_149,Miami urban,Star Island,25.77477,-80.14886,8,2.4,Cnat,,SAL,10/27/22
+CNAT_urban_150.trim.un.bt2.bam,urban_150,Miami urban,Star Island,25.77477,-80.14886,8,2.4,Cnat,,SAL,10/27/22
+CNAT_urban_151.trim.un.bt2.bam,urban_151,Miami urban,Star Island,25.77477,-80.14886,8,2.4,Cnat,,SAL,10/27/22
+CNAT_urban_156.trim.un.bt2.bam,urban_156,Miami urban,Star Island,25.77477,-80.14886,8,2.4,Cnat,,SAL,10/27/22
+CNAT_urban_174.trim.un.bt2.bam,urban_174,Miami urban,MacArthur North,25.77293,-80.15263,3.6,1.1,Cnat,,SAL,1/26/23
+CNAT_urban_175.trim.un.bt2.bam,urban_175,Miami urban,MacArthur North,25.77293,-80.15263,4.3,1.3,Cnat,,SAL,1/26/23
+CNAT_urban_176.trim.un.bt2.bam,urban_176,Miami urban,MacArthur North,25.77293,-80.15263,4.3,1.3,Cnat,,SAL,1/26/23
+CNAT_urban_180.trim.un.bt2.bam,urban_180,Miami urban,MacArthur North,25.77293,-80.15263,3.9,1.2,Cnat,,SAL,1/26/23
+CNAT_urban_182.trim.un.bt2.bam,urban_182,Miami urban,MacArthur North,25.77293,-80.15263,3.9,1.2,Cnat,,SAL,1/26/23
+CNAT_urban_184.trim.un.bt2.bam,urban_184,Miami urban,MacArthur North,25.77293,-80.15263,3.9,1.2,Cnat,,SAL,1/26/23
+CNAT_urban_190.trim.un.bt2.bam,urban_190,Miami urban,MacArthur North,25.77293,-80.15263,3.6,1.1,Cnat,,SAL,1/26/23
+CNAT_urban_192.trim.un.bt2.bam,urban_192,Miami urban,MacArthur North,25.77293,-80.15263,3.6,1.1,Cnat,,SAL,1/26/23
+CNAT_urban_194.trim.un.bt2.bam,urban_194,Miami urban,MacArthur North,25.77293,-80.15263,3.6,1.1,Cnat,,SAL,1/26/23
+CNAT_urban_195.trim.un.bt2.bam,urban_195,Miami urban,MacArthur North,25.77293,-80.15263,3.6,1.1,Cnat,,SAL,1/26/23
+CNAT_urban_196.trim.un.bt2.bam,urban_196,Miami urban,MacArthur North,25.77293,-80.15263,3.6,1.1,Cnat,,SAL,1/26/23
+CNAT_urban_197.trim.un.bt2.bam,urban_197,Miami urban,MacArthur North,25.77293,-80.15263,3.9,1.2,Cnat,,SAL,1/26/23
+CNAT_urban_198.trim.un.bt2.bam,urban_198,Miami urban,MacArthur North,25.77293,-80.15263,3.6,1.1,Cnat,,SAL,1/26/23
+CNAT_urban_200.trim.un.bt2.bam,urban_200,Miami urban,MacArthur North,25.77293,-80.15263,3.6,1.1,Cnat,,SAL,1/26/23
+CNAT_urban_202.trim.un.bt2.bam,urban_202,Miami urban,MacArthur North,25.77293,-80.15263,3.6,1.1,Cnat,,SAL,1/26/23
+CNAT_urban_203.trim.un.bt2.bam,urban_203,Miami urban,MacArthur North,25.77293,-80.15263,3.6,1.1,Cnat,,SAL,1/26/23
+CNAT_urban_204.trim.un.bt2.bam,urban_204,Miami urban,MacArthur North,25.77293,-80.15263,3.6,1.1,Cnat,,SAL,1/26/23
+CNAT_urban_206.trim.un.bt2.bam,urban_206,Miami urban,MacArthur North,25.77293,-80.15263,3.6,1.1,Cnat,,SAL,1/26/23
+CNAT_urban_207.trim.un.bt2.bam,urban_207,Miami urban,MacArthur North,25.77293,-80.15263,3.6,1.1,Cnat,,SAL,1/26/23
+CNAT_urban_208.trim.un.bt2.bam,urban_208,Miami urban,MacArthur North,25.77293,-80.15263,3.6,1.1,Cnat,,SAL,1/26/23
+CNAT_urban_251.trim.un.bt2.bam,urban_251,Miami urban,Belle Isle,25.789085,-80.147745,4.9,1.5,Cnat,,SAL,4/4/23
+CNAT_urban_252.trim.un.bt2.bam,urban_252,Miami urban,Belle Isle,25.789085,-80.147745,4.6,1.4,Cnat,,SAL,4/4/23
+CNAT_urban_253.trim.un.bt2.bam,urban_253,Miami urban,Belle Isle,25.789085,-80.147745,1.6,0.5,Cnat,,SAL,4/4/23
+CNAT_urban_254.trim.un.bt2.bam,urban_254,Miami urban,Belle Isle,25.789085,-80.147745,1.6,0.5,Cnat,,SAL,4/4/23
+CNAT_urban_256.trim.un.bt2.bam,urban_256,Miami urban,Belle Isle,25.789085,-80.147745,3.6,1.1,Cnat,,SAL,4/4/23
+CNAT_urban_257.trim.un.bt2.bam,urban_257,Miami urban,Belle Isle,25.789085,-80.147745,3.6,1.1,Cnat,,SAL,4/4/23
+CNAT_urban_258.trim.un.bt2.bam,urban_258,Miami urban,Belle Isle,25.789085,-80.147745,2.6,0.8,Cnat,,SAL,4/4/23
+CNAT_urban_259.trim.un.bt2.bam,urban_259,Miami urban,Belle Isle,25.789085,-80.147745,3.3,1,Cnat,,SAL,4/4/23
+CNAT_urban_261.trim.un.bt2.bam,urban_261,Miami urban,Belle Isle,25.789085,-80.147745,3.6,1.1,Cnat,,SAL,4/4/23
+CNAT_urban_262.trim.un.bt2.bam,urban_262,Miami urban,Belle Isle,25.789085,-80.147745,3.9,1.2,Cnat,,SAL,4/4/23
+CNAT_urban_264.trim.un.bt2.bam,urban_264,Miami urban,Belle Isle,25.789085,-80.147745,3.3,1,Cnat,,SAL,4/4/23
+CNAT_urban_265.trim.un.bt2.bam,urban_265,Miami urban,Belle Isle,25.789085,-80.147745,2,0.6,Cnat,,SAL,4/4/23
+CNAT_urban_266.trim.un.bt2.bam,urban_266,Miami urban,Belle Isle,25.789085,-80.147745,2.3,0.7,Cnat,,SAL,4/4/23
+CNAT_urban_267.trim.un.bt2.bam,urban_267,Miami urban,Belle Isle,25.789085,-80.147745,2,0.6,Cnat,,SAL,4/4/23
+CNAT_urban_268_2.trim.un.bt2.bam,urban_268_2,Miami urban,Belle Isle,25.789085,-80.147745,2,0.6,Cnat,,SAL,4/4/23
+CNAT_urban_268_3.trim.un.bt2.bam,urban_268_3,Miami urban,Belle Isle,25.789085,-80.147745,2,0.6,Cnat,,SAL,4/4/23
+CNAT_urban_268.trim.un.bt2.bam,urban_268,Miami urban,Belle Isle,25.789085,-80.147745,2,0.6,Cnat,,SAL,4/4/23
+CNAT_urban_273.trim.un.bt2.bam,urban_273,Broward reef,BC1,26.14758,-80.0961,28,8.5,Cnat,,SAL,4/17/23
+CNAT_urban_284.trim.un.bt2.bam,urban_284,Broward reef,BC1,26.14758,-80.0961,32,9.8,Cnat,,SAL,5/10/23
+CNAT_urban_285.trim.un.bt2.bam,urban_285,Broward reef,BC1,26.14758,-80.0961,30,9.1,Cnat,,SAL,5/10/23
+CNAT_urban_287.trim.un.bt2.bam,urban_287,Broward reef,BC1,26.14758,-80.0961,33,10.1,Cnat,,SAL,5/10/23
+CNAT_urban_299.trim.un.bt2.bam,urban_299,Broward reef,FTL4,26.1368,-80.0974,20,6.1,Cnat,,SAL,5/10/23
+CNAT_urban_314.trim.un.bt2.bam,urban_314,Miami reef,Rainbow Reef,25.69,-80.097,16,4.9,Cnat,,SAL,6/1/23
+CNAT_urban_392.trim.un.bt2.bam,urban_392,North Miami reef,Pillars,25.86203,-80.09978,28,8.5,Cnat,,SAL,1/19/24
+CNAT_urban_394.trim.un.bt2.bam,urban_394,North Miami reef,South Canyon,25.86045,-80.10842,17,5.2,Cnat,,SAL,1/19/24
+CNAT_urban_402.trim.un.bt2.bam,urban_402,Miami urban,Seaquarium,25.73276,-80.16708,3,0.9,Cnat,,SAL,1/25/24
+CNAT_urban_420.trim.un.bt2.bam,urban_420,North Miami reef,Pillars,25.86203,-80.09978,29,8.8,Cnat,,SAL,1/19/24
+CNAT_urban_423.trim.un.bt2.bam,urban_423,North Miami reef,Pillars,25.86203,-80.09978,30,9.1,Cnat,,SAL,1/19/24
+CNAT_urban_463.trim.un.bt2.bam,urban_463,Miami urban,Seaquarium,25.73276,-80.16708,4,1.2,Cnat,,SAL,1/25/24
+CNAT_urban_466.trim.un.bt2.bam,urban_466,Miami urban,Seaquarium,25.73276,-80.16708,3,0.9,Cnat,,SAL,1/25/24
+CNAT_urban_468.trim.un.bt2.bam,urban_468,Miami urban,Seaquarium,25.73276,-80.16708,2,0.6,Cnat,,SAL,1/25/24
+CNAT_urban_487.trim.un.bt2.bam,urban_487,Miami urban,Coral City Camera,25.76697,-80.14495,5,2,Cnat,,SAL,1/26/24
+CNAT_urban_534.trim.un.bt2.bam,urban_534,Miami urban,Coral City Camera,25.76697,-80.14495,6,1.8,Cnat,,SAL,1/26/24
+CNAT_urban_555.trim.un.bt2.bam,urban_555,Miami urban,Coral City Camera,25.76697,-80.14495,5,1.5,Cnat,,SAL,1/26/24
+CNAT_urban_558.trim.un.bt2.bam,urban_558,Miami urban,Coral City Camera,25.76697,-80.14495,5,1.5,Cnat,,SAL,1/26/24
+CNAT_urban_559.trim.un.bt2.bam,urban_559,Miami urban,Coral City Camera,25.76697,-80.14495,5,1.5,Cnat,,SAL,1/26/24
+CNAT_urban_560.trim.un.bt2.bam,urban_560,Miami urban,Coral City Camera,25.76697,-80.14495,5,1.5,Cnat,,SAL,1/26/24
+CNAT_urban_564.trim.un.bt2.bam,urban_564,Miami urban,Coral City Camera,25.76697,-80.14495,,,Cnat,,SAL,1/26/24
+CNAT_urban_565.trim.un.bt2.bam,urban_565,Miami urban,Coral City Camera,25.76697,-80.14495,,,Cnat,,SAL,1/26/24
+CNAT_urban_567.trim.un.bt2.bam,urban_567,Miami urban,Coral City Camera,25.76697,-80.14495,,,Cnat,,SAL,1/26/24
+CNAT_urban_574.trim.un.bt2.bam,urban_574,Miami urban,Fisher Island,25.75571,-80.14168,,,Cnat,,SAL,1/26/24
+CNAT_urban_575.trim.un.bt2.bam,urban_575,Miami urban,Fisher Island,25.75571,-80.14168,,,Cnat,,SAL,1/26/24
+CNAT_urban_585.trim.un.bt2.bam,urban_585,Palm Beach urban,Peanut Island,26.77153,-80.04421,3,0.9,Cnat,,SAL,1/30/24
+CNAT_urban_590.trim.un.bt2.bam,urban_590,Miami urban,Fisher Island,25.75571,-80.14168,,,Cnat,,SAL,1/26/24
+CNAT_urban_593.trim.un.bt2.bam,urban_593,Miami urban,Fisher Island,25.75571,-80.14168,,,Cnat,,SAL,1/26/24
+CNAT_urban_607.trim.un.bt2.bam,urban_607,Miami urban,Fisher Island,25.75571,-80.14168,5,1.5,Cnat,,SAL,1/26/24
+CNAT_urban_608.trim.un.bt2.bam,urban_608,Miami urban,Fisher Island,25.75571,-80.14168,2,0.6,Cnat,,SAL,1/26/24
+CNAT_urban_610.trim.un.bt2.bam,urban_610,Miami urban,Fisher Island,25.75571,-80.14168,4,1.2,Cnat,,SAL,1/26/24
+CNAT_urban_611.trim.un.bt2.bam,urban_611,Miami urban,Fisher Island,25.75571,-80.14168,2,0.6,Cnat,,SAL,1/26/24
+CNAT_urban_612.trim.un.bt2.bam,urban_612,Miami urban,Fisher Island,25.75571,-80.14168,2,0.6,Cnat,,SAL,1/26/24
+CNAT_urban_620.trim.un.bt2.bam,urban_620,Miami urban,Fisher Island,25.75571,-80.14168,4,1.2,Cnat,,SAL,1/26/24
+CNAT_urban_626.trim.un.bt2.bam,urban_626,Miami urban,Fisher Island,25.75571,-80.14168,,,Cnat,,SAL,1/26/24
+CNAT_urban_627.trim.un.bt2.bam,urban_627,Miami urban,Fisher Island,25.75571,-80.14168,,,Cnat,,SAL,1/26/24
+CNAT_urban_628.trim.un.bt2.bam,urban_628,Miami urban,Fisher Island,25.75571,-80.14168,,,Cnat,,SAL,1/26/24
+CNAT_urban_631.trim.un.bt2.bam,urban_631,Palm Beach urban,Peanut Island,26.77153,-80.04421,6,1.8,Cnat,,SAL,1/30/24
+CNAT_urban_634.trim.un.bt2.bam,urban_634,Palm Beach urban,Peanut Island,26.77153,-80.04421,8.2,2.5,Cnat,,SAL,1/30/24
+CNAT_urban_639.trim.un.bt2.bam,urban_639,Miami urban,Fisher Island,25.75571,-80.14168,4,1.2,Cnat,,SAL,1/26/24
+CNAT_urban_655.trim.un.bt2.bam,urban_655,Miami urban,Fisher Island,25.75571,-80.14168,,,Cnat,,SAL,1/26/24
+CNAT_urban_661.trim.un.bt2.bam,urban_661,Miami urban,Fisher Island,25.75571,-80.14168,,,Cnat,,SAL,1/26/24
+CNAT_urban_662.trim.un.bt2.bam,urban_662,Miami urban,Fisher Island,25.75571,-80.14168,,,Cnat,,SAL,1/26/24
+CNAT_urban_664.trim.un.bt2.bam,urban_664,Palm Beach urban,Peanut Island,26.77153,-80.04421,6,1.8,Cnat,,SAL,1/30/24
+CNAT_urban_665.trim.un.bt2.bam,urban_665,Palm Beach urban,Peanut Island,26.77153,-80.04421,6,1.8,Cnat,,SAL,1/30/24
+CNAT_urban_673.trim.un.bt2.bam,urban_673,Palm Beach urban,Peanut Island,26.77153,-80.04421,5,1.5,Cnat,,SAL,1/30/24
+CNAT_urban_674.trim.un.bt2.bam,urban_674,Palm Beach urban,Peanut Island,26.77153,-80.04421,5,1.5,Cnat,,SAL,1/30/24
+CNAT_urban_689.trim.un.bt2.bam,urban_689,North Miami urban,Arch Creek,25.9005,-80.14228,6.6,2,Cnat,,SAL,1/31/24
+CNAT_urban_690.trim.un.bt2.bam,urban_690,North Miami urban,Arch Creek,25.9005,-80.14228,8.9,2.7,Cnat,,SAL,1/31/24
+CNAT_urban_691.trim.un.bt2.bam,urban_691,North Miami urban,Arch Creek,25.9005,-80.14228,7.5,2.3,Cnat,,SAL,1/31/24
+CNAT_urban_692.trim.un.bt2.bam,urban_692,North Miami urban,Arch Creek,25.9005,-80.14228,5.9,1.8,Cnat,,SAL,1/31/24
+CNAT_urban_700.trim.un.bt2.bam,urban_700,North Miami urban,FIU Biscayne Bay,25.90614,-80.13507,10,3,Cnat,,SAL,1/31/24
+CNAT_urban_709.trim.un.bt2.bam,urban_709,North Miami urban,Arch Creek,25.9005,-80.14228,9,2.7,Cnat,,SAL,1/31/24

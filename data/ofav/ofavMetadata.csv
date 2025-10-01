@@ -22,7 +22,7 @@ OFAV_nmfs_064.trim.un.bt2.bam,nmfs_064,Miami urban,Star Island,25.77477,-80.1488
 OFAV_nmfs_066.trim.un.bt2.bam,nmfs_066,Miami urban,MacArthur North,25.77293,-80.15263,4,1.2,Ofav,,NMFS,2/10/21
 OFAV_nmfs_069.trim.un.bt2.bam,nmfs_069,Miami urban,MacArthur North,25.77293,-80.15263,4,1.2,Ofav,,NMFS,2/10/21
 OFAV_nmfs_070.trim.un.bt2.bam,nmfs_070,Miami urban,MacArthur North,25.77293,-80.15263,4,1.2,Ofav,,NMFS,2/10/21
-OFAV_urban_019.trim.un.bt2.bam,urban_019,Miami urban,Star Island,25.77477,-80.14886,8,2.4,Ofav,,rescue,7/26/22
+OFAV_urban_019.trim.un.bt2.bam,urban_019,Miami urban,Star Island,25.77477,-80.14886,8,2.4,Ofav,rescue,rescue,7/26/22
 OFAV_urban_053.trim.un.bt2.bam,urban_053,Broward reef,FTL4,26.1368,-80.0974,21,6.4,Ofav,,SAL,8/24/22
 OFAV_urban_059.trim.un.bt2.bam,urban_059,Broward reef,BC1,26.14758,-80.0961,18,5.5,Ofav,,SAL,8/24/22
 OFAV_urban_060.trim.un.bt2.bam,urban_060,Broward reef,BC1,26.14758,-80.0961,18,5.5,Ofav,,SAL,8/24/22
@@ -55,19 +55,19 @@ OFAV_urban_289.trim.un.bt2.bam,urban_289,Broward reef,BC1,26.14758,-80.0961,25,7
 OFAV_urban_289_2.trim.un.bt2.bam,urban_289_2,Broward reef,BC1,26.14758,-80.0961,25,7.6,Ofav,,SAL,5/10/23
 OFAV_urban_297.trim.un.bt2.bam,urban_297,Broward reef,T328,26.17615,-80.09386,18,5.5,Ofav,,SAL,5/10/23
 OFAV_urban_305.trim.un.bt2.bam,urban_305,Broward reef,FTL4,26.1368,-80.0974,20,6.1,Ofav,,SAL,5/10/23
-OFAV_urban_357.trim.un.bt2.bam,urban_357,Miami urban,MacArthur North,25.77293,-80.15263,2,0.6,Ofav,,SAL,9/11/23
-OFAV_urban_358.trim.un.bt2.bam,urban_358,Miami urban,MacArthur North,25.77293,-80.15263,2,0.6,Ofav,,SAL,9/11/23
-OFAV_urban_359.trim.un.bt2.bam,urban_359,Miami urban,MacArthur North,25.77293,-80.15263,2,0.6,Ofav,,SAL,9/11/23
-OFAV_urban_361.trim.un.bt2.bam,urban_361,Miami urban,MacArthur North,25.77293,-80.15263,2,0.6,Ofav,,SAL,9/11/23
-OFAV_urban_363.trim.un.bt2.bam,urban_363,Miami urban,MacArthur North,25.77293,-80.15263,2,0.6,Ofav,,SAL,9/11/23
-OFAV_urban_365.trim.un.bt2.bam,urban_365,Miami urban,MacArthur North,25.77293,-80.15263,2,0.6,Ofav,,SAL,9/11/23
-OFAV_urban_366.trim.un.bt2.bam,urban_366,Miami urban,MacArthur North,25.77293,-80.15263,2,0.6,Ofav,,SAL,9/11/23
-OFAV_urban_367.trim.un.bt2.bam,urban_367,Miami urban,MacArthur North,25.77293,-80.15263,2,0.6,Ofav,,SAL,9/11/23
-OFAV_urban_368.trim.un.bt2.bam,urban_368,Miami urban,MacArthur North,25.77293,-80.15263,2,0.6,Ofav,,SAL,9/11/23
-OFAV_urban_369.trim.un.bt2.bam,urban_369,Miami urban,MacArthur North,25.77293,-80.15263,2,0.6,Ofav,,SAL,9/11/23
-OFAV_urban_370.trim.un.bt2.bam,urban_370,Miami urban,MacArthur North,25.77293,-80.15263,2,0.6,Ofav,,SAL,9/11/23
-OFAV_urban_371.trim.un.bt2.bam,urban_371,Miami urban,MacArthur North,25.77293,-80.15263,2,0.6,Ofav,,SAL,9/11/23
-OFAV_urban_372.trim.un.bt2.bam,urban_372,Miami urban,MacArthur North,25.77293,-80.15263,2,0.6,Ofav,,SAL,9/11/23
+OFAV_urban_357.trim.un.bt2.bam,urban_357,Miami urban,MacArthur North,25.77293,-80.15263,2,0.6,Ofav,tag 120,SAL,9/11/23
+OFAV_urban_358.trim.un.bt2.bam,urban_358,Miami urban,MacArthur North,25.77293,-80.15263,2,0.6,Ofav,tag 122; paling,SAL,9/11/23
+OFAV_urban_359.trim.un.bt2.bam,urban_359,Miami urban,MacArthur North,25.77293,-80.15263,2,0.6,Ofav,tag 110,SAL,9/11/23
+OFAV_urban_361.trim.un.bt2.bam,urban_361,Miami urban,MacArthur North,25.77293,-80.15263,2,0.6,Ofav,tag 124,SAL,9/11/23
+OFAV_urban_363.trim.un.bt2.bam,urban_363,Miami urban,MacArthur North,25.77293,-80.15263,2,0.6,Ofav,tag 112,SAL,9/11/23
+OFAV_urban_365.trim.un.bt2.bam,urban_365,Miami urban,MacArthur North,25.77293,-80.15263,2,0.6,Ofav,tag 114,SAL,9/11/23
+OFAV_urban_366.trim.un.bt2.bam,urban_366,Miami urban,MacArthur North,25.77293,-80.15263,2,0.6,Ofav,tag 125,SAL,9/11/23
+OFAV_urban_367.trim.un.bt2.bam,urban_367,Miami urban,MacArthur North,25.77293,-80.15263,2,0.6,Ofav,tag 115,SAL,9/11/23
+OFAV_urban_368.trim.un.bt2.bam,urban_368,Miami urban,MacArthur North,25.77293,-80.15263,2,0.6,Ofav,tag 116; paling,SAL,9/11/23
+OFAV_urban_369.trim.un.bt2.bam,urban_369,Miami urban,MacArthur North,25.77293,-80.15263,2,0.6,Ofav,tag 117,SAL,9/11/23
+OFAV_urban_370.trim.un.bt2.bam,urban_370,Miami urban,MacArthur North,25.77293,-80.15263,2,0.6,Ofav,tag 118; switched tag with 126,SAL,9/11/23
+OFAV_urban_371.trim.un.bt2.bam,urban_371,Miami urban,MacArthur North,25.77293,-80.15263,2,0.6,Ofav,tag 126; switched tag with 118,SAL,9/11/23
+OFAV_urban_372.trim.un.bt2.bam,urban_372,Miami urban,MacArthur North,25.77293,-80.15263,2,0.6,Ofav,tag 119,SAL,9/11/23
 OFAV_urban_405.trim.un.bt2.bam,urban_405,North Miami reef,Pillars,25.86203,-80.09978,28,8.5,Ofav,,SAL,1/19/24
 OFAV_urban_409.trim.un.bt2.bam,urban_409,North Miami reef,South Canyon,25.86045,-80.10842,18,5.5,Ofav,,SAL,1/19/24
 OFAV_urban_415.trim.un.bt2.bam,urban_415,North Miami reef,Pillars,25.86203,-80.09978,31,9.4,Ofav,,SAL,1/19/24
@@ -86,7 +86,7 @@ OFAV_urban_570.trim.un.bt2.bam,urban_570,Miami urban,Coral City Camera,25.76697,
 OFAV_urban_576.trim.un.bt2.bam,urban_576,Miami urban,Fisher Island,25.75571,-80.14168,,,Ofav,,SAL,1/26/24
 OFAV_urban_577.trim.un.bt2.bam,urban_577,Miami urban,Fisher Island,25.75571,-80.14168,,,Ofav,,SAL,1/26/24
 OFAV_urban_589.trim.un.bt2.bam,urban_589,Miami urban,Fisher Island,25.75571,-80.14168,,,Ofav,,SAL,1/26/24
-OFAV_urban_602.trim.un.bt2.bam,urban_602,Miami urban,Fisher Island,25.75571,-80.14168,4,1.2,Ofav,,SAL,1/26/24
+OFAV_urban_602.trim.un.bt2.bam,urban_602,Miami urban,Fisher Island,25.75571,-80.14168,4,1.2,Ofav,mislabeled as urban_582,SAL,1/26/24
 OFAV_urban_603.trim.un.bt2.bam,urban_603,Miami urban,Fisher Island,25.75571,-80.14168,1,0.3,Ofav,,SAL,1/26/24
 OFAV_urban_605.trim.un.bt2.bam,urban_605,Miami urban,Fisher Island,25.75571,-80.14168,5,1.5,Ofav,,SAL,1/26/24
 OFAV_urban_606.trim.un.bt2.bam,urban_606,Miami urban,Fisher Island,25.75571,-80.14168,3,0.9,Ofav,,SAL,1/26/24
@@ -94,7 +94,7 @@ OFAV_urban_609.trim.un.bt2.bam,urban_609,Miami urban,Fisher Island,25.75571,-80.
 OFAV_urban_613.trim.un.bt2.bam,urban_613,Miami urban,Fisher Island,25.75571,-80.14168,4,1.2,Ofav,,SAL,1/26/24
 OFAV_urban_615.trim.un.bt2.bam,urban_615,Miami urban,Fisher Island,25.75571,-80.14168,1,0.3,Ofav,,SAL,1/26/24
 OFAV_urban_616.trim.un.bt2.bam,urban_616,Miami urban,Fisher Island,25.75571,-80.14168,1,0.3,Ofav,,SAL,1/26/24
-OFAV_urban_625.trim.un.bt2.bam,urban_625,Miami urban,Fisher Island,25.75571,-80.14168,,,Ofav,,SAL,1/26/24
+OFAV_urban_625.trim.un.bt2.bam,urban_625,Miami urban,Fisher Island,25.75571,-80.14168,,,Ofav,mislabeled as urban_532,SAL,1/26/24
 OFAV_urban_638.trim.un.bt2.bam,urban_638,Miami urban,Fisher Island,25.75571,-80.14168,1,0.3,Ofav,,SAL,1/26/24
 OFAV_urban_643.trim.un.bt2.bam,urban_643,Miami urban,Fisher Island,25.75571,-80.14168,3,0.9,Ofav,,SAL,1/26/24
 OFAV_urban_649.trim.un.bt2.bam,urban_649,Miami urban,Fisher Island,25.75571,-80.14168,1,0.3,Ofav,,SAL,1/26/24
