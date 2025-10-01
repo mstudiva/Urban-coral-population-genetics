@@ -417,6 +417,7 @@ Simulating (50x) different values of K (minimum of 1, maximum of the number of y
 ```{bash, ngsadmix}
 mkdir ../ngsAdmix
 cp *beagle* ../ngsAdmix
+cd ../ngsAdmix
 
 ngsAdmixLauncher.py -f dlabNoClones.beagle.gz --maxK 14 -r 50 -n dlab --launcher -e studivanms@gmail.com
 sbatch --mem=200GB dlabNgsAdmix.slurm
