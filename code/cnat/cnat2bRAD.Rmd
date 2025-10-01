@@ -367,7 +367,7 @@ mv cnatClones* clones
 
 ll *.bam > bamsNoClones
 
-cat bamsClones | grep -v 'OFAV_urban_359.trim.un.bt2.bam\|OFAV_nmfs_035.trim.un.bt2.bam\|OFAV_nmfs_069.trim.un.bt2.bam\|OFAV_nmfs_041.trim.un.bt2.bam\|OFAV_urban_080_2.trim.un.bt2.bam\|OFAV_urban_080_3.trim.un.bt2.bam\|OFAV_urban_289_2.trim.un.bt2.bam\|OFAV_urban_081.trim.un.bt2.bam\|OFAV_urban_415.trim.un.bt2.bam' >bamsNoClones
+cat bamsClones | grep -v 'CNAT_urban_013.trim.un.bt2.bam\|CNAT_urban_028.trim.un.bt2.bam\|CNAT_urban_052_2.trim.un.bt2.bam\|CNAT_urban_052_3.trim.un.bt2.bam\|CNAT_urban_085_2.trim.un.bt2.bam\|CNAT_urban_113.trim.un.bt2.bam\|CNAT_urban_117.trim.un.bt2.bam\|CNAT_urban_118.trim.un.bt2.bam\|CNAT_urban_119_2.trim.un.bt2.bam\|CNAT_urban_119_3.trim.un.bt2.bam\|CNAT_urban_119.trim.un.bt2.bam\|CNAT_urban_122.trim.un.bt2.bam\|CNAT_urban_198.trim.un.bt2.bam\|CNAT_urban_259.trim.un.bt2.bam\|CNAT_urban_268_2.trim.un.bt2.bam\|CNAT_urban_268_3.trim.un.bt2.bam\|CNAT_urban_534.trim.un.bt2.bam\|CNAT_urban_626.trim.un.bt2.bam\|CNAT_urban_661.trim.un.bt2.bam\|CNAT_urban_700.trim.un.bt2.bam' >bamsNoClones
 
 module load angsd-0.933-gcc-9.2.0-65d64pp
 FILTERS="-uniqueOnly 1 -remove_bads 1 -minMapQ 20 -minQ 30 -dosnpstat 1 -doHWE 1 -hwe_pval 1e-5 -sb_pval 1e-5 -hetbias_pval 1e-5 -skipTriallelic 1 -minInd 70 -snp_pval 1e-6 -minMaf 0.05"
