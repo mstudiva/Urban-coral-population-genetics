@@ -273,9 +273,6 @@ scp .ibsMat and .bcf files to local machine
 Use ibs matrix to identify clones with hierachial clustering in ```R```. ```scp``` to local machine and run chunk below in ```R```
 
 ```{r, Dendrogram With Clones, fig.width=13, fig.height=4.75, dpi=150, out.width="100%"}
-# install.packages("rcartocolor")
-library(rcartocolor)
-
 pacman::p_load("dendextend", "ggdendro", "tidyverse")
 
 cloneBams = read.csv("../../data/ofav/ofavMetadata.csv") # list of bam files
@@ -320,12 +317,7 @@ cloneDendPoints$site = factor(cloneDendPoints$site,levels(cloneDendPoints$site)[
 
 cloneDendPoints$region = factor(cloneDendPoints$region,levels(cloneDendPoints$region)[c(2, 3, 4, 5, 1)])
 
-nColor <- 12
-scales::show_col(carto_pal(nColor, "Safe"))
-Pal <- c("#88CCEE", "#CC6677", "#DDCC77", "#117733", 
-        "#332288", "#AA4499", "#44AA99", "#999933",
-        "#882255", "#661100", "#6699CC", "#888888",
-        "orange")
+Pal <- c("#E69F00","#009E73","#D55E00","#CC79A7","#E41A1C","#377EB8","#FF7F00","#A65628","#FC8D62","#8DA0CB","#E78AC3","#A6D854","#FFD92F")
 
 cloneDendA = ggplot() +
   geom_segment(data = segment(cloneDData), aes(x = x, y = y, xend = xend, yend = yend2), size = 0.5) +
@@ -351,8 +343,8 @@ cloneDend = cloneDendA + theme(
   axis.ticks.y = element_line(),
   panel.grid = element_blank(),
   panel.border = element_blank(),
-  panel.background = element_blank(),
-  plot.background = element_blank(),
+  panel.background = element_rect(fill = "white", colour = NA),
+  plot.background  = element_rect(fill = "white", colour = NA),
   legend.key = element_blank(),
   legend.title = element_text(size = 12),
   legend.text = element_text(size = 10),
@@ -360,6 +352,7 @@ cloneDend = cloneDendA + theme(
 
 cloneDend
 
+ggsave("../../figures/ofav/cloneDend.pdf", plot = cloneDend, height = 8, width = 24, units = "in", dpi = 300)
 ggsave("../../figures/ofav/cloneDend.png", plot = cloneDend, height = 8, width = 24, units = "in", dpi = 300)
 ```
 ![](../../figures/ofav/cloneDend.png)

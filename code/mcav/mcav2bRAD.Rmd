@@ -159,7 +159,7 @@ ll *.sam | wc -l
 Counting the mapped coral reads
 ```{bash, countmapped 2}
 echo '#!/bin/bash' >mappedReads
-echo readCounts.sh -e al -o Host >>mappedReads
+echo readCounts.sh -e host -o Host >>mappedReads
 sbatch --mem=200GB --mail-type=ALL --mail-user=studivanms@gmail.com mappedReads
 ```
 scp HostReadCounts to local machine
