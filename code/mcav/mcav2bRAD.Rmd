@@ -228,7 +228,7 @@ Assessing base qualities and coverage depth
 ```-maxDepth```: highest total depth (sum over all samples) to assess; set to 10x number of samples
 ```-minInd```: the minimal number of individuals the site must be genotyped in. Set to 50% of total N at this stage.
 ```{bash, ANGSD}
-export FILTERS="-uniqueOnly 1 -remove_bads 1 -minMapQ 20 -maxDepth 1030 -minInd 52"
+export FILTERS="-uniqueOnly 1 -remove_bads 1 -minMapQ 20 -maxDepth 1200 -minInd 60"
 export TODO="-doQsDist 1 -doDepth 1 -doCounts 1 -dumpCounts 2"
 
 echo '#!/bin/bash' >mcavDD.sh
@@ -258,7 +258,7 @@ scp dd.pdf to local machine to look at distribution of base quality scores, frac
 ### Identifying clones and technical replicates
 Set the ```-minInd``` flag to 80% of the number of samples you have
 ```{bash, ANGSD 2}
-FILTERS="-uniqueOnly 1 -remove_bads 1 -minMapQ 20 -minQ 30 -dosnpstat 1 -doHWE 1 -hwe_pval 1e-5 -sb_pval 1e-5 -hetbias_pval 1e-5 -skipTriallelic 1 -minInd 77 -snp_pval 1e-6 -minMaf 0.05"
+FILTERS="-uniqueOnly 1 -remove_bads 1 -minMapQ 20 -minQ 30 -dosnpstat 1 -doHWE 1 -hwe_pval 1e-5 -sb_pval 1e-5 -hetbias_pval 1e-5 -skipTriallelic 1 -minInd 96 -snp_pval 1e-6 -minMaf 0.05"
 TODO="-doMajorMinor 1 -doMaf 1 -doCounts 1 -makeMatrix 1 -doIBS 1 -doCov 1 -doGeno 8 -doBcf 1 -doPost 1 -doGlf 2"
 
 echo '#!/bin/bash' > mcavClones.sh
@@ -273,9 +273,6 @@ scp .ibsMat and .bcf files to local machine
 Use ibs matrix to identify clones with hierachial clustering in ```R```. ```scp``` to local machine and run chunk below in ```R```
 
 ```{r, Dendrogram With Clones, fig.width=13, fig.height=4.75, dpi=150, out.width="100%"}
-# install.packages("rcartocolor")
-library(rcartocolor)
-
 pacman::p_load("dendextend", "ggdendro", "tidyverse")
 
 cloneBams = read.csv("../../data/mcav/mcavMetadata.csv") # list of bam files
@@ -315,17 +312,14 @@ for(i in 1:nrow(cloneDData$segments)) {
 
 cloneDendPoints$y = point[!is.na(point)]
 
-techReps = c("urban_080", "urban_080_2", "urban_080_3", "urban_289", "urban_289_2")
-cloneDendPoints$site = factor(cloneDendPoints$site,levels(cloneDendPoints$site)[c(3, 10, 4, 2, 12, 8, 11, 9, 5, 7, 6, 1, 13)])
+techReps = c("urban_104", "urban_104_2", "urban_177", "urban_177_2", "urban_177_3", "urban_276", "urban_276_2", "urban_276_3", "urban_429", "urban_429_2", "urban_429_3")
+cloneDendPoints$site = factor(cloneDendPoints$site,levels(cloneDendPoints$site)[c(5, 13, 6, 4, 14, 10, 3, 12, 1, 7, 9, 8, 2, 15, 11)])
+cloneDendPoints$site
 
-cloneDendPoints$region = factor(cloneDendPoints$region,levels(cloneDendPoints$region)[c(2, 3, 4, 5, 1)])
+cloneDendPoints$region = factor(cloneDendPoints$region,levels(cloneDendPoints$region)[c(2, 3, 4, 5, 1, 6)])
+cloneDendPoints$region
 
-nColor <- 12
-scales::show_col(carto_pal(nColor, "Safe"))
-Pal <- c("#88CCEE", "#CC6677", "#DDCC77", "#117733", 
-        "#332288", "#AA4499", "#44AA99", "#999933",
-        "#882255", "#661100", "#6699CC", "#888888",
-        "orange")
+Pal <- c("#A6D854","#FFD92F","#984EA3","#FC8D62","#F781BF","#FF7F00","#8DA0CB","#999999","#4DAF4A","#377EB8","#E41A1C","#0072B2","#D55E00","#009E73","#56B4E9","#E69F00")
 
 cloneDendA = ggplot() +
   geom_segment(data = segment(cloneDData), aes(x = x, y = y, xend = xend, yend = yend2), size = 0.5) +
