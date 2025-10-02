@@ -319,7 +319,7 @@ cloneDendPoints$site
 cloneDendPoints$region = factor(cloneDendPoints$region,levels(cloneDendPoints$region)[c(2, 3, 4, 1, 5)])
 cloneDendPoints$region
 
-Pal <- c("#E69F00", "#009E73", "#E41A1C", "#4DAF4A", "#999999", "#66C2A5", "#FF7F00", "#F781BF", "#FC8D62", "#FFD92F", "#A6D854")
+Pal <- c("#E69F00","#009E73","#0072B2","#D55E00","#CC79A7","#999999","#377EB8","#984EA3","#A65628","#E78AC3","#B3B3B3")
 
 cloneDendA = ggplot() +
   geom_segment(data = segment(cloneDData), aes(x = x, y = y, xend = xend, yend = yend2), size = 0.5) +
