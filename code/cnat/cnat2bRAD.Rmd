@@ -405,7 +405,7 @@ cp ../ANGSD/cnatNoClones.beagle.gz .
 
 conda activate pcangsd
 
-echo '#!/bin/bash' > pcangsd.sh
+echo '#!/bin/bash' > pcangsd
 echo 'pcangsd -b cnatNoClones.beagle.gz -o cnatPcangsd --admix --inbreed-samples --pcadapt --selection' >> pcangsd
 launcher_creator.py -j pcangsd -n pcangsd -q shortq7 -t 06:00:00 -e $EMAIL -w 1 -N 1
 sbatch pcangsd.slurm
@@ -440,7 +440,7 @@ R
 logs <- as.data.frame(read.table("cnatNgsAdmixLogfile"))
 
 # output is organized with 10, 11 preceding 1, 2, 3 etc.
-logs$K <- c(rep("10", 50), rep("11", 50), rep("12", 50), rep("13", 50), rep("14", 50), rep("15", 50), rep("16", 50), rep("1", 50), rep("2", 50), rep("3", 50), rep("4", 50), rep("5", 50), rep("6", 50), rep("7", 50), rep("8", 50), rep("9", 50))
+logs$K <- c(rep("10", 50), rep("11", 50), rep("12", 50), rep("13", 50), rep("14", 50), rep("15", 50), rep("16", 50), rep("17", 50), rep("18", 50), rep("19", 50), rep("1", 50), rep("2", 50), rep("3", 50), rep("4", 50), rep("5", 50), rep("6", 50), rep("7", 50), rep("8", 50), rep("9", 50))
 write.table(logs[, c(2, 1)], "cnatNgsAdmixLogfile_formatted", row.names = F, col.names = F, quote = F)
 quit()
 # No need to save workspace image [press 'n']
@@ -451,7 +451,7 @@ Check that the formatted log file has the correct number of entries
 ```{bash, check rows}
 cat cnatNgsAdmixLogfile_formatted | wc -l
 ```
-800, so yes (K=16 * 50 simulations each)
+950, so yes (K=19 * 50 simulations each)
 
 <br>
 

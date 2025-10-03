@@ -1,0 +1,977 @@
+Baggs_067	Bill_Baggs
+Baggs_072	Bill_Baggs
+Baggs_073	Bill_Baggs
+Baggs_082	Bill_Baggs
+Baggs_085	Bill_Baggs
+Baggs_087	Bill_Baggs
+urban_001	Star_Island
+urban_016	Star_Island
+urban_017	Star_Island
+urban_024	Star_Island
+urban_025	Star_Island
+urban_030	Star_Island
+urban_041	Star_Island
+urban_052	FTL4
+urban_066	BC1
+urban_085	Emerald_Reef
+urban_098	Rainbow_Reef
+urban_114	MacArthur_North
+urban_121	MacArthur_North
+urban_130	Star_Island
+urban_136	Star_Island
+urban_137	Star_Island
+urban_138	Star_Island
+urban_140	Star_Island
+urban_141	Star_Island
+urban_142	Star_Island
+urban_143	Star_Island
+urban_146	Star_Island
+urban_149	Star_Island
+urban_150	Star_Island
+urban_151	Star_Island
+urban_156	Star_Island
+urban_174	MacArthur_North
+urban_175	MacArthur_North
+urban_176	MacArthur_North
+urban_180	MacArthur_North
+urban_182	MacArthur_North
+urban_184	MacArthur_North
+urban_190	MacArthur_North
+urban_192	MacArthur_North
+urban_194	MacArthur_North
+urban_195	MacArthur_North
+urban_196	MacArthur_North
+urban_197	MacArthur_North
+urban_200	MacArthur_North
+urban_202	MacArthur_North
+urban_203	MacArthur_North
+urban_204	MacArthur_North
+urban_206	MacArthur_North
+urban_207	MacArthur_North
+urban_208	MacArthur_North
+urban_251	Belle_Isle
+urban_252	Belle_Isle
+urban_253	Belle_Isle
+urban_254	Belle_Isle
+urban_256	Belle_Isle
+urban_257	Belle_Isle
+urban_258	Belle_Isle
+urban_261	Belle_Isle
+urban_262	Belle_Isle
+urban_264	Belle_Isle
+urban_265	Belle_Isle
+urban_266	Belle_Isle
+urban_267	Belle_Isle
+urban_268	Belle_Isle
+urban_273	BC1
+urban_284	BC1
+urban_285	BC1
+urban_287	BC1
+urban_299	FTL4
+urban_314	Rainbow_Reef
+urban_392	Pillars
+urban_394	South_Canyon
+urban_402	Seaquarium
+urban_420	Pillars
+urban_423	Pillars
+urban_463	Seaquarium
+urban_466	Seaquarium
+urban_468	Seaquarium
+urban_487	Coral_City_Camera
+urban_555	Coral_City_Camera
+urban_558	Coral_City_Camera
+urban_559	Coral_City_Camera
+urban_560	Coral_City_Camera
+urban_564	Coral_City_Camera
+urban_565	Coral_City_Camera
+urban_567	Coral_City_Camera
+urban_574	Fisher_Island
+urban_575	Fisher_Island
+urban_585	Peanut_Island
+urban_590	Fisher_Island
+urban_593	Fisher_Island
+urban_607	Fisher_Island
+urban_608	Fisher_Island
+urban_610	Fisher_Island
+urban_611	Fisher_Island
+urban_612	Fisher_Island
+urban_620	Fisher_Island
+urban_627	Fisher_Island
+urban_628	Fisher_Island
+urban_631	Peanut_Island
+urban_634	Peanut_Island
+urban_639	Fisher_Island
+urban_655	Fisher_Island
+urban_662	Fisher_Island
+urban_664	Peanut_Island
+urban_665	Peanut_Island
+urban_673	Peanut_Island
+urban_674	Peanut_Island
+urban_689	Arch_Creek
+urban_690	Arch_Creek
+urban_691	Arch_Creek
+urban_692	Arch_Creek
+urban_709	Arch_Creek
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
