@@ -277,7 +277,7 @@ pacman::p_load("dendextend", "ggdendro", "tidyverse")
 
 cloneBams = read.csv("../../data/cnat/cnatMetadata.csv") # list of bam files
 
-cloneMa = as.matrix(read.table("../../data/cnat/cnatClones.ibsMat")) # reads in IBS matrix produced by ANGSD 
+cloneMa = as.matrix(read.table("../../data/cnat/ANGSD/clones/cnatClones.ibsMat")) # reads in IBS matrix produced by ANGSD 
 
 dimnames(cloneMa) = list(cloneBams[,2],cloneBams[,2])
 clonesHc = hclust(as.dist(cloneMa),"ave")
@@ -487,7 +487,7 @@ library(patchwork)
 # -------------------------
 # 1. Read space-delimited input file
 # -------------------------
-data_file <- "../../data/cnat/cnatNgsAdmixLogfile_formatted"  # replace with your file
+data_file <- "../../data/cnat/ngsAdmix/cnatNgsAdmixLogfile_formatted"  # replace with your file
 df <- read.table(data_file, header = FALSE, sep = "", 
                  col.names = c("K", "LogLikelihood"), stringsAsFactors = FALSE)
 

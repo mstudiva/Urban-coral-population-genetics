@@ -277,7 +277,7 @@ pacman::p_load("dendextend", "ggdendro", "tidyverse")
 
 cloneBams = read.csv("../../data/mcav/mcavMetadata.csv") # list of bam files
 
-cloneMa = as.matrix(read.table("../../data/mcav/mcavClones.ibsMat")) # reads in IBS matrix produced by ANGSD 
+cloneMa = as.matrix(read.table("../../data/mcav/ANGSD/clones/mcavClones.ibsMat")) # reads in IBS matrix produced by ANGSD 
 
 dimnames(cloneMa) = list(cloneBams[,2],cloneBams[,2])
 clonesHc = hclust(as.dist(cloneMa),"ave")
@@ -415,8 +415,11 @@ sbatch pcangsd.slurm
 Calculating population structure from genotype likelihoods using NGSadmix (part of ANGSD)
 Simulating (50x) different values of K (minimum of 1, maximum of the number of your sites + 3)
 ```{bash, ngsadmix}
-ngsAdmixLauncher.py -f mcavNoClones.beagle.gz --maxK 18 -r 50 -n mcav --launcher -e studivanms@gmail.com
+mkdir ../ngsAdmix
+cp *beagle* ../ngsAdmix
+cd ../ngsAdmix
 
+ngsAdmixLauncher.py -f mcavNoClones.beagle.gz --maxK 18 -r 50 -n mcav --launcher -e studivanms@gmail.com
 sbatch --mem=200GB mcavNgsAdmix.slurm
 ```
 
@@ -438,7 +441,7 @@ R
 logs <- as.data.frame(read.table("mcavNgsAdmixLogfile"))
 
 # output is organized with 10, 11 preceding 1, 2, 3 etc.
-logs$K <- c(rep("10", 50), rep("11", 50), rep("12", 50), rep("13", 50), rep("14", 50), rep("15", 50), rep("16", 50), rep("1", 50), rep("2", 50), rep("3", 50), rep("4", 50), rep("5", 50), rep("6", 50), rep("7", 50), rep("8", 50), rep("9", 50))
+logs$K <- c(rep("10", 50), rep("11", 50), rep("12", 50), rep("13", 50), rep("14", 50), rep("15", 50), rep("16", 50), rep("17", 50), rep("18", 50), rep("1", 50), rep("2", 50), rep("3", 50), rep("4", 50), rep("5", 50), rep("6", 50), rep("7", 50), rep("8", 50), rep("9", 50))
 write.table(logs[, c(2, 1)], "mcavNgsAdmixLogfile_formatted", row.names = F, col.names = F, quote = F)
 quit()
 # No need to save workspace image [press 'n']
@@ -485,7 +488,7 @@ library(patchwork)
 # -------------------------
 # 1. Read space-delimited input file
 # -------------------------
-data_file <- "../../data/mcav/mcavNgsAdmixLogfile_formatted"  # replace with your file
+data_file <- "../../data/mcav/ngsAdmix/mcavNgsAdmixLogfile_formatted"  # replace with your file
 df <- read.table(data_file, header = FALSE, sep = "", 
                  col.names = c("K", "LogLikelihood"), stringsAsFactors = FALSE)
 
