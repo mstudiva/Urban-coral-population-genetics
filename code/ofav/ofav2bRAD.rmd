@@ -470,7 +470,7 @@ zip -r ofavQ.zip ofavQ
 ```
 scp .zip, formatted logfile, and ofavNoClones* to local machine
 Upload logfile to CLUMPAK as a Log Probability table file (http://clumpak.tau.ac.il/bestK.html)
-And .zip to structure selector as an ADMIXTURE file (https://lmme.ac.cn/StructureSelector/index.html)
+And .zip to structure selector as an ADMIXTURE file (https://lmme.qdio.ac.cn/stable/StructureSelector/index.html)
 You also need to create a PopMap file from bamsNoClones: a two-column, tab-delimited text file with sampleID and populationID
 
 <br>

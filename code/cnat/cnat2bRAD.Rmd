@@ -469,7 +469,7 @@ zip -r cnatQ.zip cnatQ
 ```
 scp .zip, formatted logfile, and cnatNoClones* to local machine
 Upload logfile to CLUMPAK as a Log Probability table file (http://clumpak.tau.ac.il/bestK.html)
-And .zip to structure selector as an ADMIXTURE file (https://lmme.ac.cn/StructureSelector/index.html)
+And .zip to structure selector as an ADMIXTURE file (https://lmme.qdio.ac.cn/stable/StructureSelector/index.html)
 You also need to create a PopMap file from bamsNoClones: a two-column, tab-delimited text file with sampleID and populationID
 
 <br>
@@ -619,7 +619,7 @@ if(!is.null(global_best)) {
 
 <br>
 
-While K=1 (panmixia) appears to be the most likely scenario based on model likelihoods, the Evanno method suggests K=3, so there may be cryptic lineages
+While K=1 (panmixia) appears to be the most likely scenario based on model likelihoods, the Evanno method suggests K=2, so there may be cryptic lineages
 
 <br>
 

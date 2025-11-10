@@ -95,14 +95,11 @@ Analyzing 2bRAD generated SNPs (20,323 loci) for population structure/genetic co
 Identification of any natural clones using technical replicates as a baseline for clonality between samples
 
 ```{r, Dendrogram With Clones, fig.width=13, fig.height=4.75, dpi=150, out.width="100%"}
-# install.packages("rcartocolor")
-library(rcartocolor)
-
 pacman::p_load("dendextend", "ggdendro", "tidyverse")
 
 cloneBams = read.csv("../../data/ofav/ofavMetadata.csv") # list of bam files
 
-cloneMa = as.matrix(read.table("../../data/ofav/ofavClones.ibsMat")) # reads in IBS matrix produced by ANGSD 
+cloneMa = as.matrix(read.table("../../data/ofav/ANGSD/clones/ofavClones.ibsMat")) # reads in IBS matrix produced by ANGSD 
 
 dimnames(cloneMa) = list(cloneBams[,2],cloneBams[,2])
 clonesHc = hclust(as.dist(cloneMa),"ave")
@@ -127,7 +124,7 @@ rownames(cloneDendPoints) = cloneDendPoints$label
 cloneDendPoints$region = as.factor(cloneDendPoints$region)
 cloneDendPoints$site = as.factor(cloneDendPoints$site)
 
-# Making points at the leaves to place symbols for regionulations
+# Making points at the leaves to place symbols for regions
 point = as.vector(NA)
 for(i in 1:nrow(cloneDData$segments)) {
   if (cloneDData$segments$yend[i] == 0) {
@@ -142,12 +139,7 @@ cloneDendPoints$site = factor(cloneDendPoints$site,levels(cloneDendPoints$site)[
 
 cloneDendPoints$region = factor(cloneDendPoints$region,levels(cloneDendPoints$region)[c(2, 3, 4, 5, 1)])
 
-nColor <- 12
-scales::show_col(carto_pal(nColor, "Safe"))
-Pal <- c("#88CCEE", "#CC6677", "#DDCC77", "#117733", 
-        "#332288", "#AA4499", "#44AA99", "#999933",
-        "#882255", "#661100", "#6699CC", "#888888",
-        "orange")
+Pal <- c("#E69F00","#009E73","#D55E00","#CC79A7","#E41A1C","#377EB8","#FF7F00","#A65628","#FC8D62","#8DA0CB","#E78AC3","#A6D854","#FFD92F")
 
 cloneDendA = ggplot() +
   geom_segment(data = segment(cloneDData), aes(x = x, y = y, xend = xend, yend = yend2), size = 0.5) +
@@ -173,8 +165,8 @@ cloneDend = cloneDendA + theme(
   axis.ticks.y = element_line(),
   panel.grid = element_blank(),
   panel.border = element_blank(),
-  panel.background = element_blank(),
-  plot.background = element_blank(),
+  panel.background = element_rect(fill = "white", colour = NA),
+  plot.background  = element_rect(fill = "white", colour = NA),
   legend.key = element_blank(),
   legend.title = element_text(size = 12),
   legend.text = element_text(size = 10),
@@ -182,9 +174,8 @@ cloneDend = cloneDendA + theme(
 
 cloneDend
 
-ggsave("../../figures/ofav/cloneDend.png", plot = cloneDend, height = 8, width = 24, units = "in", dpi = 300)
 ggsave("../../figures/ofav/cloneDend.pdf", plot = cloneDend, height = 8, width = 24, units = "in", dpi = 300)
-
+ggsave("../../figures/ofav/cloneDend.png", plot = cloneDend, height = 8, width = 24, units = "in", dpi = 300)
 ```
 ![](../../figures/ofav/cloneDend.png)
 
@@ -194,9 +185,11 @@ ggsave("../../figures/ofav/cloneDend.pdf", plot = cloneDend, height = 8, width =
 We removed the technical replicates/clones and re-ran ANGSD for all the following analyses
 
 ```{r, Dendrogram Without Clones, fig.width=13, fig.height=4.75, dpi=150, out.width="100%"}
+pacman::p_load("dendextend", "ggdendro", "tidyverse")
+
 bams = read.csv("../../data/ofav/ofavMetadata.csv")[-c(11,14,22,32:34,54,59,72),] # list of bams files and their populations (tech reps removed)
 
-ma = as.matrix(read.table("../../data/ofav/ofavNoClones.ibsMat")) # reads in IBS matrix produced by ANGSD
+ma = as.matrix(read.table("../../data/ofav/ANGSD/ofavNoClones.ibsMat")) # reads in IBS matrix produced by ANGSD
 
 dimnames(ma) = list(bams[,2],bams[,2])
 Hc = hclust(as.dist(ma),"ave")
@@ -235,12 +228,7 @@ DendPoints$site = factor(DendPoints$site,levels(DendPoints$site)[c(3, 10, 4, 2, 
 
 DendPoints$region = factor(DendPoints$region,levels(DendPoints$region)[c(2, 3, 4, 5, 1)])
 
-nColor <- 12
-scales::show_col(carto_pal(nColor, "Safe"))
-Pal <- c("#88CCEE", "#CC6677", "#DDCC77", "#117733", 
-        "#332288", "#AA4499", "#44AA99", "#999933",
-        "#882255", "#661100", "#6699CC", "#888888",
-        "orange")
+Pal <- c("#E69F00","#009E73","#D55E00","#CC79A7","#E41A1C","#377EB8","#FF7F00","#A65628","#FC8D62","#8DA0CB","#E78AC3","#A6D854","#FFD92F")
 
 DendA = ggplot() +
   geom_segment(data = segment(DData), aes(x = x, y = y, xend = xend, yend = yend2), size = 0.5) +
@@ -263,8 +251,8 @@ Dend = DendA + theme(
   axis.ticks.y = element_line(),
   panel.grid = element_blank(),
   panel.border = element_blank(),
-  panel.background = element_blank(),
-  plot.background = element_blank(),
+  panel.background = element_rect(fill = "white", colour = NA),
+  plot.background  = element_rect(fill = "white", colour = NA),
   legend.key = element_blank(),
   legend.title = element_text(size = 12),
   legend.text = element_text(size = 10),
@@ -272,8 +260,8 @@ Dend = DendA + theme(
 
 Dend
 
-ggsave("../../figures/ofav/Dend.png", plot = Dend, height = 8, width = 24, units = "in", dpi = 300)
 ggsave("../../figures/ofav/Dend.pdf", plot = Dend, height = 8, width = 24, units = "in", dpi = 300)
+ggsave("../../figures/ofav/Dend.png", plot = Dend, height = 8, width = 24, units = "in", dpi = 300)
 ```
 ![](../../figures/ofav/Dend.png)
 
