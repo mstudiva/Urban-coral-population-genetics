@@ -1,0 +1,197 @@
+fileID,sampleID,region,site,latitude,longitude,depthft,depthm,species,notes,permit,date
+PSTR_nmfs_006.trim.un.bt2.bam,nmfs_006,Miami reef,Rainbow Reef,25.69,-80.097,18,5.5,Pstr,,NMFS,1/22/21
+PSTR_nmfs_007.trim.un.bt2.bam,nmfs_007,Miami reef,Rainbow Reef,25.69,-80.097,21,6.4,Pstr,,NMFS,1/22/21
+PSTR_nmfs_008.trim.un.bt2.bam,nmfs_008,Miami reef,Rainbow Reef,25.69,-80.097,23,7,Pstr,,NMFS,1/22/21
+PSTR_nmfs_010.trim.un.bt2.bam,nmfs_010,Miami reef,Rainbow Reef,25.69,-80.097,25,7.6,Pstr,,NMFS,1/22/21
+PSTR_nmfs_013.trim.un.bt2.bam,nmfs_013,Miami reef,Emerald Reef,25.67735,-80.09738,22,6.7,Pstr,,NMFS,1/22/21
+PSTR_nmfs_016.trim.un.bt2.bam,nmfs_016,Miami reef,Emerald Reef,25.67735,-80.09738,22,6.7,Pstr,,NMFS,1/22/21
+PSTR_nmfs_021.trim.un.bt2.bam,nmfs_021,Miami reef,Emerald Reef,25.67735,-80.09738,22,6.7,Pstr,,NMFS,1/22/21
+PSTR_nmfs_022.trim.un.bt2.bam,nmfs_022,Miami reef,Emerald Reef,25.67735,-80.09738,21,6.4,Pstr,,NMFS,1/22/21
+PSTR_nmfs_023.trim.un.bt2.bam,nmfs_023,Miami reef,Emerald Reef,25.67735,-80.09738,25,7.6,Pstr,,NMFS,1/22/21
+PSTR_nmfs_024.trim.un.bt2.bam,nmfs_024,Miami reef,Emerald Reef,25.67735,-80.09738,22,6.7,Pstr,,NMFS,1/22/21
+PSTR_nmfs_027.trim.un.bt2.bam,nmfs_027,Miami urban,MacArthur North,25.77293,-80.15263,3,0.9,Pstr,,NMFS,1/22/21
+PSTR_nmfs_028.trim.un.bt2.bam,nmfs_028,Miami urban,MacArthur North,25.77293,-80.15263,4,1.2,Pstr,,NMFS,1/22/21
+PSTR_nmfs_029.trim.un.bt2.bam,nmfs_029,Miami urban,MacArthur North,25.77293,-80.15263,3,0.9,Pstr,,NMFS,1/22/21
+PSTR_nmfs_030.trim.un.bt2.bam,nmfs_030,Miami urban,MacArthur North,25.77293,-80.15263,3,0.9,Pstr,,NMFS,1/22/21
+PSTR_NU1.trim.un.bt2.bam,NU1,Miami reef,CURES,25.76745,-80.1457,5,1.5,Pstr,puck024,isotopes,6/29/22
+PSTR_NU2.trim.un.bt2.bam,NU2,Miami reef,CURES,25.76745,-80.1457,5,1.5,Pstr,puck030,isotopes,6/29/22
+PSTR_NU3.trim.un.bt2.bam,NU3,Miami reef,CURES,25.76745,-80.1457,5,1.5,Pstr,puck038,isotopes,6/29/22
+PSTR_NU4.trim.un.bt2.bam,NU4,Miami reef,CURES,25.76745,-80.1457,5,1.5,Pstr,puck027,isotopes,6/29/22
+PSTR_NU5.trim.un.bt2.bam,NU5,Miami reef,CURES,25.76745,-80.1457,5,1.5,Pstr,puck021,isotopes,6/29/22
+PSTR_NU6.trim.un.bt2.bam,NU6,Miami reef,CURES,25.76745,-80.1457,5,1.5,Pstr,puck004,isotopes,6/29/22
+PSTR_NU8.trim.un.bt2.bam,NU8,Miami reef,CURES,25.76745,-80.1457,5,1.5,Pstr,,isotopes,6/29/22
+PSTR_NU9.trim.un.bt2.bam,NU9,Miami reef,CURES,25.76745,-80.1457,5,1.5,Pstr,,isotopes,6/29/22
+PSTR_NU10.trim.un.bt2.bam,NU10,Miami reef,CURES,25.76745,-80.1457,5,1.5,Pstr,,isotopes,6/29/22
+PSTR_NU11.trim.un.bt2.bam,NU11,Miami reef,CURES,25.76745,-80.1457,5,1.5,Pstr,puck005,isotopes,6/29/22
+PSTR_NU13.trim.un.bt2.bam,NU13,Miami reef,CURES,25.76745,-80.1457,5,1.5,Pstr,puck029,isotopes,6/29/22
+PSTR_NU14.trim.un.bt2.bam,NU14,Miami reef,CURES,25.76745,-80.1457,5,1.5,Pstr,puck026,isotopes,6/29/22
+PSTR_OS5.trim.un.bt2.bam,OS5,Miami reef,Emerald Reef,25.67735,-80.09738,27,8.2,Pstr,,isotopes,6/29/22
+PSTR_OS6.trim.un.bt2.bam,OS6,Miami reef,Emerald Reef,25.67735,-80.09738,22,6.7,Pstr,,isotopes,6/29/22
+PSTR_OS8.trim.un.bt2.bam,OS8,Miami reef,Emerald Reef,25.67735,-80.09738,22,6.7,Pstr,,isotopes,6/29/22
+PSTR_OS9.trim.un.bt2.bam,OS9,Miami reef,Emerald Reef,25.67735,-80.09738,23,7,Pstr,,isotopes,6/29/22
+PSTR_OS11.trim.un.bt2.bam,OS11,Miami reef,Rainbow Reef,25.69,-80.097,26,7.9,Pstr,,isotopes,6/29/22
+PSTR_OS12.trim.un.bt2.bam,OS12,Miami reef,Rainbow Reef,25.69,-80.097,27,8.2,Pstr,,isotopes,6/29/22
+PSTR_OS13.trim.un.bt2.bam,OS13,Miami reef,Rainbow Reef,25.69,-80.097,28,8.5,Pstr,,isotopes,6/29/22
+PSTR_OS14.trim.un.bt2.bam,OS14,Miami reef,Rainbow Reef,25.69,-80.097,29,8.8,Pstr,,isotopes,6/29/22
+PSTR_OS15.trim.un.bt2.bam,OS15,Miami reef,Rainbow Reef,25.69,-80.097,27,8.2,Pstr,,isotopes,6/29/22
+PSTR_OS17.trim.un.bt2.bam,OS17,Miami reef,Rainbow Reef,25.69,-80.097,22,6.7,Pstr,,isotopes,6/29/22
+PSTR_OS18.trim.un.bt2.bam,OS18,Miami reef,Rainbow Reef,25.69,-80.097,22,6.7,Pstr,,isotopes,6/29/22
+PSTR_OS19.trim.un.bt2.bam,OS19,Miami reef,Rainbow Reef,25.69,-80.097,22,6.7,Pstr,,isotopes,6/29/22
+PSTR_OS20.trim.un.bt2.bam,OS20,Miami reef,Rainbow Reef,25.69,-80.097,20,6.1,Pstr,,isotopes,6/29/22
+PSTR_OS21.trim.un.bt2.bam,OS21,Miami reef,Emerald Reef,25.67735,-80.09738,20,6.1,Pstr,,isotopes,7/20/22
+PSTR_OS22.trim.un.bt2.bam,OS22,Miami reef,Emerald Reef,25.67735,-80.09738,20,6.1,Pstr,,isotopes,7/20/22
+PSTR_OS23.trim.un.bt2.bam,OS23,Miami reef,Emerald Reef,25.67735,-80.09738,20,6.1,Pstr,,isotopes,7/20/22
+PSTR_Peanut_034.trim.un.bt2.bam,Peanut_034,Palm Beach urban,Peanut Island,26.77153,-80.04421,,,Pstr,,Baker,23-Mar
+PSTR_Peanut_097.trim.un.bt2.bam,Peanut_097,Palm Beach urban,Peanut Island,26.77153,-80.04421,,,Pstr,,Baker,23-Mar
+PSTR_UR5.trim.un.bt2.bam,UR5,Miami urban,MacArthur North,25.77293,-80.15263,1,0.3,Pstr,,isotopes,6/29/22
+PSTR_UR6.trim.un.bt2.bam,UR6,Miami urban,MacArthur North,25.77293,-80.15263,1,0.3,Pstr,,isotopes,6/29/22
+PSTR_UR7.trim.un.bt2.bam,UR7,Miami urban,MacArthur North,25.77293,-80.15263,1,0.3,Pstr,,isotopes,6/29/22
+PSTR_UR8.trim.un.bt2.bam,UR8,Miami urban,MacArthur North,25.77293,-80.15263,2,0.6,Pstr,,isotopes,6/29/22
+PSTR_UR10.trim.un.bt2.bam,UR10,Miami urban,MacArthur North,25.77293,-80.15263,1,0.3,Pstr,,isotopes,6/29/22
+PSTR_UR11.trim.un.bt2.bam,UR11,Miami urban,MacArthur North,25.77293,-80.15263,1,0.3,Pstr,,isotopes,6/29/22
+PSTR_UR12.trim.un.bt2.bam,UR12,Miami urban,MacArthur North,25.77293,-80.15263,1,0.3,Pstr,,isotopes,6/29/22
+PSTR_UR14.trim.un.bt2.bam,UR14,Miami urban,MacArthur North,25.77293,-80.15263,1,0.3,Pstr,,isotopes,6/29/22
+PSTR_UR17.trim.un.bt2.bam,UR17,Miami urban,MacArthur North,25.77293,-80.15263,2,0.6,Pstr,,isotopes,6/29/22
+PSTR_UR18.trim.un.bt2.bam,UR18,Miami urban,MacArthur North,25.77293,-80.15263,2,0.6,Pstr,,isotopes,6/29/22
+PSTR_UR20.trim.un.bt2.bam,UR20,Miami urban,MacArthur North,25.77293,-80.15263,1,0.3,Pstr,,isotopes,6/29/22
+PSTR_UR21.trim.un.bt2.bam,UR21,Miami urban,Star Island,25.77477,-80.14886,5,1.5,Pstr,,isotopes,6/29/22
+PSTR_UR22.trim.un.bt2.bam,UR22,Miami urban,Star Island,25.77477,-80.14886,4,1.2,Pstr,,isotopes,6/29/22
+PSTR_UR24.trim.un.bt2.bam,UR24,Miami urban,Star Island,25.77477,-80.14886,2,0.6,Pstr,,isotopes,6/29/22
+PSTR_UR25.trim.un.bt2.bam,UR25,Miami urban,Star Island,25.77477,-80.14886,1,0.3,Pstr,,isotopes,6/29/22
+PSTR_UR26.trim.un.bt2.bam,UR26,Miami urban,Star Island,25.77477,-80.14886,4,1.2,Pstr,,isotopes,6/29/22
+PSTR_UR28.trim.un.bt2.bam,UR28,Miami urban,Star Island,25.77477,-80.14886,5,1.5,Pstr,,isotopes,6/29/22
+PSTR_UR29.trim.un.bt2.bam,UR29,Miami urban,Star Island,25.77477,-80.14886,3,0.9,Pstr,,isotopes,6/29/22
+PSTR_UR30.trim.un.bt2.bam,UR30,Miami urban,Star Island,25.77477,-80.14886,4,1.2,Pstr,,isotopes,6/29/22
+PSTR_urban_003.trim.un.bt2.bam,urban_003,Miami urban,Star Island,25.77477,-80.14886,8,2.4,Pstr,rescue,rescue,7/26/22
+PSTR_urban_004.trim.un.bt2.bam,urban_004,Miami urban,Star Island,25.77477,-80.14886,8,2.4,Pstr,rescue,rescue,7/26/22
+PSTR_urban_014.trim.un.bt2.bam,urban_014,Miami urban,Star Island,25.77477,-80.14886,8,2.4,Pstr,rescue,rescue,7/26/22
+PSTR_urban_023.trim.un.bt2.bam,urban_023,Miami urban,Star Island,25.77477,-80.14886,8,2.4,Pstr,rescue,rescue,7/26/22
+PSTR_urban_026.trim.un.bt2.bam,urban_026,Miami urban,Star Island,25.77477,-80.14886,8,2.4,Pstr,rescue,rescue,7/26/22
+PSTR_urban_029_2.trim.un.bt2.bam,urban_029_2,Miami urban,Star Island,25.77477,-80.14886,8,2.4,Pstr,rescue,rescue,7/26/22
+PSTR_urban_029_3.trim.un.bt2.bam,urban_029_3,Miami urban,Star Island,25.77477,-80.14886,8,2.4,Pstr,rescue,rescue,7/26/22
+PSTR_urban_029.trim.un.bt2.bam,urban_029,Miami urban,Star Island,25.77477,-80.14886,8,2.4,Pstr,rescue,rescue,7/26/22
+PSTR_urban_033.trim.un.bt2.bam,urban_033,Miami urban,Star Island,25.77477,-80.14886,8,2.4,Pstr,rescue,rescue,7/26/22
+PSTR_urban_034.trim.un.bt2.bam,urban_034,Miami urban,Star Island,25.77477,-80.14886,8,2.4,Pstr,rescue,rescue,7/26/22
+PSTR_urban_063_2.trim.un.bt2.bam,urban_063_2,Broward reef,BC1,26.14758,-80.0961,19,5.8,Pstr,,SAL,8/24/22
+PSTR_urban_063_3.trim.un.bt2.bam,urban_063_3,Broward reef,BC1,26.14758,-80.0961,19,5.8,Pstr,,SAL,8/24/22
+PSTR_urban_063.trim.un.bt2.bam,urban_063,Broward reef,BC1,26.14758,-80.0961,19,5.8,Pstr,,SAL,8/24/22
+PSTR_urban_086.trim.un.bt2.bam,urban_086,Miami reef,Emerald Reef,25.67735,-80.09738,26,7.9,Pstr,,SAL,10/26/22
+PSTR_urban_090_2.trim.un.bt2.bam,urban_090_2,Miami reef,Emerald Reef,25.67735,-80.09738,25,7.6,Pstr,,SAL,10/26/22
+PSTR_urban_090_3.trim.un.bt2.bam,urban_090_3,Miami reef,Emerald Reef,25.67735,-80.09738,25,7.6,Pstr,,SAL,10/26/22
+PSTR_urban_090.trim.un.bt2.bam,urban_090,Miami reef,Emerald Reef,25.67735,-80.09738,25,7.6,Pstr,,SAL,10/26/22
+PSTR_urban_107.trim.un.bt2.bam,urban_107,Miami reef,Rainbow Reef,25.69,-80.097,18,5.5,Pstr,,SAL,10/26/22
+PSTR_urban_108.trim.un.bt2.bam,urban_108,Miami reef,Rainbow Reef,25.69,-80.097,18,5.5,Pstr,,SAL,10/26/22
+PSTR_urban_109.trim.un.bt2.bam,urban_109,Miami reef,Rainbow Reef,25.69,-80.097,22,6.7,Pstr,,SAL,10/26/22
+PSTR_urban_111.trim.un.bt2.bam,urban_111,Miami reef,Rainbow Reef,25.69,-80.097,20,6.1,Pstr,,SAL,10/26/22
+PSTR_urban_161.trim.un.bt2.bam,urban_161,Miami urban,Star Island,25.77477,-80.14886,8,2.4,Pstr,rescue,rescue,10/27/22
+PSTR_urban_173.trim.un.bt2.bam,urban_173,Miami reef,Emerald Reef,25.67735,-80.09738,24.6,7.5,Pstr,,SAL,1/26/23
+PSTR_urban_212.trim.un.bt2.bam,urban_212,Miami urban,Belle Isle,25.789085,-80.147745,3,0.9,Pstr,,SAL,4/4/23
+PSTR_urban_215.trim.un.bt2.bam,urban_215,Miami urban,Belle Isle,25.789085,-80.147745,2,0.6,Pstr,,SAL,4/4/23
+PSTR_urban_216_2.trim.un.bt2.bam,urban_216_2,Miami urban,Belle Isle,25.789085,-80.147745,1,0.3,Pstr,,SAL,4/4/23
+PSTR_urban_216_3.trim.un.bt2.bam,urban_216_3,Miami urban,Belle Isle,25.789085,-80.147745,1,0.3,Pstr,,SAL,4/4/23
+PSTR_urban_216.trim.un.bt2.bam,urban_216,Miami urban,Belle Isle,25.789085,-80.147745,1,0.3,Pstr,,SAL,4/4/23
+PSTR_urban_217.trim.un.bt2.bam,urban_217,Miami urban,Belle Isle,25.789085,-80.147745,2,0.6,Pstr,,SAL,4/4/23
+PSTR_urban_218.trim.un.bt2.bam,urban_218,Miami urban,Belle Isle,25.789085,-80.147745,3,0.9,Pstr,,SAL,4/4/23
+PSTR_urban_219.trim.un.bt2.bam,urban_219,Miami urban,Belle Isle,25.789085,-80.147745,2,0.6,Pstr,,SAL,4/4/23
+PSTR_urban_220.trim.un.bt2.bam,urban_220,Miami urban,Belle Isle,25.789085,-80.147745,3,0.9,Pstr,,SAL,4/4/23
+PSTR_urban_223.trim.un.bt2.bam,urban_223,Miami urban,Belle Isle,25.789085,-80.147745,2,0.6,Pstr,,SAL,4/4/23
+PSTR_urban_225.trim.un.bt2.bam,urban_225,Miami urban,Belle Isle,25.789085,-80.147745,2,0.6,Pstr,,SAL,4/4/23
+PSTR_urban_227.trim.un.bt2.bam,urban_227,Miami urban,Belle Isle,25.789085,-80.147745,3,0.9,Pstr,,SAL,4/4/23
+PSTR_urban_229.trim.un.bt2.bam,urban_229,Miami urban,Belle Isle,25.789085,-80.147745,2,0.6,Pstr,,SAL,4/4/23
+PSTR_urban_232.trim.un.bt2.bam,urban_232,Miami urban,Belle Isle,25.789085,-80.147745,3.9,1.2,Pstr,,SAL,4/4/23
+PSTR_urban_234.trim.un.bt2.bam,urban_234,Miami urban,Belle Isle,25.789085,-80.147745,3.3,1,Pstr,,SAL,4/4/23
+PSTR_urban_235.trim.un.bt2.bam,urban_235,Miami urban,Belle Isle,25.789085,-80.147745,2.3,0.7,Pstr,,SAL,4/4/23
+PSTR_urban_238.trim.un.bt2.bam,urban_238,Miami urban,Belle Isle,25.789085,-80.147745,3.6,1.1,Pstr,,SAL,4/4/23
+PSTR_urban_239.trim.un.bt2.bam,urban_239,Miami urban,Belle Isle,25.789085,-80.147745,3.6,1.1,Pstr,,SAL,4/4/23
+PSTR_urban_241.trim.un.bt2.bam,urban_241,Miami urban,Belle Isle,25.789085,-80.147745,3.6,1.1,Pstr,,SAL,4/4/23
+PSTR_urban_244.trim.un.bt2.bam,urban_244,Miami urban,Belle Isle,25.789085,-80.147745,2.6,0.8,Pstr,,SAL,4/4/23
+PSTR_urban_286.trim.un.bt2.bam,urban_286,Broward reef,BC1,26.14758,-80.0961,28,8.5,Pstr,,SAL,5/10/23
+PSTR_urban_293.trim.un.bt2.bam,urban_293,Broward reef,T328,26.17615,-80.09386,18,5.5,Pstr,,SAL,5/10/23
+PSTR_urban_296.trim.un.bt2.bam,urban_296,Broward reef,T328,26.17615,-80.09386,17,5.2,Pstr,,SAL,5/10/23
+PSTR_urban_298.trim.un.bt2.bam,urban_298,Broward reef,T328,26.17615,-80.09386,17,5.2,Pstr,,SAL,5/10/23
+PSTR_urban_301.trim.un.bt2.bam,urban_301,Broward reef,FTL4,26.1368,-80.0974,19,5.8,Pstr,,SAL,5/10/23
+PSTR_urban_302.trim.un.bt2.bam,urban_302,Broward reef,FTL4,26.1368,-80.0974,21,6.4,Pstr,,SAL,5/10/23
+PSTR_urban_384.trim.un.bt2.bam,urban_384,Miami urban,MacArthur North,25.77293,-80.15263,4,1.2,Pstr,,SAL,1/11/24
+PSTR_urban_388.trim.un.bt2.bam,urban_388,North Miami reef,Pillars,25.86203,-80.09978,32,9.8,Pstr,,SAL,1/19/24
+PSTR_urban_398.trim.un.bt2.bam,urban_398,Miami urban,Seaquarium,25.73276,-80.16708,1,0.3,Pstr,,SAL,1/25/24
+PSTR_urban_400.trim.un.bt2.bam,urban_400,Miami urban,Seaquarium,25.73276,-80.16708,6,1.8,Pstr,,SAL,1/25/24
+PSTR_urban_401.trim.un.bt2.bam,urban_401,Miami urban,Seaquarium,25.73276,-80.16708,4,1.2,Pstr,,SAL,1/25/24
+PSTR_urban_410.trim.un.bt2.bam,urban_410,Miami urban,Seaquarium,25.73276,-80.16708,8,2.4,Pstr,,SAL,1/25/24
+PSTR_urban_411.trim.un.bt2.bam,urban_411,North Miami reef,South Canyon,25.86045,-80.10842,20,6.1,Pstr,,SAL,1/19/24
+PSTR_urban_416.trim.un.bt2.bam,urban_416,North Miami reef,Pillars,25.86203,-80.09978,32,9.8,Pstr,,SAL,1/19/24
+PSTR_urban_417.trim.un.bt2.bam,urban_417,North Miami reef,Pillars,25.86203,-80.09978,32,9.8,Pstr,,SAL,1/19/24
+PSTR_urban_419.trim.un.bt2.bam,urban_419,North Miami reef,Pillars,25.86203,-80.09978,29,8.8,Pstr,,SAL,1/19/24
+PSTR_urban_421.trim.un.bt2.bam,urban_421,North Miami reef,Pillars,25.86203,-80.09978,30,9.1,Pstr,,SAL,1/19/24
+PSTR_urban_422.trim.un.bt2.bam,urban_422,North Miami reef,Pillars,25.86203,-80.09978,30,9.1,Pstr,,SAL,1/19/24
+PSTR_urban_425.trim.un.bt2.bam,urban_425,North Miami reef,Pillars,25.86203,-80.09978,30,9.1,Pstr,,SAL,1/19/24
+PSTR_urban_426.trim.un.bt2.bam,urban_426,North Miami reef,Pillars,25.86203,-80.09978,30,9.1,Pstr,,SAL,1/19/24
+PSTR_urban_435.trim.un.bt2.bam,urban_435,North Miami reef,Graceland,25.93585,-80.11089,18,5.5,Pstr,,SAL,1/19/24
+PSTR_urban_437.trim.un.bt2.bam,urban_437,Miami urban,Seaquarium,25.73276,-80.16708,2,0.6,Pstr,,SAL,1/25/24
+PSTR_urban_438.trim.un.bt2.bam,urban_438,Miami urban,Miami Beach Marina,25.77001,-80.14122,5.9,1.8,Pstr,,SAL,1/19/24
+PSTR_urban_439.trim.un.bt2.bam,urban_439,Miami urban,Miami Beach Marina,25.77001,-80.14122,5.9,1.8,Pstr,,SAL,1/19/24
+PSTR_urban_440.trim.un.bt2.bam,urban_440,Miami urban,Miami Beach Marina,25.77001,-80.14122,6.6,2,Pstr,,SAL,1/19/24
+PSTR_urban_441.trim.un.bt2.bam,urban_441,Miami urban,Miami Beach Marina,25.77001,-80.14122,9.2,2.8,Pstr,,SAL,1/19/24
+PSTR_urban_442.trim.un.bt2.bam,urban_442,Miami urban,Miami Beach Marina,25.77001,-80.14122,8.9,2.7,Pstr,,SAL,1/19/24
+PSTR_urban_452.trim.un.bt2.bam,urban_452,North Miami reef,Graceland,25.93585,-80.11089,18.4,5.6,Pstr,,SAL,1/19/24
+PSTR_urban_453.trim.un.bt2.bam,urban_453,Miami urban,Miami Beach Marina,25.77001,-80.14122,6.6,2,Pstr,,SAL,1/19/24
+PSTR_urban_454.trim.un.bt2.bam,urban_454,Miami urban,Miami Beach Marina,25.77001,-80.14122,6.6,2,Pstr,,SAL,1/19/24
+PSTR_urban_456.trim.un.bt2.bam,urban_456,Miami urban,Miami Beach Marina,25.77001,-80.14122,6.6,2,Pstr,,SAL,1/19/24
+PSTR_urban_457.trim.un.bt2.bam,urban_457,Miami urban,Miami Beach Marina,25.77001,-80.14122,6.6,2,Pstr,,SAL,1/19/24
+PSTR_urban_458.trim.un.bt2.bam,urban_458,Miami urban,Miami Beach Marina,25.77001,-80.14122,,,Pstr,,SAL,1/19/24
+PSTR_urban_459.trim.un.bt2.bam,urban_459,Miami urban,Miami Beach Marina,25.77001,-80.14122,,,Pstr,,SAL,1/19/24
+PSTR_urban_460.trim.un.bt2.bam,urban_460,Miami urban,Miami Beach Marina,25.77001,-80.14122,,,Pstr,,SAL,1/19/24
+PSTR_urban_478.trim.un.bt2.bam,urban_478,Miami urban,Miami Beach Marina,25.77001,-80.14122,4.3,1.3,Pstr,,SAL,1/19/24
+PSTR_urban_479.trim.un.bt2.bam,urban_479,Miami urban,Miami Beach Marina,25.77001,-80.14122,9.5,2.9,Pstr,,SAL,1/19/24
+PSTR_urban_480.trim.un.bt2.bam,urban_480,Miami urban,Miami Beach Marina,25.77001,-80.14122,9.8,3,Pstr,,SAL,1/19/24
+PSTR_urban_481.trim.un.bt2.bam,urban_481,Miami urban,Miami Beach Marina,25.77001,-80.14122,9.8,3,Pstr,,SAL,1/19/24
+PSTR_urban_482.trim.un.bt2.bam,urban_482,Miami urban,Miami Beach Marina,25.77001,-80.14122,6.6,2,Pstr,,SAL,1/19/24
+PSTR_urban_488.trim.un.bt2.bam,urban_488,Miami urban,Miami Beach Marina,25.77001,-80.14122,8.5,2.6,Pstr,,SAL,1/19/24
+PSTR_urban_490.trim.un.bt2.bam,urban_490,Miami urban,Miami Beach Marina,25.77001,-80.14122,8.5,2.6,Pstr,,SAL,1/19/24
+PSTR_urban_491.trim.un.bt2.bam,urban_491,Miami urban,Miami Beach Marina,25.77001,-80.14122,7.5,2.3,Pstr,,SAL,1/19/24
+PSTR_urban_492.trim.un.bt2.bam,urban_492,Miami urban,Miami Beach Marina,25.77001,-80.14122,7.9,2.4,Pstr,,SAL,1/19/24
+PSTR_urban_493.trim.un.bt2.bam,urban_493,Miami urban,Miami Beach Marina,25.77001,-80.14122,,,Pstr,,SAL,1/19/24
+PSTR_urban_494.trim.un.bt2.bam,urban_494,Miami urban,Miami Beach Marina,25.77001,-80.14122,,,Pstr,,SAL,1/19/24
+PSTR_urban_495.trim.un.bt2.bam,urban_495,Miami urban,Miami Beach Marina,25.77001,-80.14122,,,Pstr,,SAL,1/19/24
+PSTR_urban_496.trim.un.bt2.bam,urban_496,Miami urban,Miami Beach Marina,25.77001,-80.14122,,,Pstr,,SAL,1/19/24
+PSTR_urban_499.trim.un.bt2.bam,urban_499,Miami urban,Coral City Camera,25.76697,-80.14495,5,1.5,Pstr,,SAL,1/26/24
+PSTR_urban_507.trim.un.bt2.bam,urban_507,Miami urban,Coral City Camera,25.76697,-80.14495,5,1.5,Pstr,,SAL,1/26/24
+PSTR_urban_509.trim.un.bt2.bam,urban_509,Miami urban,Coral City Camera,25.76697,-80.14495,5,1.5,Pstr,,SAL,1/26/24
+PSTR_urban_510.trim.un.bt2.bam,urban_510,Miami urban,Coral City Camera,25.76697,-80.14495,5,1.5,Pstr,,SAL,1/26/24
+PSTR_urban_512.trim.un.bt2.bam,urban_512,Miami urban,Coral City Camera,25.76697,-80.14495,5,1.5,Pstr,,SAL,1/26/24
+PSTR_urban_513.trim.un.bt2.bam,urban_513,Miami urban,Coral City Camera,25.76697,-80.14495,5,1.5,Pstr,,SAL,1/26/24
+PSTR_urban_514.trim.un.bt2.bam,urban_514,Miami urban,Coral City Camera,25.76697,-80.14495,5,1.5,Pstr,,SAL,1/26/24
+PSTR_urban_516.trim.un.bt2.bam,urban_516,Miami urban,Coral City Camera,25.76697,-80.14495,5,1.5,Pstr,,SAL,1/26/24
+PSTR_urban_517.trim.un.bt2.bam,urban_517,Miami urban,Coral City Camera,25.76697,-80.14495,5,1.5,Pstr,,SAL,1/26/24
+PSTR_urban_518.trim.un.bt2.bam,urban_518,Miami urban,Coral City Camera,25.76697,-80.14495,5,1.5,Pstr,,SAL,1/26/24
+PSTR_urban_519.trim.un.bt2.bam,urban_519,Miami urban,Coral City Camera,25.76697,-80.14495,5,1.5,Pstr,,SAL,1/26/24
+PSTR_urban_520.trim.un.bt2.bam,urban_520,Miami urban,Coral City Camera,25.76697,-80.14495,5,1.5,Pstr,,SAL,1/26/24
+PSTR_urban_521.trim.un.bt2.bam,urban_521,Miami urban,Coral City Camera,25.76697,-80.14495,5,1.5,Pstr,,SAL,1/26/24
+PSTR_urban_522.trim.un.bt2.bam,urban_522,Miami urban,Coral City Camera,25.76697,-80.14495,5,1.5,Pstr,,SAL,1/26/24
+PSTR_urban_526.trim.un.bt2.bam,urban_526,Miami urban,Coral City Camera,25.76697,-80.14495,,,Pstr,,SAL,1/26/24
+PSTR_urban_527.trim.un.bt2.bam,urban_527,Miami urban,Coral City Camera,25.76697,-80.14495,,,Pstr,,SAL,1/26/24
+PSTR_urban_529.trim.un.bt2.bam,urban_529,Miami urban,Coral City Camera,25.76697,-80.14495,,,Pstr,,SAL,1/26/24
+PSTR_urban_530.trim.un.bt2.bam,urban_530,Miami urban,Coral City Camera,25.76697,-80.14495,,,Pstr,,SAL,1/26/24
+PSTR_urban_586.trim.un.bt2.bam,urban_586,Palm Beach urban,Peanut Island,26.77153,-80.04421,3,0.9,Pstr,,SAL,1/30/24
+PSTR_urban_588.trim.un.bt2.bam,urban_588,Miami urban,Fisher Island,25.75571,-80.14168,,,Pstr,,SAL,1/26/24
+PSTR_urban_591.trim.un.bt2.bam,urban_591,Miami urban,Fisher Island,25.75571,-80.14168,,,Pstr,,SAL,1/26/24
+PSTR_urban_595.trim.un.bt2.bam,urban_595,Miami urban,Fisher Island,25.75571,-80.14168,,,Pstr,,SAL,1/26/24
+PSTR_urban_597.trim.un.bt2.bam,urban_597,Miami urban,Fisher Island,25.75571,-80.14168,,,Pstr,,SAL,1/26/24
+PSTR_urban_598.trim.un.bt2.bam,urban_598,Miami urban,Fisher Island,25.75571,-80.14168,8,2.4,Pstr,mislabeled as urban_578,SAL,1/26/24
+PSTR_urban_604.trim.un.bt2.bam,urban_604,Miami urban,Fisher Island,25.75571,-80.14168,1,0.3,Pstr,,SAL,1/26/24
+PSTR_urban_614.trim.un.bt2.bam,urban_614,Miami urban,Fisher Island,25.75571,-80.14168,4,1.2,Pstr,,SAL,1/26/24
+PSTR_urban_619.trim.un.bt2.bam,urban_619,Miami urban,Fisher Island,25.75571,-80.14168,7,2.1,Pstr,,SAL,1/26/24
+PSTR_urban_621.trim.un.bt2.bam,urban_621,Miami urban,Fisher Island,25.75571,-80.14168,4,1.2,Pstr,,SAL,1/26/24
+PSTR_urban_623.trim.un.bt2.bam,urban_623,Miami urban,Fisher Island,25.75571,-80.14168,,,Pstr,mislabeled as urban_unk,SAL,1/26/24
+PSTR_urban_642.trim.un.bt2.bam,urban_642,Miami urban,Fisher Island,25.75571,-80.14168,3,0.9,Pstr,,SAL,1/26/24
+PSTR_urban_647.trim.un.bt2.bam,urban_647,Miami urban,Fisher Island,25.75571,-80.14168,2,0.6,Pstr,,SAL,1/26/24
+PSTR_urban_648.trim.un.bt2.bam,urban_648,Miami urban,Fisher Island,25.75571,-80.14168,2,0.6,Pstr,,SAL,1/26/24
+PSTR_urban_651.trim.un.bt2.bam,urban_651,Miami urban,Fisher Island,25.75571,-80.14168,2,0.6,Pstr,,SAL,1/26/24
+PSTR_urban_656.trim.un.bt2.bam,urban_656,Miami urban,Fisher Island,25.75571,-80.14168,,,Pstr,,SAL,1/26/24
+PSTR_urban_678.trim.un.bt2.bam,urban_678,North Miami urban,FIU Biscayne Bay,25.90614,-80.13507,6.2,1.9,Pstr,,SAL,1/31/24
+PSTR_urban_680.trim.un.bt2.bam,urban_680,North Miami urban,FIU Biscayne Bay,25.90614,-80.13507,8,2.4,Pstr,,SAL,1/31/24
+PSTR_urban_684.trim.un.bt2.bam,urban_684,North Miami urban,Haulover Inlet,25.89993,-80.12244,4,1.2,Pstr,,SAL,1/31/24
+PSTR_urban_685.trim.un.bt2.bam,urban_685,North Miami urban,Haulover Inlet,25.89993,-80.12244,2,0.6,Pstr,,SAL,1/31/24
+PSTR_urban_686.trim.un.bt2.bam,urban_686,North Miami urban,Haulover Inlet,25.89993,-80.12244,2,0.6,Pstr,,SAL,1/31/24
+PSTR_urban_687.trim.un.bt2.bam,urban_687,North Miami urban,Haulover Inlet,25.89993,-80.12244,4,1.2,Pstr,,SAL,1/31/24
+PSTR_urban_688.trim.un.bt2.bam,urban_688,North Miami urban,Haulover Inlet,25.89993,-80.12244,2,0.6,Pstr,,SAL,1/31/24
+PSTR_urban_694.trim.un.bt2.bam,urban_694,Miami urban,FEC Slip Downtown,25.78301,-80.18813,13.1,4,Pstr,,SAL,1/31/24

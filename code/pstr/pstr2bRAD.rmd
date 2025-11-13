@@ -11,7 +11,7 @@ output:
 knit: (function(input, ...) {
     rmarkdown::render(
       input,
-      output_file = '../pstr strigosa/index.html',
+      output_file = '../pstr/index.html',
       envir = globalenv()
     )
   })
@@ -142,9 +142,9 @@ sbatch zip.slurm
 
 ### Aligning remaining reads to coral genome
 ```{bash, bowtie align 2}
-cd ~/urban/pstr strigosa/filteredReads
+cd ~/urban/pstr/filteredReads
 conda activate 2bRAD
-HOSTGENOME=~/db/pstr strigosaGenome/pstr strigosaeolataGenome
+HOSTGENOME=~/db/pcliGenome/PclivosaGenome
 mkdir junk
 # mapping with --local option, enables clipping of mismatching ends (guards against deletions near ends of RAD tags)
 2bRAD_bowtie2_launcher.py -g $HOSTGENOME -f un --split -u junk -a host --undir junk --launcher -e studivanms@gmail.com
@@ -228,13 +228,13 @@ Assessing base qualities and coverage depth
 ```-maxDepth```: highest total depth (sum over all samples) to assess; set to 10x number of samples
 ```-minInd```: the minimal number of individuals the site must be genotyped in. Set to 50% of total N at this stage.
 ```{bash, ANGSD}
-export FILTERS="-uniqueOnly 1 -remove_bads 1 -minMapQ 20 -maxDepth 1030 -minInd 52"
+export FILTERS="-uniqueOnly 1 -remove_bads 1 -minMapQ 20 -maxDepth 1960 -minInd 98"
 export TODO="-doQsDist 1 -doDepth 1 -doCounts 1 -dumpCounts 2"
 
-echo '#!/bin/bash' >pstr strigosaDD.sh
-echo angsd -b bamsClones -GL 1 $FILTERS $TODO -P 1 -out dd -nThreads 20 >>pstr strigosaDD.sh
+echo '#!/bin/bash' >pstrDD.sh
+echo angsd -b bamsClones -GL 1 $FILTERS $TODO -P 1 -out dd -nThreads 20 >>pstrDD.sh
 
-sbatch --mem=200GB -o pstr strigosaDD.o%j -e pstr strigosaDD.e%j --mail-user=studivanms@gmail.com --mail-type=ALL --partition=shortq7 pstr strigosaDD.sh
+sbatch --mem=200GB -o pstrDD.o%j -e pstrDD.e%j --mail-user=studivanms@gmail.com --mail-type=ALL --partition=shortq7 pstrDD.sh
 ```
 
 Summarizing results
@@ -251,18 +251,18 @@ Proportion of sites covered at >5X:
 cat quality.txt
 ```
 scp dd.pdf to local machine to look at distribution of base quality scores, fraction of sites in each sample passing coverage thresholds and fraction of sites passing genotyping rates cutoffs. Use these to guide choices of ```-minQ```,  ```-minIndDepth``` and ```-minInd``` filters in subsequent ```ANGSD``` runs.  
-![](../../figures/pstr strigosa/dd.pdf)
+![](../../figures/pstr/dd.pdf)
 
 <br>
 
 ### Identifying clones and technical replicates
 Set the ```-minInd``` flag to 80% of the number of samples you have
 ```{bash, ANGSD 2}
-FILTERS="-uniqueOnly 1 -remove_bads 1 -minMapQ 20 -minQ 30 -dosnpstat 1 -doHWE 1 -hwe_pval 1e-5 -sb_pval 1e-5 -hetbias_pval 1e-5 -skipTriallelic 1 -minInd 77 -snp_pval 1e-6 -minMaf 0.05"
+FILTERS="-uniqueOnly 1 -remove_bads 1 -minMapQ 20 -minQ 30 -dosnpstat 1 -doHWE 1 -hwe_pval 1e-5 -sb_pval 1e-5 -hetbias_pval 1e-5 -skipTriallelic 1 -minInd 156 -snp_pval 1e-6 -minMaf 0.05"
 TODO="-doMajorMinor 1 -doMaf 1 -doCounts 1 -makeMatrix 1 -doIBS 1 -doCov 1 -doGeno 8 -doBcf 1 -doPost 1 -doGlf 2"
 
-echo '#!/bin/bash' > pstr strigosaClones.sh
-echo angsd -b bamsClones -GL 1 $FILTERS $TODO -P 1 -out pstr strigosaClones >>pstr strigosaClones.sh
+echo '#!/bin/bash' > pstrClones.sh
+echo angsd -b bamsClones -GL 1 $FILTERS $TODO -P 1 -out pstrClones >>pstrClones.sh
 
 sbatch --mem=200GB -o radClones.o%j -e radClones.e%j --mail-type=ALL --mail-user=studivanms@gmail.com --partition=shortq7 radClones.sh
 ```
@@ -275,9 +275,9 @@ Use ibs matrix to identify clones with hierachial clustering in ```R```. ```scp`
 ```{r, Dendrogram With Clones, fig.width=13, fig.height=4.75, dpi=150, out.width="100%"}
 pacman::p_load("dendextend", "ggdendro", "tidyverse")
 
-cloneBams = read.csv("../../data/pstr strigosa/pstr strigosaMetadata.csv") # list of bam files
+cloneBams = read.csv("../../data/pstr/pstrMetadata.csv") # list of bam files
 
-cloneMa = as.matrix(read.table("../../data/pstr strigosa/ANGSD/clones/pstr strigosaClones.ibsMat")) # reads in IBS matrix produced by ANGSD 
+cloneMa = as.matrix(read.table("../../data/pstr/ANGSD/clones/pstrClones.ibsMat")) # reads in IBS matrix produced by ANGSD 
 
 dimnames(cloneMa) = list(cloneBams[,2],cloneBams[,2])
 clonesHc = hclust(as.dist(cloneMa),"ave")
@@ -312,20 +312,20 @@ for(i in 1:nrow(cloneDData$segments)) {
 
 cloneDendPoints$y = point[!is.na(point)]
 
-techReps = c("urban_080", "urban_080_2", "urban_080_3", "urban_289", "urban_289_2")
-cloneDendPoints$site = factor(cloneDendPoints$site,levels(cloneDendPoints$site)[c(3, 10, 4, 2, 12, 8, 11, 9, 5, 7, 6, 1, 13)])
+techReps = c("urban_029", "urban_029_2", "urban_029_3", "urban_063", "urban_063_2", "urban_063_3", "urban_090", "urban_090_2", "urban_090_3", "urban_216", "urban_216_2", "urban_216_3")
+cloneDendPoints$site = factor(cloneDendPoints$site,levels(cloneDendPoints$site)[c(5, 4, 16, 17, 7, 3, 13, 19, 12, 6, 2, 18, 15, 11, 8, 10, 9, 1, 20, 14)])
 
-cloneDendPoints$region = factor(cloneDendPoints$region,levels(cloneDendPoints$region)[c(2, 3, 4, 5, 1)])
+cloneDendPoints$region = factor(cloneDendPoints$region,levels(cloneDendPoints$region)[c(2, 3, 4, 5, 1, 6)])
 
-Pal <- c("#E69F00","#009E73","#D55E00","#CC79A7","#E41A1C","#377EB8","#FF7F00","#A65628","#FC8D62","#8DA0CB","#E78AC3","#A6D854","#FFD92F")
+Pal <- c("#E69F00", "#56B4E9", "#009E73", "#0072B2", "#D55E00", "#CC79A7", "#999999", "#E41A1C", "#377EB8", "#4DAF4A", "#984EA3", "#FF7F00", "#A65628", "#66C2A5", "#FC8D62", "#8DA0CB", "#E78AC3", "#A6D854", "#FFD92F", "#B3B3B3")
 
 cloneDendA = ggplot() +
   geom_segment(data = segment(cloneDData), aes(x = x, y = y, xend = xend, yend = yend2), size = 0.5) +
   geom_point(data = cloneDendPoints, aes(x = x, y = y, fill = site, shape = region), size = 4, stroke = 0.25) +
   # scale_fill_brewer(palette = "Dark2", name = "Site") +
   scale_fill_manual(values = Pal, name= "Site")+
-  scale_shape_manual(values = c(21, 22, 23, 24, 25), name = "Region")+
-  geom_hline(yintercept = 0.12, color = "red", lty = 5, size = 0.75) + # creating a dashed line to indicate a clonal distance threshold
+  scale_shape_manual(values = c(21, 22, 23, 24, 25, 8), name = "Region")+
+  geom_hline(yintercept = 0.14, color = "red", lty = 5, size = 0.75) + # creating a dashed line to indicate a clonal distance threshold
   geom_text(data = subset(cloneDendPoints, subset = label %in% techReps), aes(x = x, y = (y - .045), label = label), angle = 90) + # spacing technical replicates further from leaf
   geom_text(data = subset(cloneDendPoints, subset = !label %in% techReps), aes(x = x, y = (y - .025), label = label), angle = 90) +
   labs(y = "Genetic distance (1 - IBS)") +
@@ -352,36 +352,36 @@ cloneDend = cloneDendA + theme(
 
 cloneDend
 
-ggsave("../../figures/pstr strigosa/cloneDend.pdf", plot = cloneDend, height = 8, width = 24, units = "in", dpi = 300)
-ggsave("../../figures/pstr strigosa/cloneDend.png", plot = cloneDend, height = 8, width = 24, units = "in", dpi = 300)
+ggsave("../../figures/pstr/cloneDend.pdf", plot = cloneDend, height = 8, width = 24, units = "in", dpi = 300)
+ggsave("../../figures/pstr/cloneDend.png", plot = cloneDend, height = 8, width = 24, units = "in", dpi = 300)
 ```
-![](../../figures/pstr strigosa/cloneDend.png)
+![](../../figures/pstr/cloneDend.png)
 <br>
 
 ### Removing clones and re-running ANGSD
 Set the ```-minInd``` flag to 80% of the number of samples you have remaining after removal of clones
 ```{bash, ANGSD no clones}
 mkdir clones
-mv pstr strigosaClones* clones
+mv pstrClones* clones
 
 ll *.bam > bamsNoClones
 
-cat bamsClones | grep -v 'pstr strigosa_urban_359.trim.un.bt2.bam\|pstr strigosa_nmfs_035.trim.un.bt2.bam\|pstr strigosa_nmfs_069.trim.un.bt2.bam\|pstr strigosa_nmfs_041.trim.un.bt2.bam\|pstr strigosa_urban_080_2.trim.un.bt2.bam\|pstr strigosa_urban_080_3.trim.un.bt2.bam\|pstr strigosa_urban_289_2.trim.un.bt2.bam\|pstr strigosa_urban_081.trim.un.bt2.bam\|pstr strigosa_urban_415.trim.un.bt2.bam' >bamsNoClones
+cat bamsClones | grep -v 'PSTR_nmfs_013.trim.un.bt2.bam\|PSTR_nmfs_021.trim.un.bt2.bam\|PSTR_NU2.trim.un.bt2.bam\|PSTR_NU11.trim.un.bt2.bam\|PSTR_OS6.trim.un.bt2.bam\|PSTR_OS11.trim.un.bt2.bam\|PSTR_OS14.trim.un.bt2.bam\|PSTR_OS19.trim.un.bt2.bam\|PSTR_UR5.trim.un.bt2.bam\|PSTR_UR6.trim.un.bt2.bam\|PSTR_UR11.trim.un.bt2.bam\|PSTR_UR12.trim.un.bt2.bam\|PSTR_UR24.trim.un.bt2.bam\|PSTR_UR28.trim.un.bt2.bam\|PSTR_UR29.trim.un.bt2.bam\|PSTR_UR30.trim.un.bt2.bam\|PSTR_urban_003.trim.un.bt2.bam\|PSTR_urban_004.trim.un.bt2.bam\|PSTR_urban_029_2.trim.un.bt2.bam\|PSTR_urban_029_3.trim.un.bt2.bam\|PSTR_urban_033.trim.un.bt2.bam\|PSTR_urban_034.trim.un.bt2.bam\|PSTR_urban_063_2.trim.un.bt2.bam\|PSTR_urban_063_3.trim.un.bt2.bam\|PSTR_urban_090_2.trim.un.bt2.bam\|PSTR_urban_090_3.trim.un.bt2.bam\|PSTR_urban_109.trim.un.bt2.bam\|PSTR_urban_216_2.trim.un.bt2.bam\|PSTR_urban_216_3.trim.un.bt2.bam\|PSTR_urban_244.trim.un.bt2.bam\|PSTR_urban_384.trim.un.bt2.bam\|PSTR_urban_458.trim.un.bt2.bam' >bamsNoClones
 
 module load angsd-0.933-gcc-9.2.0-65d64pp
-FILTERS="-uniqueOnly 1 -remove_bads 1 -minMapQ 20 -minQ 30 -dosnpstat 1 -doHWE 1 -hwe_pval 1e-5 -sb_pval 1e-5 -hetbias_pval 1e-5 -skipTriallelic 1 -minInd 70 -snp_pval 1e-6 -minMaf 0.05"
+FILTERS="-uniqueOnly 1 -remove_bads 1 -minMapQ 20 -minQ 30 -dosnpstat 1 -doHWE 1 -hwe_pval 1e-5 -sb_pval 1e-5 -hetbias_pval 1e-5 -skipTriallelic 1 -minInd 131 -snp_pval 1e-6 -minMaf 0.05"
 TODO="-doMajorMinor 1 -doMaf 1 -doCounts 1 -makeMatrix 1 -doIBS 1 -doCov 1 -doGeno 8 -doBcf 1 -doPost 1 -doGlf 2"
 
-echo '#!/bin/bash' > pstr strigosaNoClones.sh
-echo angsd -b bamsNoClones -GL 1 $FILTERS $TODO -P 1 -out pstr strigosaNoClones >> pstr strigosaNoClones.sh
+echo '#!/bin/bash' > pstrNoClones.sh
+echo angsd -b bamsNoClones -GL 1 $FILTERS $TODO -P 1 -out pstrNoClones >> pstrNoClones.sh
 sbatch --mem=200GB -o radNoClones.o%j -e radNoClones.e%j -p shortq7 --mail-type=ALL --mail-user=studivanms@gmail.com radNoClones.sh
 ```
 
 How many SNPs do we have?
 ```{bash, SNPs? 1}
-grep "filtering:" pstr strigosaNoClones.e*
+grep "filtering:" pstrNoClones.e*
 ```
-Number of sites retained after filtering: 20323 
+Number of sites retained after filtering: 11628 
 
 <br>
 
@@ -400,14 +400,14 @@ sbatch zip.slurm
 ### Resolving population structure with pcangsd
 ```{bash, pcangsd}
 mkdir ../pcangsd
-cd pcangsd
+cd ../pcangsd
 
-cp ../ANGSD/pstr strigosaNoClones.beagle.gz .
+cp ../ANGSD/pstrNoClones.beagle.gz .
 
 conda activate pcangsd
 
-echo '#!/bin/bash' > pcangsd.sh
-echo 'pcangsd -b pstr strigosaNoClones.beagle.gz -o pstr strigosaPcangsd --admix --inbreed-samples --pcadapt --selection' >> pcangsd
+echo '#!/bin/bash' > pcangsd
+echo 'pcangsd -b pstrNoClones.beagle.gz -o pstrPcangsd --admix --inbreed-samples --pcadapt --selection' >> pcangsd
 launcher_creator.py -j pcangsd -n pcangsd -q shortq7 -t 06:00:00 -e $EMAIL -w 1 -N 1
 sbatch pcangsd.slurm
 ```
@@ -419,8 +419,8 @@ mkdir ../ngsAdmix
 cp *beagle* ../ngsAdmix
 cd ../ngsAdmix
 
-ngsAdmixLauncher.py -f pstr strigosaNoClones.beagle.gz --maxK 16 -r 50 -n pstr strigosa --launcher -e studivanms@gmail.com
-sbatch --mem=200GB pstr strigosaNgsAdmix.slurm
+ngsAdmixLauncher.py -f pstrNoClones.beagle.gz --maxK 23 -r 50 -n pstr --launcher -e studivanms@gmail.com
+sbatch --mem=200GB pstrNgsAdmix.slurm
 ```
 
 <br>
@@ -428,9 +428,9 @@ sbatch --mem=200GB pstr strigosaNgsAdmix.slurm
 ### Determining the most likely number of ancestral populations (K)
 Taking the likelihood value from each run of NGSadmix and put them into a file that can be used with Clumpak to calculate the most likely K using the methods of Evanno et al. (2005).
 ```{bash, clumpak}
->pstr strigosaNgsAdmixLogfile
-for log in pstr strigosa*.log; do
-grep -Po 'like=\K[^ ]+' $log >> pstr strigosaNgsAdmixLogfile;
+>pstrNgsAdmixLogfile
+for log in pstr*.log; do
+grep -Po 'like=\K[^ ]+' $log >> pstrNgsAdmixLogfile;
 done
 ```
 
@@ -438,11 +438,11 @@ Start R in command line
 ```{bash, R}
 R
 
-logs <- as.data.frame(read.table("pstr strigosaNgsAdmixLogfile"))
+logs <- as.data.frame(read.table("pstrNgsAdmixLogfile"))
 
 # output is organized with 10, 11 preceding 1, 2, 3 etc.
 logs$K <- c(rep("10", 50), rep("11", 50), rep("12", 50), rep("13", 50), rep("14", 50), rep("15", 50), rep("16", 50), rep("1", 50), rep("2", 50), rep("3", 50), rep("4", 50), rep("5", 50), rep("6", 50), rep("7", 50), rep("8", 50), rep("9", 50))
-write.table(logs[, c(2, 1)], "pstr strigosaNgsAdmixLogfile_formatted", row.names = F, col.names = F, quote = F)
+write.table(logs[, c(2, 1)], "pstrNgsAdmixLogfile_formatted", row.names = F, col.names = F, quote = F)
 quit()
 # No need to save workspace image [press 'n']
 n
@@ -450,7 +450,7 @@ n
 
 Check that the formatted log file has the correct number of entries
 ```{bash, check rows}
-cat pstr strigosaNgsAdmixLogfile_formatted | wc -l
+cat pstrNgsAdmixLogfile_formatted | wc -l
 ```
 800, so yes (K=16 * 50 simulations each)
 
@@ -458,17 +458,17 @@ cat pstr strigosaNgsAdmixLogfile_formatted | wc -l
 
 Make copies of .qopt files to run structure selector on (.Q files)
 ```{bash, qloop}
-for file in pstr strigosa*.qopt; do
+for file in pstr*.qopt; do
 filename=$(basename -- "$file" .qopt);
 cp "$file" "$filename".Q;
 done
 
-mkdir pstr strigosaQ
-mv pstr strigosa*Q pstr strigosaQ
+mkdir pstrQ
+mv pstr*Q pstrQ
 
-zip -r pstr strigosaQ.zip pstr strigosaQ
+zip -r pstrQ.zip pstrQ
 ```
-scp .zip, formatted logfile, and pstr strigosaNoClones* to local machine
+scp .zip, formatted logfile, and pstrNoClones* to local machine
 Upload logfile to CLUMPAK as a Log Probability table file (http://clumpak.tau.ac.il/bestK.html)
 And .zip to structure selector as an ADMIXTURE file (https://lmme.qdio.ac.cn/stable/StructureSelector/index.html)
 You also need to create a PopMap file from bamsNoClones: a two-column, tab-delimited text file with sampleID and populationID
@@ -488,7 +488,7 @@ library(patchwork)
 # -------------------------
 # 1. Read space-delimited input file
 # -------------------------
-data_file <- "../../data/pstr strigosa/ngsAdmix/pstr strigosaNgsAdmixLogfile_formatted"  # replace with your file
+data_file <- "../../data/pstr/ngsAdmix/pstrNgsAdmixLogfile_formatted"  # replace with your file
 df <- read.table(data_file, header = FALSE, sep = "", 
                  col.names = c("K", "LogLikelihood"), stringsAsFactors = FALSE)
 
@@ -599,7 +599,7 @@ if(!is.null(p_deltaK)) {
 # -------------------------
 # 7. Save combined plot
 # -------------------------
-output_file <- "../../figures/pstr strigosa/DeltaK_and_MeanLnP_plot.png"
+output_file <- "../../figures/pstr/DeltaK_and_MeanLnP_plot.png"
 ggsave(output_file, plot = p_combined, width = 6, height = 8, dpi = 300)
 
 # -------------------------
@@ -616,7 +616,7 @@ if(!is.null(global_best)) {
   cat("No valid data to plot.\n")
 }
 ```
-![](../../figures/pstr strigosa/DeltaK_and_MeanLnP_plot.png)
+![](../../figures/pstr/DeltaK_and_MeanLnP_plot.png)
 
 <br>
 
@@ -625,14 +625,14 @@ While K=1 (panmixia) appears to be the most likely scenario based on model likel
 <br>
 
 K=1
-![](../../figures/pstr strigosa/K=1.png)
+![](../../figures/pstr/K=1.png)
 K=2
-![](../../figures/pstr strigosa/K=2.png)
+![](../../figures/pstr/K=2.png)
 K=3
-![](../../figures/pstr strigosa/K=3.png)
+![](../../figures/pstr/K=3.png)
 
 K=4
-![](../../figures/pstr strigosa/K=4.png)
+![](../../figures/pstr/K=4.png)
 
 <br>
 

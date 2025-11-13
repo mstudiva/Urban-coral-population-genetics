@@ -1,0 +1,23 @@
+PCAngsd v1.36.4
+Time: 13/11/2025 00:22:35
+Directory: /space/home/cns.local/michael.studivan/urban/pstr/pcangsd
+Options:
+	--beagle pstrNoClones.beagle.gz
+	--out pstrPcangsd
+	--selection
+	--pcadapt
+	--inbreed_samples
+	--admix
+
+Loaded 11628 sites and 164 samples.
+Number of sites after MAF filtering (0.05): 11628
+
+PCAngsd converged in 26 iterations using 3 eigenvectors.
+Saved covariance matrix as pstrPcangsd.cov
+Saved test statistics as pstrPcangsd.selection
+Saved z-scores as pstrPcangsd.pcadapt.zscores
+Saved per-sample inbreeding coefficients as pstrPcangsd.inbreed.samples
+Saved admixture proportions as pstrPcangsd.admix.4.Q
+Saved ancestral allele frequencies proportions as pstrPcangsd.admix.4.P
+
+Total elapsed time: 0m5s

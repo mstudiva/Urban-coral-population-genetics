@@ -1,0 +1,23 @@
+PCAngsd v1.36.4
+Time: 12/11/2025 23:03:25
+Directory: /space/home/cns.local/michael.studivan/urban/pcli/pcangsd
+Options:
+	--beagle pcliNoClones.beagle.gz
+	--out pcliPcangsd
+	--selection
+	--pcadapt
+	--inbreed_samples
+	--admix
+
+Loaded 15888 sites and 80 samples.
+Number of sites after MAF filtering (0.05): 15888
+
+PCAngsd converged in 13 iterations using 1 eigenvectors.
+Saved covariance matrix as pcliPcangsd.cov
+Saved test statistics as pcliPcangsd.selection
+Saved z-scores as pcliPcangsd.pcadapt.zscores
+Saved per-sample inbreeding coefficients as pcliPcangsd.inbreed.samples
+Saved admixture proportions as pcliPcangsd.admix.2.Q
+Saved ancestral allele frequencies proportions as pcliPcangsd.admix.2.P
+
+Total elapsed time: 0m1s
