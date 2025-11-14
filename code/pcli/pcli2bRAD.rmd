@@ -441,7 +441,7 @@ R
 logs <- as.data.frame(read.table("pcliNgsAdmixLogfile"))
 
 # output is organized with 10, 11 preceding 1, 2, 3 etc.
-logs$K <- c(rep("10", 50), rep("11", 50), rep("12", 50), rep("13", 50), rep("14", 50), rep("15", 50), rep("16", 50), rep("1", 50), rep("2", 50), rep("3", 50), rep("4", 50), rep("5", 50), rep("6", 50), rep("7", 50), rep("8", 50), rep("9", 50))
+logs$K <- c(rep("10", 50), rep("11", 50), rep("12", 50), rep("13", 50), rep("14", 50), rep("15", 50), rep("16", 50), rep("17", 50), rep("1", 50), rep("2", 50), rep("3", 50), rep("4", 50), rep("5", 50), rep("6", 50), rep("7", 50), rep("8", 50), rep("9", 50))
 write.table(logs[, c(2, 1)], "pcliNgsAdmixLogfile_formatted", row.names = F, col.names = F, quote = F)
 quit()
 # No need to save workspace image [press 'n']
@@ -452,7 +452,7 @@ Check that the formatted log file has the correct number of entries
 ```{bash, check rows}
 cat pcliNgsAdmixLogfile_formatted | wc -l
 ```
-800, so yes (K=16 * 50 simulations each)
+850, so yes (K=17 * 50 simulations each)
 
 <br>
 
@@ -469,9 +469,93 @@ mv pcli*Q pcliQ
 zip -r pcliQ.zip pcliQ
 ```
 scp .zip, formatted logfile, and pcliNoClones* to local machine
+
+Create a PopMap file from bamsNoClones: a two-column, tab-delimited text file with sampleID and populationID
+Reorder output Q files and PopMap file based on specific site order 
+```{r, qsort}
+library(tidyverse)
+
+popfile <- read.table(file = "../../data/pcli/ngsAdmix/pcliPopfile.txt", header = FALSE, col.names=c("sample", "site"), stringsAsFactors=FALSE)
+
+site_order <- c(
+  "EmeraldReef",
+  "RainbowReef",
+  "FisherIsland",
+  "CoralCityCamera",
+  "StarIsland",
+  "MacArthurNorth",
+  "BelleIsle",
+  "PillarsReef",
+  "ArchCreek",
+  "FIUBiscayneBay",
+  "GracelandReef",
+  "FTL4Reef",
+  "BC1Reef",
+  "T328Reef",
+  "PeanutIsland"
+)
+
+site_factor <- factor(popfile$site, levels = site_order)
+ord <- order(site_factor)
+
+popfile_sorted <- popfile[ord, ]
+
+write.table(popfile_sorted, "../../data/pcli/ngsAdmix/pcliPopfile_sorted.txt",
+            quote=FALSE, row.names=FALSE, col.names=FALSE, sep="\t")
+
+# Unzips, loops through, and reorders each .Q file based on popfile_sorted
+unzip("../../data/pcli/ngsAdmix/pcliQ.zip", exdir = "../../data/pcli/ngsAdmix/")
+
+q_dir  <- "../../data/pcli/ngsAdmix/pcliQ"              # where .Q files now live
+out_dir <- "../../data/pcli/ngsAdmix/pcliQ_sorted"   # new folder for reordered files
+dir.create(out_dir, showWarnings = FALSE)
+
+q_files <- list.files(q_dir, pattern="\\.Q$|\\.qopt$", full.names=TRUE)
+length(q_files) # should be 800
+
+for (file in q_files) {
+
+  q <- read.table(file, header=FALSE, colClasses = "character")
+
+  # must have same number of rows
+  stopifnot(nrow(q) == nrow(popfile_sorted))
+
+  q_sorted <- q[ord, ]
+
+  out_file <- file.path(out_dir, basename(file))
+
+  write.table(
+    q_sorted,
+    out_file,
+    quote = FALSE,
+    row.names = FALSE,
+    col.names = FALSE
+  )
+}
+
+# Cleanup
+unlink(q_dir, recursive = TRUE) # Delete the uncompressed pcliQ directory 
+
+# Zip the pcliQ_sorted directory
+out_dir_norm <- normalizePath(out_dir)
+parent_dir   <- dirname(out_dir_norm)
+folder_name  <- basename(out_dir_norm)
+
+zipfile_path <- file.path(parent_dir, "pcliQ_sorted.zip")
+cmd <- sprintf(
+  'cd "%s" && zip -r "%s" "%s"',
+  parent_dir,
+  basename(zipfile_path),
+  folder_name
+)
+cat("Running command:\n", cmd, "\n")
+system(cmd)
+if (file.exists(zipfile_path)) {
+  unlink(out_dir_norm, recursive = TRUE)
+} # Delete the uncompressed pcliQ_sorted directory 
+```
 Upload logfile to CLUMPAK as a Log Probability table file (http://clumpak.tau.ac.il/bestK.html)
 And .zip to structure selector as an ADMIXTURE file (https://lmme.qdio.ac.cn/stable/StructureSelector/index.html)
-You also need to create a PopMap file from bamsNoClones: a two-column, tab-delimited text file with sampleID and populationID
 
 <br>
 

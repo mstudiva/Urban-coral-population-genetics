@@ -1,94 +1,94 @@
-nmfs_001	Rainbow Reef
-nmfs_002	Rainbow Reef
-nmfs_003	Rainbow Reef
-nmfs_005	Rainbow Reef
-nmfs_012	Emerald Reef
-nmfs_015	Emerald Reef
-nmfs_017	Emerald Reef
-nmfs_031	MacArthur North
-nmfs_033	MacArthur North
-nmfs_034_3	MacArthur North
-nmfs_037	Emerald Reef
-nmfs_038	Emerald Reef
-nmfs_046	Rainbow Reef
-nmfs_053	Rainbow Reef
-nmfs_056	Star Island
-nmfs_058	Star Island
-nmfs_063_3	Star Island
-nmfs_064	Star Island
-nmfs_066	MacArthur North
-nmfs_070	MacArthur North
-urban_019	Star Island
-urban_053	FTL4
-urban_059	BC1
-urban_060	BC1
-urban_065	BC1
-urban_069	BC1
-urban_076	Emerald Reef
-urban_080	Emerald Reef
-urban_082	Emerald Reef
-urban_087	Emerald Reef
-urban_089	Emerald Reef
-urban_093	Rainbow Reef
-urban_094	Rainbow Reef
-urban_095	Rainbow Reef
-urban_097	Rainbow Reef
-urban_100	Rainbow Reef
-urban_102	Rainbow Reef
-urban_105	Rainbow Reef
-urban_106	Rainbow Reef
-urban_159b	Emerald Reef
-urban_160	Star Island
-urban_161b	Emerald Reef
-urban_166	Emerald Reef
-urban_247	BC1
-urban_283	BC1
-urban_288	BC1
-urban_289	BC1
-urban_297	T328
-urban_305	FTL4
-urban_357	MacArthur North
-urban_358	MacArthur North
-urban_361	MacArthur North
-urban_363	MacArthur North
-urban_365	MacArthur North
-urban_366	MacArthur North
-urban_367	MacArthur North
-urban_368	MacArthur North
-urban_369	MacArthur North
-urban_370	MacArthur North
-urban_371	MacArthur North
-urban_372	MacArthur North
-urban_405	Pillars
-urban_409	South Canyon
-urban_431	Graceland
-urban_473	Coral City Camera
-urban_535	Coral City Camera
-urban_542	Coral City Camera
-urban_543	Coral City Camera
-urban_546	Coral City Camera
-urban_552	Coral City Camera
-urban_553	Coral City Camera
-urban_554	Coral City Camera
-urban_557	Coral City Camera
-urban_562	Coral City Camera
-urban_570	Coral City Camera
-urban_576	Fisher Island
-urban_577	Fisher Island
-urban_589	Fisher Island
-urban_602	Fisher Island
-urban_603	Fisher Island
-urban_605	Fisher Island
-urban_606	Fisher Island
-urban_609	Fisher Island
-urban_613	Fisher Island
-urban_615	Fisher Island
-urban_616	Fisher Island
-urban_625	Fisher Island
-urban_638	Fisher Island
-urban_643	Fisher Island
-urban_649	Fisher Island
-urban_652	Fisher Island
-urban_653	Fisher Island
-urban_654	Fisher Island
-urban_679	FIU Biscayne Bay
+nmfs_001	RainbowReef
+nmfs_002	RainbowReef
+nmfs_003	RainbowReef
+nmfs_005	RainbowReef
+nmfs_012	EmeraldReef
+nmfs_015	EmeraldReef
+nmfs_017	EmeraldReef
+nmfs_031	MacArthurNorth
+nmfs_033	MacArthurNorth
+nmfs_034_3	MacArthurNorth
+nmfs_037	EmeraldReef
+nmfs_038	EmeraldReef
+nmfs_046	RainbowReef
+nmfs_053	RainbowReef
+nmfs_056	StarIsland
+nmfs_058	StarIsland
+nmfs_063_3	StarIsland
+nmfs_064	StarIsland
+nmfs_066	MacArthurNorth
+nmfs_070	MacArthurNorth
+urban_019	StarIsland
+urban_053	FTL4Reef
+urban_059	BC1Reef
+urban_060	BC1Reef
+urban_065	BC1Reef
+urban_069	BC1Reef
+urban_076	EmeraldReef
+urban_080	EmeraldReef
+urban_082	EmeraldReef
+urban_087	EmeraldReef
+urban_089	EmeraldReef
+urban_093	RainbowReef
+urban_094	RainbowReef
+urban_095	RainbowReef
+urban_097	RainbowReef
+urban_100	RainbowReef
+urban_102	RainbowReef
+urban_105	RainbowReef
+urban_106	RainbowReef
+urban_159b	EmeraldReef
+urban_160	StarIsland
+urban_161b	EmeraldReef
+urban_166	EmeraldReef
+urban_247	BC1Reef
+urban_283	BC1Reef
+urban_288	BC1Reef
+urban_289	BC1Reef
+urban_297	T328Reef
+urban_305	FTL4Reef
+urban_357	MacArthurNorth
+urban_358	MacArthurNorth
+urban_361	MacArthurNorth
+urban_363	MacArthurNorth
+urban_365	MacArthurNorth
+urban_366	MacArthurNorth
+urban_367	MacArthurNorth
+urban_368	MacArthurNorth
+urban_369	MacArthurNorth
+urban_370	MacArthurNorth
+urban_371	MacArthurNorth
+urban_372	MacArthurNorth
+urban_405	PillarsReef
+urban_409	SouthCanyonReef
+urban_431	GracelandReef
+urban_473	CoralCityCamera
+urban_535	CoralCityCamera
+urban_542	CoralCityCamera
+urban_543	CoralCityCamera
+urban_546	CoralCityCamera
+urban_552	CoralCityCamera
+urban_553	CoralCityCamera
+urban_554	CoralCityCamera
+urban_557	CoralCityCamera
+urban_562	CoralCityCamera
+urban_570	CoralCityCamera
+urban_576	FisherIsland
+urban_577	FisherIsland
+urban_589	FisherIsland
+urban_602	FisherIsland
+urban_603	FisherIsland
+urban_605	FisherIsland
+urban_606	FisherIsland
+urban_609	FisherIsland
+urban_613	FisherIsland
+urban_615	FisherIsland
+urban_616	FisherIsland
+urban_625	FisherIsland
+urban_638	FisherIsland
+urban_643	FisherIsland
+urban_649	FisherIsland
+urban_652	FisherIsland
+urban_653	FisherIsland
+urban_654	FisherIsland
+urban_679	FIUBiscayneBay
