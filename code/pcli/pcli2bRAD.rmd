@@ -478,22 +478,7 @@ library(tidyverse)
 popfile <- read.table(file = "../../data/pcli/ngsAdmix/pcliPopfile.txt", header = FALSE, col.names=c("sample", "site"), stringsAsFactors=FALSE)
 
 site_order <- c(
-  "EmeraldReef",
-  "RainbowReef",
-  "FisherIsland",
-  "CoralCityCamera",
-  "StarIsland",
-  "MacArthurNorth",
-  "BelleIsle",
-  "PillarsReef",
-  "ArchCreek",
-  "FIUBiscayneBay",
-  "GracelandReef",
-  "FTL4Reef",
-  "BC1Reef",
-  "T328Reef",
-  "PeanutIsland"
-)
+"EmeraldReef", "RainbowReef", "Seaquarium", "FisherIsland", "CoralCityCamera", "StarIsland", "MacArthurNorth", "BelleIsle", "SouthCanyonReef", "PillarsReef", "HauloverInlet", "FIUBiscayneBay", "FTL4Reef", "PeanutIsland")
 
 site_factor <- factor(popfile$site, levels = site_order)
 ord <- order(site_factor)
