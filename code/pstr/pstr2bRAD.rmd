@@ -144,7 +144,7 @@ sbatch zip.slurm
 ```{bash, bowtie align 2}
 cd ~/urban/pstr/filteredReads
 conda activate 2bRAD
-HOSTGENOME=~/db/pcliGenome/PclivosaGenome
+HOSTGENOME=~/db/pstrGenome/PclivosaGenome
 mkdir junk
 # mapping with --local option, enables clipping of mismatching ends (guards against deletions near ends of RAD tags)
 2bRAD_bowtie2_launcher.py -g $HOSTGENOME -f un --split -u junk -a host --undir junk --launcher -e studivanms@gmail.com
@@ -469,9 +469,96 @@ mv pstr*Q pstrQ
 zip -r pstrQ.zip pstrQ
 ```
 scp .zip, formatted logfile, and pstrNoClones* to local machine
+
+Create a PopMap file from bamsNoClones: a two-column, tab-delimited text file with sampleID and populationID
+Reorder output Q files and PopMap file based on specific site order 
+```{r, qsort}
+library(tidyverse)
+
+popfile <- read.table(file = "../../data/pstr/ngsAdmix/pstrPopfile.txt", header = FALSE, col.names=c("sample", "site"), stringsAsFactors=FALSE)
+
+site_order <- c(
+  "EmeraldReef",
+  "RainbowReef",
+  "Seaquarium",
+  "FisherIsland",
+  "CoralCityCamera",
+  "MiamiBeachMarina",
+  "StarIsland",
+  "MacArthurNorth",
+  "Downtown",
+  "BelleIsle",
+  "SouthCanyonReef",
+  "PillarsReef",
+  "HauloverInlet",
+  "FIUBiscayneBay",
+  "GracelandReef",
+  "FTL4Reef",
+  "BC1Reef",
+  "T328Reef",
+  "PeanutIsland")
+
+site_factor <- factor(popfile$site, levels = site_order)
+ord <- order(site_factor)
+
+popfile_sorted <- popfile[ord, ]
+
+write.table(popfile_sorted, "../../data/pstr/ngsAdmix/pstrPopfile_sorted.txt",
+            quote=FALSE, row.names=FALSE, col.names=FALSE, sep="\t")
+
+# Unzips, loops through, and reorders each .Q file based on popfile_sorted
+unzip("../../data/pstr/ngsAdmix/pstrQ.zip", exdir = "../../data/pstr/ngsAdmix/")
+
+q_dir  <- "../../data/pstr/ngsAdmix/pstrQ"              # where .Q files now live
+out_dir <- "../../data/pstr/ngsAdmix/pstrQ_sorted"   # new folder for reordered files
+dir.create(out_dir, showWarnings = FALSE)
+
+q_files <- list.files(q_dir, pattern="\\.Q$|\\.qopt$", full.names=TRUE)
+length(q_files) # should be 800
+
+for (file in q_files) {
+
+  q <- read.table(file, header=FALSE, colClasses = "character")
+
+  # must have same number of rows
+  stopifnot(nrow(q) == nrow(popfile_sorted))
+
+  q_sorted <- q[ord, ]
+
+  out_file <- file.path(out_dir, basename(file))
+
+  write.table(
+    q_sorted,
+    out_file,
+    quote = FALSE,
+    row.names = FALSE,
+    col.names = FALSE
+  )
+}
+
+# Cleanup
+unlink(q_dir, recursive = TRUE) # Delete the uncompressed pstrQ directory 
+
+# Zip the pstrQ_sorted directory
+out_dir_norm <- normalizePath(out_dir)
+parent_dir   <- dirname(out_dir_norm)
+folder_name  <- basename(out_dir_norm)
+
+zipfile_path <- file.path(parent_dir, "pstrQ_sorted.zip")
+cmd <- sprintf(
+  'cd "%s" && zip -r "%s" "%s"',
+  parent_dir,
+  basename(zipfile_path),
+  folder_name
+)
+cat("Running command:\n", cmd, "\n")
+system(cmd)
+if (file.exists(zipfile_path)) {
+  unlink(out_dir_norm, recursive = TRUE)
+} # Delete the uncompressed pstrQ_sorted directory 
+```
 Upload logfile to CLUMPAK as a Log Probability table file (http://clumpak.tau.ac.il/bestK.html)
 And .zip to structure selector as an ADMIXTURE file (https://lmme.qdio.ac.cn/stable/StructureSelector/index.html)
-You also need to create a PopMap file from bamsNoClones: a two-column, tab-delimited text file with sampleID and populationID
 
 <br>
 

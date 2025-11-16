@@ -256,7 +256,7 @@ scp dd.pdf to local machine to look at distribution of base quality scores, frac
 <br>
 
 ### Identifying clones and technical replicates
-Set the ```-minInd``` flag to 80% of the number of samples you have
+Set the ```-minInd``` flag to 75% of the number of samples you have
 ```{bash, ANGSD 2}
 FILTERS="-uniqueOnly 1 -remove_bads 1 -minMapQ 20 -minQ 30 -dosnpstat 1 -doHWE 1 -hwe_pval 1e-5 -sb_pval 1e-5 -hetbias_pval 1e-5 -skipTriallelic 1 -minInd 77 -snp_pval 1e-6 -minMaf 0.05"
 TODO="-doMajorMinor 1 -doMaf 1 -doCounts 1 -makeMatrix 1 -doIBS 1 -doCov 1 -doGeno 8 -doBcf 1 -doPost 1 -doGlf 2"
@@ -359,7 +359,7 @@ ggsave("../../figures/ofav/cloneDend.png", plot = cloneDend, height = 8, width =
 <br>
 
 ### Removing clones and re-running ANGSD
-Set the ```-minInd``` flag to 80% of the number of samples you have remaining after removal of clones
+Set the ```-minInd``` flag to 75% of the number of samples you have remaining after removal of clones
 ```{bash, ANGSD no clones}
 mkdir clones
 mv ofavClones* clones
@@ -722,26 +722,79 @@ K=4
 Since there are three possible cryptic lineages, we need to re-genotype samples using ANGSD using only SNPs found across all lineages. This helps avoid issues of ascertainment bias.
 
 ```{bash, angsd lineage}
-cd ~/2bRAD/sint/fknms/ANGSD3x
+cd ~/urban/ofav/ANGSD
 
-# created 'bamsClusters' in R, based on Admixture analysis
-
+# created 'bamsClusters' in ofavR.Rmd based on Admixture analysis
 awk 'BEGIN { FS=" " } $2 == "Blue" { print $1 }' bamsClusters >> blueBams
-awk 'BEGIN { FS=" " } $2 == "Teal" { print $1 }' bamsClusters >> tealBams
-awk 'BEGIN { FS=" " } $2 == "Green" { print $1 }' bamsClusters >> greenBams
-awk 'BEGIN { FS=" " } $2 == "Yellow" { print $1 }' bamsClusters >> yellowBams
+awk 'BEGIN { FS=" " } $2 == "Orange" { print $1 }' bamsClusters >> orangeBams
+awk 'BEGIN { FS=" " } $2 == "Purple" { print $1 }' bamsClusters >> purpleBams
 
 FILTERS="-uniqueOnly 1 -remove_bads 1 -minMapQ 20 -minQ 30 -dosnpstat 1 -doHWE 1 -hwe_pval 1e-5 -sb_pval 1e-5 -hetbias_pval 1e-5 -skipTriallelic 1 -snp_pval 1e-5 -minMaf 0.05 -setMinDepthInd 3"
 
 TODO="-doMajorMinor 1 -doMaf 1 -doGeno 8 -doPost 1 -doGlf 2"
 
-echo "angsd -b blueBams -GL 1 -P 1 $FILTERS $TODO -minInd 98 -out sintBlueSnps
-angsd -b tealBams -GL 1 -P 1 $FILTERS $TODO -minInd 30 -out sintTealSnps
-angsd -b greenBams -GL 1 -P 1 $FILTERS $TODO -minInd 23 -out sintGreenSnps
-angsd -b yellowBams -GL 1 -P 1 $FILTERS $TODO -minInd 11 -out sintYellowSnps" > kSnps
+# Remember to set -minInd to 75% of the sample size for each cluster
+echo "angsd -b blueBams -GL 1 -P 1 $FILTERS $TODO -minInd 40 -out ofavBlueSnps
+angsd -b orangeBams -GL 1 -P 1 $FILTERS $TODO -minInd 21 -out ofavOrangeSnps
+angsd -b purpleBams -GL 1 -P 1 $FILTERS $TODO -minInd 3 -out ofavPurpleSnps" > kSnps
 
 launcher_creator.py -j kSnps -n kSnps -q shortq7 -t 06:00:00 -e $EMAIL -w 2 -N 1
-
 sbatch kSnps.slurm
-
 ```
+
+<br>
+
+Filtering down the sites to those found within each lineage with the given ANGSD filtering criteria
+```{bash, angsd lineage2}
+for file in ofav*Snps.geno.gz; do
+echo '#!/bin/bash' > ${file%%.*}.sh;
+echo "zcat $file | awk '{print \$1\"\t\"\$2}' > ${file%%.*}sites" >> ${file%%.*}.sh;
+sbatch -e ${file%%.*}.e%j -o ${file%%.*}.o%j -p shortq7 --mem=100GB --mail-user $EMAIL --mail-type=ALL ${file%%.*}.sh;
+done
+
+# For gattaca:
+for file in ofav*Snps.geno.gz; do
+    base="${file%%.*}"
+    echo "Processing $file → ${base}sites"
+    zcat "$file" | awk '{print $1"\t"$2}' > "${base}sites"
+done
+
+# The Purple lineage has so few samples and high divergence to the other clusters, so filtering to SNPs found across all results in 20 sites
+# Dropping Purple from this filtering step
+mv ofavPurpleSnpssites ../ofavPurpleSnpssites
+srun awk '(++c[$0])==(ARGC-1)' *Snpssites > sitesToDo
+
+mkdir ../filteredSNPS
+mv ofav*Snps* ../filteredSNPS/
+mv kSnps* ../filteredSNPS/
+```
+
+<br>
+
+Now index the sites file and run angsd on all samples with only the reduced number of sites using ```-sites``` flag
+
+```{bash, angsd lineage3}
+angsd sites index sitesToDo
+
+FILTERS="-uniqueOnly 1 -remove_bads 1 -minMapQ 20 -minQ 30 -dosnpstat 1 -doHWE 1 -hwe_pval 1e-5 -sb_pval 1e-5 -hetbias_pval 1e-5 -skipTriallelic 1 -snp_pval 1e-5 -minMaf 0.05 -setMinDepthInd 3"
+
+TODO="-doMajorMinor 1 -doMaf 1 -doCounts 1 -makeMatrix 1 -doIBS 1 -doCov 1 -doGeno 8 -doBcf 1 -doPost 1 -doGlf 2"
+
+# Remember to set -minInd to 75% of your total sample size
+echo "angsd -b bamsNoClones -sites sitesToDo -GL 1 -P 1 $FILTERS $TODO -minInd 70 -out ofavFiltSnps" > ofavFiltSnps
+
+launcher_creator.py -j ofavFiltSnps -n ofavFiltSnps -q shortq7 -t 06:00:00 -e $EMAIL -w 2 -N 1
+sbatch ofavFiltSnps.slurm
+
+mv ofavFilt* ../filteredSNPS/
+cd ../filteredSNPS/
+```
+
+<br>
+
+How many SNPs do we have found across all lineages?
+```{bash, SNPs? 1}
+grep "filtering:" ofavFiltSnps.e*
+```
+Number of sites retained after filtering: 5323 
+
