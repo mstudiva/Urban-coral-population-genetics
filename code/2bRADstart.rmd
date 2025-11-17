@@ -60,15 +60,19 @@ git clone https://github.com/mstudiva/Urban-coral-population-genetics
 mv Urban-coral-population-genetics/scripts/* .
 
 git clone https://github.com/xiaoming-liu/stairway-plot-v2.git
-mv stairway-plot-v2.git/trunk/stairway_plot_v2.1.2.zip .
+mv stairway-plot-v2/stairway_plot_v2.1.2.zip .
 unzip stairway_plot_v2.1.2.zip
-rm -r stairway_plot_v2.1.2.zip stairway-plot-v2.git
+rm stairway_plot_v2.1.2.zip 
 
 wget https://github.com/ANGSD/angsd/releases/download/0.940/angsd0.940.tar.gz;
 tar xf angsd0.940.tar.gz;
 cd htslib; make;
 cd ..; cd angsd;
 make HTSSRC=../htslib;
+
+git clone https://github.com/brannala/BA3.git
+cd BA3
+make BA3SNP
 ```
 
 Make all bin scripts executable
@@ -87,7 +91,7 @@ conda config --add channels defaults
 conda config --add channels bioconda
 conda config --add channels conda-forge
 
-conda create -n 2bRAD bowtie2 samtools
+conda create -n 2bRAD bowtie2 samtools bcftools
 
 conda create -n cutadapt cutadapt
 
@@ -96,6 +100,8 @@ conda create -n pcangsd bioconda::pcangsd
 conda create -n moments bioconda::moments
 
 conda create -n pgdspider bioconda::pgdspider
+
+conda create -n bayescan bioconda::bayescan
 ```
 
 <br>
