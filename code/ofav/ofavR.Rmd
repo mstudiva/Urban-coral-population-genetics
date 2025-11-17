@@ -512,6 +512,56 @@ fstHeatmap
 
 <br>
 
+### Lineage demographics through time
+
+Making stairway plot of effective population sizes of each lineage throughout time
+
+```{r, stairway plot}
+bl = read.table("../../data/ofav/SFS/ofavBlue.final.summary", header = TRUE) %>% mutate("Lineage" = "Blue")
+or = read.table("../../data/ofav/SFS/ofavOrange.final.summary", header = TRUE) %>% mutate("Lineage" = "Orange")
+pr = read.table("../../data/ofav/SFS/ofavPurple.final.summary", header = TRUE) %>% mutate("Lineage" = "Purple")
+
+swData = rbind(bl, or, pr)
+swData$Lineage = factor(swData$Lineage)
+swData$Lineage = factor(swData$Lineage, levels = levels(swData$Lineage)[c(1,2,3)])
+
+```
+
+Constuct plot
+```{r, swPlot}
+swPlotA = ggplot(data = swData, aes(x = year, y = Ne_median, ymin = Ne_12.5., ymax = Ne_87.5., color = Lineage, fill = Lineage)) +
+  geom_ribbon(color = NA, aes(alpha = Lineage)) +
+  # geom_line(size = 0.6) +
+  geom_line(linewidth = 1.15) +
+  scale_fill_manual(values = kColPal[c(1:3)]) +
+  scale_color_manual(values = kColPal[c(1:3)]) +
+  scale_alpha_manual(values = c(0.25, 0.25, 0.35)) +
+  scale_x_reverse(name = "KYA", limits = c(0,5.25e5), breaks = c(1e5,2e5,3e5,4e5,5e5), labels = c("100","200", "300", "400", "500")) +
+  scale_y_continuous(name = bquote(italic(N[e])~"(x10"^"3"*")"), limits = c(0,3.5e5), breaks = c(1e5,2e5,3e5, 4e5), labels = c("100","200", "300","400"))+
+
+  coord_cartesian(xlim = c(5.25e5, 0), expand = FALSE) +
+  theme_bw()
+
+swPlot = swPlotA + theme(
+    axis.title = element_text(color = "black", size = 12),
+    axis.text = element_text(color = "black", size = 10),
+    legend.key.size = unit(0.3, 'cm'),
+    legend.title = element_text(color = "black", size = 12),
+    legend.text = element_text(color = "black", size = 12),
+    legend.position = "none",
+    # legend.position = c(0.85, 0.82),
+    plot.background = element_blank(),
+    panel.background = element_blank(),
+    panel.border = element_rect(size = 1),
+    panel.grid = element_blank()
+)
+
+swPlot
+
+```
+
+<br>
+
 ### Heterozygosity and Inbreeding
 
 ```{r, popStats}
@@ -674,8 +724,8 @@ npgList = list(read_tsv("../../data/ofav/SFS/blue.thetas.idx.pestPG") %>% mutate
 
 piAll = purrr::reduce(npgList, rbind) %>% 
   group_by(lineage) %>% 
-  mutate(tPps = tP/nSites) %>%
-  dplyr::summarize(tPps = mean(tPps))
+  mutate(tPps = tP/nSites)
+  # dplyr::summarize(tPps = mean(tPps))
 
 piAll$lineage = as.factor(piAll$lineage)
 piAll$lineage = factor(piAll$lineage, levels(piAll$lineage)[c(1, 2, 3)])
@@ -684,14 +734,25 @@ lmpi = lm(tPps~lineage, data=piAll)
 summary(lmpi)
 
 r2 = round(summary(lmpi)$r.squared, 3)
+F = round(summary(lmpi)$fstatistic[1], 2)
 
-nuclDivPlot = ggplot(piAll, aes(x = depth, y = tPps)) +
+nuclDivLetters = data.frame(x = factor(c("Blue", "Orange", "Purple")), y = c(0.8, 0.8, 0.8),  grp = c("a", "b", "c"))
+lab_str <- sprintf("italic(F) == %.2f ~ ', ' ~ italic(p) < 0.001", hF)
+
+nuclDivPlot = ggplot(piAll, aes(x = lineage, y = tPps)) +
   geom_smooth(se = F, color = 'black', method='lm', linewidth = 0.75) +
   geom_point(aes(fill = lineage),shape = 21, size = 3) +
   scale_color_manual(values = kColPal) +
   scale_fill_manual(values = kColPal) +
-  labs(x='Depth (m)', y = bquote("Nucleotide diversity ("*pi*")"), shape = 'Lineage') +
-  annotate(geom = "text", x = 30, y = 0.0048, label = bquote(italic(R^2)~"="~.(r2)), size = 3) + 
+  labs(x='Lineage', y = bquote("Nucleotide diversity ("*pi*")"), shape = 'Lineage') +
+  annotate(
+  geom  = "text",
+  x     = 1,
+  y     = 0,
+  label = lab_str,
+  parse = TRUE,
+  size  = 3
+) +
   theme_bw() +
   theme(axis.title.y = element_text(color = "black", size = 12),
         axis.title.x = element_text(color = "black", size = 12),
@@ -719,14 +780,14 @@ subset(pcangsd, subset = pcangsd$cluster!="Admixed") %>% group_by(cluster) %>% s
 
 ### Lineage plots
 ```{r, lineage plots}
-lineagePlots = (lineageViolin | hetPlotK | inbreedingPlot) / ( swPlot | fstHeatmap) +
+lineagePlots = (pcaPlot12L | hetPlotK | inbreedingPlot) / ( swPlot | fstHeatmap) +
   plot_annotation(tag_levels = "A") &
   theme(plot.tag = element_text(size = 14))
 
 # lineagePlots
 
-ggsave("../figures/figure3.png", plot = lineagePlots, height = 7, width = 12, units = "in", dpi = 300)
+ggsave("../../figures/ofav/SFS.png", plot = lineagePlots, height = 7, width = 12, units = "in", dpi = 300)
 
-ggsave("../figures/figure3.svg", plot = lineagePlots, height = 7, width = 12, units = "in", dpi = 300)
+ggsave("../../figures/ofav/SFS", plot = lineagePlots, height = 7, width = 12, units = "in", dpi = 300)
 
 ```
