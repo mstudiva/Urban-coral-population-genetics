@@ -383,7 +383,7 @@ pcaPlot12SA = ggplot() +
 
 pcaPlot12S = pcaPlot12SA +
   pcaTheme +
-  theme(legend.position = c(0.17, 0.23))
+  theme(legend.position = c(0.1, 0.67))
 
 pcaPlot12S
 
@@ -400,7 +400,7 @@ pcaPlot12LA = ggplot() +
 
 pcaPlot12L = pcaPlot12LA +
   pcaTheme +
-  theme(legend.position = c(0.12,0.15))
+  theme(legend.position = c(0.85,0.15))
 
 pcaPlot23LA = ggplot() +
   geom_hline(yintercept = 0, color = "gray90", size = 0.5) +
@@ -766,7 +766,6 @@ nuclDivPlot = ggplot(piAll, aes(x = lineage, y = tPps)) +
         panel.grid.minor = element_blank())
 
 nuclDivPlot
-
 ```
 
 
@@ -775,7 +774,6 @@ piAll$Ne = (piAll$tPps)/(4*2e-8)
 piAll
 
 subset(pcangsd, subset = pcangsd$cluster!="Admixed") %>% group_by(cluster) %>% summarise(range(depthm))
-
 ```
 
 ### Lineage plots
@@ -788,6 +786,75 @@ lineagePlots = (pcaPlot12L | hetPlotK | inbreedingPlot) / ( swPlot | fstHeatmap)
 
 ggsave("../../figures/ofav/SFS.png", plot = lineagePlots, height = 7, width = 12, units = "in", dpi = 300)
 
-ggsave("../../figures/ofav/SFS", plot = lineagePlots, height = 7, width = 12, units = "in", dpi = 300)
+# ggsave("../../figures/ofav/SFS.svg", plot = lineagePlots, height = 7, width = 12, units = "in", dpi = 300)
+```
+
+<br> 
+
+## Isolation by distance
+### *O. faveolata* isolation by distance
+
+#### Mantel's test
+```{r, SNP mantel}
+# Isolation by distance
+library(geosphere)
+
+#Get the geographic distances in km
+
+coords  = read.csv("../../data/ofav/ofavMetaData.csv")[-c(11,14,22,32:34,54,59,72),] %>% 
+  dplyr::select(longitude, latitude)
+
+dGeo = as.dist((distm(coords, fun = distGeo)/1000), diag = TRUE)
+snpDist = as.dist(read.table("../../data/ofav/SFS/ofavFiltSnps.ibsMat"), diag = TRUE)
+
+# Test IBD
+set.seed(694)
+snpIBD = mantel.randtest(dGeo, snpDist, nrepet = 9999)
+snpIBD
 
 ```
+
+#### SNP Mantel plot
+```{r, SNP mantel plot, fig.dim = c(4.9, 4.9)}
+snpGenDist =  melt(as.matrix(snpDist), varnames = c("row", "col"), value.name = "dist")
+snpGenDist = snpGenDist[snpGenDist$row != snpGenDist$col,]
+
+geo = melt(as.matrix(dGeo), varnames = c("row", "col"), value.name = "geo")
+geo = geo[geo$row != geo$col,]
+
+snpMantelDF = data.frame(cbind(snpGenDist$dist, geo$geo))
+colnames(snpMantelDF) = c("dist", "geo")
+
+snpMantelA = ggplot(data = snpMantelDF, aes(x = geo, y = dist)) +
+  scale_fill_gradientn(colors = paletteer_d("wesanderson::Zissou1")) +
+  stat_density_2d(aes(fill = stat(density)), n = 300, contour = FALSE, geom = "raster") +
+  geom_smooth(method = lm, col = "black", fill = "gray40", fullrange = TRUE) +
+  geom_point(shape = 21, fill = "gray40", alpha = 0.25) +
+  # scale_x_continuous(limits = c(0,300), expand = c(0,0)) +
+  # scale_y_continuous(limits = c(0.25,0.5), breaks = seq(0.25,0.5, by = 0.05), expand = c(0,0)) +
+  annotate("label", x = 40, y = 0.05, 
+           label = paste("r = ", round(snpIBD$obs, 3), "; p = ", snpIBD$pvalue), 
+           size = 4, alpha = 0.6) +             
+  labs(x = "Geographic distance (km)", y = expression(paste("Genetic distance "))) +
+  ggtitle("Isolation by Distance (IBD)") +
+  theme_bw()
+
+snpMantel = snpMantelA + theme(
+  axis.title.x = element_blank(),
+  axis.text.x = element_text(size = 12, color = "black"),
+  axis.ticks.x = element_line(color = "black"),
+  axis.line.x = element_blank(),
+  axis.title.y = element_text(color = "black"),
+  axis.text.y = element_text(size = 12, color = "black"),
+  axis.ticks.y = element_line(color = "black"),
+  axis.line.y = element_blank(),
+  panel.border = element_rect(size = 1.2, color = "black"),
+  plot.margin = margin(0.2,0.5,0.1,0.1, unit = "cm"),
+  legend.position = "none")
+
+snpMantel
+ggsave("../../figures/ofav/Mantel.png", plot = snpMantel, height = 4, width = 6, units = "in", dpi = 300)
+
+```
+
+<br> 
