@@ -773,7 +773,7 @@ nuclDivPlot
 piAll$Ne = (piAll$tPps)/(4*2e-8)
 piAll
 
-subset(pcangsd, subset = pcangsd$cluster!="Admixed") %>% group_by(cluster) %>% summarise(range(depthm))
+subset(pcangsd, subset = pcangsd$cluster!="Admixed") %>% group_by(cluster)
 ```
 
 ### Lineage plots

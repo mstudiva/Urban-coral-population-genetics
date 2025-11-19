@@ -1504,8 +1504,8 @@ border-radius: 0px;
 
 <p><a href="https://github.com/mstudiva/Urban-coral-population-genetics" class="github-corner" aria-label="View source on GitHub"><svg width="80" height="80" viewBox="0 0 250 250" style="fill:#2C3E50; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z" /><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm" /><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body" /></svg></a></p>
 <style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
-<div id="version-08-october-2025" class="section level4">
-<h4>version: 08 October, 2025</h4>
+<div id="version-18-november-2025" class="section level4">
+<h4>version: 18 November, 2025</h4>
 </div>
 <div id="github-repository" class="section level4">
 <h4><a href="https://github.com/mstudiva/Urban-coral-population-genetics" target="_blank">GitHub repository</a></h4>
@@ -1696,7 +1696,7 @@ runs.<br />
 </div>
 <div id="identifying-clones-and-technical-replicates" class="section level3">
 <h3>Identifying clones and technical replicates</h3>
-<p>Set the <code>-minInd</code> flag to 80% of the number of samples you
+<p>Set the <code>-minInd</code> flag to 75% of the number of samples you
 have</p>
 <pre class="bash"><code>FILTERS=&quot;-uniqueOnly 1 -remove_bads 1 -minMapQ 20 -minQ 30 -dosnpstat 1 -doHWE 1 -hwe_pval 1e-5 -sb_pval 1e-5 -hetbias_pval 1e-5 -skipTriallelic 1 -minInd 77 -snp_pval 1e-6 -minMaf 0.05&quot;
 TODO=&quot;-doMajorMinor 1 -doMaf 1 -doCounts 1 -makeMatrix 1 -doIBS 1 -doCov 1 -doGeno 8 -doBcf 1 -doPost 1 -doGlf 2&quot;
@@ -1795,7 +1795,7 @@ ggsave(&quot;../../figures/ofav/cloneDend.png&quot;, plot = cloneDend, height = 
 </div>
 <div id="removing-clones-and-re-running-angsd" class="section level3">
 <h3>Removing clones and re-running ANGSD</h3>
-<p>Set the <code>-minInd</code> flag to 80% of the number of samples you
+<p>Set the <code>-minInd</code> flag to 75% of the number of samples you
 have remaining after removal of clones</p>
 <pre class="bash"><code>mkdir clones
 mv ofavClones* clones
@@ -1885,11 +1885,90 @@ mkdir ofavQ
 mv ofav*Q ofavQ
 
 zip -r ofavQ.zip ofavQ</code></pre>
-<p>scp .zip, formatted logfile, and ofavNoClones* to local machine
-Upload logfile to CLUMPAK as a Log Probability table file (<a href="http://clumpak.tau.ac.il/bestK.html" class="uri">http://clumpak.tau.ac.il/bestK.html</a>) And .zip to
-structure selector as an ADMIXTURE file (<a href="https://lmme.ac.cn/StructureSelector/index.html" class="uri">https://lmme.ac.cn/StructureSelector/index.html</a>) You
-also need to create a PopMap file from bamsNoClones: a two-column,
-tab-delimited text file with sampleID and populationID</p>
+<p>scp .zip, formatted logfile, and ofavNoClones* to local machine</p>
+<p>Create a PopMap file from bamsNoClones: a two-column, tab-delimited
+text file with sampleID and populationID Reorder output Q files and
+PopMap file based on specific site order</p>
+<pre class="r"><code>library(tidyverse)
+
+popfile &lt;- read.table(file = &quot;../../data/ofav/ngsAdmix/ofavPopfile.txt&quot;, header = FALSE, col.names=c(&quot;sample&quot;, &quot;site&quot;), stringsAsFactors=FALSE)
+
+site_order &lt;- c(
+  &quot;EmeraldReef&quot;,
+  &quot;RainbowReef&quot;,
+  &quot;FisherIsland&quot;,
+  &quot;CoralCityCamera&quot;,
+  &quot;StarIsland&quot;,
+  &quot;MacArthurNorth&quot;,
+  &quot;SouthCanyonReef&quot;,
+  &quot;PillarsReef&quot;,
+  &quot;FIUBiscayneBay&quot;,
+  &quot;GracelandReef&quot;,
+  &quot;FTL4Reef&quot;,
+  &quot;BC1Reef&quot;,
+  &quot;T328Reef&quot;
+)
+
+site_factor &lt;- factor(popfile$site, levels = site_order)
+ord &lt;- order(site_factor)
+
+popfile_sorted &lt;- popfile[ord, ]
+
+write.table(popfile_sorted, &quot;../../data/ofav/ngsAdmix/ofavPopfile_sorted.txt&quot;,
+            quote=FALSE, row.names=FALSE, col.names=FALSE, sep=&quot;\t&quot;)
+
+# Unzips, loops through, and reorders each .Q file based on popfile_sorted
+unzip(&quot;../../data/ofav/ngsAdmix/ofavQ.zip&quot;, exdir = &quot;../../data/ofav/ngsAdmix/&quot;)
+
+q_dir  &lt;- &quot;../../data/ofav/ngsAdmix/ofavQ&quot;              # where .Q files now live
+out_dir &lt;- &quot;../../data/ofav/ngsAdmix/ofavQ_sorted&quot;   # new folder for reordered files
+dir.create(out_dir, showWarnings = FALSE)
+
+q_files &lt;- list.files(q_dir, pattern=&quot;\\.Q$|\\.qopt$&quot;, full.names=TRUE)
+length(q_files) # should be 800
+
+for (file in q_files) {
+
+  q &lt;- read.table(file, header=FALSE, colClasses = &quot;character&quot;)
+
+  # must have same number of rows
+  stopifnot(nrow(q) == nrow(popfile_sorted))
+
+  q_sorted &lt;- q[ord, ]
+
+  out_file &lt;- file.path(out_dir, basename(file))
+
+  write.table(
+    q_sorted,
+    out_file,
+    quote = FALSE,
+    row.names = FALSE,
+    col.names = FALSE
+  )
+}
+
+# Cleanup
+unlink(q_dir, recursive = TRUE) # Delete the uncompressed ofavQ directory 
+
+# Zip the ofavQ_sorted directory
+out_dir_norm &lt;- normalizePath(out_dir)
+parent_dir   &lt;- dirname(out_dir_norm)
+folder_name  &lt;- basename(out_dir_norm)
+
+zipfile_path &lt;- file.path(parent_dir, &quot;ofavQ_sorted.zip&quot;)
+cmd &lt;- sprintf(
+  &#39;cd &quot;%s&quot; &amp;&amp; zip -r &quot;%s&quot; &quot;%s&quot;&#39;,
+  parent_dir,
+  basename(zipfile_path),
+  folder_name
+)
+cat(&quot;Running command:\n&quot;, cmd, &quot;\n&quot;)
+system(cmd)
+if (file.exists(zipfile_path)) {
+  unlink(out_dir_norm, recursive = TRUE)
+} # Delete the uncompressed ofavQ_sorted directory </code></pre>
+<p>Upload logfile to CLUMPAK as a Log Probability table file (<a href="http://clumpak.tau.ac.il/bestK.html" class="uri">http://clumpak.tau.ac.il/bestK.html</a>) And .zip to
+structure selector as an ADMIXTURE file (<a href="https://lmme.qdio.ac.cn/stable/StructureSelector/index.html" class="uri">https://lmme.qdio.ac.cn/stable/StructureSelector/index.html</a>)</p>
 <p><br></p>
 </div>
 <div id="optional-k-determination-in-likely-panmictic-populations-k1" class="section level3">
@@ -2049,29 +2128,667 @@ cryptic lineages</p>
 <p>Since there are three possible cryptic lineages, we need to
 re-genotype samples using ANGSD using only SNPs found across all
 lineages. This helps avoid issues of ascertainment bias.</p>
-<pre class="bash"><code>cd ~/2bRAD/sint/fknms/ANGSD3x
+<pre class="bash"><code>cd ~/urban/ofav/ANGSD
 
-# created &#39;bamsClusters&#39; in R, based on Admixture analysis
-
+# created &#39;bamsClusters&#39; in ofavR.Rmd based on Admixture analysis
 awk &#39;BEGIN { FS=&quot; &quot; } $2 == &quot;Blue&quot; { print $1 }&#39; bamsClusters &gt;&gt; blueBams
-awk &#39;BEGIN { FS=&quot; &quot; } $2 == &quot;Teal&quot; { print $1 }&#39; bamsClusters &gt;&gt; tealBams
-awk &#39;BEGIN { FS=&quot; &quot; } $2 == &quot;Green&quot; { print $1 }&#39; bamsClusters &gt;&gt; greenBams
-awk &#39;BEGIN { FS=&quot; &quot; } $2 == &quot;Yellow&quot; { print $1 }&#39; bamsClusters &gt;&gt; yellowBams
+awk &#39;BEGIN { FS=&quot; &quot; } $2 == &quot;Orange&quot; { print $1 }&#39; bamsClusters &gt;&gt; orangeBams
+awk &#39;BEGIN { FS=&quot; &quot; } $2 == &quot;Purple&quot; { print $1 }&#39; bamsClusters &gt;&gt; purpleBams
+
+FILTERS=&quot;-uniqueOnly 1 -remove_bads 1 -minMapQ 20 -minQ 30 -dosnpstat 1 -doHWE 1 -hwe_pval 1e-5 -sb_pval 1e-5 -hetbias_pval 1e-5 -skipTriallelic 1 -snp_pval 1e-5 -minMaf 0.05 -setMinDepthInd 3&quot;
+TODO=&quot;-doMajorMinor 1 -doMaf 1 -doGeno 8 -doPost 1 -doGlf 2&quot;
+
+# Remember to set -minInd to 75% of the sample size for each cluster
+echo &quot;angsd -b blueBams -GL 1 -P 1 $FILTERS $TODO -minInd 40 -out ofavBlueSnps
+angsd -b orangeBams -GL 1 -P 1 $FILTERS $TODO -minInd 21 -out ofavOrangeSnps
+angsd -b purpleBams -GL 1 -P 1 $FILTERS $TODO -minInd 3 -out ofavPurpleSnps&quot; &gt; kSnps
+
+launcher_creator.py -j kSnps -n kSnps -q shortq7 -t 06:00:00 -e $EMAIL -w 2 -N 1
+sbatch kSnps.slurm</code></pre>
+<p><br></p>
+<p>Filtering down the sites to those found within each lineage with the
+given ANGSD filtering criteria</p>
+<pre class="bash"><code>for file in ofav*Snps.geno.gz; do
+echo &#39;#!/bin/bash&#39; &gt; ${file%%.*}.sh;
+echo &quot;zcat $file | awk &#39;{print \$1\&quot;\t\&quot;\$2}&#39; &gt; ${file%%.*}sites&quot; &gt;&gt; ${file%%.*}.sh;
+sbatch -e ${file%%.*}.e%j -o ${file%%.*}.o%j -p shortq7 --mem=100GB --mail-user $EMAIL --mail-type=ALL ${file%%.*}.sh;
+done
+
+# For gattaca:
+for file in ofav*Snps.geno.gz; do
+    base=&quot;${file%%.*}&quot;
+    echo &quot;Processing $file → ${base}sites&quot;
+    zcat &quot;$file&quot; | awk &#39;{print $1&quot;\t&quot;$2}&#39; &gt; &quot;${base}sites&quot;
+done
+
+# The Purple lineage has so few samples and high divergence to the other clusters, so filtering to SNPs found across all results in 20 sites
+# Dropping Purple from this filtering step
+mv ofavPurpleSnpssites ../ofavPurpleSnpssites
+srun awk &#39;(++c[$0])==(ARGC-1)&#39; *Snpssites &gt; sitesToDo
+# 6528
+
+mkdir ../filteredSNPS
+mv ofav*Snps* ../filteredSNPS/
+mv kSnps* ../filteredSNPS/</code></pre>
+<p><br></p>
+<p>Now index the sites file and run angsd on all samples with only the
+reduced number of sites using <code>-sites</code> flag</p>
+<pre class="bash"><code>angsd sites index sitesToDo
 
 FILTERS=&quot;-uniqueOnly 1 -remove_bads 1 -minMapQ 20 -minQ 30 -dosnpstat 1 -doHWE 1 -hwe_pval 1e-5 -sb_pval 1e-5 -hetbias_pval 1e-5 -skipTriallelic 1 -snp_pval 1e-5 -minMaf 0.05 -setMinDepthInd 3&quot;
 
-TODO=&quot;-doMajorMinor 1 -doMaf 1 -doGeno 8 -doPost 1 -doGlf 2&quot;
+TODO=&quot;-doMajorMinor 1 -doMaf 1 -doCounts 1 -makeMatrix 1 -doIBS 1 -doCov 1 -doGeno 8 -doBcf 1 -doPost 1 -doGlf 2&quot;
 
-echo &quot;angsd -b blueBams -GL 1 -P 1 $FILTERS $TODO -minInd 98 -out sintBlueSnps
-angsd -b tealBams -GL 1 -P 1 $FILTERS $TODO -minInd 30 -out sintTealSnps
-angsd -b greenBams -GL 1 -P 1 $FILTERS $TODO -minInd 23 -out sintGreenSnps
-angsd -b yellowBams -GL 1 -P 1 $FILTERS $TODO -minInd 11 -out sintYellowSnps&quot; &gt; kSnps
+# Remember to set -minInd to 75% of your total sample size
+echo &quot;angsd -b bamsNoClones -sites sitesToDo -GL 1 -P 1 $FILTERS $TODO -minInd 70 -out ofavFiltSnps&quot; &gt; ofavFiltSnps
 
-launcher_creator.py -j kSnps -n kSnps -q shortq7 -t 06:00:00 -e $EMAIL -w 2 -N 1
+launcher_creator.py -j ofavFiltSnps -n ofavFiltSnps -q shortq7 -t 06:00:00 -e $EMAIL -w 2 -N 1
+sbatch ofavFiltSnps.slurm
 
-sbatch kSnps.slurm
-</code></pre>
+mv ofavFilt* ../filteredSNPS/
+cd ../filteredSNPS/</code></pre>
+<p><br></p>
+<p>How many SNPs do we have found across all lineages?</p>
+<pre class="bash"><code>grep &quot;filtering:&quot; ofavFiltSnps.e*</code></pre>
+<p>Number of sites retained after filtering: 5323</p>
+<p><br></p>
 </div>
+</div>
+<div id="i-n-b-r-e-e-d-i-n-g-a-n-d-r-e-l-a-t-e-d-n-e-s-s" class="section level2">
+<h2>I N B R E E D I N G   A N D   R E L A T E D N E S S</h2>
+<div id="running-ngsrelate-on-filtered-snps" class="section level3">
+<h3>Running ngsRelate on filtered SNPs</h3>
+<pre class="bash"><code>cd ~/urban/ofav/ANGSD
+
+FILTERS=&quot;-uniqueOnly 1 -remove_bads 1 -minMapQ 20 -minQ 30 -dosnpstat 1 -doHWE 1 -hwe_pval 1e-5 -sb_pval 1e-5 -hetbias_pval 1e-5 -skipTriallelic 1 -snp_pval 1e-5 -minMaf 0.05 -setMinDepthInd 3&quot;
+
+TODO=&quot;-doMajorMinor 1 -doMaf 1 -doCounts 1 -makeMatrix 1 -doIBS 1 -doCov 1 -doGeno 8 -doBcf 1 -doPost 1 -doGlf 3&quot;
+
+# Remember to set -minInd to 75% of your total sample size
+echo &#39;#!/bin/bash&#39; &gt; ofavFiltRelate.sh
+echo angsd -b bamsNoClones -GL 1 -sites sitesToDo $FILTERS $TODO -P 1 -minInd 70 -out ofavFiltRelate &gt;&gt; ofavFiltRelate.sh
+
+sbatch --mem=200GB -o ofavFiltRelate.o%j -e ofavFiltRelate.e%j -p shortq7 --mail-type=ALL --mail-user=$EMAIL ofavFiltRelate.sh
+
+mkdir ../ngsRelate
+mv *Relate* ../ngsRelate
+cd ../ngsRelate
+
+zcat ofavFiltRelate.mafs.gz | cut -f5 |sed 1d &gt;freq
+
+# Set -n to total sample size
+echo &#39;#!/bin/bash&#39; &gt; ngsFiltRelate.sh
+echo ngsRelate -g ofavFiltRelate.glf.gz -n 94 -f freq -z ../ANGSD/bamsNoClones -O filtRelate &gt;&gt; ngsFiltRelate.sh
+
+sbatch -e ngsFiltRelate.e%j -o ngsFiltRelate.o%j --mem=200GB --mail-user $EMAIL --mail-type=ALL ngsFiltRelate.sh</code></pre>
+<p><br></p>
+</div>
+<div id="ngsf-inbreeding" class="section level3">
+<h3>ngsF inbreeding</h3>
+<pre class="bash"><code>module load ngstools-master-gcc-8.3.0-qcbecbz
+module load ngsf-master-gcc-8.3.0-yscrrl3
+
+mkdir ~/urban/ofav/ngsF
+cd ~/urban/ofav/ngsF
+
+cp ../ngsRelate/ofavFilt* .
+
+# Set --n_ind to total sample size
+N_SITES=$((`zcat ofavFiltRelate.mafs.gz | wc -l`-1))
+srun zcat ofavFiltRelate.glf.gz | ngsF --n_ind 94 --n_sites $N_SITES --glf - --min_epsilon 0.001 --out ofav.approx_indF --approx_EM --seed 12345 --init_values r
+srun zcat ofavFiltRelate.glf.gz  | ngsF --n_ind 94 --n_sites $N_SITES --glf - --min_epsilon 0.001 --out ofavF.indF --init_values ofav.approx_indF.pars
+
+
+/bin/ngsTools/ngsF</code></pre>
+<p><br></p>
+</div>
+</div>
+<div id="s-i-t-e-f-r-e-q-u-e-n-c-y-s-p-e-c-t-r-a" class="section level2">
+<h2>S I T E   F R E Q U E N C Y   S P E C T R A</h2>
+<p>Running SFS calculations within lineage to use for Fst and to run
+<code>StairwayPlot</code></p>
+<pre class="bash"><code>cd ~/urban/ofav/ANGSD
+
+## No filters to distort allelic frequencies
+FILTERS=&quot;-uniqueOnly 1 -remove_bads 1 -skipTriallelic 1 -minMapQ 30 -minQ 35 -doHWE 1 -sb_pval 1e-5 -hetbias_pval 1e-5 -maxHetFreq 0.5 -setMinDepthInd 3&quot;
+TODO=&quot;-doMajorMinor 1 -doMaf 1 -dosnpstat 1 -doPost 2 -doGeno 11 -doGlf 2&quot;
+
+# Remember to set -minInd to 75% of the sample size for each cluster
+echo &quot;angsd -b blueBams -GL 1 -P 1 $FILTERS $TODO -minInd 40 -out ofavBlueSFS
+angsd -b orangeBams -GL 1 -P 1 $FILTERS $TODO -minInd 21 -out ofavOrangeSFS
+angsd -b purpleBams -GL 1 -P 1 $FILTERS $TODO -minInd 3 -out ofavPurpleSFS&quot; &gt; sfsClusters
+
+launcher_creator.py -j sfsClusters -n sfsClusters -q shortq7 -t 06:00:00 -e $EMAIL -N 1
+sbatch sfsClusters.slurm
+
+for file in ofav*SFS.geno.gz; do
+echo &#39;#!/bin/bash&#39; &gt; ${file%%.*}.sh;
+echo &quot;zcat $file | awk &#39;{print \$1\&quot;\t\&quot;\$2}&#39; &gt; ${file%%.*}sites&quot; &gt;&gt; ${file%%.*}.sh;
+sbatch -e ${file%%.*}.e%j -o ${file%%.*}.o%j -p longq7 --mem=100GB --mail-user $EMAIL --mail-type=ALL ${file%%.*}.sh;
+done
+
+# For gattaca
+for file in ofav*SFS.geno.gz; do
+    base=&quot;${file%%.*}&quot;
+    echo &quot;Processing $file → ${base}sites&quot;
+    zcat &quot;$file&quot; | awk &#39;{print $1&quot;\t&quot;$2}&#39; &gt; &quot;${base}sites&quot;
+done</code></pre>
+<p><br></p>
+<p>Now, compile common sites from all lineages using awk</p>
+<pre class="bash"><code>srun awk &#39;(++c[$0])==(ARGC-1)&#39; *SFSsites &gt; sfsSitesToDo
+
+cat sfsSitesToDo | wc -l
+# 66103
+
+# index sites for ANGSD and re-run ANGSD using ```-sites```
+angsd sites index sfsSitesToDo
+
+export GENOME_FASTA=~/db/ofavGenome/Orbicella_faveolata_gen_17.scaffolds.fa
+
+TODO=&quot;-doSaf 1 -ref $GENOME_FASTA -anc $GENOME_FASTA -doMaf 1 -doMajorMinor 4&quot;
+
+echo &quot;angsd -sites sfsSitesToDo -b blueBams -GL 1 -P 1 $TODO -out ofavBlue
+angsd -sites sfsSitesToDo -b orangeBams -GL 1 -P 1 $TODO -out ofavOrange
+angsd -sites sfsSitesToDo -b purpleBams -GL 1 -P 1 $TODO -out ofavPurple&quot; &gt;sfs
+
+launcher_creator.py -j sfs -n sfs -q shortq7 -t 06:00:00 -e $EMAIL -N 1
+sbatch sfs.slurm</code></pre>
+<p><br></p>
+<p>Once all jobs run:</p>
+<pre class="bash"><code>mkdir ../SFS
+mv sfs* ../SFS
+mv ofavBlue* ../SFS
+mv ofavOrange* ../SFS
+mv ofavPurple* ../SFS
+
+cd ../SFS
+
+###-- 1d-SFS
+echo &quot;realSFS ofavBlue.saf.idx &gt;ofavBlue.sfs
+realSFS ofavOrange.saf.idx &gt;ofavOrange.sfs
+realSFS ofavPurple.saf.idx &gt;ofavPurple.sfs&quot; &gt;realSFS
+
+launcher_creator.py -j realSFS -n realSFS -q shortq7 -t 06:00:00 -e $EMAIL -w 4 -N 1
+sbatch realSFS.slurm
+
+###-- 2d-SFS
+echo &quot;realSFS ofavBlue.saf.idx ofavOrange.saf.idx -P 20 &gt; pBlOr.sfs ; realSFS fst index ofavBlue.saf.idx ofavOrange.saf.idx -sfs pBlOr.sfs -fstout pBlOr
+realSFS ofavBlue.saf.idx ofavPurple.saf.idx -P 20 &gt; pBlPr.sfs ; realSFS fst index ofavBlue.saf.idx ofavPurple.saf.idx -sfs pBlPr.sfs -fstout pBlPr
+realSFS ofavOrange.saf.idx ofavPurple.saf.idx -P 20 &gt; pOrPr.sfs ; realSFS fst index ofavOrange.saf.idx ofavPurple.saf.idx -sfs pOrPr.sfs -fstout pOrPr&quot; &gt;2dSFS
+
+launcher_creator.py -j 2dSFS -n 2dSFS -q shortq7 -t 06:00:00 -e $EMAIL -w 20 -N 1
+sbatch 2dSFS.slurm
+</code></pre>
+<p><br></p>
+<div id="global-fst-between-lineages" class="section level3">
+<h3>Global Fst between lineages</h3>
+<pre class="bash"><code>&gt; ofavKFst
+realSFS fst stats pBlOr.fst.idx &gt;&gt; ofavKFst
+realSFS fst stats pBlPr.fst.idx &gt;&gt; ofavKFst
+realSFS fst stats pOrPr.fst.idx &gt;&gt; ofavKFst
+
+echo &quot;Blue
+Blue
+Orange&quot;&gt;fstPops1
+
+echo &quot;Orange
+Purple
+Purple&quot; &gt;fstPops2
+
+paste fstPops1 fstPops2 ofavKFst &gt; ofavKFst.o
+
+echo -e &quot;pop1\tpop2\tfst\tweightedFst&quot; | cat - ofavKFst.o &gt; ofavKFst.out
+
+rm fstPops1 fstPops2 ofavKFst ofavKFst.o
+
+cat ofavKFst.out</code></pre>
+<p><br></p>
+</div>
+<div id="stairwayplot2" class="section level3">
+<h3>StairwayPlot2</h3>
+<p>First, we filter Fst outliers from sites:</p>
+<pre class="bash"><code>cd ~/urban/ofav/ANGSD
+
+# Remember to set -minInd to 75% of your total sample size
+FILTERS=&quot;-minMapQ 20 -minQ 30 -minInd 70 -doHWE 1 -sb_pval 1e-5 -hetbias_pval 1e-5 -uniqueOnly 1 -remove_bads 1 -skipTriallelic 1 -snp_pval 1e-5 -minMaf 0.05 -setMinDepthInd 3&quot;
+TODO=&quot;-doMajorMinor 4 -ref $GENOME_FASTA -doMaf 1 -dosnpstat 1 -doPost 2 -doBcf 1 --ignore-RG 0 -doGeno 11 -doCounts 1&quot;
+
+echo &quot;angsd -b bamsNoClones -sites ../SFS/sfsSitesToDo -GL 1 $FILTERS $TODO -P 1 -out ofavFiltSnpsBayesFst&quot; &gt; ofavFiltSnpsBayesFst
+launcher_creator.py -j ofavFiltSnpsBayesFst -n ofavFiltSnpsBayesFst -t 6:00:00 -e $EMAIL -w 1 -q shortq7
+sbatch ofavFiltSnpsBayesFst.slurm
+
+mkdir ../bayescan
+cd ../bayescan</code></pre>
+<p><br></p>
+<p>Create a file called vcf2bayescan.spid containing this text:</p>
+<pre class="bash"><code>echo &quot;############
+# VCF Parser questions
+PARSER_FORMAT=VCF
+# Do you want to include a file with population definitions?
+VCF_PARSER_POP_QUESTION=true
+# Only input following regions (refSeqName:start:end, multiple regions: whitespace separated):
+VCF_PARSER_REGION_QUESTION=
+# What is the ploidy of the data?
+VCF_PARSER_PLOIDY_QUESTION=DIPLOID
+# Only output following individuals (ind1, ind2, ind4, ...):
+VCF_PARSER_IND_QUESTION=
+# Output genotypes as missing if the read depth of a position for the sample is below:
+VCF_PARSER_READ_QUESTION=
+# Take most likely genotype if &quot;PL&quot; or &quot;GL&quot; is given in the genotype field?
+VCF_PARSER_PL_QUESTION=true
+# Do you want to exclude loci with only missing data?
+VCF_PARSER_EXC_MISSING_LOCI_QUESTION=false
+# Select population definition file:
+VCF_PARSER_POP_FILE_QUESTION=./bspops.txt
+# Only output SNPs with a phred-scaled quality of at least:
+VCF_PARSER_QUAL_QUESTION=
+# Do you want to include non-polymorphic SNPs?
+VCF_PARSER_MONOMORPHIC_QUESTION=false
+# Output genotypes as missing if the phred-scale genotype quality is below:
+VCF_PARSER_GTQUAL_QUESTION=
+# GESTE / BayeScan Writer questions
+WRITER_FORMAT=GESTE_BAYE_SCAN
+# Specify which data type should be included in the GESTE / BayeScan file  (GESTE / BayeScan can only analyze one data type per file):
+GESTE_BAYE_SCAN_WRITER_DATA_TYPE_QUESTION=SNP
+############&quot; &gt;vcf2bayescan.spid</code></pre>
+<p><br></p>
+<p>Need a file “bspops” that has samples <strong>in .bams order</strong>
+with the assigned populations/lineages</p>
+<pre class="bash"><code>cp ../ANGSD/bamsClusters ./bspops.txt
+
+cp ../ANGSD/ofavFiltSnpsBayesFst.bcf .
+
+conda activate bowtie2
+srun bcftools convert -O v -o ofavFiltSnpsBayesFst.vcf ofavFiltSnpsBayesFst.bcf
+conda deactivate
+
+srun java -Xmx1024m -Xms512m -jar ~/bin/PGDSpider_2.0.7.1/PGDSpider2-cli.jar -inputfile ofavFiltSnpsBayesFst.vcf -outputfile ofavFilt.bayescan -spid vcf2bayescan.spid
+
+conda activate pgdspider
+# For gattaca
+PGDSpider2-cli \
+  -inputfile ofavFiltSnpsBayesFst.vcf \
+  -outputfile ofavFilt.bayescan \
+  -spid vcf2bayescan.spid
+  
+echo &#39;#!/bin/bash&#39; &gt;bayeScan.sh
+echo &quot;bayescan2 ofavFilt.bayescan -threads=100&quot; &gt;&gt;bayeScan.sh
+
+sbatch -e bayeScan.e%j -o bayeScan.o%j -p mediumq7 --mail-user $EMAIL --mail-type=ALL bayeScan.sh
+
+cut -d&quot; &quot; -f2- ofavFilt.baye_fst.txt &gt; ofavFst
+
+## removing all the .bcf data before snps
+tail --lines=+94 ofavFiltSnpsBayesFst.vcf | cut -f 1,2 | paste --delimiters &quot;\t&quot; - ofavFst &gt; ofav.baye_fst_pos.txt</code></pre>
+<p><br></p>
+<p>Identify sites with <em>q</em>-value &lt; 0.5</p>
+<pre class="bash"><code>
+cp ../ANGSD/sfsSitesToDo .
+
+awk &#39;$5&lt;0.5 {print $1&quot;\t&quot;$2}&#39; ofav.baye_fst_pos.txt &gt; ofavBayeOuts
+
+grep -Fvxf ofavBayeOuts sfsSitesToDo &gt; sitesToDo_filtBaye
+
+cp sitesToDo_filtBaye ../ANGSD
+cd ../ANGSD
+
+angsd sites index sitesToDo_filtBaye
+
+export GENOME_FASTA=~/db/ofavGenome/Orbicella_faveolata_gen_17.scaffolds.fa
+
+TODO=&quot;-doSaf 1 -anc $GENOME_FASTA -ref $GENOME_FASTA -doMaf 1 -doMajorMinor 4&quot;
+
+echo &quot;angsd -sites sitesToDo_filtBaye -b blueBams -GL 1 -P 1 $TODO -out ofavBlueSFSbaye
+angsd -sites sitesToDo_filtBaye -b orangeBams -GL 1 -P 1 $TODO -out ofavOrangeSFSbaye
+angsd -sites sitesToDo_filtBaye -b purpleBams -GL 1 -P 1 $TODO -out ofavPurpleSFSbaye&quot; &gt;sfs_filtBaye
+
+launcher_creator.py -j sfs_filtBaye -n sfs_filtBaye -q shortq7 -t 06:00:00 -e $EMAIL -N 1
+sbatch sfs_filtBaye.slurm
+
+mv *SFS* ../SFS
+mv *sfs* ../SFS</code></pre>
+<p>Generating per-population SFS</p>
+<pre class="bash"><code>cd ../SFS
+
+echo &quot;realSFS ofavBlueSFSbaye.saf.idx -fold 1 &gt;ofavFiltBlue.sfs
+realSFS ofavOrangeSFSbaye.saf.idx -fold 1 &gt;ofavFiltOrange.sfs
+realSFS ofavPurpleSFSbaye.saf.idx -fold 1 &gt;ofavFiltPurple.sfs&quot; &gt;ofavFiltSFS
+
+launcher_creator.py -j ofavFiltSFS -n ofavFiltSFS -q shortq7 -t 06:00:00 -e $EMAIL -N 1
+sbatch ofavFiltSFS.slurm</code></pre>
+<p><br></p>
+<p>Making blueprint files for StairwayPlot</p>
+<pre class="bash"><code>mkdir ../swPlot
+cd ../swPlot
+
+# SWplot only wants the mutations, so have to omit first number in SFS file (0 mutations).
+
+# L = cat ../ANGSD/sitesToDo_filtBaye | wc -l 
+# which in our case =65540
+
+echo &quot;#input setting
+popid: ofavBlue # id of the population (no white space)
+nseq: 216 # number of sequences (2*n)
+L: 65540 # total number of observed nucleic sites, including polymorphic and monomorphic
+whether_folded: true # whether the SFS is folded (true or false)
+SFS: 359.384186 176.850916 79.085634 56.122558 52.988270 25.213086 29.269262 6.897390 0.088362 6.035835 6.189239 1.689968 4.810179 2.838537 0.507948 6.285491 0.287215 4.095548 1.842047 0.406760 4.856281 0.000178 3.032708 0.040124 0.000000 0.000000 2.772030 0.000000 0.000000 0.000000 5.300901 0.000073 0.000000 1.896316 0.000000 4.034110 0.000000 0.000000 0.000000 0.161838 3.349950 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000005 1.000074 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000
+#smallest_size_of_SFS_bin_used_for_estimation: 1 # default is 1; to ignore singletons, uncomment this line and change this number to 2
+#largest_size_of_SFS_bin_used_for_estimation: 54 # default is nseq/2 for folded SFS
+pct_training: 0.67 # percentage of sites for training
+nrand: 54 108 162 216 # number of random break points for each try (separated by white space)
+project_dir: ofavBlue # project directory
+stairway_plot_dir: $HOME/bin/stairway_plot_v2.1.2/stairway_plot_es # directory to the stairway plot files
+ninput: 200 # number of input files to be created for each estimation
+#random_seed: 6
+#output setting
+mu: 2e-8 # assumed mutation rate per site per generation
+year_per_generation: 15 # assumed generation time (in years)
+#plot setting
+plot_title: ofavBlue # title of the plot
+xrange: 0.1,10000 # Time (1k year) range; format: xmin,xmax; &quot;0,0&quot; for default
+yrange: 0,0 # Ne (1k individual) range; format: xmin,xmax; &quot;0,0&quot; for default
+xspacing: 2 # X axis spacing
+yspacing: 2 # Y axis spacing
+fontsize: 12 # Font size&quot; &gt;ofavBlue.blueprint
+
+echo &quot;#input setting
+popid: ofavOrange # id of the population (no white space)
+nseq: 116 # number of sequences (2*n)
+L: 65540 # total number of observed nucleic sites, including polymorphic and monomorphic
+whether_folded: true # whether the SFS is folded (true or false)
+SFS: 554.425265 199.560921 98.343868 77.942108 35.099337 36.244939 18.319782 5.658205 19.041567 0.000000 0.000060 1.938488 7.950208 0.068295 3.433731 0.000000 0.000000 5.218967 0.000000 0.000000 3.936680 0.000082 4.467446 0.000080 0.000000 1.679113 1.660934 2.325276 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 
+#smallest_size_of_SFS_bin_used_for_estimation: 1 # default is 1; to ignore singletons, uncomment this line and change this number to 2
+#largest_size_of_SFS_bin_used_for_estimation: 29 # default is nseq/2 for folded SFS
+pct_training: 0.67 # percentage of sites for training
+nrand: 29 58 87 116 # number of random break points for each try (separated by white space)
+project_dir: ofavOrange # project directory
+stairway_plot_dir: $HOME/bin/stairway_plot_v2.1.2/stairway_plot_es # directory to the stairway plot files
+ninput: 200 # number of input files to be created for each estimation
+#random_seed: 12
+#output setting
+mu: 2e-8 # assumed mutation rate per site per generation
+year_per_generation: 15 # assumed generation time (in years)
+#plot setting
+plot_title: ofavOrange # title of the plot
+xrange: 0.1,10000 # Time (1k year) range; format: xmin,xmax; &quot;0,0&quot; for default
+yrange: 0,0 # Ne (1k individual) range; format: xmin,xmax; &quot;0,0&quot; for default
+xspacing: 2 # X axis spacing
+yspacing: 2 # Y axis spacing
+fontsize: 12 # Font size&quot; &gt;ofavOrange.blueprint
+
+echo &quot;#input setting
+popid: ofavPurple # id of the population (no white space)
+nseq: 16 # number of sequences (2*n)
+L: 65540 # total number of observed nucleic sites, including polymorphic and monomorphic
+whether_folded: true # whether the SFS is folded (true or false)
+SFS: 462.902489 195.427348 56.194712 43.441765 0.000000 0.000000 0.000000 0.000000
+#smallest_size_of_SFS_bin_used_for_estimation: 1 # default is 1; to ignore singletons, uncomment this line and change this number to 2
+#largest_size_of_SFS_bin_used_for_estimation: 4 # default is nseq/2 for folded SFS
+pct_training: 0.67 # percentage of sites for training
+nrand: 4 8 12 16 # number of random break points for each try (separated by white space)
+project_dir: ofavPurple # project directory
+stairway_plot_dir: $HOME/bin/stairway_plot_v2.1.2/stairway_plot_es # directory to the stairway plot files
+ninput: 200 # number of input files to be created for each estimation
+#random_seed: 71
+#output setting
+mu: 2e-8 # assumed mutation rate per site per generation
+year_per_generation: 15 # assumed generation time (in years)
+#plot setting
+plot_title: ofavPurple # title of the plot
+xrange: 0.1,10000 # Time (1k year) range; format: xmin,xmax; &quot;0,0&quot; for default
+yrange: 0,0 # Ne (1k individual) range; format: xmin,xmax; &quot;0,0&quot; for default
+xspacing: 2 # X axis spacing
+yspacing: 2 # Y axis spacing
+fontsize: 12 # Font size&quot; &gt;ofavPurple.blueprint</code></pre>
+<p>Create batch files and launch:</p>
+<pre class="bash"><code>for blueprint in *blueprint; do
+java -cp $HOME/bin/stairway_plot_v2.1.2/stairway_plot_es Stairbuilder $blueprint;
+done
+
+# split each .sh script and launch all (second job waiting with dependency on first finishing)
+for file in *.sh; do
+grep -B 805 &quot;# Step 2: determine number of break points&quot; $file &gt; ${file%.*}1;
+grep -A 805 &quot;# Step 2: determine number of break points&quot; $file &gt; ${file%.*}2;
+echo &#39;#!/bin/bash&#39; | cat - ${file%.*}2 &gt;temp;
+mv temp ${file%.*}2;
+launcher_creator.py -j ${file%.*}1 -n ${file%.*}1 -q shortq7 -t 06:00:00 -e $EMAIL -N 5;
+DEP=$(sbatch ${file%.*}1.slurm) &amp;&amp; sbatch --dependency=afterok:${DEP##* } -e ${file%.*}2.e%j -o ${file%.*}2.o%j -p shortq7 --mem=200GB --mail-user reckert2017@fau.edu --mail-type=ALL ${file%.*}2;
+done</code></pre>
+<p>After all have run:</p>
+<pre class="bash"><code>mv ofav*/*final.summary .
+</code></pre>
+<p><br></p>
+</div>
+</div>
+<div id="h-e-t-e-r-o-z-y-g-o-s-i-t-y" class="section level2">
+<h2>H E T E R O Z Y G O S I T Y</h2>
+<hr />
+<p>Calculating Heterozygosity across all loci (variant//invariant) using
+<code>ANGSD</code> and <code>R</code> script from Misha Matz (<a href="https://github.com/z0on/2bRAD_denovo" class="uri">https://github.com/z0on/2bRAD_denovo</a>)</p>
+<pre class="bash"><code>cd ~/urban/ofav/ANGSD
+cp ../SFS/sfsSitesToDo .
+
+angsd sites index sfsSitesToDo
+
+export GENOME_FASTA=~/db/ofavGenome/Orbicella_faveolata_gen_17.scaffolds.fa
+
+# Remember to set -minInd to 75% of your total sample size
+FILTERS=&quot;-maxHetFreq 0.5 -uniqueOnly 1 -remove_bads 1 -skipTriallelic 1 -minMapQ 30 -minQ 35 -doHWE 1 -sb_pval 1e-5 -hetbias_pval 1e-5 -minInd 70 -setMinDepthInd 3&quot;
+TODO=&quot;-ref $GENOME_FASTA -makeMatrix 1 -doIBS 1 -doCov 1 -doGeno 32 -doPost 1 -doGlf 2 -doCounts 1 -doMajorMinor 1 -dosnpstat 1 -doMaf 1&quot;
+
+echo &quot;angsd -sites sfsSitesToDo -b bamsNoClones -GL 1 -P 1 $TODO $FILTERS -out ofavHet&quot; &gt;angsdHet
+
+launcher_creator.py -j angsdHet -n angsdHet -q shortq7 -t 06:00:00 -e $EMAIL -N 1
+sbatch angsdHet.slurm
+
+mkdir ../heterozygosity
+cp ofavHet* ../heterozygosity/
+
+cd ../heterozygosity
+
+echo heterozygosity_beagle.R ofavHet.beagle.gz &gt;filtHet
+
+launcher_creator.py -j filtHet -n filtHet -q shortq7 -t 6:00:00 -e $EMAIL -N 1
+sbatch --mem=200GB filtHet.slurm
+
+tail -n 94 filtHet.e* &gt; ofavHet
+cat ofavHet</code></pre>
+<p><br></p>
+</div>
+<div id="n-u-c-l-e-o-t-i-d-e-d-i-v-e-r-s-i-t-y" class="section level2">
+<h2>N U C L E O T I D E   D I V E R S I T Y</h2>
+<pre class="bash"><code>cd ~/urban/ofav/
+mkdir theta
+
+cd ANGSD
+
+GENOME_FASTA=~/db/ofavGenome/Orbicella_faveolata_gen_17.scaffolds.fa
+
+&gt;kThetas
+
+for POP in purple orange blue; do
+echo &quot;angsd -b ${POP}Bams -GL 1 -P 1 -sites sfsSitesToDo -anc $GENOME_FASTA -doSaf 1 -out ${POP}Out &amp;&amp;\
+realSFS ${POP}Out.saf.idx -fold 1 &gt; ${POP}Out.sfs &amp;&amp;\
+realSFS saf2theta ${POP}Out.saf.idx -sfs ${POP}Out.sfs -outname ${POP} -fold 1 &amp;&amp;\
+thetaStat do_stat ${POP}.thetas.idx&quot; &gt;&gt; kThetas
+done
+
+launcher_creator.py -j kThetas -n kThetas -q shortq7 -t 6:00:00 -e $EMAIL -w 4 -N 1
+sbatch kThetas.slurm
+
+mv *theta* ../theta</code></pre>
+<p><br></p>
+</div>
+<div id="m-i-g-r-a-t-i-o-n-m-o-d-e-l-i-n-g" class="section level2">
+<h2>M I G R A T I O N   M O D E L I N G</h2>
+<pre class="bash"><code>cd ~/urban/ofav/ANGSD
+
+FILTERS=&quot;-uniqueOnly 1 -remove_bads 1 -minMapQ 20 -minQ 30 -dosnpstat 1 -doHWE 1 -hwe_pval 1e-5 -sb_pval 1e-5 -hetbias_pval 1e-5 -skipTriallelic 1 -snp_pval 1e-5 -minMaf 0.05 -setMinDepthInd 3&quot;
+
+TODO=&quot;-doMajorMinor 1 -doMaf 1 -doCounts 1 -makeMatrix 1 -doIBS 1 -doCov 1 -doGeno 8 -doBcf 1 -doPost 1 -doGlf 2&quot;
+
+echo &quot;angsd -b blueBams -GL 1 -P 1 $FILTERS $TODO -minInd 40 -sites sitesToDo -out ofavBlueSnps&quot; &gt; blueSnps
+
+launcher_creator.py -j blueSnps -n blueSnps -q shortq7 -t 06:00:00 -e $EMAIL -w 2 -N 1
+sbatch blueSnps.slurm</code></pre>
+<p><br></p>
+<p>To use BayesAss3 we first need to convert our ANGSD output into
+genotype format</p>
+<pre class="bash"><code>cd ~/urban/ofav
+mkdir BA3
+
+cd BA3
+cp ../ANGSD/blueBams . 
+cp ../ANGSD/ofavBlueSnps.bcf .
+
+# need file bspops that lists bams and the sampling site, tab delimited.
+cut -d&#39;,&#39; -f1,4 ../ofavMetadata.csv | tr &#39;,&#39; &#39;\t&#39; &gt; bspops.txt
+
+awk -F &#39; &#39; &#39;NR==FNR{a[$1]; next} ($1 in a) || ($2 in a)&#39; blueBams bspops.txt &gt; ofavBlueBA3Pops.txt
+cat ofavBlueBA3Pops.txt | wc -l
+# 54 — Good!
+
+bcftools view ofavBlueSnps.bcf &gt; ofavBlueSnps.vcf
+
+echo &quot;# VCF Parser questions
+PARSER_FORMAT=VCF
+
+# Only output SNPs with a phred-scaled quality of at least:
+VCF_PARSER_QUAL_QUESTION=
+# Select population definition file:
+VCF_PARSER_POP_FILE_QUESTION=./ofavBlueBA3Pops.txt
+# What is the ploidy of the data?
+VCF_PARSER_PLOIDY_QUESTION=DIPLOID
+# Do you want to include a file with population definitions?
+VCF_PARSER_POP_QUESTION=true
+# Output genotypes as missing if the phred-scale genotype quality is below:
+VCF_PARSER_GTQUAL_QUESTION=
+# Do you want to include non-polymorphic SNPs?
+VCF_PARSER_MONOMORPHIC_QUESTION=false
+# Only output following individuals (ind1, ind2, ind4, ...):
+VCF_PARSER_IND_QUESTION=
+# Only input following regions (refSeqName:start:end, multiple regions: whitespace separated):
+VCF_PARSER_REGION_QUESTION=
+# Output genotypes as missing if the read depth of a position for the sample is below:
+VCF_PARSER_READ_QUESTION=
+# Take most likely genotype if &quot;PL&quot; or &quot;GL&quot; is given in the genotype field?
+VCF_PARSER_PL_QUESTION=true
+# Do you want to exclude loci with only missing data?
+VCF_PARSER_EXC_MISSING_LOCI_QUESTION=true
+
+# Immanc (BayesAss) Writer questions
+WRITER_FORMAT=IMMANC
+
+# Specify the locus/locus combination you want to write to the Immanc (BayesAss) file:
+IMMANC_WRITER_LOCUS_COMBINATION_QUESTION=
+# Specify which data type should be included in the Immanc (BayesAss)) file  (Immanc (BayesAss) can only analyze one data type per file):
+IMMANC_WRITER_DATA_TYPE_QUESTION=SNP&quot; &gt;ofavBA.spid
+
+
+module load pgdspider-2.1.1.2-gcc-9.2.0-ghxvd4c 
+
+pgdSpider=/opt/ohpc/pub/spack/opt/spack/linux-centos7-x86_64/gcc-9.2.0/pgdspider-2.1.1.2-ghxvd4c4ieqngkbutakc7x6j4pfkqm5e/bin/PGDSpider2-cli.jar
+
+echo &#39;#!/bin/bash&#39; &gt; pgdSpider.sh
+echo &quot;java -Xmx1024m -Xms512m -jar $pgdSpider -inputformat VCF -outputformat IMMANC vcf -inputfile ofavBlueSnps.vcf -outputfile fkSintBayesAss.txt -spid fkSintBA.spid&quot; &gt;&gt;pgdSpider.sh
+
+sbatch -e pgdSpider.e%j -o pgdSpider.o%j -p mediumq7 --mail-user reckert2017@fau.edu --mail-type=ALL pgdSpider.sh
+
+conda activate pgdspider
+# For gattaca
+echo &quot;PGDSpider2-cli \
+  -inputfile ofavBlueSnps.vcf \
+  -outputfile ofavBayesAss.txt \
+  -spid ofavBA.spid&quot; &gt; BAprep</code></pre>
+<p><br></p>
+<pre class="sh"><code>## Default params:
+#MCMC reps: 1,000,000
+#burn in: 100,000
+#sampling freq: 100
+#delta migration (1): 0.1
+#delta allele freq (3): 0.1
+#delta inbreeding (4): 0.1
+
+rm ofavBlueSnps.bcf
+rm bspops.txt
+
+module load gcc-9.2.0-gcc-8.3.0-ebpgkrt gsl-2.5-gcc-9.2.0-i6lf4jb netlib-lapack-3.9.1-gcc-9.2.0-gcqg2b2 BayesAss/3.0.4.2
+
+# Run a test with verbose [-v] output to see the acceptance rates in the terminal (takes a few minutes to compute)
+# check the output file [less BATest.o*] and kill the job once you get output with acceptance rates [scancel {yourJobID}]
+# After ~5 min you should start seeing output in the BATest.o* file
+
+echo &#39;#!/bin/bash&#39; &gt; BATest
+echo BA3SNP -v -i 30000000 -b 10000000 -n 1000 ofavBayesAss.txt &gt;&gt; BATest
+
+sbatch -e BATest.e%j -o BATest.o%j -p shortq7 --mail-user reckert2017@fau.edu --mail-type=ALL BATest
+
+#logL: -545609.14 % done: [0.00] % accepted: (0.49, 0.00, 0.91, 0.13, 0.79)
+
+# we are looking for 20—60% acceptance, ideally somewhere nearer 20—30%
+# relationships between mixing parameters and acceptance rates are inverse
+# defaults are 0.1 (all parameters are scale 0—1)
+# increase [-m] increase [-a] and decrease [-f]
+
+echo &#39;#!/bin/bash&#39; &gt; BATest
+echo BA3SNP -v -i 30000000 -b 10000000 -n 1000  -m 0.2 -a 0.6 -f 0.04 ofavBayesAss.txt &gt;&gt; BATest
+
+sbatch -e BATest.e%j -o BATest.o%j -p shortq7 --mail-user reckert2017@fau.edu --mail-type=ALL BATest
+# logP(M): -120.99 logL(G): -237963.30 logL: -238084.29 % done: [0.00] % accepted: (0.49, 0.00, 0.55, 0.14, 0.73)
+
+echo &#39;#!/bin/bash&#39; &gt; BATest
+echo BA3SNP -v -i 30000000 -b 10000000 -n 1000  -m 0.25 -a 0.7 -f 0.07 ofavBayesAss.txt &gt;&gt; BATest
+
+sbatch -e BATest.e%j -o BATest.o%j -p shortq7 --mail-user reckert2017@fau.edu --mail-type=ALL BATest
+# logP(M): -125.49 logL(G): -240078.35 logL: -240203.84 % done: [0.00] % accepted: (0.46, 0.00, 0.51, 0.08, 0.72)
+
+echo &#39;#!/bin/bash&#39; &gt; BATest
+echo BA3SNP -v -i 30000000 -b 10000000 -n 1000  -m 0.25 -a 0.85 -f 0.05 ofavBayesAss.txt &gt;&gt; BATest
+
+sbatch -e BATest.e%j -o BATest.o%j -p shortq7 --mail-user reckert2017@fau.edu --mail-type=ALL BATest
+# logP(M): -118.09 logL(G): -239038.86 logL: -239156.95 % done: [0.00] % accepted: (0.46, 0.00, 0.46, 0.11, 0.72)
+
+echo &#39;#!/bin/bash&#39; &gt; BATest
+echo BA3SNP -v -i 30000000 -b 10000000 -n 1000  -m 0.5 -a 0.95 -f 0.02 ofavBayesAss.txt &gt;&gt; BATest
+
+sbatch -e BATest.e%j -o BATest.o%j -p shortq7 --mail-user reckert2017@fau.edu --mail-type=ALL BATest
+# logP(M): -127.36 logL(G): -238075.42 logL: -238202.78 % done: [0.00] % accepted: (0.42, 0.00, 0.43, 0.22, 0.73)</code></pre>
+<p>Make and launch 10 iterations of BayesAss, each in its own run
+directory so we can keep all trace files (saved as ‘BA3trace.txt’ and
+would overwrite if not in separate directories). We are using [-s
+$RANDOM] to use a random start seed for each independent run</p>
+<pre class="sh"><code>module load gcc-9.2.0-gcc-8.3.0-ebpgkrt gsl-2.5-gcc-9.2.0-i6lf4jb netlib-lapack-3.9.1-gcc-9.2.0-gcqg2b2 BayesAss/3.0.4.2
+
+for i in {01..10}; do
+echo &#39;#!/bin/bash&#39; &gt; BayesAss$i.sh
+echo BA3SNP -v -u -s $RANDOM -i 30000000 -b 10000000 -n 1000  -m 0.5 -a 0.95 -f 0.02 -t -o ofavBARun${i}Out.txt ../ofavBayesAss.txt &gt;&gt; BayesAss$i.sh;
+mkdir run$i;
+mv BayesAss$i.sh run$i;
+cd run$i;
+sbatch -e BayesAss$i.e%j -o BayesAss$i.o%j -p longq7 --mem=200GB --exclusive --mail-user $EMAIL --mail-type=ALL BayesAss$i.sh
+cd ..;
+done
+
+# For gattaca
+for i in {01..10}; do
+echo &#39;#!/bin/bash&#39; &gt; BayesAss$i.sh
+echo ~/bin/BA3/BA3SNP -v -u -s $RANDOM -i 30000000 -b 10000000 -n 1000  -m 0.5 -a 0.95 -f 0.02 -t -o ofavBARun${i}Out.txt ../ofavBayesAss.txt &gt;&gt; BayesAss$i.sh;
+mkdir run$i;
+mv BayesAss$i.sh run$i;
+cd run$i;
+nohup bash BayesAss$i.sh &gt; BayesAss$i.log 2&gt;&amp;1 &amp;
+cd ..;
+done
+
+# after all runs complete copy files to main BayesAss directory
+cd ~/urban/ofav/BA3
+
+#cp run*/*Out.txt .
+
+for i in {01..10}; do 
+cp run$i/BA3trace.txt BA3trace.$i.txt;
+done
+</code></pre>
 </div>
 
 

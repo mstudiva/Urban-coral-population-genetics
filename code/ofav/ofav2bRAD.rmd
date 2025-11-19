@@ -793,7 +793,7 @@ cd ../filteredSNPS/
 <br>
 
 How many SNPs do we have found across all lineages?
-```{bash, SNPs? 1}
+```{bash, SNPs? 2}
 grep "filtering:" ofavFiltSnps.e*
 ```
 Number of sites retained after filtering: 5323 
@@ -1291,7 +1291,7 @@ sbatch blueSnps.slurm
 
 <br>
 
-To use BayesAss3 (XXX) we first need to convert our ANGSD output into genotype format 
+To use BayesAss3 we first need to convert our ANGSD output into genotype format 
 ```{bash, migration1}
 cd ~/urban/ofav
 mkdir BA3
@@ -1453,128 +1453,4 @@ for i in {01..10}; do
 cp run$i/BA3trace.txt BA3trace.$i.txt;
 done
 
-```
-
-<br>
-
-## O U T L I E R &nbsp; D E T E C T I O N
-***
-
-```{bash, bayescan}
-cd ~/2bRAD/fknms/sint
-
-cd bayescan3x
-
-cp ../ANGSD3x/sintFiltSnps.bcf .
-
-bcftools view sintFiltSnps.bcf > sintFiltSnps.vcf
-
-rm sintFiltSnps.bcf
-
-```
-
-You will have to create or ```scp``` a textfile with your .bam file names and populations
-
-Creating a popfile that sorts bams into lineage_depth
-
-```{bash, lineage-depth}
-
-awk -F ' ' 'NR==FNR{a[$1]=$0; next} ($1 in a) {print a[$1]" "$2}' bspops.txt fkSintBsPops.txt > bsPopsNoAdmix.txt
-awk -F ' ' '$2 != "Admixed" {print $1, $2, $3}' bsPopsNoAdmix.txt > tmp && mv tmp bsPopsNoAdmix.txt
-awk '{sub(/.*_/,"",$3); print}' bsPopsNoAdmix.txt > tmp && mv tmp bsPopsNoAdmix.txt
-awk -F ' ' '{print $1, $2"_"$3}' bsPopsNoAdmix.txt > tmp && mv tmp bsPopsNoAdmix.txt
-
-cat bsPopsNoAdmix.txt
-cat bsPopsNoAdmix.txt | wc -l
-
-# looks good!
-
-```
-
-Remove admixed indivivuals from vcf
-```{bash, vcf filter}
-awk -F ' ' '{print $1}' bsPopsNoAdmix.txt > noAdmixedBams
-
-cat noAdmixedBams
-
-bcftools view -S noAdmixedBams sintFiltSnps.vcf > sintFiltSnpsNoAdmixed.vcf
-
-```
-
-Convert vcf with ```PGDSpider```
-```{bash, bayescan2}
-echo "############
-# VCF Parser questions
-PARSER_FORMAT=VCF
-# Do you want to include a file with population definitions?
-VCF_PARSER_POP_QUESTION=true
-# Only input following regions (refSeqName:start:end, multiple regions: whitespace separated):
-VCF_PARSER_REGION_QUESTION=
-# What is the ploidy of the data?
-VCF_PARSER_PLOIDY_QUESTION=DIPLOID
-# Only output following individuals (ind1, ind2, ind4, ...):
-VCF_PARSER_IND_QUESTION=
-# Output genotypes as missing if the read depth of a position for the sample is below:
-VCF_PARSER_READ_QUESTION=
-# Take most likely genotype if "PL" or "GL" is given in the genotype field?
-VCF_PARSER_PL_QUESTION=true
-# Do you want to exclude loci with only missing data?
-VCF_PARSER_EXC_MISSING_LOCI_QUESTION=false
-# Select population definition file:
-VCF_PARSER_POP_FILE_QUESTION=./bsPopsNoAdmix.txt
-# Only output SNPs with a phred-scaled quality of at least:
-VCF_PARSER_QUAL_QUESTION=
-# Do you want to include non-polymorphic SNPs?
-VCF_PARSER_MONOMORPHIC_QUESTION=false
-# Output genotypes as missing if the phred-scale genotype quality is below:
-VCF_PARSER_GTQUAL_QUESTION=
-# GESTE / BayeScan Writer questions
-WRITER_FORMAT=GESTE_BAYE_SCAN
-# Specify which data type should be included in the GESTE / BayeScan file  (GESTE / BayeScan can only analyze one data type per file):
-GESTE_BAYE_SCAN_WRITER_DATA_TYPE_QUESTION=SNP
-############" >vcf2bayescan3x.spid
-
-java -Xmx1024m -Xms512m -jar ~/bin/PGDSpider_2.0.7.1/PGDSpider2-cli.jar -inputfile sintFiltSnpsNoAdmixed.vcf -outputfile fkSint3x.bayescan -spid vcf2bayescan3x.spid
-
-```
-
-Launch ```BayeScan``` (Takes 12+ hr depending on read count/SNPs)
-```{bash, bayescan3}
-echo '#!/bin/bash' > sintBayescan.sh
-echo bayescan fkSint3x.bayescan -threads=100 >> sintBayescan.sh
-
-sbatch -e sintBayescan.e%j -o sintBayescan.o%j -p mediumq7 --mail-user reckert2017@fau.edu --mail-type=ALL sintBayescan.sh
-```
-
-Extract outlier SNPs from ```BayeScan``` output
-```{bash, bayescan4}
-srun removeBayescanOutliers.pl bayescan=fkSint3x.baye_fst.txt vcf=sintFiltSnpsNoAdmixed.vcf FDR=0.05 mode=extract > fkSint3xVcfOutliers.vcf
-
-```
-
-Using BayeScEnv we can look for outliers realted to depth
-```{bash, bayescan5}
-# Get the average depths for each population (lineage/depth combo)
-##1 Blue_Mesophotic       36.2
-##2 Teal_Mesophotic       35.2
-##3 Teal_Shallow          21.0 
-##4 Blue_Shallow          23.7 
-##5 Yellow_Shallow        20.2
-##6 Green_Shallow         21.9
-##7 Green_Mesophotic      31.4
-
-echo "36.2 35.2 21.0 23.7 20.2 21.9 31.4" > depth.txt
-
-cp fkSint3x.bayescan fkSint3x.bayeScEnv
-
-echo '#!/bin/bash' > sintBayeScEnv.sh
-echo bayescenv fkSint3x.bayeScEnv -env depth.txt >> sintBayeScEnv.sh
-
-sbatch -e sintBayeScEnv.e%j -o sintBayeScEnv.o%j -p longq7 --mail-user reckert2017@fau.edu --mail-type=ALL sintBayeScEnv.sh
-
-```
-
-Extract outlier SNPs from ```BayeScEnv``` output
-```{bash, bayescan6}
-srun removeBayescanOutliers.pl bayescan=fkSint.bayeS_fst.txt vcf=sintFiltSnpsNoAdmixed.vcf FDR=0.05 mode=extract > fkSintBScEnvVcfOutliers.vcf
 ```
