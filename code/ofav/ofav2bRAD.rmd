@@ -99,9 +99,9 @@ ll *.zoox | wc -l
 
 Counting the mapped symbiont reads
 ```{bash, countmapped}
-echo '#!/bin/bash' >mappedZooxReads
-echo readCounts.sh -e zoox -o Zoox >>mappedZooxReads
-sbatch --mem=200GB --mail-type=ALL --mail-user=studivanms@gmail.com mappedZooxReads
+echo '#!/bin/bash' >mappedZooxReads.sh
+echo readCounts.sh -e zoox -o Zoox >>mappedZooxReads.sh
+sbatch --mem=200GB --mail-type=ALL --mail-user=studivanms@gmail.com mappedZooxReads.sh
 ```
 scp ZooxReadCounts to local machine
 
@@ -109,11 +109,11 @@ scp ZooxReadCounts to local machine
 
 Making script to generate indexed bam files
 ```{bash, sam2bam}
->s2b
+>s2b.sh
 for file in *.sam; do
-echo "samtools sort -O bam -o ${file/.sam/}.bam $file && samtools index ${file/.sam/}.bam">>s2b;
+echo "samtools sort -O bam -o ${file/.sam/}.bam $file && samtools index ${file/.sam/}.bam">>s2b.sh;
 done
-launcher_creator.py -j s2b -n s2b -t 6:00:00 -N 5 -e studivanms@gmail.com -q shortq7
+launcher_creator.py -j s2b.sh -n s2b -t 6:00:00 -N 5 -e studivanms@gmail.com -q shortq7
 sbatch s2b.slurm
 ```
 
@@ -158,8 +158,8 @@ ll *.sam | wc -l
 
 Counting the mapped coral reads
 ```{bash, countmapped 2}
-echo '#!/bin/bash' >mappedReads
-echo readCounts.sh -e host -o Host >>mappedReads
+echo '#!/bin/bash' >mappedReads.sh
+echo readCounts.sh -e host -o Host >>mappedReads.sh
 sbatch --mem=200GB --mail-type=ALL --mail-user=studivanms@gmail.com mappedReads
 ```
 scp HostReadCounts to local machine
@@ -168,12 +168,12 @@ scp HostReadCounts to local machine
 
 Making script to generate indexed bam files
 ```{bash, sam2bam 2}
->s2b
+>s2b.sh
 for file in *.sam; do
-echo "samtools sort -O bam -o ${file/.sam/}.bam $file && samtools index ${file/.sam/}.bam">>s2b;
+echo "samtools sort -O bam -o ${file/.sam/}.bam $file && samtools index ${file/.sam/}.bam">>s2b.sh;
 done
 
-launcher_creator.py -j s2b -n s2b -q shortq7 -t 06:00:00 -e studivanms@gmail.com
+launcher_creator.py -j s2b.sh -n s2b -q shortq7 -t 06:00:00 -e studivanms@gmail.com
 sbatch --mem=200GB s2b.slurm
 
 ll *bam | wc -l

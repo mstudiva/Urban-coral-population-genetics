@@ -240,9 +240,9 @@ ls -l *.trim | wc -l
 
 Counting the trimmed reads
 ```{bash, counttrim}
-echo '#!/bin/bash' >cleanReads
-echo readCounts.sh -e trim -o Filt >>cleanReads
-sbatch --mem=200GB --mail-type=ALL --mail-user=studivanms@gmail.com cleanReads
+echo '#!/bin/bash' >cleanReads.sh
+echo readCounts.sh -e trim -o Filt >>cleanReads.sh
+sbatch --mem=200GB --mail-type=ALL --mail-user=studivanms@gmail.com cleanReads.sh
 ```
 scp FiltReadCounts to local machine
 
